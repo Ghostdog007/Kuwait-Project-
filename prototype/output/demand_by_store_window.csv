@@ -1,0 +1,562 @@
+store_name,store_name_norm,window_type,window_time,demand
+BR - Al Bairak Mall,br - al bairak mall,IN,12:00 PM,14
+BR - Al Bairak Mall,br - al bairak mall,OUT,12:00 AM,14
+BR - Al Fintas,br - al fintas,IN,08:00 PM,5
+BR - Al Fintas,br - al fintas,IN,11:00 AM,7
+BR - Al Fintas,br - al fintas,OUT,05:00 AM,5
+BR - Al Fintas,br - al fintas,OUT,08:00 PM,7
+BR - Aswaq Al Qurain,br - aswaq al qurain,IN,11:00 AM,7
+BR - Aswaq Al Qurain,br - aswaq al qurain,OUT,08:00 PM,7
+BR - Divonne,br - divonne,IN,08:00 PM,7
+BR - Divonne,br - divonne,IN,11:00 AM,1
+BR - Divonne,br - divonne,OUT,05:00 AM,7
+BR - Divonne,br - divonne,OUT,08:00 PM,1
+BR - Fahaheel,br - fahaheel,IN,11:00 AM,7
+BR - Fahaheel,br - fahaheel,OUT,08:00 PM,7
+BR - Fahd El Ahmed,br - fahd el ahmed,IN,08:00 PM,14
+BR - Fahd El Ahmed,br - fahd el ahmed,IN,11:00 AM,7
+BR - Fahd El Ahmed,br - fahd el ahmed,OUT,05:00 AM,14
+BR - Fahd El Ahmed,br - fahd el ahmed,OUT,08:00 PM,7
+BR - Khiran Outlet,br - khiran outlet,IN,07:00 PM,7
+BR - Khiran Outlet,br - khiran outlet,IN,10:00 AM,7
+BR - Khiran Outlet,br - khiran outlet,OUT,03:00 AM,7
+BR - Khiran Outlet,br - khiran outlet,OUT,07:00 PM,7
+BR - Kout Mall,br - kout mall,IN,07:00 PM,7
+BR - Kout Mall,br - kout mall,IN,10:00 AM,7
+BR - Kout Mall,br - kout mall,OUT,03:00 AM,7
+BR - Kout Mall,br - kout mall,OUT,10:00 PM,7
+BR - Om El Haiman,br - om el haiman,IN,11:00 AM,14
+BR - Om El Haiman,br - om el haiman,OUT,08:00 PM,14
+BR - Qurain 1,br - qurain 1,IN,11:00 AM,14
+BR - Qurain 1,br - qurain 1,OUT,08:00 PM,14
+BR - Qurain 2,br - qurain 2,IN,11:00 AM,7
+BR - Qurain 2,br - qurain 2,OUT,08:00 PM,7
+BR - Qurain 3,br - qurain 3,IN,08:00 PM,23
+BR - Qurain 3,br - qurain 3,IN,11:00 AM,14
+BR - Qurain 3,br - qurain 3,OUT,05:00 AM,23
+BR - Qurain 3,br - qurain 3,OUT,08:00 PM,14
+BR - Reqa,br - reqa,IN,08:00 PM,7
+BR - Reqa,br - reqa,IN,11:00 AM,7
+BR - Reqa,br - reqa,OUT,05:00 AM,7
+BR - Reqa,br - reqa,OUT,08:00 PM,7
+BR - Sabah Al Ahmed Coop,br - sabah al ahmed coop,IN,07:00 PM,14
+BR - Sabah Al Ahmed Coop,br - sabah al ahmed coop,IN,10:00 AM,14
+BR - Sabah Al Ahmed Coop,br - sabah al ahmed coop,OUT,03:00 AM,14
+BR - Sabah Al Ahmed Coop,br - sabah al ahmed coop,OUT,07:00 PM,14
+BR - Sabah Al Salem Block 1,br - sabah al salem block 1,IN,08:00 PM,14
+BR - Sabah Al Salem Block 1,br - sabah al salem block 1,IN,11:00 AM,7
+BR - Sabah Al Salem Block 1,br - sabah al salem block 1,OUT,05:00 AM,14
+BR - Sabah Al Salem Block 1,br - sabah al salem block 1,OUT,08:00 PM,7
+BR - The Gate Mall,br - the gate mall,IN,07:00 PM,7
+BR - The Gate Mall,br - the gate mall,IN,11:00 AM,7
+BR - The Gate Mall,br - the gate mall,OUT,03:00 AM,7
+BR - The Gate Mall,br - the gate mall,OUT,08:00 PM,7
+Hardees - Adan,hardees - adan,IN,06:00 PM,14
+Hardees - Adan,hardees - adan,IN,08:00 PM,12
+Hardees - Adan,hardees - adan,IN,09:00 AM,7
+Hardees - Adan,hardees - adan,IN,09:00 PM,13
+Hardees - Adan,hardees - adan,IN,11:00 AM,14
+Hardees - Adan,hardees - adan,IN, ,80
+Hardees - Adan,hardees - adan,OUT,03:00 AM,14
+Hardees - Adan,hardees - adan,OUT,05:00 AM,12
+Hardees - Adan,hardees - adan,OUT,06:00 AM,13
+Hardees - Adan,hardees - adan,OUT,06:00 PM,7
+Hardees - Adan,hardees - adan,OUT,08:00 PM,7
+Hardees - Adan,hardees - adan,OUT,09:00 PM,5
+Hardees - Adan,hardees - adan,OUT,11:00 PM,2
+Hardees - Adan,hardees - adan,OUT, ,80
+Hardees - Al Ahmadi,hardees - al ahmadi,IN,06:00 PM,8
+Hardees - Al Ahmadi,hardees - al ahmadi,IN,08:00 PM,20
+Hardees - Al Ahmadi,hardees - al ahmadi,IN,09:00 AM,6
+Hardees - Al Ahmadi,hardees - al ahmadi,IN,11:00 AM,14
+Hardees - Al Ahmadi,hardees - al ahmadi,OUT,03:00 AM,8
+Hardees - Al Ahmadi,hardees - al ahmadi,OUT,05:00 AM,20
+Hardees - Al Ahmadi,hardees - al ahmadi,OUT,06:00 PM,6
+Hardees - Al Ahmadi,hardees - al ahmadi,OUT,08:00 PM,14
+Hardees - Al Fahaheel,hardees - al fahaheel,IN,06:00 PM,6
+Hardees - Al Fahaheel,hardees - al fahaheel,IN,08:00 PM,12
+Hardees - Al Fahaheel,hardees - al fahaheel,IN,09:00 AM,12
+Hardees - Al Fahaheel,hardees - al fahaheel,IN,11:00 AM,6
+Hardees - Al Fahaheel,hardees - al fahaheel,OUT,03:00 AM,6
+Hardees - Al Fahaheel,hardees - al fahaheel,OUT,05:00 AM,12
+Hardees - Al Fahaheel,hardees - al fahaheel,OUT,06:00 PM,12
+Hardees - Al Fahaheel,hardees - al fahaheel,OUT,08:00 PM,6
+Hardees - Al Fintas,hardees - al fintas,IN,06:00 PM,17
+Hardees - Al Fintas,hardees - al fintas,IN,08:00 PM,13
+Hardees - Al Fintas,hardees - al fintas,IN,09:00 PM,17
+Hardees - Al Fintas,hardees - al fintas,IN,11:00 AM,6
+Hardees - Al Fintas,hardees - al fintas,OUT,03:00 AM,17
+Hardees - Al Fintas,hardees - al fintas,OUT,05:00 AM,13
+Hardees - Al Fintas,hardees - al fintas,OUT,06:00 AM,17
+Hardees - Al Fintas,hardees - al fintas,OUT,08:00 PM,6
+Hardees - Al Mangaf,hardees - al mangaf,IN,08:00 PM,30
+Hardees - Al Mangaf,hardees - al mangaf,IN,09:00 AM,13
+Hardees - Al Mangaf,hardees - al mangaf,OUT,05:00 AM,30
+Hardees - Al Mangaf,hardees - al mangaf,OUT,06:00 PM,13
+Hardees - Al Qureen,hardees - al qureen,IN,02:00 PM,8
+Hardees - Al Qureen,hardees - al qureen,IN,04:00 PM,5
+Hardees - Al Qureen,hardees - al qureen,IN,06:00 PM,18
+Hardees - Al Qureen,hardees - al qureen,IN,08:00 PM,26
+Hardees - Al Qureen,hardees - al qureen,IN,09:00 AM,37
+Hardees - Al Qureen,hardees - al qureen,IN,11:00 AM,3
+Hardees - Al Qureen,hardees - al qureen,IN, ,113
+Hardees - Al Qureen,hardees - al qureen,OUT,01:00 AM,1
+Hardees - Al Qureen,hardees - al qureen,OUT,03:00 AM,20
+Hardees - Al Qureen,hardees - al qureen,OUT,04:00 PM,6
+Hardees - Al Qureen,hardees - al qureen,OUT,05:00 AM,14
+Hardees - Al Qureen,hardees - al qureen,OUT,06:00 AM,8
+Hardees - Al Qureen,hardees - al qureen,OUT,06:00 PM,28
+Hardees - Al Qureen,hardees - al qureen,OUT,08:00 PM,6
+Hardees - Al Qureen,hardees - al qureen,OUT,12:00 AM,11
+Hardees - Al Qureen,hardees - al qureen,OUT,12:00: AM,1
+Hardees - Al Qureen,hardees - al qureen,OUT,1:00: AM,1
+Hardees - Al Qureen,hardees - al qureen,OUT,2:00: AM,1
+Hardees - Al Qureen,hardees - al qureen,OUT, ,113
+Hardees - Al Qureen 2,hardees - al qureen 2,IN,04:00 PM,10
+Hardees - Al Qureen 2,hardees - al qureen 2,IN,06:00 PM,21
+Hardees - Al Qureen 2,hardees - al qureen 2,IN,08:00 PM,19
+Hardees - Al Qureen 2,hardees - al qureen 2,IN,09:00 AM,21
+Hardees - Al Qureen 2,hardees - al qureen 2,IN,09:00 PM,9
+Hardees - Al Qureen 2,hardees - al qureen 2,IN,10:00 AM,2
+Hardees - Al Qureen 2,hardees - al qureen 2,IN,10:00 PM,2
+Hardees - Al Qureen 2,hardees - al qureen 2,IN,12:00 AM,16
+Hardees - Al Qureen 2,hardees - al qureen 2,IN,12:00 PM,1
+Hardees - Al Qureen 2,hardees - al qureen 2,IN, ,101
+Hardees - Al Qureen 2,hardees - al qureen 2,OUT,01:00 AM,12
+Hardees - Al Qureen 2,hardees - al qureen 2,OUT,03:00 AM,21
+Hardees - Al Qureen 2,hardees - al qureen 2,OUT,04:00 AM,1
+Hardees - Al Qureen 2,hardees - al qureen 2,OUT,04:00 PM,1
+Hardees - Al Qureen 2,hardees - al qureen 2,OUT,05:00 AM,17
+Hardees - Al Qureen 2,hardees - al qureen 2,OUT,06:00 PM,15
+Hardees - Al Qureen 2,hardees - al qureen 2,OUT,08:00 PM,5
+Hardees - Al Qureen 2,hardees - al qureen 2,OUT,09:00 AM,14
+Hardees - Al Qureen 2,hardees - al qureen 2,OUT,09:00 PM,1
+Hardees - Al Qureen 2,hardees - al qureen 2,OUT,10:00 AM,9
+Hardees - Al Qureen 2,hardees - al qureen 2,OUT,10:00 PM,5
+Hardees - Al Qureen 2,hardees - al qureen 2,OUT, ,101
+Hardees - Al Sbahiya,hardees - al sbahiya,IN,06:00 PM,14
+Hardees - Al Sbahiya,hardees - al sbahiya,IN,08:00 PM,30
+Hardees - Al Sbahiya,hardees - al sbahiya,IN,09:00 AM,12
+Hardees - Al Sbahiya,hardees - al sbahiya,IN,11:00 AM,12
+Hardees - Al Sbahiya,hardees - al sbahiya,IN,12:00 AM,12
+Hardees - Al Sbahiya,hardees - al sbahiya,OUT,03:00 AM,14
+Hardees - Al Sbahiya,hardees - al sbahiya,OUT,05:00 AM,29
+Hardees - Al Sbahiya,hardees - al sbahiya,OUT,06:00 PM,12
+Hardees - Al Sbahiya,hardees - al sbahiya,OUT,08:00 PM,12
+Hardees - Al Sbahiya,hardees - al sbahiya,OUT,09:00 AM,12
+Hardees - Al Sbahiya,hardees - al sbahiya,OUT,5AM,1
+Hardees - Al Zahr,hardees - al zahr,IN,06:00 PM,13
+Hardees - Al Zahr,hardees - al zahr,IN,08:00 AM,5
+Hardees - Al Zahr,hardees - al zahr,IN,08:00 PM,23
+Hardees - Al Zahr,hardees - al zahr,IN,09:00 AM,6
+Hardees - Al Zahr,hardees - al zahr,IN,11:00 AM,7
+Hardees - Al Zahr,hardees - al zahr,OUT,03:00 AM,13
+Hardees - Al Zahr,hardees - al zahr,OUT,05:00 AM,23
+Hardees - Al Zahr,hardees - al zahr,OUT,05:00 PM,5
+Hardees - Al Zahr,hardees - al zahr,OUT,06:00 PM,6
+Hardees - Al Zahr,hardees - al zahr,OUT,08:00 PM,7
+Hardees - Augiela 2,hardees - augiela 2,IN,06:00 PM,17
+Hardees - Augiela 2,hardees - augiela 2,IN,08:00 PM,31
+Hardees - Augiela 2,hardees - augiela 2,IN,09:00 AM,12
+Hardees - Augiela 2,hardees - augiela 2,IN,11:00 AM,10
+Hardees - Augiela 2,hardees - augiela 2,OUT,03:00 AM,17
+Hardees - Augiela 2,hardees - augiela 2,OUT,05:00 AM,31
+Hardees - Augiela 2,hardees - augiela 2,OUT,06:00 PM,12
+Hardees - Augiela 2,hardees - augiela 2,OUT,08:00 PM,10
+Hardees - Fahd El Ahmed,hardees - fahd el ahmed,IN,06:00 PM,12
+Hardees - Fahd El Ahmed,hardees - fahd el ahmed,IN,08:00 PM,35
+Hardees - Fahd El Ahmed,hardees - fahd el ahmed,IN,09:00 AM,6
+Hardees - Fahd El Ahmed,hardees - fahd el ahmed,IN,09:00 PM,19
+Hardees - Fahd El Ahmed,hardees - fahd el ahmed,IN,11:00 AM,6
+Hardees - Fahd El Ahmed,hardees - fahd el ahmed,OUT,03:00 AM,12
+Hardees - Fahd El Ahmed,hardees - fahd el ahmed,OUT,05:00 AM,35
+Hardees - Fahd El Ahmed,hardees - fahd el ahmed,OUT,06:00 AM,19
+Hardees - Fahd El Ahmed,hardees - fahd el ahmed,OUT,06:00 PM,6
+Hardees - Fahd El Ahmed,hardees - fahd el ahmed,OUT,08:00 PM,6
+Hardees - Khairan,hardees - khairan,IN,06:00 PM,6
+Hardees - Khairan,hardees - khairan,IN,08:00 PM,18
+Hardees - Khairan,hardees - khairan,IN,09:00 AM,6
+Hardees - Khairan,hardees - khairan,IN,09:00 PM,6
+Hardees - Khairan,hardees - khairan,IN,11:00 AM,12
+Hardees - Khairan,hardees - khairan,OUT,03:00 AM,6
+Hardees - Khairan,hardees - khairan,OUT,05:00 AM,18
+Hardees - Khairan,hardees - khairan,OUT,06:00 AM,6
+Hardees - Khairan,hardees - khairan,OUT,06:00 PM,6
+Hardees - Khairan,hardees - khairan,OUT,08:00 PM,12
+Hardees - Khiran Hybrid Outlet,hardees - khiran hybrid outlet,IN,01:00 PM,2
+Hardees - Khiran Hybrid Outlet,hardees - khiran hybrid outlet,IN,06:00 PM,8
+Hardees - Khiran Hybrid Outlet,hardees - khiran hybrid outlet,IN,08:00 PM,2
+Hardees - Khiran Hybrid Outlet,hardees - khiran hybrid outlet,IN,09:00 AM,14
+Hardees - Khiran Hybrid Outlet,hardees - khiran hybrid outlet,IN,11:00 AM,4
+Hardees - Khiran Hybrid Outlet,hardees - khiran hybrid outlet,OUT,03:00 AM,8
+Hardees - Khiran Hybrid Outlet,hardees - khiran hybrid outlet,OUT,05:00 AM,2
+Hardees - Khiran Hybrid Outlet,hardees - khiran hybrid outlet,OUT,06:00 PM,12
+Hardees - Khiran Hybrid Outlet,hardees - khiran hybrid outlet,OUT,08:00 PM,4
+Hardees - Khiran Hybrid Outlet,hardees - khiran hybrid outlet,OUT,10:00 PM,2
+Hardees - Khiran Hybrid Outlet,hardees - khiran hybrid outlet,OUT,11:00 PM,2
+Hardees - Om El Himan,hardees - om el himan,IN,06:00 PM,11
+Hardees - Om El Himan,hardees - om el himan,IN,08:00 PM,40
+Hardees - Om El Himan,hardees - om el himan,IN,09:00 AM,14
+Hardees - Om El Himan,hardees - om el himan,IN,11:00 AM,7
+Hardees - Om El Himan,hardees - om el himan,OUT,03:00 AM,11
+Hardees - Om El Himan,hardees - om el himan,OUT,05:00 AM,23
+Hardees - Om El Himan,hardees - om el himan,OUT,05:00 PM,17
+Hardees - Om El Himan,hardees - om el himan,OUT,06:00 PM,14
+Hardees - Om El Himan,hardees - om el himan,OUT,08:00 PM,7
+Hardees - Qurain Markets,hardees - qurain markets,IN,06:00 PM,2
+Hardees - Qurain Markets,hardees - qurain markets,IN,08:00 PM,13
+Hardees - Qurain Markets,hardees - qurain markets,IN,09:00 AM,5
+Hardees - Qurain Markets,hardees - qurain markets,IN,09:00 PM,10
+Hardees - Qurain Markets,hardees - qurain markets,IN,11:00 AM,6
+Hardees - Qurain Markets,hardees - qurain markets,IN, ,48
+Hardees - Qurain Markets,hardees - qurain markets,OUT,03:00 AM,2
+Hardees - Qurain Markets,hardees - qurain markets,OUT,05:00 AM,13
+Hardees - Qurain Markets,hardees - qurain markets,OUT,06:00 AM,10
+Hardees - Qurain Markets,hardees - qurain markets,OUT,08:00 PM,11
+Hardees - Qurain Markets,hardees - qurain markets,OUT, ,48
+Hardees - Sabah Al Ahmed,hardees - sabah al ahmed,IN,06:00 PM,24
+Hardees - Sabah Al Ahmed,hardees - sabah al ahmed,IN,08:00 PM,30
+Hardees - Sabah Al Ahmed,hardees - sabah al ahmed,IN,09:00 AM,30
+Hardees - Sabah Al Ahmed,hardees - sabah al ahmed,IN,09:00 PM,5
+Hardees - Sabah Al Ahmed,hardees - sabah al ahmed,IN,11:00 AM,18
+Hardees - Sabah Al Ahmed,hardees - sabah al ahmed,IN,12:00 AM,24
+Hardees - Sabah Al Ahmed,hardees - sabah al ahmed,OUT,03:00 AM,24
+Hardees - Sabah Al Ahmed,hardees - sabah al ahmed,OUT,05:00 AM,29
+Hardees - Sabah Al Ahmed,hardees - sabah al ahmed,OUT,06:00 AM,5
+Hardees - Sabah Al Ahmed,hardees - sabah al ahmed,OUT,06:00 PM,30
+Hardees - Sabah Al Ahmed,hardees - sabah al ahmed,OUT,08:00 PM,18
+Hardees - Sabah Al Ahmed,hardees - sabah al ahmed,OUT,09:00 AM,24
+Hardees - Sabah Al Ahmed,hardees - sabah al ahmed,OUT,5AM,1
+Hardees - Sabah Al Salem,hardees - sabah al salem,IN,04:00 PM,12
+Hardees - Sabah Al Salem,hardees - sabah al salem,IN,06:00 PM,18
+Hardees - Sabah Al Salem,hardees - sabah al salem,IN,08:00 PM,44
+Hardees - Sabah Al Salem,hardees - sabah al salem,IN,09:00 AM,9
+Hardees - Sabah Al Salem,hardees - sabah al salem,IN,10:00 AM,26
+Hardees - Sabah Al Salem,hardees - sabah al salem,IN,11:00 AM,1
+Hardees - Sabah Al Salem,hardees - sabah al salem,IN, ,9
+Hardees - Sabah Al Salem,hardees - sabah al salem,OUT,01:00 AM,38
+Hardees - Sabah Al Salem,hardees - sabah al salem,OUT,03:00 AM,18
+Hardees - Sabah Al Salem,hardees - sabah al salem,OUT,04:00 PM,26
+Hardees - Sabah Al Salem,hardees - sabah al salem,OUT,05:00 AM,18
+Hardees - Sabah Al Salem,hardees - sabah al salem,OUT,08:00 PM,10
+Hardees - Sabah Al Salem,hardees - sabah al salem,OUT, ,9
+Hardees - Sabah Al Salem Block,hardees - sabah al salem block,IN,04:00 PM,2
+Hardees - Sabah Al Salem Block,hardees - sabah al salem block,IN,06:00 PM,10
+Hardees - Sabah Al Salem Block,hardees - sabah al salem block,IN,08:00 PM,12
+Hardees - Sabah Al Salem Block,hardees - sabah al salem block,IN,09:00 AM,8
+Hardees - Sabah Al Salem Block,hardees - sabah al salem block,IN,09:00 PM,10
+Hardees - Sabah Al Salem Block,hardees - sabah al salem block,IN,11:00 AM,4
+Hardees - Sabah Al Salem Block,hardees - sabah al salem block,IN, ,13
+Hardees - Sabah Al Salem Block,hardees - sabah al salem block,OUT,01:00 AM,5
+Hardees - Sabah Al Salem Block,hardees - sabah al salem block,OUT,03:00 AM,10
+Hardees - Sabah Al Salem Block,hardees - sabah al salem block,OUT,04:00 PM,3
+Hardees - Sabah Al Salem Block,hardees - sabah al salem block,OUT,05:00 AM,12
+Hardees - Sabah Al Salem Block,hardees - sabah al salem block,OUT,06:00 AM,7
+Hardees - Sabah Al Salem Block,hardees - sabah al salem block,OUT,06:00 PM,8
+Hardees - Sabah Al Salem Block,hardees - sabah al salem block,OUT,08:00 PM,1
+Hardees - Sabah Al Salem Block,hardees - sabah al salem block,OUT, ,13
+Hardees - Village,hardees - village,IN,06:00 PM,2
+Hardees - Village,hardees - village,IN,08:00 PM,25
+Hardees - Village,hardees - village,IN,09:00 AM,12
+Hardees - Village,hardees - village,IN,09:00 PM,24
+Hardees - Village,hardees - village,IN,11:00 AM,10
+Hardees - Village,hardees - village,IN, ,95
+Hardees - Village,hardees - village,OUT,03:00 AM,2
+Hardees - Village,hardees - village,OUT,05:00 AM,25
+Hardees - Village,hardees - village,OUT,06:00 AM,24
+Hardees - Village,hardees - village,OUT,06:00 PM,6
+Hardees - Village,hardees - village,OUT,08:00 PM,16
+Hardees - Village,hardees - village,OUT, ,95
+KFC - Abo Helifa,kfc - abo helifa,IN,06:00 PM,28
+KFC - Abo Helifa,kfc - abo helifa,IN,08:00 PM,7
+KFC - Abo Helifa,kfc - abo helifa,IN,09:00 AM,14
+KFC - Abo Helifa,kfc - abo helifa,IN,11:00 AM,14
+KFC - Abo Helifa,kfc - abo helifa,OUT,03:00 AM,28
+KFC - Abo Helifa,kfc - abo helifa,OUT,04:00 PM,7
+KFC - Abo Helifa,kfc - abo helifa,OUT,06:00 PM,14
+KFC - Abo Helifa,kfc - abo helifa,OUT,08:00 PM,7
+KFC - Abo Helifa,kfc - abo helifa,OUT,12:00 AM,7
+KFC - Adan,kfc - adan,IN,02:00 PM,7
+KFC - Adan,kfc - adan,IN,06:00 PM,14
+KFC - Adan,kfc - adan,IN,08:00 PM,35
+KFC - Adan,kfc - adan,IN,09:00 AM,21
+KFC - Adan,kfc - adan,IN,11:00 AM,21
+KFC - Adan,kfc - adan,OUT,03:00 AM,14
+KFC - Adan,kfc - adan,OUT,05:00 AM,35
+KFC - Adan,kfc - adan,OUT,06:00 PM,21
+KFC - Adan,kfc - adan,OUT,08:00 PM,21
+KFC - Adan,kfc - adan,OUT,11:00 PM,7
+KFC - Al Ahmadi,kfc - al ahmadi,IN,06:00 PM,14
+KFC - Al Ahmadi,kfc - al ahmadi,IN,08:00 PM,28
+KFC - Al Ahmadi,kfc - al ahmadi,IN,09:00 AM,14
+KFC - Al Ahmadi,kfc - al ahmadi,IN,11:00 AM,21
+KFC - Al Ahmadi,kfc - al ahmadi,OUT,03:00 AM,14
+KFC - Al Ahmadi,kfc - al ahmadi,OUT,05:00 AM,28
+KFC - Al Ahmadi,kfc - al ahmadi,OUT,06:00 PM,14
+KFC - Al Ahmadi,kfc - al ahmadi,OUT,08:00 PM,21
+KFC - Al Bairak Mall,kfc - al bairak mall,IN,09:00 AM,7
+KFC - Al Bairak Mall,kfc - al bairak mall,IN,12:00 PM,28
+KFC - Al Bairak Mall,kfc - al bairak mall,OUT,06:00 PM,7
+KFC - Al Bairak Mall,kfc - al bairak mall,OUT,12:00 AM,28
+KFC - Al Kout Mall,kfc - al kout mall,IN,04:00 PM,21
+KFC - Al Kout Mall,kfc - al kout mall,IN,09:00 AM,14
+KFC - Al Kout Mall,kfc - al kout mall,OUT,01:00 AM,21
+KFC - Al Kout Mall,kfc - al kout mall,OUT,06:00 PM,14
+KFC - Al Mahboola,kfc - al mahboola,IN,06:00 PM,21
+KFC - Al Mahboola,kfc - al mahboola,IN,08:00 PM,28
+KFC - Al Mahboola,kfc - al mahboola,IN,09:00 AM,7
+KFC - Al Mahboola,kfc - al mahboola,IN,11:00 AM,28
+KFC - Al Mahboola,kfc - al mahboola,OUT,03:00 AM,21
+KFC - Al Mahboola,kfc - al mahboola,OUT,05:00 AM,28
+KFC - Al Mahboola,kfc - al mahboola,OUT,06:00 PM,7
+KFC - Al Mahboola,kfc - al mahboola,OUT,08:00 PM,28
+KFC - Al Mangaf,kfc - al mangaf,IN,06:00 PM,14
+KFC - Al Mangaf,kfc - al mangaf,IN,08:00 PM,7
+KFC - Al Mangaf,kfc - al mangaf,IN,09:00 AM,14
+KFC - Al Mangaf,kfc - al mangaf,IN,09:00 PM,14
+KFC - Al Mangaf,kfc - al mangaf,IN,10:00 AM,7
+KFC - Al Mangaf,kfc - al mangaf,IN,11:00 AM,14
+KFC - Al Mangaf,kfc - al mangaf,OUT,03:00 AM,14
+KFC - Al Mangaf,kfc - al mangaf,OUT,05:00 AM,7
+KFC - Al Mangaf,kfc - al mangaf,OUT,06:00 AM,14
+KFC - Al Mangaf,kfc - al mangaf,OUT,06:00 PM,14
+KFC - Al Mangaf,kfc - al mangaf,OUT,07:00 PM,7
+KFC - Al Mangaf,kfc - al mangaf,OUT,08:00 PM,14
+KFC - Al Zahr,kfc - al zahr,IN,02:00 PM,7
+KFC - Al Zahr,kfc - al zahr,IN,06:00 PM,42
+KFC - Al Zahr,kfc - al zahr,IN,08:00 PM,28
+KFC - Al Zahr,kfc - al zahr,IN,09:00 AM,21
+KFC - Al Zahr,kfc - al zahr,IN,11:00 AM,7
+KFC - Al Zahr,kfc - al zahr,OUT,03:00 AM,42
+KFC - Al Zahr,kfc - al zahr,OUT,05:00 AM,28
+KFC - Al Zahr,kfc - al zahr,OUT,06:00 AM,21
+KFC - Al Zahr,kfc - al zahr,OUT,08:00 AM,7
+KFC - Al Zahr,kfc - al zahr,OUT,11:00 PM,7
+KFC - Alreqa,kfc - alreqa,IN,04:00 PM,14
+KFC - Alreqa,kfc - alreqa,IN,05:00 PM,42
+KFC - Alreqa,kfc - alreqa,IN,07:00 PM,49
+KFC - Alreqa,kfc - alreqa,IN,09:00 AM,21
+KFC - Alreqa,kfc - alreqa,IN,11:00 AM,21
+KFC - Alreqa,kfc - alreqa,OUT,03:00 AM,42
+KFC - Alreqa,kfc - alreqa,OUT,04:00 AM,14
+KFC - Alreqa,kfc - alreqa,OUT,05:00 AM,49
+KFC - Alreqa,kfc - alreqa,OUT,07:00 PM,21
+KFC - Alreqa,kfc - alreqa,OUT,09:00 PM,21
+KFC - Aswaq Al Qurain,kfc - aswaq al qurain,IN,08:00 PM,56
+KFC - Aswaq Al Qurain,kfc - aswaq al qurain,IN,09:00 AM,14
+KFC - Aswaq Al Qurain,kfc - aswaq al qurain,IN,11:00 AM,21
+KFC - Aswaq Al Qurain,kfc - aswaq al qurain,OUT,05:00 AM,56
+KFC - Aswaq Al Qurain,kfc - aswaq al qurain,OUT,06:00 PM,14
+KFC - Aswaq Al Qurain,kfc - aswaq al qurain,OUT,08:00 PM,21
+KFC - Augiela 2,kfc - augiela 2,IN,04:00 PM,7
+KFC - Augiela 2,kfc - augiela 2,IN,06:00 PM,7
+KFC - Augiela 2,kfc - augiela 2,IN,08:00 PM,35
+KFC - Augiela 2,kfc - augiela 2,IN,09:00 AM,21
+KFC - Augiela 2,kfc - augiela 2,IN,11:00 AM,7
+KFC - Augiela 2,kfc - augiela 2,OUT,01:00 AM,7
+KFC - Augiela 2,kfc - augiela 2,OUT,03:00 AM,7
+KFC - Augiela 2,kfc - augiela 2,OUT,05:00 AM,35
+KFC - Augiela 2,kfc - augiela 2,OUT,06:00 PM,21
+KFC - Augiela 2,kfc - augiela 2,OUT,08:00 PM,7
+KFC - Fahaheel,kfc - fahaheel,IN,06:00 PM,21
+KFC - Fahaheel,kfc - fahaheel,IN,08:00 PM,35
+KFC - Fahaheel,kfc - fahaheel,IN,09:00 AM,21
+KFC - Fahaheel,kfc - fahaheel,IN,11:00 AM,14
+KFC - Fahaheel,kfc - fahaheel,OUT,03:00 AM,21
+KFC - Fahaheel,kfc - fahaheel,OUT,05:00 AM,35
+KFC - Fahaheel,kfc - fahaheel,OUT,06:00 PM,21
+KFC - Fahaheel,kfc - fahaheel,OUT,08:00 PM,14
+KFC - Fahd Al Ahmad,kfc - fahd al ahmad,IN,04:00 AM,14
+KFC - Fahd Al Ahmad,kfc - fahd al ahmad,IN,06:00 AM,14
+KFC - Fahd Al Ahmad,kfc - fahd al ahmad,IN,08:00 AM,42
+KFC - Fahd Al Ahmad,kfc - fahd al ahmad,IN,09:00 AM,21
+KFC - Fahd Al Ahmad,kfc - fahd al ahmad,IN,11:00 AM,14
+KFC - Fahd Al Ahmad,kfc - fahd al ahmad,OUT,01:00 AM,14
+KFC - Fahd Al Ahmad,kfc - fahd al ahmad,OUT,03:00 AM,14
+KFC - Fahd Al Ahmad,kfc - fahd al ahmad,OUT,04:00 AM,14
+KFC - Fahd Al Ahmad,kfc - fahd al ahmad,OUT,05:00 AM,28
+KFC - Fahd Al Ahmad,kfc - fahd al ahmad,OUT,06:00 AM,21
+KFC - Fahd Al Ahmad,kfc - fahd al ahmad,OUT,12:00 PM,14
+KFC - Khiran Outlet,kfc - khiran outlet,IN,05:00 PM,28
+KFC - Khiran Outlet,kfc - khiran outlet,IN,09:00 AM,7
+KFC - Khiran Outlet,kfc - khiran outlet,IN,10:00 AM,14
+KFC - Khiran Outlet,kfc - khiran outlet,OUT,02:00 AM,28
+KFC - Khiran Outlet,kfc - khiran outlet,OUT,06:00 PM,7
+KFC - Khiran Outlet,kfc - khiran outlet,OUT,07:00 PM,14
+KFC - Loft Fintas,kfc - loft fintas,IN,06:00 PM,35
+KFC - Loft Fintas,kfc - loft fintas,IN,08:00 PM,28
+KFC - Loft Fintas,kfc - loft fintas,IN,09:00 AM,7
+KFC - Loft Fintas,kfc - loft fintas,IN,11:00 AM,21
+KFC - Loft Fintas,kfc - loft fintas,OUT,03:00 AM,35
+KFC - Loft Fintas,kfc - loft fintas,OUT,05:00 AM,28
+KFC - Loft Fintas,kfc - loft fintas,OUT,06:00 PM,7
+KFC - Loft Fintas,kfc - loft fintas,OUT,08:00 PM,21
+KFC - Mangaf 2,kfc - mangaf 2,IN,04:00 PM,7
+KFC - Mangaf 2,kfc - mangaf 2,IN,06:00 PM,35
+KFC - Mangaf 2,kfc - mangaf 2,IN,08:00 PM,28
+KFC - Mangaf 2,kfc - mangaf 2,IN,09:00 AM,7
+KFC - Mangaf 2,kfc - mangaf 2,IN,11:00 AM,7
+KFC - Mangaf 2,kfc - mangaf 2,OUT,01:00 AM,7
+KFC - Mangaf 2,kfc - mangaf 2,OUT,03:00 AM,35
+KFC - Mangaf 2,kfc - mangaf 2,OUT,05:00 AM,28
+KFC - Mangaf 2,kfc - mangaf 2,OUT,06:00 PM,7
+KFC - Mangaf 2,kfc - mangaf 2,OUT,08:00 PM,7
+KFC - Om El Himan,kfc - om el himan,IN,04:00 PM,21
+KFC - Om El Himan,kfc - om el himan,IN,06:00 PM,28
+KFC - Om El Himan,kfc - om el himan,IN,08:00 PM,63
+KFC - Om El Himan,kfc - om el himan,IN,09:00 AM,28
+KFC - Om El Himan,kfc - om el himan,IN,11:00 AM,35
+KFC - Om El Himan,kfc - om el himan,OUT,01:00 AM,21
+KFC - Om El Himan,kfc - om el himan,OUT,03:00 AM,28
+KFC - Om El Himan,kfc - om el himan,OUT,04:00 AM,35
+KFC - Om El Himan,kfc - om el himan,OUT,05:00 AM,21
+KFC - Om El Himan,kfc - om el himan,OUT,05:00 PM,7
+KFC - Om El Himan,kfc - om el himan,OUT,06:00 PM,28
+KFC - Om El Himan,kfc - om el himan,OUT,12:00 AM,35
+KFC - Qureen,kfc - qureen,IN,04:00 PM,7
+KFC - Qureen,kfc - qureen,IN,08:00 PM,42
+KFC - Qureen,kfc - qureen,IN,09:00 AM,21
+KFC - Qureen,kfc - qureen,IN,11:00 AM,7
+KFC - Qureen,kfc - qureen,OUT,01:00 AM,7
+KFC - Qureen,kfc - qureen,OUT,05:00 AM,42
+KFC - Qureen,kfc - qureen,OUT,06:00 PM,21
+KFC - Qureen,kfc - qureen,OUT,08:00 PM,7
+KFC - S Al Salem,kfc - s al salem,IN,06:00 PM,21
+KFC - S Al Salem,kfc - s al salem,IN,08:00 PM,35
+KFC - S Al Salem,kfc - s al salem,IN,09:00 AM,14
+KFC - S Al Salem,kfc - s al salem,IN,11:00 AM,28
+KFC - S Al Salem,kfc - s al salem,OUT,03:00 AM,21
+KFC - S Al Salem,kfc - s al salem,OUT,05:00 AM,35
+KFC - S Al Salem,kfc - s al salem,OUT,06:00 PM,14
+KFC - S Al Salem,kfc - s al salem,OUT,08:00 PM,28
+KFC - Sabah Al Ahmad 2,kfc - sabah al ahmad 2,IN,06:00 PM,49
+KFC - Sabah Al Ahmad 2,kfc - sabah al ahmad 2,IN,08:00 PM,63
+KFC - Sabah Al Ahmad 2,kfc - sabah al ahmad 2,IN,09:00 AM,42
+KFC - Sabah Al Ahmad 2,kfc - sabah al ahmad 2,IN,10:00 PM,7
+KFC - Sabah Al Ahmad 2,kfc - sabah al ahmad 2,OUT,03:00 AM,49
+KFC - Sabah Al Ahmad 2,kfc - sabah al ahmad 2,OUT,05:00 AM,63
+KFC - Sabah Al Ahmad 2,kfc - sabah al ahmad 2,OUT,06:00 PM,42
+KFC - Sabah Al Ahmad 2,kfc - sabah al ahmad 2,OUT,07:00 PM,7
+KFC - Sabah Al Salem 2,kfc - sabah al salem 2,IN,08:00 PM,35
+KFC - Sabah Al Salem 2,kfc - sabah al salem 2,IN,09:00 AM,14
+KFC - Sabah Al Salem 2,kfc - sabah al salem 2,IN,10:00 AM,7
+KFC - Sabah Al Salem 2,kfc - sabah al salem 2,IN,11:00 AM,14
+KFC - Sabah Al Salem 2,kfc - sabah al salem 2,OUT,05:00 AM,35
+KFC - Sabah Al Salem 2,kfc - sabah al salem 2,OUT,06:00 PM,14
+KFC - Sabah Al Salem 2,kfc - sabah al salem 2,OUT,07:00 PM,7
+KFC - Sabah Al Salem 2,kfc - sabah al salem 2,OUT,08:00 PM,14
+KFC - Village,kfc - village,IN,04:00 PM,7
+KFC - Village,kfc - village,IN,06:00 PM,14
+KFC - Village,kfc - village,IN,08:00 PM,28
+KFC - Village,kfc - village,IN,09:00 AM,14
+KFC - Village,kfc - village,IN,11:00 AM,7
+KFC - Village,kfc - village,OUT,01:00 AM,7
+KFC - Village,kfc - village,OUT,03:00 AM,14
+KFC - Village,kfc - village,OUT,05:00 AM,28
+KFC - Village,kfc - village,OUT,06:00 PM,14
+KFC - Village,kfc - village,OUT,08:00 PM,7
+KFC Mubarek El-Kaber(Qurain 2),kfc mubarek el-kaber(qurain 2),IN,06:00 PM,35
+KFC Mubarek El-Kaber(Qurain 2),kfc mubarek el-kaber(qurain 2),IN,08:00 PM,35
+KFC Mubarek El-Kaber(Qurain 2),kfc mubarek el-kaber(qurain 2),IN,09:00 AM,21
+KFC Mubarek El-Kaber(Qurain 2),kfc mubarek el-kaber(qurain 2),IN,11:00 AM,21
+KFC Mubarek El-Kaber(Qurain 2),kfc mubarek el-kaber(qurain 2),OUT,03:00 AM,35
+KFC Mubarek El-Kaber(Qurain 2),kfc mubarek el-kaber(qurain 2),OUT,05:00 AM,35
+KFC Mubarek El-Kaber(Qurain 2),kfc mubarek el-kaber(qurain 2),OUT,06:00 PM,21
+KFC Mubarek El-Kaber(Qurain 2),kfc mubarek el-kaber(qurain 2),OUT,08:00 PM,21
+Krispy Kreme - Aswaq Al Qurain,krispy kreme - aswaq al qurain,IN,06:00 PM,7
+Krispy Kreme - Aswaq Al Qurain,krispy kreme - aswaq al qurain,IN,09:00 AM,7
+Krispy Kreme - Aswaq Al Qurain,krispy kreme - aswaq al qurain,OUT,03:00 AM,7
+Krispy Kreme - Aswaq Al Qurain,krispy kreme - aswaq al qurain,OUT,06:00 PM,7
+Krispy Kreme - Divonne,krispy kreme - divonne,IN,06:00 PM,7
+Krispy Kreme - Divonne,krispy kreme - divonne,IN,09:00 AM,7
+Krispy Kreme - Divonne,krispy kreme - divonne,OUT,03:00 AM,7
+Krispy Kreme - Divonne,krispy kreme - divonne,OUT,06:00 PM,7
+Krispy Kreme - Fahaheel,krispy kreme - fahaheel,IN,06:00 PM,7
+Krispy Kreme - Fahaheel,krispy kreme - fahaheel,IN,09:00 AM,7
+Krispy Kreme - Fahaheel,krispy kreme - fahaheel,OUT,03:00 AM,7
+Krispy Kreme - Fahaheel,krispy kreme - fahaheel,OUT,06:00 PM,7
+Krispy Kreme - Gate Mall,krispy kreme - gate mall,IN,06:00 PM,7
+Krispy Kreme - Gate Mall,krispy kreme - gate mall,IN,09:00 AM,7
+Krispy Kreme - Gate Mall,krispy kreme - gate mall,OUT,03:00 AM,7
+Krispy Kreme - Gate Mall,krispy kreme - gate mall,OUT,06:00 PM,7
+Krispy Kreme - Khiran Hybrid O,krispy kreme - khiran hybrid o,IN,06:00 PM,5
+Krispy Kreme - Khiran Hybrid O,krispy kreme - khiran hybrid o,IN,09:00 AM,5
+Krispy Kreme - Khiran Hybrid O,krispy kreme - khiran hybrid o,IN,12:00 AM,1
+Krispy Kreme - Khiran Hybrid O,krispy kreme - khiran hybrid o,IN,12:00 PM,1
+Krispy Kreme - Khiran Hybrid O,krispy kreme - khiran hybrid o,OUT,03:00 AM,5
+Krispy Kreme - Khiran Hybrid O,krispy kreme - khiran hybrid o,OUT,06:00 PM,5
+Krispy Kreme - Khiran Hybrid O,krispy kreme - khiran hybrid o,OUT,12:00 AM,1
+Krispy Kreme - Khiran Hybrid O,krispy kreme - khiran hybrid o,OUT,12:00 PM,1
+Krispy Kreme - Khiran Square M,krispy kreme - khiran square m,IN,06:00 PM,5
+Krispy Kreme - Khiran Square M,krispy kreme - khiran square m,IN,09:00 AM,5
+Krispy Kreme - Khiran Square M,krispy kreme - khiran square m,IN,12:00 PM,2
+Krispy Kreme - Khiran Square M,krispy kreme - khiran square m,OUT,03:00 AM,5
+Krispy Kreme - Khiran Square M,krispy kreme - khiran square m,OUT,06:00 PM,5
+Krispy Kreme - Khiran Square M,krispy kreme - khiran square m,OUT,12:00 AM,2
+Krispy Kreme - Kout Mall,krispy kreme - kout mall,IN,10:00 AM,7
+Krispy Kreme - Kout Mall,krispy kreme - kout mall,OUT,11:00 PM,7
+Krispy Kreme - Sabah Al Salem,krispy kreme - sabah al salem,IN,06:00 PM,7
+Krispy Kreme - Sabah Al Salem,krispy kreme - sabah al salem,IN,09:00 AM,7
+Krispy Kreme - Sabah Al Salem,krispy kreme - sabah al salem,OUT,03:00 AM,7
+Krispy Kreme - Sabah Al Salem,krispy kreme - sabah al salem,OUT,06:00 PM,7
+TGIF - Abu Halifa,tgif - abu halifa,IN,02:00 PM,24
+TGIF - Abu Halifa,tgif - abu halifa,IN,04:00 PM,19
+TGIF - Abu Halifa,tgif - abu halifa,IN,08:00 PM,31
+TGIF - Abu Halifa,tgif - abu halifa,IN,10:00 AM,13
+TGIF - Abu Halifa,tgif - abu halifa,IN,11:00 AM,18
+TGIF - Abu Halifa,tgif - abu halifa,OUT,01:00 AM,19
+TGIF - Abu Halifa,tgif - abu halifa,OUT,04:00 PM,31
+TGIF - Abu Halifa,tgif - abu halifa,OUT,11:00 PM,55
+TGIF - Al Kout Mall,tgif - al kout mall,IN,01:00 PM,10
+TGIF - Al Kout Mall,tgif - al kout mall,IN,02:00 PM,34
+TGIF - Al Kout Mall,tgif - al kout mall,IN,04:00 PM,9
+TGIF - Al Kout Mall,tgif - al kout mall,IN,08:00 PM,30
+TGIF - Al Kout Mall,tgif - al kout mall,IN,10:00 AM,21
+TGIF - Al Kout Mall,tgif - al kout mall,IN,11:00 AM,19
+TGIF - Al Kout Mall,tgif - al kout mall,OUT,01:00 AM,38
+TGIF - Al Kout Mall,tgif - al kout mall,OUT,04:00 PM,30
+TGIF - Al Kout Mall,tgif - al kout mall,OUT,11:00 PM,55
+TGIF - Gate Mall,tgif - gate mall,IN,02:00 PM,41
+TGIF - Gate Mall,tgif - gate mall,IN,04:00 PM,31
+TGIF - Gate Mall,tgif - gate mall,IN,08:00 PM,17
+TGIF - Gate Mall,tgif - gate mall,IN,09:00 AM,6
+TGIF - Gate Mall,tgif - gate mall,IN,10:00 AM,22
+TGIF - Gate Mall,tgif - gate mall,IN,11:00 AM,8
+TGIF - Gate Mall,tgif - gate mall,OUT,01:00 AM,60
+TGIF - Gate Mall,tgif - gate mall,OUT,04:00 PM,17
+TGIF - Gate Mall,tgif - gate mall,OUT,06:00 PM,6
+TGIF - Gate Mall,tgif - gate mall,OUT,07:00 PM,13
+TGIF - Gate Mall,tgif - gate mall,OUT,11:00 PM,29
+TGIF - The Lake Mall,tgif - the lake mall,IN,01:00 PM,13
+TGIF - The Lake Mall,tgif - the lake mall,IN,02:00 PM,19
+TGIF - The Lake Mall,tgif - the lake mall,IN,04:00 PM,41
+TGIF - The Lake Mall,tgif - the lake mall,IN,08:00 PM,30
+TGIF - The Lake Mall,tgif - the lake mall,IN,10:00 AM,12
+TGIF - The Lake Mall,tgif - the lake mall,IN,11:00 AM,18
+TGIF - The Lake Mall,tgif - the lake mall,OUT,01:00 AM,43
+TGIF - The Lake Mall,tgif - the lake mall,OUT,04:00 PM,30
+TGIF - The Lake Mall,tgif - the lake mall,OUT,11:00 PM,60
+Tikka - Fahaheel DK,tikka - fahaheel dk,IN,06:00 PM,12
+Tikka - Fahaheel DK,tikka - fahaheel dk,OUT,03:00 AM,12
+Tikka - Qurain,tikka - qurain,IN,06:00 PM,37
+Tikka - Qurain,tikka - qurain,OUT,03:00 AM,37
+Wimpy - Abu Halifa,wimpy - abu halifa,IN,06:00 PM,31
+Wimpy - Abu Halifa,wimpy - abu halifa,IN,09:00 AM,12
+Wimpy - Abu Halifa,wimpy - abu halifa,IN,11:00 AM,6
+Wimpy - Abu Halifa,wimpy - abu halifa,OUT,03:00 AM,31
+Wimpy - Abu Halifa,wimpy - abu halifa,OUT,06:00 AM,1
+Wimpy - Abu Halifa,wimpy - abu halifa,OUT,06:00 PM,11
+Wimpy - Abu Halifa,wimpy - abu halifa,OUT,08:00 PM,4
+Wimpy - Abu Halifa,wimpy - abu halifa,OUT,11:00 PM,2
+Wimpy - Divonne Complex,wimpy - divonne complex,IN,02:00 PM,12
+Wimpy - Divonne Complex,wimpy - divonne complex,IN,06:00 PM,11
+Wimpy - Divonne Complex,wimpy - divonne complex,IN,08:00 PM,32
+Wimpy - Divonne Complex,wimpy - divonne complex,IN,09:00 AM,7
+Wimpy - Divonne Complex,wimpy - divonne complex,IN,11:00 AM,11
+Wimpy - Divonne Complex,wimpy - divonne complex,IN,12:00 PM,6
+Wimpy - Divonne Complex,wimpy - divonne complex,OUT,03:00 AM,11
+Wimpy - Divonne Complex,wimpy - divonne complex,OUT,05:00 AM,32
+Wimpy - Divonne Complex,wimpy - divonne complex,OUT,06:00 PM,7
+Wimpy - Divonne Complex,wimpy - divonne complex,OUT,08:00 PM,11
+Wimpy - Divonne Complex,wimpy - divonne complex,OUT,09:00 AM,6
+Wimpy - Divonne Complex,wimpy - divonne complex,OUT,11:00 PM,12

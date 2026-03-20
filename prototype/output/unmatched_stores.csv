@@ -1,0 +1,18 @@
+store_name,store_name_norm,window_type,window_time,demand
+BR - Al Mangaf,br - al mangaf,IN,12:00 PM,7
+BR - Al Mangaf,br - al mangaf,OUT,12:00 AM,7
+Commissary Chicken Tikka KWT,commissary chicken tikka kwt,IN,06:00 AM,79
+Commissary Chicken Tikka KWT,commissary chicken tikka kwt,OUT,03:00 PM,6
+Commissary Chicken Tikka KWT,commissary chicken tikka kwt,OUT,04:00 PM,73
+Krispy Kre Mangaf Sultan Centr,krispy kre mangaf sultan centr,IN,06:00 PM,7
+Krispy Kre Mangaf Sultan Centr,krispy kre mangaf sultan centr,IN,09:00 AM,7
+Krispy Kre Mangaf Sultan Centr,krispy kre mangaf sultan centr,OUT,03:00 AM,7
+Krispy Kre Mangaf Sultan Centr,krispy kre mangaf sultan centr,OUT,06:00 PM,7
+Krispy Kreme - Fintas Co,krispy kreme - fintas co,IN,06:00 PM,7
+Krispy Kreme - Fintas Co,krispy kreme - fintas co,IN,09:00 AM,7
+Krispy Kreme - Fintas Co,krispy kreme - fintas co,OUT,03:00 AM,7
+Krispy Kreme - Fintas Co,krispy kreme - fintas co,OUT,06:00 PM,7
+Krispy Kreme - Sabah Al Ahmed,krispy kreme - sabah al ahmed,IN,06:00 PM,7
+Krispy Kreme - Sabah Al Ahmed,krispy kreme - sabah al ahmed,IN,09:00 AM,7
+Krispy Kreme - Sabah Al Ahmed,krispy kreme - sabah al ahmed,OUT,03:00 AM,7
+Krispy Kreme - Sabah Al Ahmed,krispy kreme - sabah al ahmed,OUT,06:00 PM,7
