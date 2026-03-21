@@ -59,7 +59,7 @@ Rules:
 - prevent clusters whose demand exceeds bus capacity in peak windows
 - isolate sparse stores if they create infeasible routes
 
-### C) VRPTW Routing (Core Optimization Engine)
+### C) VEHICLE ROUTING  PROBLEM WITH TIME WINDOW (VRPTW) Routing (Core Optimization Engine)
 Purpose: generate feasible trips for each cluster and time wave.
 
 Model:

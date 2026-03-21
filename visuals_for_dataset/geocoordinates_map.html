@@ -1,0 +1,2025 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_d0b09351fa70d752bfbe7e74659567b7 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_d0b09351fa70d752bfbe7e74659567b7" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_d0b09351fa70d752bfbe7e74659567b7 = L.map(
+                "map_d0b09351fa70d752bfbe7e74659567b7",
+                {
+                    center: [29.0999044560241, 48.113120131204816],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_5b7e552c10869fb4078fbc94b2af0f56 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_5b7e552c10869fb4078fbc94b2af0f56.addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+            var marker_aac5fa3146c52aab1d02fe0e6dde6abb = L.marker(
+                [29.146545, 48.118341],
+                {
+}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+            var icon_ee92e4577f521fa5ea73061d9f579ff2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_91ff274fa29768cc4296ed321b23bab0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9d6e986a81ef5b4d41825eecfe468a56 = $(`<div id="html_9d6e986a81ef5b4d41825eecfe468a56" style="width: 100.0%; height: 100.0%;">START/END (Depot): Mahboula Complex - Mix (2)</div>`)[0];
+                popup_91ff274fa29768cc4296ed321b23bab0.setContent(html_9d6e986a81ef5b4d41825eecfe468a56);
+            
+        
+
+        marker_aac5fa3146c52aab1d02fe0e6dde6abb.bindPopup(popup_91ff274fa29768cc4296ed321b23bab0)
+        ;
+
+        
+    
+    
+                marker_aac5fa3146c52aab1d02fe0e6dde6abb.setIcon(icon_ee92e4577f521fa5ea73061d9f579ff2);
+            
+    
+            var circle_marker_e1f038bd0c55a431b95e25b04477cce5 = L.circleMarker(
+                [28.66311, 48.365472],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_d3152212928fe4f4067c73ca578a708b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_147d89a1c50ac51a8b39a6af4e53e472 = $(`<div id="html_147d89a1c50ac51a8b39a6af4e53e472" style="width: 100.0%; height: 100.0%;">Hardees - Khairan (11148140)</div>`)[0];
+                popup_d3152212928fe4f4067c73ca578a708b.setContent(html_147d89a1c50ac51a8b39a6af4e53e472);
+            
+        
+
+        circle_marker_e1f038bd0c55a431b95e25b04477cce5.bindPopup(popup_d3152212928fe4f4067c73ca578a708b)
+        ;
+
+        
+    
+    
+            var circle_marker_97130af2121958e496a552c8b9013b85 = L.circleMarker(
+                [28.67152384, 48.34630157],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_4620e89fa115c433557b347a11f6d7ea = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7fa87801939c1a870b2b269ba45475ea = $(`<div id="html_7fa87801939c1a870b2b269ba45475ea" style="width: 100.0%; height: 100.0%;">BR - Khiran Outlet (11228040)</div>`)[0];
+                popup_4620e89fa115c433557b347a11f6d7ea.setContent(html_7fa87801939c1a870b2b269ba45475ea);
+            
+        
+
+        circle_marker_97130af2121958e496a552c8b9013b85.bindPopup(popup_4620e89fa115c433557b347a11f6d7ea)
+        ;
+
+        
+    
+    
+            var circle_marker_2dd8daf09a8fddd5c775a54c4cb17fa3 = L.circleMarker(
+                [28.67162738, 48.34640886],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_775eb783f5e2776f971ba85c89c326f0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_961fa4423b0d38048f654f5d8e86d408 = $(`<div id="html_961fa4423b0d38048f654f5d8e86d408" style="width: 100.0%; height: 100.0%;">KFC - Khiran Outlet (11128420)</div>`)[0];
+                popup_775eb783f5e2776f971ba85c89c326f0.setContent(html_961fa4423b0d38048f654f5d8e86d408);
+            
+        
+
+        circle_marker_2dd8daf09a8fddd5c775a54c4cb17fa3.bindPopup(popup_775eb783f5e2776f971ba85c89c326f0)
+        ;
+
+        
+    
+    
+            var circle_marker_d27e2017a5657c869d289d6a1c6d12dc = L.circleMarker(
+                [28.67190978, 48.3466288],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_57c705b656bbb47b8dfc8725aede2bc6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e8663032147940d4c1d45ae1f7228fc2 = $(`<div id="html_e8663032147940d4c1d45ae1f7228fc2" style="width: 100.0%; height: 100.0%;">Krispy Kreme - Khiran Hybrid O (11198790)</div>`)[0];
+                popup_57c705b656bbb47b8dfc8725aede2bc6.setContent(html_e8663032147940d4c1d45ae1f7228fc2);
+            
+        
+
+        circle_marker_d27e2017a5657c869d289d6a1c6d12dc.bindPopup(popup_57c705b656bbb47b8dfc8725aede2bc6)
+        ;
+
+        
+    
+    
+            var circle_marker_127b194887cfd493724fcbf4ee46bc9b = L.circleMarker(
+                [28.6719945, 48.34673608],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_db3c7d36a84aea33615da6a480ef0a62 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bd068b75b010f07acc1c2b4717a4257a = $(`<div id="html_bd068b75b010f07acc1c2b4717a4257a" style="width: 100.0%; height: 100.0%;">Hardees - Khiran Hybrid Outlet (11148460)</div>`)[0];
+                popup_db3c7d36a84aea33615da6a480ef0a62.setContent(html_bd068b75b010f07acc1c2b4717a4257a);
+            
+        
+
+        circle_marker_127b194887cfd493724fcbf4ee46bc9b.bindPopup(popup_db3c7d36a84aea33615da6a480ef0a62)
+        ;
+
+        
+    
+    
+            var circle_marker_b6f977c87f718c838ba0dfefb648d9e3 = L.circleMarker(
+                [28.67847697, 48.33250624],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_cfa26b9579363f841e989453c5aac77a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4058026469919d61b01b36718ae94857 = $(`<div id="html_4058026469919d61b01b36718ae94857" style="width: 100.0%; height: 100.0%;">Krispy Kreme - Khiran Square M (11198760)</div>`)[0];
+                popup_cfa26b9579363f841e989453c5aac77a.setContent(html_4058026469919d61b01b36718ae94857);
+            
+        
+
+        circle_marker_b6f977c87f718c838ba0dfefb648d9e3.bindPopup(popup_cfa26b9579363f841e989453c5aac77a)
+        ;
+
+        
+    
+    
+            var circle_marker_163182b8121178c1e7f889de1d5a1f6d = L.circleMarker(
+                [28.78064934, 48.04057647],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_178ae147b60a6b3059fda74d9f287d52 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_dc971bdc9713821d97d7cd2052da0275 = $(`<div id="html_dc971bdc9713821d97d7cd2052da0275" style="width: 100.0%; height: 100.0%;">BR - Sabah Al Ahmed Coop (11228110)</div>`)[0];
+                popup_178ae147b60a6b3059fda74d9f287d52.setContent(html_dc971bdc9713821d97d7cd2052da0275);
+            
+        
+
+        circle_marker_163182b8121178c1e7f889de1d5a1f6d.bindPopup(popup_178ae147b60a6b3059fda74d9f287d52)
+        ;
+
+        
+    
+    
+            var circle_marker_24b3b1a3de22b63bd6da67f5fe1904da = L.circleMarker(
+                [28.792, 48.053],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_30a598828625f829fb6f7fc85180ff1e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f4db32277c1bce53332d4d9a12e21af8 = $(`<div id="html_f4db32277c1bce53332d4d9a12e21af8" style="width: 100.0%; height: 100.0%;">Hardees - Sabah Al Ahmed (11148410)</div>`)[0];
+                popup_30a598828625f829fb6f7fc85180ff1e.setContent(html_f4db32277c1bce53332d4d9a12e21af8);
+            
+        
+
+        circle_marker_24b3b1a3de22b63bd6da67f5fe1904da.bindPopup(popup_30a598828625f829fb6f7fc85180ff1e)
+        ;
+
+        
+    
+    
+            var circle_marker_e4fc2da063f1a0b0ea1c3cb58c7288aa = L.circleMarker(
+                [28.79203867, 48.05321903],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_bbf9708289e4f48380262465e2a246a0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0419889254c19853ec78186b80ef9da8 = $(`<div id="html_0419889254c19853ec78186b80ef9da8" style="width: 100.0%; height: 100.0%;">KFC - Sabah Al Ahmad 2 (11128370)</div>`)[0];
+                popup_bbf9708289e4f48380262465e2a246a0.setContent(html_0419889254c19853ec78186b80ef9da8);
+            
+        
+
+        circle_marker_e4fc2da063f1a0b0ea1c3cb58c7288aa.bindPopup(popup_bbf9708289e4f48380262465e2a246a0)
+        ;
+
+        
+    
+    
+            var circle_marker_58d7f994fa8f76d989d7409008a247b0 = L.circleMarker(
+                [28.87256, 48.16851],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_fa3354a06e673412f95f09e8f76c3ecf = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c33046c4201fccf699fd3006cb40802d = $(`<div id="html_c33046c4201fccf699fd3006cb40802d" style="width: 100.0%; height: 100.0%;">BR - Camp Arifjan 2 (11227890)</div>`)[0];
+                popup_fa3354a06e673412f95f09e8f76c3ecf.setContent(html_c33046c4201fccf699fd3006cb40802d);
+            
+        
+
+        circle_marker_58d7f994fa8f76d989d7409008a247b0.bindPopup(popup_fa3354a06e673412f95f09e8f76c3ecf)
+        ;
+
+        
+    
+    
+            var circle_marker_fba1e0faf45468f9baf475fd957490c7 = L.circleMarker(
+                [28.881125, 48.155028],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_049f5b1288684bfaf646859839689e64 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7afc6bc48c60b70b9e3ddcc256b61e84 = $(`<div id="html_7afc6bc48c60b70b9e3ddcc256b61e84" style="width: 100.0%; height: 100.0%;">KFC - Arifjan Camp (11127880)</div>`)[0];
+                popup_049f5b1288684bfaf646859839689e64.setContent(html_7afc6bc48c60b70b9e3ddcc256b61e84);
+            
+        
+
+        circle_marker_fba1e0faf45468f9baf475fd957490c7.bindPopup(popup_049f5b1288684bfaf646859839689e64)
+        ;
+
+        
+    
+    
+            var circle_marker_3a036b20c74cc6146857a2a3c9fbd24f = L.circleMarker(
+                [28.88436, 48.17866],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_9f53a9ccaf47fa7cdd67ec49cba842c7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_866073c35ce4269e4185fc3e9c29f976 = $(`<div id="html_866073c35ce4269e4185fc3e9c29f976" style="width: 100.0%; height: 100.0%;">BR - Camp Arifjan 1 (11227880)</div>`)[0];
+                popup_9f53a9ccaf47fa7cdd67ec49cba842c7.setContent(html_866073c35ce4269e4185fc3e9c29f976);
+            
+        
+
+        circle_marker_3a036b20c74cc6146857a2a3c9fbd24f.bindPopup(popup_9f53a9ccaf47fa7cdd67ec49cba842c7)
+        ;
+
+        
+    
+    
+            var circle_marker_0cadc2da2367425fec5f9920cef129c5 = L.circleMarker(
+                [28.884715, 48.178645],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_067e0f3bae881ab5ba3447c69e5e75d7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6b654ec7cdeb5d88f08834ce97d536e7 = $(`<div id="html_6b654ec7cdeb5d88f08834ce97d536e7" style="width: 100.0%; height: 100.0%;">Hardees - Arifjan Camp (11147860)</div>`)[0];
+                popup_067e0f3bae881ab5ba3447c69e5e75d7.setContent(html_6b654ec7cdeb5d88f08834ce97d536e7);
+            
+        
+
+        circle_marker_0cadc2da2367425fec5f9920cef129c5.bindPopup(popup_067e0f3bae881ab5ba3447c69e5e75d7)
+        ;
+
+        
+    
+    
+            var circle_marker_1f7894f03331b8451829914e9f083d06 = L.circleMarker(
+                [28.962943, 48.161436],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_6874a856e104db8d1369899a2badfdf1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_95a1d542e74f09b86ebc2fa2f0ae5047 = $(`<div id="html_95a1d542e74f09b86ebc2fa2f0ae5047" style="width: 100.0%; height: 100.0%;">KFC - Om El Himan (11127470)</div>`)[0];
+                popup_6874a856e104db8d1369899a2badfdf1.setContent(html_95a1d542e74f09b86ebc2fa2f0ae5047);
+            
+        
+
+        circle_marker_1f7894f03331b8451829914e9f083d06.bindPopup(popup_6874a856e104db8d1369899a2badfdf1)
+        ;
+
+        
+    
+    
+            var circle_marker_aabeb9434816b2b21d721ecb908c6a4e = L.circleMarker(
+                [28.96298, 48.16143],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_b1453e70eb87f08acafb4914dbd470dd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1f8a5373c694f81eaee6deb124ff0921 = $(`<div id="html_1f8a5373c694f81eaee6deb124ff0921" style="width: 100.0%; height: 100.0%;">BR - Om El Haiman (11227470)</div>`)[0];
+                popup_b1453e70eb87f08acafb4914dbd470dd.setContent(html_1f8a5373c694f81eaee6deb124ff0921);
+            
+        
+
+        circle_marker_aabeb9434816b2b21d721ecb908c6a4e.bindPopup(popup_b1453e70eb87f08acafb4914dbd470dd)
+        ;
+
+        
+    
+    
+            var circle_marker_c595b9523b8b2ec506f44a568c419496 = L.circleMarker(
+                [28.963033, 48.16152],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_236f6565a86aae41644b400fc0d57ca8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_eca45638c61ed47b288ac535380f991f = $(`<div id="html_eca45638c61ed47b288ac535380f991f" style="width: 100.0%; height: 100.0%;">Hardees - Om El Himan (11147470)</div>`)[0];
+                popup_236f6565a86aae41644b400fc0d57ca8.setContent(html_eca45638c61ed47b288ac535380f991f);
+            
+        
+
+        circle_marker_c595b9523b8b2ec506f44a568c419496.bindPopup(popup_236f6565a86aae41644b400fc0d57ca8)
+        ;
+
+        
+    
+    
+            var circle_marker_e33b859ea56b8a9b4601be6099de6082 = L.circleMarker(
+                [29.07775498, 48.1387642],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_5d37beba9ebfb15ed78d7213e5c4155d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fdd227f55917149cae94b2fcc727347f = $(`<div id="html_fdd227f55917149cae94b2fcc727347f" style="width: 100.0%; height: 100.0%;">Krispy Kreme - Kout Mall (11198830)</div>`)[0];
+                popup_5d37beba9ebfb15ed78d7213e5c4155d.setContent(html_fdd227f55917149cae94b2fcc727347f);
+            
+        
+
+        circle_marker_e33b859ea56b8a9b4601be6099de6082.bindPopup(popup_5d37beba9ebfb15ed78d7213e5c4155d)
+        ;
+
+        
+    
+    
+            var circle_marker_278a5acd5100e15b7d4171e87cacbb50 = L.circleMarker(
+                [29.07780655, 48.13879906],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_27025fedacc8eaf1fb9f3f51ea305950 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ca1af4941283175f481c9c697eeb84c6 = $(`<div id="html_ca1af4941283175f481c9c697eeb84c6" style="width: 100.0%; height: 100.0%;">BR - Kout Mall (11228180)</div>`)[0];
+                popup_27025fedacc8eaf1fb9f3f51ea305950.setContent(html_ca1af4941283175f481c9c697eeb84c6);
+            
+        
+
+        circle_marker_278a5acd5100e15b7d4171e87cacbb50.bindPopup(popup_27025fedacc8eaf1fb9f3f51ea305950)
+        ;
+
+        
+    
+    
+            var circle_marker_120be24af5f72f3acb77579e3c12e44c = L.circleMarker(
+                [29.078084, 48.139116],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_688b6bd0ab655a423ae1d820ed8f69d3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ff33b228a17d5720d05ee14e0a2b2b22 = $(`<div id="html_ff33b228a17d5720d05ee14e0a2b2b22" style="width: 100.0%; height: 100.0%;">KFC - Al Kout Mall (11128220)</div>`)[0];
+                popup_688b6bd0ab655a423ae1d820ed8f69d3.setContent(html_ff33b228a17d5720d05ee14e0a2b2b22);
+            
+        
+
+        circle_marker_120be24af5f72f3acb77579e3c12e44c.bindPopup(popup_688b6bd0ab655a423ae1d820ed8f69d3)
+        ;
+
+        
+    
+    
+            var circle_marker_a8558fa153d09211c3c3004c2b392756 = L.circleMarker(
+                [29.07812165, 48.13541496],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_2007dc04a11ecac8d3da7607ef2b0906 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bb97d6096a4fcd81d00f2803be55606b = $(`<div id="html_bb97d6096a4fcd81d00f2803be55606b" style="width: 100.0%; height: 100.0%;">Krispy Kreme - Fahaheel (11198750)</div>`)[0];
+                popup_2007dc04a11ecac8d3da7607ef2b0906.setContent(html_bb97d6096a4fcd81d00f2803be55606b);
+            
+        
+
+        circle_marker_a8558fa153d09211c3c3004c2b392756.bindPopup(popup_2007dc04a11ecac8d3da7607ef2b0906)
+        ;
+
+        
+    
+    
+            var circle_marker_87c827abdd1eb2763df4d3218b9594ea = L.circleMarker(
+                [29.078125, 48.135481],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_8f7d13e4f085a03214d91a0d611f1983 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5bbbe0756b4dd8f0bc7942bd56ef903e = $(`<div id="html_5bbbe0756b4dd8f0bc7942bd56ef903e" style="width: 100.0%; height: 100.0%;">Hardees - Al Fahaheel (11147750)</div>`)[0];
+                popup_8f7d13e4f085a03214d91a0d611f1983.setContent(html_5bbbe0756b4dd8f0bc7942bd56ef903e);
+            
+        
+
+        circle_marker_87c827abdd1eb2763df4d3218b9594ea.bindPopup(popup_8f7d13e4f085a03214d91a0d611f1983)
+        ;
+
+        
+    
+    
+            var circle_marker_65954f8ceecf7e5cb2c9f41561f941f2 = L.circleMarker(
+                [29.078178, 48.135468],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_c79148cd101100b2571e7757c48db474 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_aa16efee39b2c05b3ca423059415fae1 = $(`<div id="html_aa16efee39b2c05b3ca423059415fae1" style="width: 100.0%; height: 100.0%;">BR - Fahaheel (11227750)</div>`)[0];
+                popup_c79148cd101100b2571e7757c48db474.setContent(html_aa16efee39b2c05b3ca423059415fae1);
+            
+        
+
+        circle_marker_65954f8ceecf7e5cb2c9f41561f941f2.bindPopup(popup_c79148cd101100b2571e7757c48db474)
+        ;
+
+        
+    
+    
+            var circle_marker_0715ad05090e3f008335f0b807ded924 = L.circleMarker(
+                [29.0782, 48.1354],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_a2b7669ae0c5465f12a4c6878b2c4dc5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6017437db49b3a03903c5316e8cd669d = $(`<div id="html_6017437db49b3a03903c5316e8cd669d" style="width: 100.0%; height: 100.0%;">KFC - Fahaheel (11127750)</div>`)[0];
+                popup_a2b7669ae0c5465f12a4c6878b2c4dc5.setContent(html_6017437db49b3a03903c5316e8cd669d);
+            
+        
+
+        circle_marker_0715ad05090e3f008335f0b807ded924.bindPopup(popup_a2b7669ae0c5465f12a4c6878b2c4dc5)
+        ;
+
+        
+    
+    
+            var circle_marker_9d278a2e457d57e71537df6bf0b7dac8 = L.circleMarker(
+                [29.0791, 48.1396],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_159ca5bbeaf020552535373d84337025 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_28e3896cd3b523548eea6cecc6067548 = $(`<div id="html_28e3896cd3b523548eea6cecc6067548" style="width: 100.0%; height: 100.0%;">TGIF - Al Kout Mall (11188220)</div>`)[0];
+                popup_159ca5bbeaf020552535373d84337025.setContent(html_28e3896cd3b523548eea6cecc6067548);
+            
+        
+
+        circle_marker_9d278a2e457d57e71537df6bf0b7dac8.bindPopup(popup_159ca5bbeaf020552535373d84337025)
+        ;
+
+        
+    
+    
+            var circle_marker_7b33b5e84d300665993b42a62339cd1b = L.circleMarker(
+                [29.080435, 48.066938],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_2c42fcc43c4fa4aee08f9e671ecc98d6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c7c0d2053f53df4458d674d12e4879da = $(`<div id="html_c7c0d2053f53df4458d674d12e4879da" style="width: 100.0%; height: 100.0%;">Hardees - Al Ahmadi (11147460)</div>`)[0];
+                popup_2c42fcc43c4fa4aee08f9e671ecc98d6.setContent(html_c7c0d2053f53df4458d674d12e4879da);
+            
+        
+
+        circle_marker_7b33b5e84d300665993b42a62339cd1b.bindPopup(popup_2c42fcc43c4fa4aee08f9e671ecc98d6)
+        ;
+
+        
+    
+    
+            var circle_marker_c2a0d096cbbc2673d777787df1cc547b = L.circleMarker(
+                [29.0806, 48.067],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_eb1c914f0594b0d3d517079d7ea9d1f9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_32fcba001052d85130639a8d9fcbc7bd = $(`<div id="html_32fcba001052d85130639a8d9fcbc7bd" style="width: 100.0%; height: 100.0%;">KFC - Al Ahmadi (11127460)</div>`)[0];
+                popup_eb1c914f0594b0d3d517079d7ea9d1f9.setContent(html_32fcba001052d85130639a8d9fcbc7bd);
+            
+        
+
+        circle_marker_c2a0d096cbbc2673d777787df1cc547b.bindPopup(popup_eb1c914f0594b0d3d517079d7ea9d1f9)
+        ;
+
+        
+    
+    
+            var circle_marker_5c380978b02c09dfd7311ab02d5ca93f = L.circleMarker(
+                [29.098987, 48.131574],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_a42961fec17e2895c3cbbefdeb5345a7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bf3ebac56c4f4e1e44622c55be66c65b = $(`<div id="html_bf3ebac56c4f4e1e44622c55be66c65b" style="width: 100.0%; height: 100.0%;">Hardees - Al Mangaf (11147960)</div>`)[0];
+                popup_a42961fec17e2895c3cbbefdeb5345a7.setContent(html_bf3ebac56c4f4e1e44622c55be66c65b);
+            
+        
+
+        circle_marker_5c380978b02c09dfd7311ab02d5ca93f.bindPopup(popup_a42961fec17e2895c3cbbefdeb5345a7)
+        ;
+
+        
+    
+    
+            var circle_marker_963f7b4315811f71ab3f20afde5f2762 = L.circleMarker(
+                [29.099227, 48.134147],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_7e04098a522ce5957db8cc601c8add15 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_632531dea3beebd2327208ac41c9fd2d = $(`<div id="html_632531dea3beebd2327208ac41c9fd2d" style="width: 100.0%; height: 100.0%;">KFC - Al Mangaf (11127960)</div>`)[0];
+                popup_7e04098a522ce5957db8cc601c8add15.setContent(html_632531dea3beebd2327208ac41c9fd2d);
+            
+        
+
+        circle_marker_963f7b4315811f71ab3f20afde5f2762.bindPopup(popup_7e04098a522ce5957db8cc601c8add15)
+        ;
+
+        
+    
+    
+            var circle_marker_5fd1e9c2d665d4d39dbf494158bfcefb = L.circleMarker(
+                [29.10237548, 48.12534815],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_24394fdc27300f96a6dce0607ab55026 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3d2752a1e0100bc3cf4d1b4bee88627c = $(`<div id="html_3d2752a1e0100bc3cf4d1b4bee88627c" style="width: 100.0%; height: 100.0%;">Krispy Kreme Mangaf Sultan Centr (11198700)</div>`)[0];
+                popup_24394fdc27300f96a6dce0607ab55026.setContent(html_3d2752a1e0100bc3cf4d1b4bee88627c);
+            
+        
+
+        circle_marker_5fd1e9c2d665d4d39dbf494158bfcefb.bindPopup(popup_24394fdc27300f96a6dce0607ab55026)
+        ;
+
+        
+    
+    
+            var circle_marker_923fb5779f97afc8ff4b3f0d25d79b50 = L.circleMarker(
+                [29.10458661, 48.12479592],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_5bd464d2651552e239d08dd6a81d06e7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_270108da1ee9b10566f861b1cdf158b2 = $(`<div id="html_270108da1ee9b10566f861b1cdf158b2" style="width: 100.0%; height: 100.0%;">KFC - Mangaf 2 (11128400)</div>`)[0];
+                popup_5bd464d2651552e239d08dd6a81d06e7.setContent(html_270108da1ee9b10566f861b1cdf158b2);
+            
+        
+
+        circle_marker_923fb5779f97afc8ff4b3f0d25d79b50.bindPopup(popup_5bd464d2651552e239d08dd6a81d06e7)
+        ;
+
+        
+    
+    
+            var circle_marker_627ece1154b8dc27eaca0b1160bd471a = L.circleMarker(
+                [29.109567, 48.108588],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_c705051aa97b48e55454797e49a7ae2a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1d1f8e50524e8f306c43730f21fe8c3f = $(`<div id="html_1d1f8e50524e8f306c43730f21fe8c3f" style="width: 100.0%; height: 100.0%;">Hardees - Al Sbahiya (11147740)</div>`)[0];
+                popup_c705051aa97b48e55454797e49a7ae2a.setContent(html_1d1f8e50524e8f306c43730f21fe8c3f);
+            
+        
+
+        circle_marker_627ece1154b8dc27eaca0b1160bd471a.bindPopup(popup_c705051aa97b48e55454797e49a7ae2a)
+        ;
+
+        
+    
+    
+            var circle_marker_e329ef603fe4cfffe56fc5978b2d8077 = L.circleMarker(
+                [29.1339, 48.1324],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_004162f173cb42540bd7929bfa0640f7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8fad1448d577cab15a152b27c9426ebc = $(`<div id="html_8fad1448d577cab15a152b27c9426ebc" style="width: 100.0%; height: 100.0%;">KFC - Abo Helifa (11127760)</div>`)[0];
+                popup_004162f173cb42540bd7929bfa0640f7.setContent(html_8fad1448d577cab15a152b27c9426ebc);
+            
+        
+
+        circle_marker_e329ef603fe4cfffe56fc5978b2d8077.bindPopup(popup_004162f173cb42540bd7929bfa0640f7)
+        ;
+
+        
+    
+    
+            var circle_marker_371269f3ee58375e1a458b03886e73e2 = L.circleMarker(
+                [29.134419, 48.107682],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_c65268238aca0c78cedb4c3290e6a3c1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_afd899a82d3e625e16b745f6f2107c19 = $(`<div id="html_afd899a82d3e625e16b745f6f2107c19" style="width: 100.0%; height: 100.0%;">Hardees - Fahd El Ahmed (11147930)</div>`)[0];
+                popup_c65268238aca0c78cedb4c3290e6a3c1.setContent(html_afd899a82d3e625e16b745f6f2107c19);
+            
+        
+
+        circle_marker_371269f3ee58375e1a458b03886e73e2.bindPopup(popup_c65268238aca0c78cedb4c3290e6a3c1)
+        ;
+
+        
+    
+    
+            var circle_marker_c1502a1c73b05f68950bbbd7d76d17e0 = L.circleMarker(
+                [29.134423, 48.107656],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_cdff18e2cd3c6d21f7219b610a46c035 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_528f9ace663b4fb4cd8bc25ecc8e25f9 = $(`<div id="html_528f9ace663b4fb4cd8bc25ecc8e25f9" style="width: 100.0%; height: 100.0%;">KFC - Fahd Al Ahmad (11127930)</div>`)[0];
+                popup_cdff18e2cd3c6d21f7219b610a46c035.setContent(html_528f9ace663b4fb4cd8bc25ecc8e25f9);
+            
+        
+
+        circle_marker_c1502a1c73b05f68950bbbd7d76d17e0.bindPopup(popup_cdff18e2cd3c6d21f7219b610a46c035)
+        ;
+
+        
+    
+    
+            var circle_marker_3752d6417e00d7cc463ff3c283a0c508 = L.circleMarker(
+                [29.134477, 48.107599],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_e302d54a86e62d2cd520b338b34d3c73 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5572df25a5fec16cfac3a2dc4f8df866 = $(`<div id="html_5572df25a5fec16cfac3a2dc4f8df866" style="width: 100.0%; height: 100.0%;">BR - Qurain 2 (11227860)</div>`)[0];
+                popup_e302d54a86e62d2cd520b338b34d3c73.setContent(html_5572df25a5fec16cfac3a2dc4f8df866);
+            
+        
+
+        circle_marker_3752d6417e00d7cc463ff3c283a0c508.bindPopup(popup_e302d54a86e62d2cd520b338b34d3c73)
+        ;
+
+        
+    
+    
+            var circle_marker_b1e52068de86280f535ee03c23cb1419 = L.circleMarker(
+                [29.134477, 48.107599],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_4480f389e7f10b67dec12b432a95ded5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_263553998aab21c60b4790b644f5620d = $(`<div id="html_263553998aab21c60b4790b644f5620d" style="width: 100.0%; height: 100.0%;">BR - Fahd El Ahmed (11227930)</div>`)[0];
+                popup_4480f389e7f10b67dec12b432a95ded5.setContent(html_263553998aab21c60b4790b644f5620d);
+            
+        
+
+        circle_marker_b1e52068de86280f535ee03c23cb1419.bindPopup(popup_4480f389e7f10b67dec12b432a95ded5)
+        ;
+
+        
+    
+    
+            var circle_marker_1facc53276fb4cc639da6670c4f80279 = L.circleMarker(
+                [29.137847, 48.124191],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_acf96d9df2ca55521261b3641902d6c9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2e31f65421994fd5dd9ca04a39610f24 = $(`<div id="html_2e31f65421994fd5dd9ca04a39610f24" style="width: 100.0%; height: 100.0%;">KFC - Al Mahboola (11127780)</div>`)[0];
+                popup_acf96d9df2ca55521261b3641902d6c9.setContent(html_2e31f65421994fd5dd9ca04a39610f24);
+            
+        
+
+        circle_marker_1facc53276fb4cc639da6670c4f80279.bindPopup(popup_acf96d9df2ca55521261b3641902d6c9)
+        ;
+
+        
+    
+    
+            var circle_marker_772aae295bbb55bfd0de1a90bac97899 = L.circleMarker(
+                [29.1431, 48.1019],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_40e1ec93074b5da019fab42103bc5952 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8f13457a1f9bf3934a6e606308ce88fe = $(`<div id="html_8f13457a1f9bf3934a6e606308ce88fe" style="width: 100.0%; height: 100.0%;">KFC - Alreqa (11127730)</div>`)[0];
+                popup_40e1ec93074b5da019fab42103bc5952.setContent(html_8f13457a1f9bf3934a6e606308ce88fe);
+            
+        
+
+        circle_marker_772aae295bbb55bfd0de1a90bac97899.bindPopup(popup_40e1ec93074b5da019fab42103bc5952)
+        ;
+
+        
+    
+    
+            var circle_marker_9fb2a03c9924453be246a45379515fe9 = L.circleMarker(
+                [29.143241, 48.129412],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_264f4cde9c0597e8f45e4e287bbde993 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fd8bdc2a6a92695606dc5903f73a2e9a = $(`<div id="html_fd8bdc2a6a92695606dc5903f73a2e9a" style="width: 100.0%; height: 100.0%;">Hardees - Al Fintas (11147780)</div>`)[0];
+                popup_264f4cde9c0597e8f45e4e287bbde993.setContent(html_fd8bdc2a6a92695606dc5903f73a2e9a);
+            
+        
+
+        circle_marker_9fb2a03c9924453be246a45379515fe9.bindPopup(popup_264f4cde9c0597e8f45e4e287bbde993)
+        ;
+
+        
+    
+    
+            var circle_marker_3ffae4a00001a744b39ee169b41f8ccb = L.circleMarker(
+                [29.14461, 48.1009],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_296e83df4feb3c888e51cb35f8f30a65 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7230fe8fa7b3b5b8f1fc38a9510fb3ec = $(`<div id="html_7230fe8fa7b3b5b8f1fc38a9510fb3ec" style="width: 100.0%; height: 100.0%;">BR - Reqa (11227730)</div>`)[0];
+                popup_296e83df4feb3c888e51cb35f8f30a65.setContent(html_7230fe8fa7b3b5b8f1fc38a9510fb3ec);
+            
+        
+
+        circle_marker_3ffae4a00001a744b39ee169b41f8ccb.bindPopup(popup_296e83df4feb3c888e51cb35f8f30a65)
+        ;
+
+        
+    
+    
+            var circle_marker_6731d7645d21c4cf56699f8a02c3c919 = L.circleMarker(
+                [29.149142, 48.125997],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_c4388b0309f2e19df448d0fc430a8e51 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5304d2bfed1c44d6cba6fb16e663daf6 = $(`<div id="html_5304d2bfed1c44d6cba6fb16e663daf6" style="width: 100.0%; height: 100.0%;">Krispy Kreme Alyia Ghalyia Tower (11197790)</div>`)[0];
+                popup_c4388b0309f2e19df448d0fc430a8e51.setContent(html_5304d2bfed1c44d6cba6fb16e663daf6);
+            
+        
+
+        circle_marker_6731d7645d21c4cf56699f8a02c3c919.bindPopup(popup_c4388b0309f2e19df448d0fc430a8e51)
+        ;
+
+        
+    
+    
+            var circle_marker_61ce4f088b3f3c66cfe61bf02d2994be = L.circleMarker(
+                [29.154, 48.1249],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_9f18fa64e45967b23830aab4fdaf2a14 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5530f66ecfee041754efbdc53c4cc1e0 = $(`<div id="html_5530f66ecfee041754efbdc53c4cc1e0" style="width: 100.0%; height: 100.0%;">TGIF - Abu Halifa (11187760)</div>`)[0];
+                popup_9f18fa64e45967b23830aab4fdaf2a14.setContent(html_5530f66ecfee041754efbdc53c4cc1e0);
+            
+        
+
+        circle_marker_61ce4f088b3f3c66cfe61bf02d2994be.bindPopup(popup_9f18fa64e45967b23830aab4fdaf2a14)
+        ;
+
+        
+    
+    
+            var circle_marker_b3645a21127edc2398474b40c687437f = L.circleMarker(
+                [29.15414054, 48.12480344],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_7850020ad3661e86c43c77ce43527f9b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cf5ed035424a713bcbaf0455ce86f277 = $(`<div id="html_cf5ed035424a713bcbaf0455ce86f277" style="width: 100.0%; height: 100.0%;">Wimpy - Abu Halifa (11118300)</div>`)[0];
+                popup_7850020ad3661e86c43c77ce43527f9b.setContent(html_cf5ed035424a713bcbaf0455ce86f277);
+            
+        
+
+        circle_marker_b3645a21127edc2398474b40c687437f.bindPopup(popup_7850020ad3661e86c43c77ce43527f9b)
+        ;
+
+        
+    
+    
+            var circle_marker_5fd17119f894218cf302b157b1248550 = L.circleMarker(
+                [29.168466, 48.063947],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_e15c1f401c045256f8b651c056c108e8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_24479717425880d6bc5eb6f80cbdaec1 = $(`<div id="html_24479717425880d6bc5eb6f80cbdaec1" style="width: 100.0%; height: 100.0%;">Hardees - Al Zahr (11147770)</div>`)[0];
+                popup_e15c1f401c045256f8b651c056c108e8.setContent(html_24479717425880d6bc5eb6f80cbdaec1);
+            
+        
+
+        circle_marker_5fd17119f894218cf302b157b1248550.bindPopup(popup_e15c1f401c045256f8b651c056c108e8)
+        ;
+
+        
+    
+    
+            var circle_marker_021404e85cd073f87584f56d0ce9e9e1 = L.circleMarker(
+                [29.168629, 48.063945],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_b4962c349140b23e18942d5264b3daaf = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_141d491fb4a05d48328443b2f928e015 = $(`<div id="html_141d491fb4a05d48328443b2f928e015" style="width: 100.0%; height: 100.0%;">KFC - Al Zahr (11127770)</div>`)[0];
+                popup_b4962c349140b23e18942d5264b3daaf.setContent(html_141d491fb4a05d48328443b2f928e015);
+            
+        
+
+        circle_marker_021404e85cd073f87584f56d0ce9e9e1.bindPopup(popup_b4962c349140b23e18942d5264b3daaf)
+        ;
+
+        
+    
+    
+            var circle_marker_5fa073a5f5c1e22d64819127b57bb7f8 = L.circleMarker(
+                [29.171373, 48.120228],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_26c904d593841a2fc135bd99f6313616 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3132ddc027b664f26b4dae0db735d0eb = $(`<div id="html_3132ddc027b664f26b4dae0db735d0eb" style="width: 100.0%; height: 100.0%;">BR - Al Fintas (11227780)</div>`)[0];
+                popup_26c904d593841a2fc135bd99f6313616.setContent(html_3132ddc027b664f26b4dae0db735d0eb);
+            
+        
+
+        circle_marker_5fa073a5f5c1e22d64819127b57bb7f8.bindPopup(popup_26c904d593841a2fc135bd99f6313616)
+        ;
+
+        
+    
+    
+            var circle_marker_9fdfec1470996b3a41034812c8940395 = L.circleMarker(
+                [29.172656, 48.094883],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_9278c5119e6aea77260a7d967b80b34a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c170cb97af835c4ee8b6fa7034483c4a = $(`<div id="html_c170cb97af835c4ee8b6fa7034483c4a" style="width: 100.0%; height: 100.0%;">Hardees - Augiela 2 (11148270)</div>`)[0];
+                popup_9278c5119e6aea77260a7d967b80b34a.setContent(html_c170cb97af835c4ee8b6fa7034483c4a);
+            
+        
+
+        circle_marker_9fdfec1470996b3a41034812c8940395.bindPopup(popup_9278c5119e6aea77260a7d967b80b34a)
+        ;
+
+        
+    
+    
+            var circle_marker_7365b8d7a9ff92705161c0391a4f8c03 = L.circleMarker(
+                [29.172702, 48.095099],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_fc535c2ba0edd871bfb30bf82a08d768 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ee4b1fa11dd211c546269cb3f1bc0d7f = $(`<div id="html_ee4b1fa11dd211c546269cb3f1bc0d7f" style="width: 100.0%; height: 100.0%;">KFC - Augiela 2 (11128270)</div>`)[0];
+                popup_fc535c2ba0edd871bfb30bf82a08d768.setContent(html_ee4b1fa11dd211c546269cb3f1bc0d7f);
+            
+        
+
+        circle_marker_7365b8d7a9ff92705161c0391a4f8c03.bindPopup(popup_fc535c2ba0edd871bfb30bf82a08d768)
+        ;
+
+        
+    
+    
+            var circle_marker_a66e344ed3077bbcb86ec96c77dbe599 = L.circleMarker(
+                [29.1734, 48.099],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_81a806f3f2cf5873dc6cb13ba086b911 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cea1e05321b7f3675e16e78e9f9c4758 = $(`<div id="html_cea1e05321b7f3675e16e78e9f9c4758" style="width: 100.0%; height: 100.0%;">KFC - Al Bairak Mall (11127230)</div>`)[0];
+                popup_81a806f3f2cf5873dc6cb13ba086b911.setContent(html_cea1e05321b7f3675e16e78e9f9c4758);
+            
+        
+
+        circle_marker_a66e344ed3077bbcb86ec96c77dbe599.bindPopup(popup_81a806f3f2cf5873dc6cb13ba086b911)
+        ;
+
+        
+    
+    
+            var circle_marker_041a253e0e0d8a648a195e9dc29368f8 = L.circleMarker(
+                [29.1735, 48.09851],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_c6c7c077d4e2c2cb38998ab6dc381aa2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a33b9b9f0cb3377d10e1cd842bc80412 = $(`<div id="html_a33b9b9f0cb3377d10e1cd842bc80412" style="width: 100.0%; height: 100.0%;">BR - Al Bairak Mall (11227230)</div>`)[0];
+                popup_c6c7c077d4e2c2cb38998ab6dc381aa2.setContent(html_a33b9b9f0cb3377d10e1cd842bc80412);
+            
+        
+
+        circle_marker_041a253e0e0d8a648a195e9dc29368f8.bindPopup(popup_c6c7c077d4e2c2cb38998ab6dc381aa2)
+        ;
+
+        
+    
+    
+            var circle_marker_2139ef8ee878c95483b8a430bf3a4737 = L.circleMarker(
+                [29.1747, 48.0973],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_1e049feac186850d65cec2748f982b0b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_37204ea23ac8c1cdb4f2235583b880ee = $(`<div id="html_37204ea23ac8c1cdb4f2235583b880ee" style="width: 100.0%; height: 100.0%;">TGIF - Gate Mall (11188090)</div>`)[0];
+                popup_1e049feac186850d65cec2748f982b0b.setContent(html_37204ea23ac8c1cdb4f2235583b880ee);
+            
+        
+
+        circle_marker_2139ef8ee878c95483b8a430bf3a4737.bindPopup(popup_1e049feac186850d65cec2748f982b0b)
+        ;
+
+        
+    
+    
+            var circle_marker_b8d260bab69ce66040614455fbcd2e74 = L.circleMarker(
+                [29.17496742, 48.09889966],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_423557d920239b6fe7bdcfd1a666f73e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4c2e1a36d3fa2de3616ada98cb0b4728 = $(`<div id="html_4c2e1a36d3fa2de3616ada98cb0b4728" style="width: 100.0%; height: 100.0%;">Krispy Kreme - Gate Mall (11198090)</div>`)[0];
+                popup_423557d920239b6fe7bdcfd1a666f73e.setContent(html_4c2e1a36d3fa2de3616ada98cb0b4728);
+            
+        
+
+        circle_marker_b8d260bab69ce66040614455fbcd2e74.bindPopup(popup_423557d920239b6fe7bdcfd1a666f73e)
+        ;
+
+        
+    
+    
+            var circle_marker_3bc56c745c7f4c4abe0a06ce3a2ff356 = L.circleMarker(
+                [29.17500489, 48.09886211],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_4c16832b4f0aec63f3aa20a63eb187d0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_439b4cd43407f3dabf6f41415b5375bf = $(`<div id="html_439b4cd43407f3dabf6f41415b5375bf" style="width: 100.0%; height: 100.0%;">BR - The Gate Mall (11228000)</div>`)[0];
+                popup_4c16832b4f0aec63f3aa20a63eb187d0.setContent(html_439b4cd43407f3dabf6f41415b5375bf);
+            
+        
+
+        circle_marker_3bc56c745c7f4c4abe0a06ce3a2ff356.bindPopup(popup_4c16832b4f0aec63f3aa20a63eb187d0)
+        ;
+
+        
+    
+    
+            var circle_marker_b4e94c8bec82699228d40a1f8c8d9005 = L.circleMarker(
+                [29.18125495, 48.11705636],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_2ddd4aa840ba80503029db23fdf89fee = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4a01b5e02065335c480b79ec78fbb21b = $(`<div id="html_4a01b5e02065335c480b79ec78fbb21b" style="width: 100.0%; height: 100.0%;">KFC - Loft Fintas (11128570)</div>`)[0];
+                popup_2ddd4aa840ba80503029db23fdf89fee.setContent(html_4a01b5e02065335c480b79ec78fbb21b);
+            
+        
+
+        circle_marker_b4e94c8bec82699228d40a1f8c8d9005.bindPopup(popup_2ddd4aa840ba80503029db23fdf89fee)
+        ;
+
+        
+    
+    
+            var circle_marker_fc0016e0dddd075cf087fd511e149357 = L.circleMarker(
+                [29.1886, 48.0798],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_a0c6eff74093f1814da8cb9c2d8824bc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_20463d4f352c1b2f170bb617d58a70e5 = $(`<div id="html_20463d4f352c1b2f170bb617d58a70e5" style="width: 100.0%; height: 100.0%;">KFC Mubarek El-Kaber(Qurain 2) (11127870)</div>`)[0];
+                popup_a0c6eff74093f1814da8cb9c2d8824bc.setContent(html_20463d4f352c1b2f170bb617d58a70e5);
+            
+        
+
+        circle_marker_fc0016e0dddd075cf087fd511e149357.bindPopup(popup_a0c6eff74093f1814da8cb9c2d8824bc)
+        ;
+
+        
+    
+    
+            var circle_marker_9352cfaaa624a275444fc348f5bb7a7b = L.circleMarker(
+                [29.19725105, 48.05375871],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_5cc540fca53354e29680cd782f8f8497 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ee7d723e14742dbe6b8998e1f3554c39 = $(`<div id="html_ee7d723e14742dbe6b8998e1f3554c39" style="width: 100.0%; height: 100.0%;">BR - Aswaq Al Qurain (11228260)</div>`)[0];
+                popup_5cc540fca53354e29680cd782f8f8497.setContent(html_ee7d723e14742dbe6b8998e1f3554c39);
+            
+        
+
+        circle_marker_9352cfaaa624a275444fc348f5bb7a7b.bindPopup(popup_5cc540fca53354e29680cd782f8f8497)
+        ;
+
+        
+    
+    
+            var circle_marker_b9c3f41873816b4451b77379a6cecf5b = L.circleMarker(
+                [29.19730724, 48.05377481],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_77cdf001f4c3edee91c5ad62695517d2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4ae3c6854c6f029355bb92892c2d06b1 = $(`<div id="html_4ae3c6854c6f029355bb92892c2d06b1" style="width: 100.0%; height: 100.0%;">KFC - Aswaq Al Qurain (11128440)</div>`)[0];
+                popup_77cdf001f4c3edee91c5ad62695517d2.setContent(html_4ae3c6854c6f029355bb92892c2d06b1);
+            
+        
+
+        circle_marker_b9c3f41873816b4451b77379a6cecf5b.bindPopup(popup_77cdf001f4c3edee91c5ad62695517d2)
+        ;
+
+        
+    
+    
+            var circle_marker_0cc9d07fe88ba03328e8bf69b816f8a8 = L.circleMarker(
+                [29.19731427, 48.05369702],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_9c06f90e8858389b44653024ce2b4554 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_731389c8f9ab9ef7cc74405e37dfec90 = $(`<div id="html_731389c8f9ab9ef7cc74405e37dfec90" style="width: 100.0%; height: 100.0%;">Krispy Kreme - Aswaq Al Qurain (11198740)</div>`)[0];
+                popup_9c06f90e8858389b44653024ce2b4554.setContent(html_731389c8f9ab9ef7cc74405e37dfec90);
+            
+        
+
+        circle_marker_0cc9d07fe88ba03328e8bf69b816f8a8.bindPopup(popup_9c06f90e8858389b44653024ce2b4554)
+        ;
+
+        
+    
+    
+            var circle_marker_a2ae6809681e98deb628165f6c235dbc = L.circleMarker(
+                [29.1973641, 48.0525026],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_7577e0bc34e75a75e91595d6ff49c245 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b0b4cd4b1122203578b2d562708a661d = $(`<div id="html_b0b4cd4b1122203578b2d562708a661d" style="width: 100.0%; height: 100.0%;">Wimpy - Qurain Dark Kitchen (11118230)</div>`)[0];
+                popup_7577e0bc34e75a75e91595d6ff49c245.setContent(html_b0b4cd4b1122203578b2d562708a661d);
+            
+        
+
+        circle_marker_a2ae6809681e98deb628165f6c235dbc.bindPopup(popup_7577e0bc34e75a75e91595d6ff49c245)
+        ;
+
+        
+    
+    
+            var circle_marker_abc751a913ad05b46e9e5c625b46afd8 = L.circleMarker(
+                [29.1973848, 48.04665118],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_cd40dc6568d513b14b9198eba862736d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_669ae32305cfd50cf2df7a5f0c624149 = $(`<div id="html_669ae32305cfd50cf2df7a5f0c624149" style="width: 100.0%; height: 100.0%;">Hardees - Qurain Markets (11148480)</div>`)[0];
+                popup_cd40dc6568d513b14b9198eba862736d.setContent(html_669ae32305cfd50cf2df7a5f0c624149);
+            
+        
+
+        circle_marker_abc751a913ad05b46e9e5c625b46afd8.bindPopup(popup_cd40dc6568d513b14b9198eba862736d)
+        ;
+
+        
+    
+    
+            var circle_marker_598b4b5f1cc247f4f8655814b9c31230 = L.circleMarker(
+                [29.204344, 48.077731],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_edeb8726252796951a1f8dd107bb4868 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2dd9e6075de0a8c07b462dbf506aa33f = $(`<div id="html_2dd9e6075de0a8c07b462dbf506aa33f" style="width: 100.0%; height: 100.0%;">Hardees - Al Qureen 2 (11147870)</div>`)[0];
+                popup_edeb8726252796951a1f8dd107bb4868.setContent(html_2dd9e6075de0a8c07b462dbf506aa33f);
+            
+        
+
+        circle_marker_598b4b5f1cc247f4f8655814b9c31230.bindPopup(popup_edeb8726252796951a1f8dd107bb4868)
+        ;
+
+        
+    
+    
+            var circle_marker_55f90f6fcdee447171c5b4db48c34bfd = L.circleMarker(
+                [29.20439, 48.0777],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_a3d3e0f6e7d66c694ad43bf56c1db012 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1b8571bb6191942cbd7e385150eb0722 = $(`<div id="html_1b8571bb6191942cbd7e385150eb0722" style="width: 100.0%; height: 100.0%;">BR - Qurain 1 (11227850)</div>`)[0];
+                popup_a3d3e0f6e7d66c694ad43bf56c1db012.setContent(html_1b8571bb6191942cbd7e385150eb0722);
+            
+        
+
+        circle_marker_55f90f6fcdee447171c5b4db48c34bfd.bindPopup(popup_a3d3e0f6e7d66c694ad43bf56c1db012)
+        ;
+
+        
+    
+    
+            var circle_marker_439ef6599aecb8892868d21a75a1bba2 = L.circleMarker(
+                [29.20443, 48.077741],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_1d254227eaa18e42b4d99997b4833e2f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_70def5353cd9c0d185c2dd3feb645e51 = $(`<div id="html_70def5353cd9c0d185c2dd3feb645e51" style="width: 100.0%; height: 100.0%;">Tikka - Qurain (11137870)</div>`)[0];
+                popup_1d254227eaa18e42b4d99997b4833e2f.setContent(html_70def5353cd9c0d185c2dd3feb645e51);
+            
+        
+
+        circle_marker_439ef6599aecb8892868d21a75a1bba2.bindPopup(popup_1d254227eaa18e42b4d99997b4833e2f)
+        ;
+
+        
+    
+    
+            var circle_marker_42e97af37b9d2fa32d68bc7e36537101 = L.circleMarker(
+                [29.212059, 48.10428],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_58dc25baaefd147276db8be9659be9da = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_74f1395adc9552a3b3c3948028d7ae07 = $(`<div id="html_74f1395adc9552a3b3c3948028d7ae07" style="width: 100.0%; height: 100.0%;">KFC - Village (11128200)</div>`)[0];
+                popup_58dc25baaefd147276db8be9659be9da.setContent(html_74f1395adc9552a3b3c3948028d7ae07);
+            
+        
+
+        circle_marker_42e97af37b9d2fa32d68bc7e36537101.bindPopup(popup_58dc25baaefd147276db8be9659be9da)
+        ;
+
+        
+    
+    
+            var circle_marker_45e4c3c9c0e06b63039d930007761403 = L.circleMarker(
+                [29.21224, 48.104247],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_a4cb444a972232e7baa38e1f2ba620c7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_81c06dea36f8a2c19f66c8ba03e7cafd = $(`<div id="html_81c06dea36f8a2c19f66c8ba03e7cafd" style="width: 100.0%; height: 100.0%;">Hardees - Village (11148160)</div>`)[0];
+                popup_a4cb444a972232e7baa38e1f2ba620c7.setContent(html_81c06dea36f8a2c19f66c8ba03e7cafd);
+            
+        
+
+        circle_marker_45e4c3c9c0e06b63039d930007761403.bindPopup(popup_a4cb444a972232e7baa38e1f2ba620c7)
+        ;
+
+        
+    
+    
+            var circle_marker_dd289759864bf27eb7f1971b7f3aed41 = L.circleMarker(
+                [29.21343689, 48.10417093],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_435780fbef8b5504788763cf8b4b99b2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_23176993a12085d3155a4903a7385b21 = $(`<div id="html_23176993a12085d3155a4903a7385b21" style="width: 100.0%; height: 100.0%;">Krispy Kreme - Divonne (11198770)</div>`)[0];
+                popup_435780fbef8b5504788763cf8b4b99b2.setContent(html_23176993a12085d3155a4903a7385b21);
+            
+        
+
+        circle_marker_dd289759864bf27eb7f1971b7f3aed41.bindPopup(popup_435780fbef8b5504788763cf8b4b99b2)
+        ;
+
+        
+    
+    
+            var circle_marker_1f9bb239c6732248137d54aacc1eceff = L.circleMarker(
+                [29.21344391, 48.10409851],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_e4f50997f70ec8b14dddea6750e93c09 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3183d98f94af5de31306954523b00888 = $(`<div id="html_3183d98f94af5de31306954523b00888" style="width: 100.0%; height: 100.0%;">BR - Divonne (11228250)</div>`)[0];
+                popup_e4f50997f70ec8b14dddea6750e93c09.setContent(html_3183d98f94af5de31306954523b00888);
+            
+        
+
+        circle_marker_1f9bb239c6732248137d54aacc1eceff.bindPopup(popup_e4f50997f70ec8b14dddea6750e93c09)
+        ;
+
+        
+    
+    
+            var circle_marker_ca1d167ad11dbb6d4160b5885becc87a = L.circleMarker(
+                [29.21383204, 48.10389363],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_f7b2f386bbac3e0ae26be78973d9db35 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5b9a52670d24d30561778f563f00c8a5 = $(`<div id="html_5b9a52670d24d30561778f563f00c8a5" style="width: 100.0%; height: 100.0%;">Wimpy - Divonne Complex (11118400)</div>`)[0];
+                popup_f7b2f386bbac3e0ae26be78973d9db35.setContent(html_5b9a52670d24d30561778f563f00c8a5);
+            
+        
+
+        circle_marker_ca1d167ad11dbb6d4160b5885becc87a.bindPopup(popup_f7b2f386bbac3e0ae26be78973d9db35)
+        ;
+
+        
+    
+    
+            var circle_marker_0ac5d2c18960520bdb9b7a829b19adf9 = L.circleMarker(
+                [29.2155, 48.0742],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_a8cda5df9b1dc2dd99d309568e2e38e2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_976c14883453633e2917e35e518f7332 = $(`<div id="html_976c14883453633e2917e35e518f7332" style="width: 100.0%; height: 100.0%;">KFC - Qureen (11127850)</div>`)[0];
+                popup_a8cda5df9b1dc2dd99d309568e2e38e2.setContent(html_976c14883453633e2917e35e518f7332);
+            
+        
+
+        circle_marker_0ac5d2c18960520bdb9b7a829b19adf9.bindPopup(popup_a8cda5df9b1dc2dd99d309568e2e38e2)
+        ;
+
+        
+    
+    
+            var circle_marker_37e0c59fab0bebbe0e783073024265fd = L.circleMarker(
+                [29.216, 48.1032],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_92f6030edb314eba5d7e755543c9bf00 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d432f22123a059567dbd54117646e114 = $(`<div id="html_d432f22123a059567dbd54117646e114" style="width: 100.0%; height: 100.0%;">TGIF - The Lake Mall (11187030)</div>`)[0];
+                popup_92f6030edb314eba5d7e755543c9bf00.setContent(html_d432f22123a059567dbd54117646e114);
+            
+        
+
+        circle_marker_37e0c59fab0bebbe0e783073024265fd.bindPopup(popup_92f6030edb314eba5d7e755543c9bf00)
+        ;
+
+        
+    
+    
+            var circle_marker_1ae3e7ee7d1258be5303da1cd46289b8 = L.circleMarker(
+                [29.235456, 48.079627],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_4a96a2cccef56dbb4454954b105cae7e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0596178a02ffdac029674e65ba629a56 = $(`<div id="html_0596178a02ffdac029674e65ba629a56" style="width: 100.0%; height: 100.0%;">KFC - Adan (11128020)</div>`)[0];
+                popup_4a96a2cccef56dbb4454954b105cae7e.setContent(html_0596178a02ffdac029674e65ba629a56);
+            
+        
+
+        circle_marker_1ae3e7ee7d1258be5303da1cd46289b8.bindPopup(popup_4a96a2cccef56dbb4454954b105cae7e)
+        ;
+
+        
+    
+    
+            var circle_marker_39f159814515165c05a3f9488c6d3c48 = L.circleMarker(
+                [29.235634, 48.079666],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_47d99cf30585a5550ce5b243e9e726f4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b361d2e74a3c8d2c9f90a6ed7c437f1c = $(`<div id="html_b361d2e74a3c8d2c9f90a6ed7c437f1c" style="width: 100.0%; height: 100.0%;">Hardees - Adan (11148020)</div>`)[0];
+                popup_47d99cf30585a5550ce5b243e9e726f4.setContent(html_b361d2e74a3c8d2c9f90a6ed7c437f1c);
+            
+        
+
+        circle_marker_39f159814515165c05a3f9488c6d3c48.bindPopup(popup_47d99cf30585a5550ce5b243e9e726f4)
+        ;
+
+        
+    
+    
+            var circle_marker_d616201e53048045158ff7f750804018 = L.circleMarker(
+                [29.236563, 48.064671],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_7f7406a47317bfbb0d73b15768636fe3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_71d0732cd6ab809cdb8768ee8680c9aa = $(`<div id="html_71d0732cd6ab809cdb8768ee8680c9aa" style="width: 100.0%; height: 100.0%;">Hardees - Al Qureen (11147850)</div>`)[0];
+                popup_7f7406a47317bfbb0d73b15768636fe3.setContent(html_71d0732cd6ab809cdb8768ee8680c9aa);
+            
+        
+
+        circle_marker_d616201e53048045158ff7f750804018.bindPopup(popup_7f7406a47317bfbb0d73b15768636fe3)
+        ;
+
+        
+    
+    
+            var circle_marker_2bf6c7b8eccf3d5768e0175cda94eb72 = L.circleMarker(
+                [29.23658, 48.06314],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_3d276426a06e8933296cec143b38623b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9b31ae3f4ad2961844c61f77dea5156b = $(`<div id="html_9b31ae3f4ad2961844c61f77dea5156b" style="width: 100.0%; height: 100.0%;">BR - Qurain 3 (11227870)</div>`)[0];
+                popup_3d276426a06e8933296cec143b38623b.setContent(html_9b31ae3f4ad2961844c61f77dea5156b);
+            
+        
+
+        circle_marker_2bf6c7b8eccf3d5768e0175cda94eb72.bindPopup(popup_3d276426a06e8933296cec143b38623b)
+        ;
+
+        
+    
+    
+            var circle_marker_0ee39544e3f8ac03b531c116584f73ea = L.circleMarker(
+                [29.2496, 48.0664],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_64c02eaaab0699e62557afd717f7d86d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5209a31d3d576d1c770ac162f05bbf77 = $(`<div id="html_5209a31d3d576d1c770ac162f05bbf77" style="width: 100.0%; height: 100.0%;">KFC - S Al Salem (11127830)</div>`)[0];
+                popup_64c02eaaab0699e62557afd717f7d86d.setContent(html_5209a31d3d576d1c770ac162f05bbf77);
+            
+        
+
+        circle_marker_0ee39544e3f8ac03b531c116584f73ea.bindPopup(popup_64c02eaaab0699e62557afd717f7d86d)
+        ;
+
+        
+    
+    
+            var circle_marker_1242bc7faa1cc781f35e9582313d711f = L.circleMarker(
+                [29.25425606, 48.08093256],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_c2ccd0cea358a37749dd2f5bdd4e78ef = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ccee2ba21fafff98b56fe1176c066620 = $(`<div id="html_ccee2ba21fafff98b56fe1176c066620" style="width: 100.0%; height: 100.0%;">KFC - Sabah Al Salem 2 (11128430)</div>`)[0];
+                popup_c2ccd0cea358a37749dd2f5bdd4e78ef.setContent(html_ccee2ba21fafff98b56fe1176c066620);
+            
+        
+
+        circle_marker_1242bc7faa1cc781f35e9582313d711f.bindPopup(popup_c2ccd0cea358a37749dd2f5bdd4e78ef)
+        ;
+
+        
+    
+    
+            var circle_marker_357b70d9535507dc9d342ceffa1e0f6c = L.circleMarker(
+                [29.256562, 48.052294],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_6c0c79923685cbcb138c6e8c23b129ab = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_782bfeb53b5989668a8e8ac9178398dd = $(`<div id="html_782bfeb53b5989668a8e8ac9178398dd" style="width: 100.0%; height: 100.0%;">Hardees - Sabah Al Salem (11147830)</div>`)[0];
+                popup_6c0c79923685cbcb138c6e8c23b129ab.setContent(html_782bfeb53b5989668a8e8ac9178398dd);
+            
+        
+
+        circle_marker_357b70d9535507dc9d342ceffa1e0f6c.bindPopup(popup_6c0c79923685cbcb138c6e8c23b129ab)
+        ;
+
+        
+    
+    
+            var circle_marker_9111adf6c80773094016b582da349a43 = L.circleMarker(
+                [29.2658215, 48.07883898],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_98e0cda4c3ad27273c091a7abecd1725 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1b833a4a63515ea2079f0760c40f2898 = $(`<div id="html_1b833a4a63515ea2079f0760c40f2898" style="width: 100.0%; height: 100.0%;">Krispy Kreme - Sabah Al Salem (11198820)</div>`)[0];
+                popup_98e0cda4c3ad27273c091a7abecd1725.setContent(html_1b833a4a63515ea2079f0760c40f2898);
+            
+        
+
+        circle_marker_9111adf6c80773094016b582da349a43.bindPopup(popup_98e0cda4c3ad27273c091a7abecd1725)
+        ;
+
+        
+    
+    
+            var circle_marker_05bd973be5104108263c6a82256b1da0 = L.circleMarker(
+                [29.26586595, 48.07895968],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_d934246aeba0bd094fa6498a4242fa53 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_352372a558a274eacec9a902b8f4a616 = $(`<div id="html_352372a558a274eacec9a902b8f4a616" style="width: 100.0%; height: 100.0%;">BR - Sabah Al Salem Block 1 (11228270)</div>`)[0];
+                popup_d934246aeba0bd094fa6498a4242fa53.setContent(html_352372a558a274eacec9a902b8f4a616);
+            
+        
+
+        circle_marker_05bd973be5104108263c6a82256b1da0.bindPopup(popup_d934246aeba0bd094fa6498a4242fa53)
+        ;
+
+        
+    
+    
+            var circle_marker_d8d7ebcf5c544c2193796491041bb59d = L.circleMarker(
+                [29.26592249, 48.07889889],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_edfa8b361aa061d1cdad53a95a1d69e3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_84c13a40aa3b2a8007588de57b5a438a = $(`<div id="html_84c13a40aa3b2a8007588de57b5a438a" style="width: 100.0%; height: 100.0%;">Hardees - Sabah Al Salem Block (11148490)</div>`)[0];
+                popup_edfa8b361aa061d1cdad53a95a1d69e3.setContent(html_84c13a40aa3b2a8007588de57b5a438a);
+            
+        
+
+        circle_marker_d8d7ebcf5c544c2193796491041bb59d.bindPopup(popup_edfa8b361aa061d1cdad53a95a1d69e3)
+        ;
+
+        
+    
+    
+            var circle_marker_b1a7451c6feffabdfe3cda15fdc71bd4 = L.circleMarker(
+                [29.352062, 47.66496348],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_e604eefcf06f4a03f2359ab7cb29a15b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0925360e71a1516e13b4ab5d30077bc4 = $(`<div id="html_0925360e71a1516e13b4ab5d30077bc4" style="width: 100.0%; height: 100.0%;">Tikka - Fahaheel DK (11137130)</div>`)[0];
+                popup_e604eefcf06f4a03f2359ab7cb29a15b.setContent(html_0925360e71a1516e13b4ab5d30077bc4);
+            
+        
+
+        circle_marker_b1a7451c6feffabdfe3cda15fdc71bd4.bindPopup(popup_e604eefcf06f4a03f2359ab7cb29a15b)
+        ;
+
+        
+    
+    
+            var circle_marker_b3050558adccd3ce4399934b3b79969a = L.circleMarker(
+                [29.29568, 47.91551],
+                {"bubblingMouseEvents": true, "color": "#1f77b4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#1f77b4", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(map_d0b09351fa70d752bfbe7e74659567b7);
+        
+    
+        var popup_92f68de021f04340351cc66b7bde1080 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4721b10968728c135eb4eb167d7e7071 = $(`<div id="html_4721b10968728c135eb4eb167d7e7071" style="width: 100.0%; height: 100.0%;">Commissary Chicken Tikka KWT (1)</div>`)[0];
+                popup_92f68de021f04340351cc66b7bde1080.setContent(html_4721b10968728c135eb4eb167d7e7071);
+            
+        
+
+        circle_marker_b3050558adccd3ce4399934b3b79969a.bindPopup(popup_92f68de021f04340351cc66b7bde1080)
+        ;
+
+        
+    
+</script>
+</html>
