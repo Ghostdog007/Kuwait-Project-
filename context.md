@@ -5,9 +5,11 @@ This document consolidates the current understanding of the problem, data, and c
 ## Problem Summary
 - Employees live in accommodation and must be transported to and from stores on fixed shift windows.
 - The system is schedule-driven (metro-like): buses run trips and employees are assigned to trips.
+- Trips may be `IN`, `OUT`, or `MIXED` when a bus drops inbound passengers and then opportunistically picks up shift-ended employees on the return path.
 - Current routes are relatively fixed while demand and staffing vary.
 - Pain point: high driver overtime and idle/deadhead time.
 - Goal: build a constraint-first optimization pipeline for demand, routing, scheduling, and assignment.
+- Optimization priority: reduce driver overtime first, then increase occupancy, then reduce deadhead and waiting where feasible.
 
 ## Inputs (Model)
 From requirements and metadata:
@@ -24,7 +26,14 @@ From requirements and metadata:
 - Trip templates and optimized routes per time window.
 - Bus and driver schedules (including buffers and split shifts).
 - Employee-to-trip assignment tables.
+- Stop-level load and timing plans for mixed pickup/drop feasibility.
 - KPI comparison: overtime, occupancy, deadhead, waiting time, on-time compliance.
+
+## Optimization Priorities
+- Primary objective: minimize driver overtime across the fixed 13-driver fleet.
+- Secondary objective: increase occupancy by consolidating compatible demand and using `MIXED` return pickups.
+- Tertiary objective: reduce deadhead and passenger waiting without violating the higher-priority overtime goal.
+- Practical interpretation: a fuller trip is only preferred if it does not materially worsen driver overtime or break timing feasibility.
 
 ## Known Constraints and Notes
 - Accommodation is the start/end anchor for the system.
@@ -34,6 +43,7 @@ From requirements and metadata:
 - Scheduling must align with store shift times.
 - Confirmed: 13 buses.
 - Confirmed: single start location (employee accommodation). Each trip starts at this location, visits assigned stores, then returns to the start to complete the trip.
+- Allowed trip modes: `IN`, `OUT`, and `MIXED` when timing and capacity make opportunistic pickup feasible.
 - Buffer time between successive trips for each bus: 30-45 minutes to allow for delays (hard constraint).
 - Vehicle type: single type only, 22-seat capacity (can go up to 25 if crowded, never above 25).
 - Trip duration target: average 2.5 hours per trip.
@@ -41,6 +51,10 @@ From requirements and metadata:
 - Broken shifts allowed: a 9-hour workday can be split into a 4-hour shift and a 5-hour shift, with separate pickup/drop trips.
 - Max waiting time: 30-40 minutes (upper bound), to reduce overtime risk.
 - Employees should arrive at pickup no earlier than 30 minutes before the scheduled bus trip (to avoid excessive waiting).
+- Opportunistic pickup rule: after completing required inbound drops, a bus may collect outbound employees only if the pickup store is near the return path, the employees' shifts have ended or are within a small compatibility tolerance, and capacity remains available after earlier drops.
+- Mixed trips must track onboard load after every stop; pickups cannot violate seat capacity at any point on the route.
+- Mixed routing should reduce deadhead and improve occupancy without creating excessive detours or pushing driver hours beyond daily limits.
+- Trip chaining and trip consolidation should be evaluated mainly by their overtime impact; occupancy gains are secondary unless overtime is unchanged or improved.
 
 ## Data Assets (Metadata Summaries)
 
@@ -93,24 +107,33 @@ File: `Metadata/Kuwait_Route_optimization_Overview.md`
 - Employees belong to accommodation locations and stores; transportation is between these.
 - Peak hours are derived from shift overlaps and itinerary volumes.
 - The system operates like a scheduled metro service, not ad hoc routes.
+- Pilot travel distance/time uses geocoordinates with Haversine distance plus fixed speed and dwell assumptions; no external road-time API is used.
+- Mixed routing is heuristic and compatibility-based, not a full exact optimization over all possible pickup/drop combinations.
+- Pilot scope uses only stores that have valid coordinates in `Geocoordinates.xlsx`; unmatched stores are ignored for routing and KPI generation.
 
 ## Open Questions / Gaps
 - Confirm which week/brand tabs are in scope for modeling (pilot vs. full market).
-- Validate shift data header structure and normalize wide format into long format.
 - Resolve data quality issues in itinerary timing and route logs.
+- Set the final compatibility tolerance for mixed pickups (for example, how many minutes after shift end a bus may wait or how much detour is acceptable).
+- Validate whether mixed trips should prioritize occupancy gain, overtime reduction, or waiting-time control when those objectives conflict.
 
 ## Next Step (Approach-Ready)
 This section is aligned with `Approaches/approach.md` (Section 5: Recommended Starting Point).
 1. Normalize datasets into a unified schema (employees, stores, shifts, trips, itineraries).
-2. Build demand tables by store and shift window (inbound/outbound).
+2. Filter pilot scope to stores with valid geocoordinates and build demand tables by store and shift window (inbound/outbound).
 3. Run capacity-aware clustering using geocoordinates plus time-window compatibility.
-4. Solve VRPTW per cluster/time wave, then chain trips into driver schedules with buffers.
-5. Assign employees to trips and validate constraints, then compute KPIs.
+4. Solve routing per cluster/time wave with support for `IN`, `OUT`, and `MIXED` trip construction, preferring changes that reduce total required driver duty time.
+5. Chain trips into bus and driver schedules with buffers, stop-level load tracking, and opportunistic pickup checks, treating overtime as the main penalty.
+6. Assign employees to trips, validate waiting/capacity/timing constraints, then compute KPIs with overtime reported first.
 
 ## Working Notes
 - Visualize geocoordinates on a map to identify spatial clusters (e.g., south/central/north).
 - Use inter-cluster travel time as a key driver for route structuring.
-- Prospective idea: allow opportunistic pickups on return to accommodation if an employee's shift ends near the route after completing store stops.
+- Smart-routing target: allow opportunistic pickups on the return to accommodation if a shift-ended employee is near the bus path after inbound drops are completed.
+- Mixed routing should be evaluated as a capacity-recovery mechanism: inbound drops free seats, then nearby outbound pickups fill those seats on the return leg.
+- Consolidation rule of thumb: remove or absorb low-value trips when doing so lowers total duty hours, even if occupancy gains are only moderate.
+- Occupancy improvement is desirable, but not at the cost of adding extra duties or extending too many drivers past the 9-hour target.
+- Store-level stop times matter because mixed routing depends on whether a bus reaches a pickup point after the employee is actually ready.
 - Note: clustering alone is insufficient due to fixed bus capacity and scheduling constraints.
 
 ## Update Checklist (with Smoke Tests)
