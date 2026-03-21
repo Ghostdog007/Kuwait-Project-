@@ -1,0 +1,1959 @@
+source_dataset,source_sheet,source_column,origin_id,store_name,normalized_store_name
+Bus Routes curent.xlsx,Bus Route Details,Store Name,T1,BR - Aswaq Al Qurain - KFC Mubarek El-Kaber(Qurain 2),br aswaq al qurain kfc mubarek el kaber qurain 2
+Bus Routes curent.xlsx,Bus Route Details,Store Name,T2,BR - Aswaq Al Qurain - KFC Mubarek El-Kaber(Qurain 2),br aswaq al qurain kfc mubarek el kaber qurain 2
+Bus Routes curent.xlsx,Bus Route Details,Store Name,T3,BR - Aswaq Al Qurain - Krispy Kreme - Aswaq Al Qurain,br aswaq al qurain krispy kreme aswaq al qurain
+Bus Routes curent.xlsx,Bus Route Details,Store Name,nan,BR - Fahd El Ahmed - BR - Om El Haiman,br fahd el ahmed br om el haiman
+Bus Routes curent.xlsx,Bus Route Details,Store Name,T1,Krispy Kre Mangaf Sultan Centr,krispy kre mangaf sultan centr
+Bus Routes curent.xlsx,Bus Route Details,Store Name,T2,Krispy Kre Mangaf Sultan Centr,krispy kre mangaf sultan centr
+Bus Routes curent.xlsx,Bus Route Details,Store Name,T1,Krispy Kreme - Khiran Hybrid O.Krispy Kreme - Khiran Square M,krispy kreme khiran hybrid o krispy kreme khiran square m
+Bus Routes curent.xlsx,Bus Route Details,Store Name,T2,Krispy Kreme - Khiran Hybrid O.Krispy Kreme - Khiran Square M,krispy kreme khiran hybrid o krispy kreme khiran square m
+Bus Routes curent.xlsx,Bus Route Details,Store Name,T1,Krispy Kreme - Sabah Al Ahmed,krispy kreme sabah al ahmed
+Bus Routes curent.xlsx,Bus Route Details,Store Name,T2,Krispy Kreme - Sabah Al Ahmed,krispy kreme sabah al ahmed
+Bus Routes curent.xlsx,Bus Route Details,Store Name,T3,Krispy Kreme - Sabah Al Ahmed,krispy kreme sabah al ahmed
+Bus Routes curent.xlsx,Bus Route Details,Store Name,T2,Krispy Kreme - Sabah Al Salem - Krispy Kreme - Divonne,krispy kreme sabah al salem krispy kreme divonne
+Bus Routes curent.xlsx,Bus Route Details,Store Name,nan,Krispy Kreme Mangaf Sultan Centre,krispy kreme mangaf sultan centre
+Bus Routes curent.xlsx,Bus Route Details,Store Name,T2,Sabah Al Salem Block 1,sabah al salem block 1
+Employee Shift data.xlsx,BR,Store Name,11030063,BR - Al Mangaf,br al mangaf
+Employee Shift data.xlsx,KK,Store Name,11026426,Krispy Kre Mangaf Sultan Centr,krispy kre mangaf sultan centr
+Employee Shift data.xlsx,KK,Store Name,11029729,Krispy Kre Mangaf Sultan Centr,krispy kre mangaf sultan centr
+Employee Shift data.xlsx,KK,Store Name,11028960,Krispy Kreme - Fintas Co,krispy kreme fintas co
+Employee Shift data.xlsx,KK,Store Name,11030195,Krispy Kreme - Fintas Co,krispy kreme fintas co
+Employee Shift data.xlsx,KK,Store Name,11029106,Krispy Kreme - Sabah Al Ahmed,krispy kreme sabah al ahmed
+Employee Shift data.xlsx,KK,Store Name,11030182,Krispy Kreme - Sabah Al Ahmed,krispy kreme sabah al ahmed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026552,BR - 360 Mall,br 360 mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026510,BR - Adeylia,br adeylia
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030157,BR - Adeylia,br adeylia
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026446,BR - Airport,br airport
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028854,BR - Airport,br airport
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026571,BR - Al Dajeej,br al dajeej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027744,BR - Al Dayia New,br al dayia new
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030297,BR - Al Dayia New,br al dayia new
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11020837,BR - Al Jahra - Industrail,br al jahra industrail
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026861,BR - Al Jahra - Industrail,br al jahra industrail
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026939,BR - Al Jahra - Industrail,br al jahra industrail
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029824,BR - Al Jahra - Industrail,br al jahra industrail
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024412,BR - Al Rumaithya,br al rumaithya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028851,BR - Al Rumaithya,br al rumaithya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11003196,BR - Amman Street,br amman street
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026549,BR - Amman Street,br amman street
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11017312,BR - Avenues Mall 2,br avenues mall 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029658,BR - Avenues Mall 2,br avenues mall 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026548,BR - Bayan 1,br bayan 1
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029846,BR - Bayan 1,br bayan 1
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029874,BR - Bayan 1,br bayan 1
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029115,BR - Block 10 Salmiya,br block 10 salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027909,BR - Cube Mall,br cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029907,BR - Cube Mall,br cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026508,BR - El Yarmouk,br el yarmouk
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030088,BR - El Yarmouk,br el yarmouk
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028496,BR - Farwaniya,br farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028800,BR - Farwaniya,br farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029094,BR - Farwaniya,br farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026859,BR - Fordha CO,br fordha co
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028078,BR - Fordha CO,br fordha co
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029120,BR - Fordha CO,br fordha co
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026506,BR - Jabriya Co,br jabriya co
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029559,BR - Jabriya Co,br jabriya co
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029823,BR - Jabriya Co,br jabriya co
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030191,BR - Jabriya Co,br jabriya co
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030284,BR - Jabriya Co,br jabriya co
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026386,BR - Jleeb El Shoyoukh,br jleeb el shoyoukh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029431,BR - Jleeb El Shoyoukh,br jleeb el shoyoukh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030130,BR - Jleeb El Shoyoukh,br jleeb el shoyoukh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026553,BR - Keifan,br keifan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028860,BR - Keifan,br keifan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029901,BR - Keifan,br keifan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11023582,BR - Khaldia,br khaldia
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028862,BR - Khaldia,br khaldia
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029845,BR - Khaldia,br khaldia
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026262,BR - Khitan,br khitan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029383,BR - Khitan,br khitan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027490,BR - Kuwait Towers,br kuwait towers
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028121,BR - Lolo Center,br lolo center
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029812,BR - Lolo Center,br lolo center
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026586,BR - Lulu Othman Street,br lulu othman street
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029382,BR - Marina Mall,br marina mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11021924,BR - Marina Valencia,br marina valencia
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026774,BR - Marina Valencia,br marina valencia
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028893,BR - Marina Valencia,br marina valencia
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11004410,BR - Mishrif Coop,br mishrif coop
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026551,BR - Mishrif Coop,br mishrif coop
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026603,BR - Mishrif Coop,br mishrif coop
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029119,BR - Mishrif Coop,br mishrif coop
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028890,BR - Moi Coop Al Zahra,br moi coop al zahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029098,BR - Moi Coop Al Zahra,br moi coop al zahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027128,BR - National Guard,br national guard
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029386,BR - Qadsiya,br qadsiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026585,BR - Rawda,br rawda
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029114,BR - Rawda,br rawda
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030209,BR - Rawda,br rawda
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024624,BR - Salwa Coop Relocation,br salwa coop relocation
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029560,BR - Salwa Coop Relocation,br salwa coop relocation
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030151,BR - Salwa Coop Relocation,br salwa coop relocation
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026509,BR - Seaside Food Hub,br seaside food hub
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026780,BR - Seaside Food Hub,br seaside food hub
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030076,BR - Seaside Food Hub,br seaside food hub
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024867,BR - Shamiya Relocation,br shamiya relocation
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027883,BR - Shamiya Relocation,br shamiya relocation
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029810,BR - Shamiya Relocation,br shamiya relocation
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030071,BR - Souk Salmiya Cart,br souk salmiya cart
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026385,BR - South Surra,br south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028212,BR - South Surra,br south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028798,BR - South Surra,br south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028861,BR - South Surra,br south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030064,BR - South Surra,br south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030089,BR - South Surra,br south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026875,BR - Sulaibikhat,br sulaibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029123,BR - Sulaibikhat,br sulaibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030070,BR - Sulaibikhat,br sulaibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030156,BR - Sulaibikhat,br sulaibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029099,BR - The Walk,br the walk
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029656,BR - The Walk,br the walk
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030114,BR - The Walk,br the walk
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030159,BR - The Walk,br the walk
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030263,BR - The Walk,br the walk
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11002452,Chicken Tikka - Mishrif Coop Relo,chicken tikka mishrif coop relo
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11004706,Chicken Tikka - Mishrif Coop Relo,chicken tikka mishrif coop relo
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11015113,Chicken Tikka - Mishrif Coop Relo,chicken tikka mishrif coop relo
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11019666,Chicken Tikka - Mishrif Coop Relo,chicken tikka mishrif coop relo
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024754,Chicken Tikka - Mishrif Coop Relo,chicken tikka mishrif coop relo
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026499,Chicken Tikka - Mishrif Coop Relo,chicken tikka mishrif coop relo
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026539,Chicken Tikka - Mishrif Coop Relo,chicken tikka mishrif coop relo
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026954,Chicken Tikka - Mishrif Coop Relo,chicken tikka mishrif coop relo
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027671,Chicken Tikka - Mishrif Coop Relo,chicken tikka mishrif coop relo
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028601,Chicken Tikka - Mishrif Coop Relo,chicken tikka mishrif coop relo
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029536,Chicken Tikka - Mishrif Coop Relo,chicken tikka mishrif coop relo
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030083,Chicken Tikka - Mishrif Coop Relo,chicken tikka mishrif coop relo
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029392,Commissary - Krispy Kreme - Kuwait,commissary krispy kreme kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030229,Commissary - Wimpy - Kuwait,commissary wimpy kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11007278,Fish Market - Towers 2,fish market towers 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11015297,Fish Market - Towers 2,fish market towers 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11015925,Fish Market - Towers 2,fish market towers 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11016008,Fish Market - Towers 2,fish market towers 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11016566,Fish Market - Towers 2,fish market towers 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11021465,Fish Market - Towers 2,fish market towers 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11023992,Fish Market - Towers 2,fish market towers 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024223,Fish Market - Towers 2,fish market towers 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11025000,Fish Market - Towers 2,fish market towers 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11025047,Fish Market - Towers 2,fish market towers 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026149,Fish Market - Towers 2,fish market towers 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026337,Fish Market - Towers 2,fish market towers 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026425,Fish Market - Towers 2,fish market towers 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026690,Fish Market - Towers 2,fish market towers 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026739,Fish Market - Towers 2,fish market towers 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027069,Fish Market - Towers 2,fish market towers 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027688,Fish Market - Towers 2,fish market towers 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028506,Fish Market - Towers 2,fish market towers 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028513,Fish Market - Towers 2,fish market towers 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029097,Fish Market - Towers 2,fish market towers 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029121,Fish Market - Towers 2,fish market towers 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029122,Fish Market - Towers 2,fish market towers 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029129,Fish Market - Towers 2,fish market towers 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029424,Fish Market - Towers 2,fish market towers 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029441,Fish Market - Towers 2,fish market towers 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029442,Fish Market - Towers 2,fish market towers 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030233,Fish Market - Towers 2,fish market towers 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030250,Fish Market - Towers 2,fish market towers 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11016558,Hardees - Airport,hardees airport
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026117,Hardees - Airport,hardees airport
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027075,Hardees - Airport,hardees airport
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027108,Hardees - Airport,hardees airport
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027273,Hardees - Airport,hardees airport
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027568,Hardees - Airport,hardees airport
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027783,Hardees - Airport,hardees airport
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028876,Hardees - Airport,hardees airport
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028918,Hardees - Airport,hardees airport
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029762,Hardees - Airport,hardees airport
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11003469,Hardees - Al Daiyia 2,hardees al daiyia 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11009266,Hardees - Al Daiyia 2,hardees al daiyia 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026270,Hardees - Al Daiyia 2,hardees al daiyia 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027170,Hardees - Al Daiyia 2,hardees al daiyia 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027203,Hardees - Al Daiyia 2,hardees al daiyia 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028176,Hardees - Al Daiyia 2,hardees al daiyia 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028801,Hardees - Al Daiyia 2,hardees al daiyia 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029001,Hardees - Al Daiyia 2,hardees al daiyia 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029124,Hardees - Al Daiyia 2,hardees al daiyia 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029218,Hardees - Al Daiyia 2,hardees al daiyia 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029596,Hardees - Al Daiyia 2,hardees al daiyia 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029747,Hardees - Al Daiyia 2,hardees al daiyia 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029885,Hardees - Al Daiyia 2,hardees al daiyia 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11017880,Hardees - Al Dajeej,hardees al dajeej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11020198,Hardees - Al Dajeej,hardees al dajeej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11025645,Hardees - Al Dajeej,hardees al dajeej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026394,Hardees - Al Dajeej,hardees al dajeej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027186,Hardees - Al Dajeej,hardees al dajeej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027811,Hardees - Al Dajeej,hardees al dajeej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028406,Hardees - Al Dajeej,hardees al dajeej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029038,Hardees - Al Dajeej,hardees al dajeej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029341,Hardees - Al Dajeej,hardees al dajeej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029558,Hardees - Al Dajeej,hardees al dajeej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029624,Hardees - Al Dajeej,hardees al dajeej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029866,Hardees - Al Dajeej,hardees al dajeej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029868,Hardees - Al Dajeej,hardees al dajeej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030000,Hardees - Al Dajeej,hardees al dajeej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030165,Hardees - Al Dajeej,hardees al dajeej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030306,Hardees - Al Dajeej,hardees al dajeej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11004805,Hardees - Al Fardoos,hardees al fardoos
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11015342,Hardees - Al Fardoos,hardees al fardoos
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11016119,Hardees - Al Fardoos,hardees al fardoos
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11025512,Hardees - Al Fardoos,hardees al fardoos
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11025620,Hardees - Al Fardoos,hardees al fardoos
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026768,Hardees - Al Fardoos,hardees al fardoos
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027025,Hardees - Al Fardoos,hardees al fardoos
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027129,Hardees - Al Fardoos,hardees al fardoos
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027406,Hardees - Al Fardoos,hardees al fardoos
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027610,Hardees - Al Fardoos,hardees al fardoos
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027816,Hardees - Al Fardoos,hardees al fardoos
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028502,Hardees - Al Fardoos,hardees al fardoos
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029327,Hardees - Al Fardoos,hardees al fardoos
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029599,Hardees - Al Fardoos,hardees al fardoos
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029622,Hardees - Al Fardoos,hardees al fardoos
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029865,Hardees - Al Fardoos,hardees al fardoos
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029895,Hardees - Al Fardoos,hardees al fardoos
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030004,Hardees - Al Fardoos,hardees al fardoos
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026629,Hardees - Al Farwaniya,hardees al farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027395,Hardees - Al Farwaniya,hardees al farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027433,Hardees - Al Farwaniya,hardees al farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027729,Hardees - Al Farwaniya,hardees al farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028337,Hardees - Al Farwaniya,hardees al farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029078,Hardees - Al Farwaniya,hardees al farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029288,Hardees - Al Farwaniya,hardees al farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029332,Hardees - Al Farwaniya,hardees al farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029570,Hardees - Al Farwaniya,hardees al farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029779,Hardees - Al Farwaniya,hardees al farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029997,Hardees - Al Farwaniya,hardees al farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030150,Hardees - Al Farwaniya,hardees al farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11003312,Hardees - Al Jabriya,hardees al jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11006093,Hardees - Al Jabriya,hardees al jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11016534,Hardees - Al Jabriya,hardees al jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11017697,Hardees - Al Jabriya,hardees al jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026806,Hardees - Al Jabriya,hardees al jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027153,Hardees - Al Jabriya,hardees al jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027238,Hardees - Al Jabriya,hardees al jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027609,Hardees - Al Jabriya,hardees al jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028303,Hardees - Al Jabriya,hardees al jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028505,Hardees - Al Jabriya,hardees al jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028534,Hardees - Al Jabriya,hardees al jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028750,Hardees - Al Jabriya,hardees al jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028838,Hardees - Al Jabriya,hardees al jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029358,Hardees - Al Jabriya,hardees al jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029888,Hardees - Al Jabriya,hardees al jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11004719,Hardees - Al Jahra,hardees al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11019922,Hardees - Al Jahra,hardees al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027091,Hardees - Al Jahra,hardees al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027228,Hardees - Al Jahra,hardees al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027243,Hardees - Al Jahra,hardees al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027520,Hardees - Al Jahra,hardees al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027599,Hardees - Al Jahra,hardees al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028374,Hardees - Al Jahra,hardees al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028375,Hardees - Al Jahra,hardees al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028461,Hardees - Al Jahra,hardees al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028586,Hardees - Al Jahra,hardees al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028998,Hardees - Al Jahra,hardees al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029172,Hardees - Al Jahra,hardees al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029192,Hardees - Al Jahra,hardees al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029361,Hardees - Al Jahra,hardees al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029605,Hardees - Al Jahra,hardees al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029859,Hardees - Al Jahra,hardees al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029975,Hardees - Al Jahra,hardees al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030142,Hardees - Al Jahra,hardees al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11017580,Hardees - Al Jahra - Mubarek Mall,hardees al jahra mubarek mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11022400,Hardees - Al Jahra - Mubarek Mall,hardees al jahra mubarek mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11025566,Hardees - Al Jahra - Mubarek Mall,hardees al jahra mubarek mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11025808,Hardees - Al Jahra - Mubarek Mall,hardees al jahra mubarek mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026528,Hardees - Al Jahra - Mubarek Mall,hardees al jahra mubarek mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026908,Hardees - Al Jahra - Mubarek Mall,hardees al jahra mubarek mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027739,Hardees - Al Jahra - Mubarek Mall,hardees al jahra mubarek mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028643,Hardees - Al Jahra - Mubarek Mall,hardees al jahra mubarek mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028910,Hardees - Al Jahra - Mubarek Mall,hardees al jahra mubarek mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029142,Hardees - Al Jahra - Mubarek Mall,hardees al jahra mubarek mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029821,Hardees - Al Jahra - Mubarek Mall,hardees al jahra mubarek mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030020,Hardees - Al Jahra - Mubarek Mall,hardees al jahra mubarek mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030126,Hardees - Al Jahra - Mubarek Mall,hardees al jahra mubarek mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11004806,Hardees - Al Khaldiya,hardees al khaldiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11025178,Hardees - Al Khaldiya,hardees al khaldiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026530,Hardees - Al Khaldiya,hardees al khaldiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027710,Hardees - Al Khaldiya,hardees al khaldiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027795,Hardees - Al Khaldiya,hardees al khaldiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028179,Hardees - Al Khaldiya,hardees al khaldiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028376,Hardees - Al Khaldiya,hardees al khaldiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028789,Hardees - Al Khaldiya,hardees al khaldiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028897,Hardees - Al Khaldiya,hardees al khaldiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029128,Hardees - Al Khaldiya,hardees al khaldiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029316,Hardees - Al Khaldiya,hardees al khaldiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029767,Hardees - Al Khaldiya,hardees al khaldiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029883,Hardees - Al Khaldiya,hardees al khaldiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029894,Hardees - Al Khaldiya,hardees al khaldiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11016915,Hardees - Al Rabiya,hardees al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11021302,Hardees - Al Rabiya,hardees al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026597,Hardees - Al Rabiya,hardees al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026994,Hardees - Al Rabiya,hardees al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027338,Hardees - Al Rabiya,hardees al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027807,Hardees - Al Rabiya,hardees al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028304,Hardees - Al Rabiya,hardees al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028407,Hardees - Al Rabiya,hardees al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028410,Hardees - Al Rabiya,hardees al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028804,Hardees - Al Rabiya,hardees al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029335,Hardees - Al Rabiya,hardees al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029518,Hardees - Al Rabiya,hardees al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029776,Hardees - Al Rabiya,hardees al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029978,Hardees - Al Rabiya,hardees al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030145,Hardees - Al Rabiya,hardees al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030207,Hardees - Al Rabiya,hardees al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026952,Hardees - Al Showaikh,hardees al showaikh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027189,Hardees - Al Showaikh,hardees al showaikh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027398,Hardees - Al Showaikh,hardees al showaikh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027411,Hardees - Al Showaikh,hardees al showaikh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027708,Hardees - Al Showaikh,hardees al showaikh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028180,Hardees - Al Showaikh,hardees al showaikh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028381,Hardees - Al Showaikh,hardees al showaikh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028551,Hardees - Al Showaikh,hardees al showaikh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028802,Hardees - Al Showaikh,hardees al showaikh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029357,Hardees - Al Showaikh,hardees al showaikh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029787,Hardees - Al Showaikh,hardees al showaikh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11003056,Hardees - Al Shuhada,hardees al shuhada
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11018502,Hardees - Al Shuhada,hardees al shuhada
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027040,Hardees - Al Shuhada,hardees al shuhada
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027158,Hardees - Al Shuhada,hardees al shuhada
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027266,Hardees - Al Shuhada,hardees al shuhada
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028868,Hardees - Al Shuhada,hardees al shuhada
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028969,Hardees - Al Shuhada,hardees al shuhada
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029355,Hardees - Al Shuhada,hardees al shuhada
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029432,Hardees - Al Shuhada,hardees al shuhada
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029896,Hardees - Al Shuhada,hardees al shuhada
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029937,Hardees - Al Shuhada,hardees al shuhada
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11003058,Hardees - Albedaa,hardees albedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11015416,Hardees - Albedaa,hardees albedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11017374,Hardees - Albedaa,hardees albedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11025163,Hardees - Albedaa,hardees albedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026627,Hardees - Albedaa,hardees albedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026764,Hardees - Albedaa,hardees albedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027002,Hardees - Albedaa,hardees albedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027439,Hardees - Albedaa,hardees albedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027571,Hardees - Albedaa,hardees albedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027800,Hardees - Albedaa,hardees albedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028006,Hardees - Albedaa,hardees albedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028462,Hardees - Albedaa,hardees albedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028515,Hardees - Albedaa,hardees albedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028516,Hardees - Albedaa,hardees albedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028630,Hardees - Albedaa,hardees albedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029009,Hardees - Albedaa,hardees albedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029749,Hardees - Albedaa,hardees albedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029788,Hardees - Albedaa,hardees albedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029816,Hardees - Albedaa,hardees albedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030080,Hardees - Albedaa,hardees albedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030197,Hardees - Albedaa,hardees albedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026790,Hardees - Alshamiya,hardees alshamiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026910,Hardees - Alshamiya,hardees alshamiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027289,Hardees - Alshamiya,hardees alshamiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027647,Hardees - Alshamiya,hardees alshamiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027929,Hardees - Alshamiya,hardees alshamiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028517,Hardees - Alshamiya,hardees alshamiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029187,Hardees - Alshamiya,hardees alshamiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029836,Hardees - Alshamiya,hardees alshamiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029942,Hardees - Alshamiya,hardees alshamiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029992,Hardees - Alshamiya,hardees alshamiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11016660,Hardees - Amghara,hardees amghara
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026030,Hardees - Amghara,hardees amghara
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027084,Hardees - Amghara,hardees amghara
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027410,Hardees - Amghara,hardees amghara
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027569,Hardees - Amghara,hardees amghara
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027632,Hardees - Amghara,hardees amghara
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027673,Hardees - Amghara,hardees amghara
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028373,Hardees - Amghara,hardees amghara
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028475,Hardees - Amghara,hardees amghara
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029230,Hardees - Amghara,hardees amghara
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029362,Hardees - Amghara,hardees amghara
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029556,Hardees - Amghara,hardees amghara
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11015140,Hardees - Ardiya,hardees ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11022562,Hardees - Ardiya,hardees ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024042,Hardees - Ardiya,hardees ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11025885,Hardees - Ardiya,hardees ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026225,Hardees - Ardiya,hardees ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027210,Hardees - Ardiya,hardees ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027265,Hardees - Ardiya,hardees ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027550,Hardees - Ardiya,hardees ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027604,Hardees - Ardiya,hardees ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027675,Hardees - Ardiya,hardees ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028012,Hardees - Ardiya,hardees ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028368,Hardees - Ardiya,hardees ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028372,Hardees - Ardiya,hardees ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028624,Hardees - Ardiya,hardees ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029180,Hardees - Ardiya,hardees ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029614,Hardees - Ardiya,hardees ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029725,Hardees - Ardiya,hardees ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029862,Hardees - Ardiya,hardees ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11017290,Hardees - Audiliya,hardees audiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11017995,Hardees - Audiliya,hardees audiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11018318,Hardees - Audiliya,hardees audiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11025922,Hardees - Audiliya,hardees audiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027272,Hardees - Audiliya,hardees audiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027612,Hardees - Audiliya,hardees audiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027649,Hardees - Audiliya,hardees audiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028003,Hardees - Audiliya,hardees audiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028062,Hardees - Audiliya,hardees audiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028127,Hardees - Audiliya,hardees audiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028384,Hardees - Audiliya,hardees audiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028902,Hardees - Audiliya,hardees audiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029554,Hardees - Audiliya,hardees audiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029685,Hardees - Audiliya,hardees audiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029832,Hardees - Audiliya,hardees audiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030044,Hardees - Audiliya,hardees audiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026614,Hardees - Avenue Mall,hardees avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027369,Hardees - Avenue Mall,hardees avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027777,Hardees - Avenue Mall,hardees avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028901,Hardees - Avenue Mall,hardees avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029190,Hardees - Avenue Mall,hardees avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029210,Hardees - Avenue Mall,hardees avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029628,Hardees - Avenue Mall,hardees avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11003291,Hardees - Boulevard Mall,hardees boulevard mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026619,Hardees - Boulevard Mall,hardees boulevard mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027380,Hardees - Boulevard Mall,hardees boulevard mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028514,Hardees - Boulevard Mall,hardees boulevard mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029789,Hardees - Boulevard Mall,hardees boulevard mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11019803,Hardees - El Mansoriya,hardees el mansoriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027078,Hardees - El Mansoriya,hardees el mansoriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028418,Hardees - El Mansoriya,hardees el mansoriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029198,Hardees - El Mansoriya,hardees el mansoriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029326,Hardees - El Mansoriya,hardees el mansoriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029529,Hardees - El Mansoriya,hardees el mansoriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029545,Hardees - El Mansoriya,hardees el mansoriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029555,Hardees - El Mansoriya,hardees el mansoriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029686,Hardees - El Mansoriya,hardees el mansoriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029857,Hardees - El Mansoriya,hardees el mansoriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11021024,Hardees - El Nahda,hardees el nahda
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11025334,Hardees - El Nahda,hardees el nahda
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026015,Hardees - El Nahda,hardees el nahda
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026219,Hardees - El Nahda,hardees el nahda
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026513,Hardees - El Nahda,hardees el nahda
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027304,Hardees - El Nahda,hardees el nahda
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027320,Hardees - El Nahda,hardees el nahda
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027765,Hardees - El Nahda,hardees el nahda
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028608,Hardees - El Nahda,hardees el nahda
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029004,Hardees - El Nahda,hardees el nahda
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029193,Hardees - El Nahda,hardees el nahda
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029517,Hardees - El Nahda,hardees el nahda
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029590,Hardees - El Nahda,hardees el nahda
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029687,Hardees - El Nahda,hardees el nahda
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030019,Hardees - El Nahda,hardees el nahda
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11006577,Hardees - Gaber El Ahmed,hardees gaber el ahmed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026365,Hardees - Gaber El Ahmed,hardees gaber el ahmed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026420,Hardees - Gaber El Ahmed,hardees gaber el ahmed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026716,Hardees - Gaber El Ahmed,hardees gaber el ahmed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027239,Hardees - Gaber El Ahmed,hardees gaber el ahmed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027358,Hardees - Gaber El Ahmed,hardees gaber el ahmed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027393,Hardees - Gaber El Ahmed,hardees gaber el ahmed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027507,Hardees - Gaber El Ahmed,hardees gaber el ahmed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027805,Hardees - Gaber El Ahmed,hardees gaber el ahmed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027854,Hardees - Gaber El Ahmed,hardees gaber el ahmed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028413,Hardees - Gaber El Ahmed,hardees gaber el ahmed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028519,Hardees - Gaber El Ahmed,hardees gaber el ahmed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028628,Hardees - Gaber El Ahmed,hardees gaber el ahmed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028878,Hardees - Gaber El Ahmed,hardees gaber el ahmed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028945,Hardees - Gaber El Ahmed,hardees gaber el ahmed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029028,Hardees - Gaber El Ahmed,hardees gaber el ahmed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029709,Hardees - Gaber El Ahmed,hardees gaber el ahmed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029827,Hardees - Gaber El Ahmed,hardees gaber el ahmed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030048,Hardees - Gaber El Ahmed,hardees gaber el ahmed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11007791,Hardees - Hawaly,hardees hawaly
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11022384,Hardees - Hawaly,hardees hawaly
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11025709,Hardees - Hawaly,hardees hawaly
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027270,Hardees - Hawaly,hardees hawaly
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027608,Hardees - Hawaly,hardees hawaly
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027639,Hardees - Hawaly,hardees hawaly
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028191,Hardees - Hawaly,hardees hawaly
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028369,Hardees - Hawaly,hardees hawaly
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028490,Hardees - Hawaly,hardees hawaly
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029356,Hardees - Hawaly,hardees hawaly
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029609,Hardees - Hawaly,hardees hawaly
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030003,Hardees - Hawaly,hardees hawaly
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030217,Hardees - Hawaly,hardees hawaly
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11015222,Hardees - Industrial Al Gahra,hardees industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024211,Hardees - Industrial Al Gahra,hardees industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026200,Hardees - Industrial Al Gahra,hardees industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026299,Hardees - Industrial Al Gahra,hardees industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026793,Hardees - Industrial Al Gahra,hardees industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027408,Hardees - Industrial Al Gahra,hardees industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028377,Hardees - Industrial Al Gahra,hardees industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029000,Hardees - Industrial Al Gahra,hardees industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029143,Hardees - Industrial Al Gahra,hardees industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029348,Hardees - Industrial Al Gahra,hardees industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029366,Hardees - Industrial Al Gahra,hardees industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029379,Hardees - Industrial Al Gahra,hardees industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029589,Hardees - Industrial Al Gahra,hardees industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029677,Hardees - Industrial Al Gahra,hardees industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029682,Hardees - Industrial Al Gahra,hardees industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030168,Hardees - Industrial Al Gahra,hardees industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030189,Hardees - Industrial Al Gahra,hardees industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11004377,Hardees - Jahra 3,hardees jahra 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026607,Hardees - Jahra 3,hardees jahra 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026977,Hardees - Jahra 3,hardees jahra 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027489,Hardees - Jahra 3,hardees jahra 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028539,Hardees - Jahra 3,hardees jahra 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028785,Hardees - Jahra 3,hardees jahra 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029003,Hardees - Jahra 3,hardees jahra 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029339,Hardees - Jahra 3,hardees jahra 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029710,Hardees - Jahra 3,hardees jahra 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029728,Hardees - Jahra 3,hardees jahra 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029777,Hardees - Jahra 3,hardees jahra 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029930,Hardees - Jahra 3,hardees jahra 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030206,Hardees - Jahra 3,hardees jahra 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11004527,Hardees - Kabad,hardees kabad
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11015129,Hardees - Kabad,hardees kabad
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026596,Hardees - Kabad,hardees kabad
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026965,Hardees - Kabad,hardees kabad
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027386,Hardees - Kabad,hardees kabad
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027388,Hardees - Kabad,hardees kabad
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027475,Hardees - Kabad,hardees kabad
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027492,Hardees - Kabad,hardees kabad
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028125,Hardees - Kabad,hardees kabad
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028192,Hardees - Kabad,hardees kabad
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028367,Hardees - Kabad,hardees kabad
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028386,Hardees - Kabad,hardees kabad
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028503,Hardees - Kabad,hardees kabad
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028547,Hardees - Kabad,hardees kabad
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028582,Hardees - Kabad,hardees kabad
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028619,Hardees - Kabad,hardees kabad
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028807,Hardees - Kabad,hardees kabad
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028915,Hardees - Kabad,hardees kabad
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029059,Hardees - Kabad,hardees kabad
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029138,Hardees - Kabad,hardees kabad
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029499,Hardees - Kabad,hardees kabad
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029848,Hardees - Kabad,hardees kabad
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029955,Hardees - Kabad,hardees kabad
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029967,Hardees - Kabad,hardees kabad
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030143,Hardees - Kabad,hardees kabad
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11019662,Hardees - Khitan,hardees khitan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026352,Hardees - Khitan,hardees khitan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026725,Hardees - Khitan,hardees khitan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027352,Hardees - Khitan,hardees khitan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028065,Hardees - Khitan,hardees khitan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028493,Hardees - Khitan,hardees khitan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028941,Hardees - Khitan,hardees khitan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029764,Hardees - Khitan,hardees khitan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030221,Hardees - Khitan,hardees khitan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026617,Hardees - Marina,hardees marina
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027268,Hardees - Marina,hardees marina
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028371,Hardees - Marina,hardees marina
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028790,Hardees - Marina,hardees marina
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029240,Hardees - Marina,hardees marina
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029665,Hardees - Marina,hardees marina
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029717,Hardees - Marina,hardees marina
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029748,Hardees - Marina,hardees marina
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029786,Hardees - Marina,hardees marina
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024598,Hardees - Moi Coop Al Zahra,hardees moi coop al zahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024680,Hardees - Moi Coop Al Zahra,hardees moi coop al zahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027152,Hardees - Moi Coop Al Zahra,hardees moi coop al zahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027295,Hardees - Moi Coop Al Zahra,hardees moi coop al zahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029718,Hardees - Moi Coop Al Zahra,hardees moi coop al zahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029835,Hardees - Moi Coop Al Zahra,hardees moi coop al zahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030031,Hardees - Moi Coop Al Zahra,hardees moi coop al zahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030196,Hardees - Moi Coop Al Zahra,hardees moi coop al zahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030198,Hardees - Moi Coop Al Zahra,hardees moi coop al zahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030212,Hardees - Moi Coop Al Zahra,hardees moi coop al zahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11015793,Hardees - Mughira,hardees mughira
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026224,Hardees - Mughira,hardees mughira
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027267,Hardees - Mughira,hardees mughira
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027548,Hardees - Mughira,hardees mughira
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028494,Hardees - Mughira,hardees mughira
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028570,Hardees - Mughira,hardees mughira
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028646,Hardees - Mughira,hardees mughira
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028872,Hardees - Mughira,hardees mughira
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029300,Hardees - Mughira,hardees mughira
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029772,Hardees - Mughira,hardees mughira
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029817,Hardees - Mughira,hardees mughira
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11003270,Hardees - New Mishref,hardees new mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11007567,Hardees - New Mishref,hardees new mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11021806,Hardees - New Mishref,hardees new mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026621,Hardees - New Mishref,hardees new mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027043,Hardees - New Mishref,hardees new mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027458,Hardees - New Mishref,hardees new mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027468,Hardees - New Mishref,hardees new mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027549,Hardees - New Mishref,hardees new mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028518,Hardees - New Mishref,hardees new mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028564,Hardees - New Mishref,hardees new mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028569,Hardees - New Mishref,hardees new mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028871,Hardees - New Mishref,hardees new mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029016,Hardees - New Mishref,hardees new mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029342,Hardees - New Mishref,hardees new mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029870,Hardees - New Mishref,hardees new mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029985,Hardees - New Mishref,hardees new mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030058,Hardees - New Mishref,hardees new mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026364,Hardees - Rigai Courthouse,hardees rigai courthouse
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026883,Hardees - Rigai Courthouse,hardees rigai courthouse
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027006,Hardees - Rigai Courthouse,hardees rigai courthouse
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029027,Hardees - Rigai Courthouse,hardees rigai courthouse
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029336,Hardees - Rigai Courthouse,hardees rigai courthouse
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029343,Hardees - Rigai Courthouse,hardees rigai courthouse
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029508,Hardees - Rigai Courthouse,hardees rigai courthouse
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029727,Hardees - Rigai Courthouse,hardees rigai courthouse
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029911,Hardees - Rigai Courthouse,hardees rigai courthouse
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11005048,Hardees - S Al Naser,hardees s al naser
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11015291,Hardees - S Al Naser,hardees s al naser
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026854,Hardees - S Al Naser,hardees s al naser
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027082,Hardees - S Al Naser,hardees s al naser
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027231,Hardees - S Al Naser,hardees s al naser
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027603,Hardees - S Al Naser,hardees s al naser
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027665,Hardees - S Al Naser,hardees s al naser
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028027,Hardees - S Al Naser,hardees s al naser
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028642,Hardees - S Al Naser,hardees s al naser
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029005,Hardees - S Al Naser,hardees s al naser
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029060,Hardees - S Al Naser,hardees s al naser
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029197,Hardees - S Al Naser,hardees s al naser
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029199,Hardees - S Al Naser,hardees s al naser
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029303,Hardees - S Al Naser,hardees s al naser
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029575,Hardees - S Al Naser,hardees s al naser
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029610,Hardees - S Al Naser,hardees s al naser
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029612,Hardees - S Al Naser,hardees s al naser
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029771,Hardees - S Al Naser,hardees s al naser
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029882,Hardees - S Al Naser,hardees s al naser
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030236,Hardees - S Al Naser,hardees s al naser
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11001384,Hardees - Sahab Mall,hardees sahab mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11016517,Hardees - Sahab Mall,hardees sahab mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024715,Hardees - Sahab Mall,hardees sahab mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026618,Hardees - Sahab Mall,hardees sahab mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026788,Hardees - Sahab Mall,hardees sahab mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026933,Hardees - Sahab Mall,hardees sahab mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028118,Hardees - Sahab Mall,hardees sahab mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028380,Hardees - Sahab Mall,hardees sahab mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028603,Hardees - Sahab Mall,hardees sahab mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030002,Hardees - Sahab Mall,hardees sahab mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030204,Hardees - Sahab Mall,hardees sahab mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030213,Hardees - Sahab Mall,hardees sahab mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026421,Hardees - Salayel El Jahra,hardees salayel el jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026694,Hardees - Salayel El Jahra,hardees salayel el jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027394,Hardees - Salayel El Jahra,hardees salayel el jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029322,Hardees - Salayel El Jahra,hardees salayel el jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029367,Hardees - Salayel El Jahra,hardees salayel el jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030166,Hardees - Salayel El Jahra,hardees salayel el jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024536,Hardees - Salibyia,hardees salibyia
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027236,Hardees - Salibyia,hardees salibyia
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027264,Hardees - Salibyia,hardees salibyia
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027719,Hardees - Salibyia,hardees salibyia
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028227,Hardees - Salibyia,hardees salibyia
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028472,Hardees - Salibyia,hardees salibyia
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028549,Hardees - Salibyia,hardees salibyia
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028600,Hardees - Salibyia,hardees salibyia
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028629,Hardees - Salibyia,hardees salibyia
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028923,Hardees - Salibyia,hardees salibyia
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029176,Hardees - Salibyia,hardees salibyia
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11005503,Hardees - Salwa Block 5,hardees salwa block 5
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11016299,Hardees - Salwa Block 5,hardees salwa block 5
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026628,Hardees - Salwa Block 5,hardees salwa block 5
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027389,Hardees - Salwa Block 5,hardees salwa block 5
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027425,Hardees - Salwa Block 5,hardees salwa block 5
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028126,Hardees - Salwa Block 5,hardees salwa block 5
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028336,Hardees - Salwa Block 5,hardees salwa block 5
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028550,Hardees - Salwa Block 5,hardees salwa block 5
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028881,Hardees - Salwa Block 5,hardees salwa block 5
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028929,Hardees - Salwa Block 5,hardees salwa block 5
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029139,Hardees - Salwa Block 5,hardees salwa block 5
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029714,Hardees - Salwa Block 5,hardees salwa block 5
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029785,Hardees - Salwa Block 5,hardees salwa block 5
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11025918,Hardees - Seaside Food Hub,hardees seaside food hub
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026223,Hardees - Seaside Food Hub,hardees seaside food hub
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028383,Hardees - Seaside Food Hub,hardees seaside food hub
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029892,Hardees - Seaside Food Hub,hardees seaside food hub
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11003646,Hardees - South Surra,hardees south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11004538,Hardees - South Surra,hardees south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11017729,Hardees - South Surra,hardees south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026351,Hardees - South Surra,hardees south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026765,Hardees - South Surra,hardees south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027161,Hardees - South Surra,hardees south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027611,Hardees - South Surra,hardees south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028379,Hardees - South Surra,hardees south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028387,Hardees - South Surra,hardees south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028776,Hardees - South Surra,hardees south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028778,Hardees - South Surra,hardees south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028797,Hardees - South Surra,hardees south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028948,Hardees - South Surra,hardees south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029932,Hardees - South Surra,hardees south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030176,Hardees - South Surra,hardees south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11004839,Hardees - Sulaibikhat,hardees sulaibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11022792,Hardees - Sulaibikhat,hardees sulaibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026824,Hardees - Sulaibikhat,hardees sulaibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027443,Hardees - Sulaibikhat,hardees sulaibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027646,Hardees - Sulaibikhat,hardees sulaibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028249,Hardees - Sulaibikhat,hardees sulaibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028309,Hardees - Sulaibikhat,hardees sulaibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028385,Hardees - Sulaibikhat,hardees sulaibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028787,Hardees - Sulaibikhat,hardees sulaibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028938,Hardees - Sulaibikhat,hardees sulaibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029179,Hardees - Sulaibikhat,hardees sulaibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029297,Hardees - Sulaibikhat,hardees sulaibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029683,Hardees - Sulaibikhat,hardees sulaibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029684,Hardees - Sulaibikhat,hardees sulaibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029983,Hardees - Sulaibikhat,hardees sulaibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030034,Hardees - Sulaibikhat,hardees sulaibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030036,Hardees - Sulaibikhat,hardees sulaibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11017243,Hardees - Tadamon Club,hardees tadamon club
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024767,Hardees - Tadamon Club,hardees tadamon club
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027824,Hardees - Tadamon Club,hardees tadamon club
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028124,Hardees - Tadamon Club,hardees tadamon club
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029726,Hardees - Tadamon Club,hardees tadamon club
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029739,Hardees - Tadamon Club,hardees tadamon club
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029931,Hardees - Tadamon Club,hardees tadamon club
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030169,Hardees - Tadamon Club,hardees tadamon club
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030170,Hardees - Tadamon Club,hardees tadamon club
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11023683,KFC - Airport - Kuwait,kfc airport kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026641,KFC - Airport - Kuwait,kfc airport kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026711,KFC - Airport - Kuwait,kfc airport kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026951,KFC - Airport - Kuwait,kfc airport kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027249,KFC - Airport - Kuwait,kfc airport kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027509,KFC - Airport - Kuwait,kfc airport kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028678,KFC - Airport - Kuwait,kfc airport kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029102,KFC - Airport - Kuwait,kfc airport kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029243,KFC - Airport - Kuwait,kfc airport kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029278,KFC - Airport - Kuwait,kfc airport kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029576,KFC - Airport - Kuwait,kfc airport kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029822,KFC - Airport - Kuwait,kfc airport kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030007,KFC - Airport - Kuwait,kfc airport kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11003292,KFC - Al Daiya New,kfc al daiya new
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026526,KFC - Al Daiya New,kfc al daiya new
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026715,KFC - Al Daiya New,kfc al daiya new
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026809,KFC - Al Daiya New,kfc al daiya new
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026941,KFC - Al Daiya New,kfc al daiya new
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027257,KFC - Al Daiya New,kfc al daiya new
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027453,KFC - Al Daiya New,kfc al daiya new
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027754,KFC - Al Daiya New,kfc al daiya new
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028093,KFC - Al Daiya New,kfc al daiya new
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028154,KFC - Al Daiya New,kfc al daiya new
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028720,KFC - Al Daiya New,kfc al daiya new
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028833,KFC - Al Daiya New,kfc al daiya new
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029616,KFC - Al Daiya New,kfc al daiya new
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029741,KFC - Al Daiya New,kfc al daiya new
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029861,KFC - Al Daiya New,kfc al daiya new
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029945,KFC - Al Daiya New,kfc al daiya new
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030010,KFC - Al Daiya New,kfc al daiya new
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030267,KFC - Al Daiya New,kfc al daiya new
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11007928,KFC - Al Fardous,kfc al fardous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11018687,KFC - Al Fardous,kfc al fardous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11023280,KFC - Al Fardous,kfc al fardous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026813,KFC - Al Fardous,kfc al fardous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027037,KFC - Al Fardous,kfc al fardous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027318,KFC - Al Fardous,kfc al fardous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028188,KFC - Al Fardous,kfc al fardous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028194,KFC - Al Fardous,kfc al fardous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028751,KFC - Al Fardous,kfc al fardous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028762,KFC - Al Fardous,kfc al fardous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028994,KFC - Al Fardous,kfc al fardous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029301,KFC - Al Fardous,kfc al fardous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029427,KFC - Al Fardous,kfc al fardous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029430,KFC - Al Fardous,kfc al fardous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029549,KFC - Al Fardous,kfc al fardous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029550,KFC - Al Fardous,kfc al fardous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029706,KFC - Al Fardous,kfc al fardous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030006,KFC - Al Fardous,kfc al fardous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030025,KFC - Al Fardous,kfc al fardous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024164,KFC - Al Jahra - Mubarek Mall,kfc al jahra mubarek mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026433,KFC - Al Jahra - Mubarek Mall,kfc al jahra mubarek mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027248,KFC - Al Jahra - Mubarek Mall,kfc al jahra mubarek mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027743,KFC - Al Jahra - Mubarek Mall,kfc al jahra mubarek mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027746,KFC - Al Jahra - Mubarek Mall,kfc al jahra mubarek mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028117,KFC - Al Jahra - Mubarek Mall,kfc al jahra mubarek mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028504,KFC - Al Jahra - Mubarek Mall,kfc al jahra mubarek mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028657,KFC - Al Jahra - Mubarek Mall,kfc al jahra mubarek mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028687,KFC - Al Jahra - Mubarek Mall,kfc al jahra mubarek mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028718,KFC - Al Jahra - Mubarek Mall,kfc al jahra mubarek mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029239,KFC - Al Jahra - Mubarek Mall,kfc al jahra mubarek mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029254,KFC - Al Jahra - Mubarek Mall,kfc al jahra mubarek mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029998,KFC - Al Jahra - Mubarek Mall,kfc al jahra mubarek mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11015490,KFC - Al Jahra 2,kfc al jahra 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024542,KFC - Al Jahra 2,kfc al jahra 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026818,KFC - Al Jahra 2,kfc al jahra 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026893,KFC - Al Jahra 2,kfc al jahra 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027297,KFC - Al Jahra 2,kfc al jahra 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027600,KFC - Al Jahra 2,kfc al jahra 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027615,KFC - Al Jahra 2,kfc al jahra 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027616,KFC - Al Jahra 2,kfc al jahra 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027751,KFC - Al Jahra 2,kfc al jahra 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027818,KFC - Al Jahra 2,kfc al jahra 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028114,KFC - Al Jahra 2,kfc al jahra 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028315,KFC - Al Jahra 2,kfc al jahra 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028439,KFC - Al Jahra 2,kfc al jahra 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028763,KFC - Al Jahra 2,kfc al jahra 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028982,KFC - Al Jahra 2,kfc al jahra 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029169,KFC - Al Jahra 2,kfc al jahra 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029204,KFC - Al Jahra 2,kfc al jahra 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029463,KFC - Al Jahra 2,kfc al jahra 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029565,KFC - Al Jahra 2,kfc al jahra 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029572,KFC - Al Jahra 2,kfc al jahra 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029735,KFC - Al Jahra 2,kfc al jahra 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029768,KFC - Al Jahra 2,kfc al jahra 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029791,KFC - Al Jahra 2,kfc al jahra 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029999,KFC - Al Jahra 2,kfc al jahra 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030201,KFC - Al Jahra 2,kfc al jahra 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030238,KFC - Al Jahra 2,kfc al jahra 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11021927,KFC - Al Jahra 3,kfc al jahra 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026234,KFC - Al Jahra 3,kfc al jahra 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026805,KFC - Al Jahra 3,kfc al jahra 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027309,KFC - Al Jahra 3,kfc al jahra 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028322,KFC - Al Jahra 3,kfc al jahra 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028398,KFC - Al Jahra 3,kfc al jahra 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028680,KFC - Al Jahra 3,kfc al jahra 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029149,KFC - Al Jahra 3,kfc al jahra 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029158,KFC - Al Jahra 3,kfc al jahra 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029207,KFC - Al Jahra 3,kfc al jahra 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029238,KFC - Al Jahra 3,kfc al jahra 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029263,KFC - Al Jahra 3,kfc al jahra 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029567,KFC - Al Jahra 3,kfc al jahra 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029568,KFC - Al Jahra 3,kfc al jahra 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030243,KFC - Al Jahra 3,kfc al jahra 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030245,KFC - Al Jahra 3,kfc al jahra 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030247,KFC - Al Jahra 3,kfc al jahra 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11004141,KFC - Al Rabiya,kfc al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11004887,KFC - Al Rabiya,kfc al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11007781,KFC - Al Rabiya,kfc al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11007839,KFC - Al Rabiya,kfc al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11017285,KFC - Al Rabiya,kfc al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11019664,KFC - Al Rabiya,kfc al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024283,KFC - Al Rabiya,kfc al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027416,KFC - Al Rabiya,kfc al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027636,KFC - Al Rabiya,kfc al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028453,KFC - Al Rabiya,kfc al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028648,KFC - Al Rabiya,kfc al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028717,KFC - Al Rabiya,kfc al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029242,KFC - Al Rabiya,kfc al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029258,KFC - Al Rabiya,kfc al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029283,KFC - Al Rabiya,kfc al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029284,KFC - Al Rabiya,kfc al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029317,KFC - Al Rabiya,kfc al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029462,KFC - Al Rabiya,kfc al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029578,KFC - Al Rabiya,kfc al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029842,KFC - Al Rabiya,kfc al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030043,KFC - Al Rabiya,kfc al rabiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11007640,KFC - Al Ragai,kfc al ragai
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024517,KFC - Al Ragai,kfc al ragai
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026744,KFC - Al Ragai,kfc al ragai
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026967,KFC - Al Ragai,kfc al ragai
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026976,KFC - Al Ragai,kfc al ragai
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027177,KFC - Al Ragai,kfc al ragai
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027179,KFC - Al Ragai,kfc al ragai
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027385,KFC - Al Ragai,kfc al ragai
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027642,KFC - Al Ragai,kfc al ragai
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028684,KFC - Al Ragai,kfc al ragai
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029542,KFC - Al Ragai,kfc al ragai
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029991,KFC - Al Ragai,kfc al ragai
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11016012,KFC - Al Salmiya Block 10,kfc al salmiya block 10
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026305,KFC - Al Salmiya Block 10,kfc al salmiya block 10
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027518,KFC - Al Salmiya Block 10,kfc al salmiya block 10
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027587,KFC - Al Salmiya Block 10,kfc al salmiya block 10
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028167,KFC - Al Salmiya Block 10,kfc al salmiya block 10
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028354,KFC - Al Salmiya Block 10,kfc al salmiya block 10
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028736,KFC - Al Salmiya Block 10,kfc al salmiya block 10
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029081,KFC - Al Salmiya Block 10,kfc al salmiya block 10
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029174,KFC - Al Salmiya Block 10,kfc al salmiya block 10
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029450,KFC - Al Salmiya Block 10,kfc al salmiya block 10
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029452,KFC - Al Salmiya Block 10,kfc al salmiya block 10
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029780,KFC - Al Salmiya Block 10,kfc al salmiya block 10
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029940,KFC - Al Salmiya Block 10,kfc al salmiya block 10
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026483,KFC - Al Shuhada,kfc al shuhada
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026531,KFC - Al Shuhada,kfc al shuhada
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026556,KFC - Al Shuhada,kfc al shuhada
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027012,KFC - Al Shuhada,kfc al shuhada
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027227,KFC - Al Shuhada,kfc al shuhada
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027259,KFC - Al Shuhada,kfc al shuhada
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028710,KFC - Al Shuhada,kfc al shuhada
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029873,KFC - Al Shuhada,kfc al shuhada
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029962,KFC - Al Shuhada,kfc al shuhada
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030230,KFC - Al Shuhada,kfc al shuhada
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11002889,KFC - Alrwda,kfc alrwda
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11023607,KFC - Alrwda,kfc alrwda
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11023914,KFC - Alrwda,kfc alrwda
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026485,KFC - Alrwda,kfc alrwda
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026844,KFC - Alrwda,kfc alrwda
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027260,KFC - Alrwda,kfc alrwda
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027422,KFC - Alrwda,kfc alrwda
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027478,KFC - Alrwda,kfc alrwda
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027498,KFC - Alrwda,kfc alrwda
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027914,KFC - Alrwda,kfc alrwda
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028272,KFC - Alrwda,kfc alrwda
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029900,KFC - Alrwda,kfc alrwda
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029906,KFC - Alrwda,kfc alrwda
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11017389,KFC - Alshaab,kfc alshaab
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11020501,KFC - Alshaab,kfc alshaab
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026310,KFC - Alshaab,kfc alshaab
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026487,KFC - Alshaab,kfc alshaab
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026655,KFC - Alshaab,kfc alshaab
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027222,KFC - Alshaab,kfc alshaab
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027472,KFC - Alshaab,kfc alshaab
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028726,KFC - Alshaab,kfc alshaab
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028812,KFC - Alshaab,kfc alshaab
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029055,KFC - Alshaab,kfc alshaab
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029280,KFC - Alshaab,kfc alshaab
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029674,KFC - Alshaab,kfc alshaab
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029829,KFC - Alshaab,kfc alshaab
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030022,KFC - Alshaab,kfc alshaab
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024310,KFC - Amman Street,kfc amman street
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026697,KFC - Amman Street,kfc amman street
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026817,KFC - Amman Street,kfc amman street
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026845,KFC - Amman Street,kfc amman street
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027118,KFC - Amman Street,kfc amman street
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028351,KFC - Amman Street,kfc amman street
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028593,KFC - Amman Street,kfc amman street
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028616,KFC - Amman Street,kfc amman street
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028631,KFC - Amman Street,kfc amman street
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029050,KFC - Amman Street,kfc amman street
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029256,KFC - Amman Street,kfc amman street
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029453,KFC - Amman Street,kfc amman street
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029606,KFC - Amman Street,kfc amman street
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029611,KFC - Amman Street,kfc amman street
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029844,KFC - Amman Street,kfc amman street
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029986,KFC - Amman Street,kfc amman street
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030285,KFC - Amman Street,kfc amman street
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11002376,KFC - Andalous,kfc andalous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11005518,KFC - Andalous,kfc andalous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11016141,KFC - Andalous,kfc andalous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026402,KFC - Andalous,kfc andalous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026566,KFC - Andalous,kfc andalous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027029,KFC - Andalous,kfc andalous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027036,KFC - Andalous,kfc andalous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027142,KFC - Andalous,kfc andalous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027144,KFC - Andalous,kfc andalous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027283,KFC - Andalous,kfc andalous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027285,KFC - Andalous,kfc andalous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027296,KFC - Andalous,kfc andalous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028109,KFC - Andalous,kfc andalous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028216,KFC - Andalous,kfc andalous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028742,KFC - Andalous,kfc andalous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028754,KFC - Andalous,kfc andalous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028757,KFC - Andalous,kfc andalous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028903,KFC - Andalous,kfc andalous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028995,KFC - Andalous,kfc andalous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029298,KFC - Andalous,kfc andalous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029308,KFC - Andalous,kfc andalous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029618,KFC - Andalous,kfc andalous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029697,KFC - Andalous,kfc andalous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029699,KFC - Andalous,kfc andalous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029958,KFC - Andalous,kfc andalous
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11015820,KFC - Anwar Tower,kfc anwar tower
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11022309,KFC - Anwar Tower,kfc anwar tower
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024363,KFC - Anwar Tower,kfc anwar tower
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027016,KFC - Anwar Tower,kfc anwar tower
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027262,KFC - Anwar Tower,kfc anwar tower
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027836,KFC - Anwar Tower,kfc anwar tower
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028670,KFC - Anwar Tower,kfc anwar tower
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028811,KFC - Anwar Tower,kfc anwar tower
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029072,KFC - Anwar Tower,kfc anwar tower
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029331,KFC - Anwar Tower,kfc anwar tower
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029696,KFC - Anwar Tower,kfc anwar tower
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029752,KFC - Anwar Tower,kfc anwar tower
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029980,KFC - Anwar Tower,kfc anwar tower
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11005445,KFC - Ardiya,kfc ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11016383,KFC - Ardiya,kfc ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11025994,KFC - Ardiya,kfc ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026316,KFC - Ardiya,kfc ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026839,KFC - Ardiya,kfc ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026841,KFC - Ardiya,kfc ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027156,KFC - Ardiya,kfc ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027202,KFC - Ardiya,kfc ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027308,KFC - Ardiya,kfc ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027486,KFC - Ardiya,kfc ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027736,KFC - Ardiya,kfc ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027815,KFC - Ardiya,kfc ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028076,KFC - Ardiya,kfc ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028753,KFC - Ardiya,kfc ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028766,KFC - Ardiya,kfc ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029167,KFC - Ardiya,kfc ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029291,KFC - Ardiya,kfc ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029307,KFC - Ardiya,kfc ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029691,KFC - Ardiya,kfc ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029705,KFC - Ardiya,kfc ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029949,KFC - Ardiya,kfc ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029959,KFC - Ardiya,kfc ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029964,KFC - Ardiya,kfc ardiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11002947,KFC - Audiliya,kfc audiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11004284,KFC - Audiliya,kfc audiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11007954,KFC - Audiliya,kfc audiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11019039,KFC - Audiliya,kfc audiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024733,KFC - Audiliya,kfc audiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026422,KFC - Audiliya,kfc audiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026972,KFC - Audiliya,kfc audiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027167,KFC - Audiliya,kfc audiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027168,KFC - Audiliya,kfc audiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028772,KFC - Audiliya,kfc audiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029458,KFC - Audiliya,kfc audiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029472,KFC - Audiliya,kfc audiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029479,KFC - Audiliya,kfc audiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026800,KFC - Avenue Mall,kfc avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027233,KFC - Avenue Mall,kfc avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027254,KFC - Avenue Mall,kfc avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028435,KFC - Avenue Mall,kfc avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028658,KFC - Avenue Mall,kfc avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028964,KFC - Avenue Mall,kfc avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029241,KFC - Avenue Mall,kfc avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029460,KFC - Avenue Mall,kfc avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029501,KFC - Avenue Mall,kfc avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029736,KFC - Avenue Mall,kfc avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029750,KFC - Avenue Mall,kfc avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029957,KFC - Avenue Mall,kfc avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030275,KFC - Avenue Mall,kfc avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11004544,KFC - Avenues 2,kfc avenues 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026418,KFC - Avenues 2,kfc avenues 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026987,KFC - Avenues 2,kfc avenues 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026988,KFC - Avenues 2,kfc avenues 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027501,KFC - Avenues 2,kfc avenues 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028326,KFC - Avenues 2,kfc avenues 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028621,KFC - Avenues 2,kfc avenues 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028732,KFC - Avenues 2,kfc avenues 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029546,KFC - Avenues 2,kfc avenues 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029547,KFC - Avenues 2,kfc avenues 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030115,KFC - Avenues 2,kfc avenues 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11001275,KFC - Bayan,kfc bayan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024214,KFC - Bayan,kfc bayan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026073,KFC - Bayan,kfc bayan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026486,KFC - Bayan,kfc bayan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026656,KFC - Bayan,kfc bayan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026670,KFC - Bayan,kfc bayan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026962,KFC - Bayan,kfc bayan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027023,KFC - Bayan,kfc bayan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027245,KFC - Bayan,kfc bayan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028095,KFC - Bayan,kfc bayan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028113,KFC - Bayan,kfc bayan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028349,KFC - Bayan,kfc bayan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028451,KFC - Bayan,kfc bayan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028706,KFC - Bayan,kfc bayan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028729,KFC - Bayan,kfc bayan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028814,KFC - Bayan,kfc bayan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029082,KFC - Bayan,kfc bayan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029183,KFC - Bayan,kfc bayan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029189,KFC - Bayan,kfc bayan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029457,KFC - Bayan,kfc bayan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029562,KFC - Bayan,kfc bayan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029695,KFC - Bayan,kfc bayan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029981,KFC - Bayan,kfc bayan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030016,KFC - Bayan,kfc bayan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11004643,KFC - Boulevard Mall,kfc boulevard mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026680,KFC - Boulevard Mall,kfc boulevard mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026843,KFC - Boulevard Mall,kfc boulevard mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027361,KFC - Boulevard Mall,kfc boulevard mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027546,KFC - Boulevard Mall,kfc boulevard mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028359,KFC - Boulevard Mall,kfc boulevard mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029615,KFC - Boulevard Mall,kfc boulevard mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030062,KFC - Boulevard Mall,kfc boulevard mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030286,KFC - Boulevard Mall,kfc boulevard mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11002911,KFC - El Dajej,kfc el dajej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11003500,KFC - El Dajej,kfc el dajej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11015308,KFC - El Dajej,kfc el dajej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11015526,KFC - El Dajej,kfc el dajej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024539,KFC - El Dajej,kfc el dajej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11025116,KFC - El Dajej,kfc el dajej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027174,KFC - El Dajej,kfc el dajej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028165,KFC - El Dajej,kfc el dajej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028323,KFC - El Dajej,kfc el dajej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028399,KFC - El Dajej,kfc el dajej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028618,KFC - El Dajej,kfc el dajej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028685,KFC - El Dajej,kfc el dajej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029271,KFC - El Dajej,kfc el dajej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029281,KFC - El Dajej,kfc el dajej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029471,KFC - El Dajej,kfc el dajej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029627,KFC - El Dajej,kfc el dajej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029693,KFC - El Dajej,kfc el dajej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029954,KFC - El Dajej,kfc el dajej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030277,KFC - El Dajej,kfc el dajej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11003873,KFC - El Farwaniya,kfc el farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11005414,KFC - El Farwaniya,kfc el farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11019223,KFC - El Farwaniya,kfc el farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11023136,KFC - El Farwaniya,kfc el farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024795,KFC - El Farwaniya,kfc el farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026344,KFC - El Farwaniya,kfc el farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026989,KFC - El Farwaniya,kfc el farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027169,KFC - El Farwaniya,kfc el farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027455,KFC - El Farwaniya,kfc el farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027499,KFC - El Farwaniya,kfc el farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027597,KFC - El Farwaniya,kfc el farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028168,KFC - El Farwaniya,kfc el farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028479,KFC - El Farwaniya,kfc el farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028613,KFC - El Farwaniya,kfc el farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029079,KFC - El Farwaniya,kfc el farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029085,KFC - El Farwaniya,kfc el farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029211,KFC - El Farwaniya,kfc el farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029255,KFC - El Farwaniya,kfc el farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029956,KFC - El Farwaniya,kfc el farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030278,KFC - El Farwaniya,kfc el farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11007876,KFC - El Farwaniya 2,kfc el farwaniya 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026040,KFC - El Farwaniya 2,kfc el farwaniya 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026592,KFC - El Farwaniya 2,kfc el farwaniya 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026975,KFC - El Farwaniya 2,kfc el farwaniya 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027173,KFC - El Farwaniya 2,kfc el farwaniya 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027423,KFC - El Farwaniya 2,kfc el farwaniya 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027495,KFC - El Farwaniya 2,kfc el farwaniya 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027588,KFC - El Farwaniya 2,kfc el farwaniya 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028649,KFC - El Farwaniya 2,kfc el farwaniya 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028686,KFC - El Farwaniya 2,kfc el farwaniya 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029253,KFC - El Farwaniya 2,kfc el farwaniya 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029279,KFC - El Farwaniya 2,kfc el farwaniya 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030040,KFC - El Farwaniya 2,kfc el farwaniya 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11007639,KFC - El Shamiya,kfc el shamiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027157,KFC - El Shamiya,kfc el shamiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028175,KFC - El Shamiya,kfc el shamiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028635,KFC - El Shamiya,kfc el shamiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028668,KFC - El Shamiya,kfc el shamiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029469,KFC - El Shamiya,kfc el shamiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029588,KFC - El Shamiya,kfc el shamiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029743,KFC - El Shamiya,kfc el shamiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029744,KFC - El Shamiya,kfc el shamiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029833,KFC - El Shamiya,kfc el shamiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029947,KFC - El Shamiya,kfc el shamiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11006048,KFC - El Showikh 2,kfc el showikh 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11007797,KFC - El Showikh 2,kfc el showikh 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11015412,KFC - El Showikh 2,kfc el showikh 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026077,KFC - El Showikh 2,kfc el showikh 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026366,KFC - El Showikh 2,kfc el showikh 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026731,KFC - El Showikh 2,kfc el showikh 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027255,KFC - El Showikh 2,kfc el showikh 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029337,KFC - El Showikh 2,kfc el showikh 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029364,KFC - El Showikh 2,kfc el showikh 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030014,KFC - El Showikh 2,kfc el showikh 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030117,KFC - El Showikh 2,kfc el showikh 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030271,KFC - El Showikh 2,kfc el showikh 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11003211,KFC - Hawally,kfc hawally
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026038,KFC - Hawally,kfc hawally
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026313,KFC - Hawally,kfc hawally
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026361,KFC - Hawally,kfc hawally
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027100,KFC - Hawally,kfc hawally
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027130,KFC - Hawally,kfc hawally
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027493,KFC - Hawally,kfc hawally
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028075,KFC - Hawally,kfc hawally
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028086,KFC - Hawally,kfc hawally
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028128,KFC - Hawally,kfc hawally
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028148,KFC - Hawally,kfc hawally
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029346,KFC - Hawally,kfc hawally
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029484,KFC - Hawally,kfc hawally
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029854,KFC - Hawally,kfc hawally
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029884,KFC - Hawally,kfc hawally
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029886,KFC - Hawally,kfc hawally
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029902,KFC - Hawally,kfc hawally
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029960,KFC - Hawally,kfc hawally
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030222,KFC - Hawally,kfc hawally
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11015568,KFC - Hawally 2,kfc hawally 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11020137,KFC - Hawally 2,kfc hawally 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024504,KFC - Hawally 2,kfc hawally 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027092,KFC - Hawally 2,kfc hawally 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027241,KFC - Hawally 2,kfc hawally 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027618,KFC - Hawally 2,kfc hawally 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027625,KFC - Hawally 2,kfc hawally 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028426,KFC - Hawally 2,kfc hawally 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028820,KFC - Hawally 2,kfc hawally 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029495,KFC - Hawally 2,kfc hawally 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029756,KFC - Hawally 2,kfc hawally 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029807,KFC - Hawally 2,kfc hawally 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029851,KFC - Hawally 2,kfc hawally 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11007846,KFC - Hawally 3,kfc hawally 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024803,KFC - Hawally 3,kfc hawally 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026522,KFC - Hawally 3,kfc hawally 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026681,KFC - Hawally 3,kfc hawally 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027514,KFC - Hawally 3,kfc hawally 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027984,KFC - Hawally 3,kfc hawally 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028072,KFC - Hawally 3,kfc hawally 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028308,KFC - Hawally 3,kfc hawally 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028966,KFC - Hawally 3,kfc hawally 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029944,KFC - Hawally 3,kfc hawally 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11004808,KFC - Industrial Al Gahra,kfc industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11022492,KFC - Industrial Al Gahra,kfc industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11023534,KFC - Industrial Al Gahra,kfc industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026544,KFC - Industrial Al Gahra,kfc industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026894,KFC - Industrial Al Gahra,kfc industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027735,KFC - Industrial Al Gahra,kfc industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028283,KFC - Industrial Al Gahra,kfc industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028288,KFC - Industrial Al Gahra,kfc industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028306,KFC - Industrial Al Gahra,kfc industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028507,KFC - Industrial Al Gahra,kfc industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028521,KFC - Industrial Al Gahra,kfc industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029150,KFC - Industrial Al Gahra,kfc industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029152,KFC - Industrial Al Gahra,kfc industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029153,KFC - Industrial Al Gahra,kfc industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029619,KFC - Industrial Al Gahra,kfc industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029672,KFC - Industrial Al Gahra,kfc industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029689,KFC - Industrial Al Gahra,kfc industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029737,KFC - Industrial Al Gahra,kfc industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029898,KFC - Industrial Al Gahra,kfc industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030248,KFC - Industrial Al Gahra,kfc industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030249,KFC - Industrial Al Gahra,kfc industrial al gahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024668,KFC - Jabriya,kfc jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11025014,KFC - Jabriya,kfc jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026227,KFC - Jabriya,kfc jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026587,KFC - Jabriya,kfc jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027235,KFC - Jabriya,kfc jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027629,KFC - Jabriya,kfc jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029681,KFC - Jabriya,kfc jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030027,KFC - Jabriya,kfc jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030225,KFC - Jabriya,kfc jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11018856,KFC - Jabriya 2,kfc jabriya 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11021137,KFC - Jabriya 2,kfc jabriya 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026496,KFC - Jabriya 2,kfc jabriya 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026669,KFC - Jabriya 2,kfc jabriya 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027088,KFC - Jabriya 2,kfc jabriya 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027622,KFC - Jabriya 2,kfc jabriya 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027814,KFC - Jabriya 2,kfc jabriya 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028143,KFC - Jabriya 2,kfc jabriya 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028144,KFC - Jabriya 2,kfc jabriya 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028147,KFC - Jabriya 2,kfc jabriya 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028440,KFC - Jabriya 2,kfc jabriya 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028821,KFC - Jabriya 2,kfc jabriya 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029235,KFC - Jabriya 2,kfc jabriya 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029347,KFC - Jabriya 2,kfc jabriya 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029722,KFC - Jabriya 2,kfc jabriya 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029723,KFC - Jabriya 2,kfc jabriya 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030033,KFC - Jabriya 2,kfc jabriya 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030227,KFC - Jabriya 2,kfc jabriya 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11004951,KFC - Jeleeb Al Shuyoukh Co-Op,kfc jeleeb al shuyoukh co op
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11016358,KFC - Jeleeb Al Shuyoukh Co-Op,kfc jeleeb al shuyoukh co op
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11016491,KFC - Jeleeb Al Shuyoukh Co-Op,kfc jeleeb al shuyoukh co op
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024063,KFC - Jeleeb Al Shuyoukh Co-Op,kfc jeleeb al shuyoukh co op
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026940,KFC - Jeleeb Al Shuyoukh Co-Op,kfc jeleeb al shuyoukh co op
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028675,KFC - Jeleeb Al Shuyoukh Co-Op,kfc jeleeb al shuyoukh co op
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028745,KFC - Jeleeb Al Shuyoukh Co-Op,kfc jeleeb al shuyoukh co op
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029064,KFC - Jeleeb Al Shuyoukh Co-Op,kfc jeleeb al shuyoukh co op
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029086,KFC - Jeleeb Al Shuyoukh Co-Op,kfc jeleeb al shuyoukh co op
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029089,KFC - Jeleeb Al Shuyoukh Co-Op,kfc jeleeb al shuyoukh co op
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029232,KFC - Jeleeb Al Shuyoukh Co-Op,kfc jeleeb al shuyoukh co op
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029579,KFC - Jeleeb Al Shuyoukh Co-Op,kfc jeleeb al shuyoukh co op
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029820,KFC - Jeleeb Al Shuyoukh Co-Op,kfc jeleeb al shuyoukh co op
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030008,KFC - Jeleeb Al Shuyoukh Co-Op,kfc jeleeb al shuyoukh co op
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11003319,KFC - Jleeb Al Shoyoukh,kfc jleeb al shoyoukh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11005956,KFC - Jleeb Al Shoyoukh,kfc jleeb al shoyoukh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11015038,KFC - Jleeb Al Shoyoukh,kfc jleeb al shoyoukh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026971,KFC - Jleeb Al Shoyoukh,kfc jleeb al shoyoukh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026986,KFC - Jleeb Al Shoyoukh,kfc jleeb al shoyoukh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027446,KFC - Jleeb Al Shoyoukh,kfc jleeb al shoyoukh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027459,KFC - Jleeb Al Shoyoukh,kfc jleeb al shoyoukh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027794,KFC - Jleeb Al Shoyoukh,kfc jleeb al shoyoukh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028229,KFC - Jleeb Al Shoyoukh,kfc jleeb al shoyoukh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028263,KFC - Jleeb Al Shoyoukh,kfc jleeb al shoyoukh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028273,KFC - Jleeb Al Shoyoukh,kfc jleeb al shoyoukh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028325,KFC - Jleeb Al Shoyoukh,kfc jleeb al shoyoukh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028640,KFC - Jleeb Al Shoyoukh,kfc jleeb al shoyoukh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028676,KFC - Jleeb Al Shoyoukh,kfc jleeb al shoyoukh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029084,KFC - Jleeb Al Shoyoukh,kfc jleeb al shoyoukh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029250,KFC - Jleeb Al Shoyoukh,kfc jleeb al shoyoukh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029269,KFC - Jleeb Al Shoyoukh,kfc jleeb al shoyoukh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029451,KFC - Jleeb Al Shoyoukh,kfc jleeb al shoyoukh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029455,KFC - Jleeb Al Shoyoukh,kfc jleeb al shoyoukh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029602,KFC - Jleeb Al Shoyoukh,kfc jleeb al shoyoukh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029694,KFC - Jleeb Al Shoyoukh,kfc jleeb al shoyoukh
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11003018,KFC - Kabed,kfc kabed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11015048,KFC - Kabed,kfc kabed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11015316,KFC - Kabed,kfc kabed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024428,KFC - Kabed,kfc kabed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026895,KFC - Kabed,kfc kabed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026985,KFC - Kabed,kfc kabed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027022,KFC - Kabed,kfc kabed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027045,KFC - Kabed,kfc kabed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027138,KFC - Kabed,kfc kabed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027798,KFC - Kabed,kfc kabed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028294,KFC - Kabed,kfc kabed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028679,KFC - Kabed,kfc kabed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028683,KFC - Kabed,kfc kabed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028986,KFC - Kabed,kfc kabed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029375,KFC - Kabed,kfc kabed
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11004916,KFC - Khitan,kfc khitan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11023785,KFC - Khitan,kfc khitan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024140,KFC - Khitan,kfc khitan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11025741,KFC - Khitan,kfc khitan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026547,KFC - Khitan,kfc khitan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026729,KFC - Khitan,kfc khitan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027449,KFC - Khitan,kfc khitan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027450,KFC - Khitan,kfc khitan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028429,KFC - Khitan,kfc khitan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028478,KFC - Khitan,kfc khitan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028654,KFC - Khitan,kfc khitan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029485,KFC - Khitan,kfc khitan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029601,KFC - Khitan,kfc khitan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029843,KFC - Khitan,kfc khitan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11021354,KFC - Khitan 2,kfc khitan 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026390,KFC - Khitan 2,kfc khitan 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026589,KFC - Khitan 2,kfc khitan 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026993,KFC - Khitan 2,kfc khitan 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028139,KFC - Khitan 2,kfc khitan 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028652,KFC - Khitan 2,kfc khitan 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028848,KFC - Khitan 2,kfc khitan 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029063,KFC - Khitan 2,kfc khitan 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029065,KFC - Khitan 2,kfc khitan 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029282,KFC - Khitan 2,kfc khitan 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029600,KFC - Khitan 2,kfc khitan 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029950,KFC - Khitan 2,kfc khitan 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030009,KFC - Khitan 2,kfc khitan 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11001646,KFC - Kifan,kfc kifan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11004379,KFC - Kifan,kfc kifan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026409,KFC - Kifan,kfc kifan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026439,KFC - Kifan,kfc kifan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027004,KFC - Kifan,kfc kifan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027253,KFC - Kifan,kfc kifan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027397,KFC - Kifan,kfc kifan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027781,KFC - Kifan,kfc kifan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028445,KFC - Kifan,kfc kifan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028632,KFC - Kifan,kfc kifan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028708,KFC - Kifan,kfc kifan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028723,KFC - Kifan,kfc kifan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028816,KFC - Kifan,kfc kifan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028832,KFC - Kifan,kfc kifan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029057,KFC - Kifan,kfc kifan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029466,KFC - Kifan,kfc kifan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029790,KFC - Kifan,kfc kifan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029837,KFC - Kifan,kfc kifan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029982,KFC - Kifan,kfc kifan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030015,KFC - Kifan,kfc kifan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030024,KFC - Kifan,kfc kifan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030177,KFC - Kifan,kfc kifan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030246,KFC - Kifan,kfc kifan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030279,KFC - Kifan,kfc kifan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11005428,KFC - Kuwait Airport T4,kfc kuwait airport t4
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024677,KFC - Kuwait Airport T4,kfc kuwait airport t4
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11025621,KFC - Kuwait Airport T4,kfc kuwait airport t4
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027311,KFC - Kuwait Airport T4,kfc kuwait airport t4
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027494,KFC - Kuwait Airport T4,kfc kuwait airport t4
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028431,KFC - Kuwait Airport T4,kfc kuwait airport t4
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028651,KFC - Kuwait Airport T4,kfc kuwait airport t4
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028655,KFC - Kuwait Airport T4,kfc kuwait airport t4
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028913,KFC - Kuwait Airport T4,kfc kuwait airport t4
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028968,KFC - Kuwait Airport T4,kfc kuwait airport t4
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029087,KFC - Kuwait Airport T4,kfc kuwait airport t4
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029229,KFC - Kuwait Airport T4,kfc kuwait airport t4
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029249,KFC - Kuwait Airport T4,kfc kuwait airport t4
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029663,KFC - Kuwait Airport T4,kfc kuwait airport t4
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11016616,KFC - Kuwait DT 2,kfc kuwait dt 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026803,KFC - Mall 360,kfc mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026946,KFC - Mall 360,kfc mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027244,KFC - Mall 360,kfc mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027442,KFC - Mall 360,kfc mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028090,KFC - Mall 360,kfc mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028704,KFC - Mall 360,kfc mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028713,KFC - Mall 360,kfc mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028721,KFC - Mall 360,kfc mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11007691,KFC - Marina,kfc marina
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026683,KFC - Marina,kfc marina
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027626,KFC - Marina,kfc marina
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028481,KFC - Marina,kfc marina
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028645,KFC - Marina,kfc marina
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028737,KFC - Marina,kfc marina
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029478,KFC - Marina,kfc marina
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029608,KFC - Marina,kfc marina
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11004539,KFC - Mishref,kfc mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11015102,KFC - Mishref,kfc mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026662,KFC - Mishref,kfc mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026815,KFC - Mishref,kfc mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027441,KFC - Mishref,kfc mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027621,KFC - Mishref,kfc mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028011,KFC - Mishref,kfc mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028278,KFC - Mishref,kfc mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028356,KFC - Mishref,kfc mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028423,KFC - Mishref,kfc mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029214,KFC - Mishref,kfc mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029248,KFC - Mishref,kfc mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029607,KFC - Mishref,kfc mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029849,KFC - Mishref,kfc mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029850,KFC - Mishref,kfc mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030011,KFC - Mishref,kfc mishref
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11019671,KFC - Moi Coop Al Zahra,kfc moi coop al zahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11023796,KFC - Moi Coop Al Zahra,kfc moi coop al zahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027415,KFC - Moi Coop Al Zahra,kfc moi coop al zahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027770,KFC - Moi Coop Al Zahra,kfc moi coop al zahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028088,KFC - Moi Coop Al Zahra,kfc moi coop al zahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028151,KFC - Moi Coop Al Zahra,kfc moi coop al zahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028280,KFC - Moi Coop Al Zahra,kfc moi coop al zahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028446,KFC - Moi Coop Al Zahra,kfc moi coop al zahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029754,KFC - Moi Coop Al Zahra,kfc moi coop al zahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029933,KFC - Moi Coop Al Zahra,kfc moi coop al zahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029963,KFC - Moi Coop Al Zahra,kfc moi coop al zahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030026,KFC - Moi Coop Al Zahra,kfc moi coop al zahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030232,KFC - Moi Coop Al Zahra,kfc moi coop al zahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11016295,KFC - Salmiya,kfc salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024085,KFC - Salmiya,kfc salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11025642,KFC - Salmiya,kfc salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026360,KFC - Salmiya,kfc salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026834,KFC - Salmiya,kfc salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026842,KFC - Salmiya,kfc salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027165,KFC - Salmiya,kfc salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027516,KFC - Salmiya,kfc salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027617,KFC - Salmiya,kfc salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027628,KFC - Salmiya,kfc salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027718,KFC - Salmiya,kfc salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028087,KFC - Salmiya,kfc salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028591,KFC - Salmiya,kfc salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028592,KFC - Salmiya,kfc salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029157,KFC - Salmiya,kfc salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029182,KFC - Salmiya,kfc salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029603,KFC - Salmiya,kfc salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029781,KFC - Salmiya,kfc salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11025729,KFC - Salmiya Old Souk,kfc salmiya old souk
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026231,KFC - Salmiya Old Souk,kfc salmiya old souk
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027620,KFC - Salmiya Old Souk,kfc salmiya old souk
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028145,KFC - Salmiya Old Souk,kfc salmiya old souk
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028597,KFC - Salmiya Old Souk,kfc salmiya old souk
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028663,KFC - Salmiya Old Souk,kfc salmiya old souk
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028813,KFC - Salmiya Old Souk,kfc salmiya old souk
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029173,KFC - Salmiya Old Souk,kfc salmiya old souk
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029251,KFC - Salmiya Old Souk,kfc salmiya old souk
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029260,KFC - Salmiya Old Souk,kfc salmiya old souk
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030041,KFC - Salmiya Old Souk,kfc salmiya old souk
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11015032,KFC - Salwa (Kuwait),kfc salwa kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026593,KFC - Salwa (Kuwait),kfc salwa kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026672,KFC - Salwa (Kuwait),kfc salwa kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026720,KFC - Salwa (Kuwait),kfc salwa kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026810,KFC - Salwa (Kuwait),kfc salwa kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027224,KFC - Salwa (Kuwait),kfc salwa kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027755,KFC - Salwa (Kuwait),kfc salwa kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028094,KFC - Salwa (Kuwait),kfc salwa kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028096,KFC - Salwa (Kuwait),kfc salwa kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028164,KFC - Salwa (Kuwait),kfc salwa kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028360,KFC - Salwa (Kuwait),kfc salwa kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028427,KFC - Salwa (Kuwait),kfc salwa kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028483,KFC - Salwa (Kuwait),kfc salwa kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028716,KFC - Salwa (Kuwait),kfc salwa kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028725,KFC - Salwa (Kuwait),kfc salwa kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028734,KFC - Salwa (Kuwait),kfc salwa kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029186,KFC - Salwa (Kuwait),kfc salwa kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029188,KFC - Salwa (Kuwait),kfc salwa kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029270,KFC - Salwa (Kuwait),kfc salwa kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029563,KFC - Salwa (Kuwait),kfc salwa kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029668,KFC - Salwa (Kuwait),kfc salwa kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029800,KFC - Salwa (Kuwait),kfc salwa kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029971,KFC - Salwa (Kuwait),kfc salwa kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030268,KFC - Salwa (Kuwait),kfc salwa kuwait
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026682,KFC - Seaside Food Hub,kfc seaside food hub
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027756,KFC - Seaside Food Hub,kfc seaside food hub
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028166,KFC - Seaside Food Hub,kfc seaside food hub
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028669,KFC - Seaside Food Hub,kfc seaside food hub
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028819,KFC - Seaside Food Hub,kfc seaside food hub
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029330,KFC - Seaside Food Hub,kfc seaside food hub
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029564,KFC - Seaside Food Hub,kfc seaside food hub
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030032,KFC - Seaside Food Hub,kfc seaside food hub
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11004372,KFC - Solibikhat,kfc solibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11004913,KFC - Solibikhat,kfc solibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11015708,KFC - Solibikhat,kfc solibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11016453,KFC - Solibikhat,kfc solibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024775,KFC - Solibikhat,kfc solibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026098,KFC - Solibikhat,kfc solibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026563,KFC - Solibikhat,kfc solibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027154,KFC - Solibikhat,kfc solibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027828,KFC - Solibikhat,kfc solibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028110,KFC - Solibikhat,kfc solibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028111,KFC - Solibikhat,kfc solibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028314,KFC - Solibikhat,kfc solibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028319,KFC - Solibikhat,kfc solibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028638,KFC - Solibikhat,kfc solibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028667,KFC - Solibikhat,kfc solibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028989,KFC - Solibikhat,kfc solibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029296,KFC - Solibikhat,kfc solibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029548,KFC - Solibikhat,kfc solibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029630,KFC - Solibikhat,kfc solibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030017,KFC - Solibikhat,kfc solibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030178,KFC - Solibikhat,kfc solibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030192,KFC - Solibikhat,kfc solibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030208,KFC - Solibikhat,kfc solibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026664,KFC - Souk El Salmiya,kfc souk el salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028098,KFC - Souk El Salmiya,kfc souk el salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028353,KFC - Souk El Salmiya,kfc souk el salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028425,KFC - Souk El Salmiya,kfc souk el salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028590,KFC - Souk El Salmiya,kfc souk el salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029181,KFC - Souk El Salmiya,kfc souk el salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029436,KFC - Souk El Salmiya,kfc souk el salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029461,KFC - Souk El Salmiya,kfc souk el salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029604,KFC - Souk El Salmiya,kfc souk el salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11004942,KFC - South Gahra (Saad Al Abdullah),kfc south gahra saad al abdullah
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11023224,KFC - South Gahra (Saad Al Abdullah),kfc south gahra saad al abdullah
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026291,KFC - South Gahra (Saad Al Abdullah),kfc south gahra saad al abdullah
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026399,KFC - South Gahra (Saad Al Abdullah),kfc south gahra saad al abdullah
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026434,KFC - South Gahra (Saad Al Abdullah),kfc south gahra saad al abdullah
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026896,KFC - South Gahra (Saad Al Abdullah),kfc south gahra saad al abdullah
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027742,KFC - South Gahra (Saad Al Abdullah),kfc south gahra saad al abdullah
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027804,KFC - South Gahra (Saad Al Abdullah),kfc south gahra saad al abdullah
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028104,KFC - South Gahra (Saad Al Abdullah),kfc south gahra saad al abdullah
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028316,KFC - South Gahra (Saad Al Abdullah),kfc south gahra saad al abdullah
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028317,KFC - South Gahra (Saad Al Abdullah),kfc south gahra saad al abdullah
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028318,KFC - South Gahra (Saad Al Abdullah),kfc south gahra saad al abdullah
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028536,KFC - South Gahra (Saad Al Abdullah),kfc south gahra saad al abdullah
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028759,KFC - South Gahra (Saad Al Abdullah),kfc south gahra saad al abdullah
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029155,KFC - South Gahra (Saad Al Abdullah),kfc south gahra saad al abdullah
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029159,KFC - South Gahra (Saad Al Abdullah),kfc south gahra saad al abdullah
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029162,KFC - South Gahra (Saad Al Abdullah),kfc south gahra saad al abdullah
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029163,KFC - South Gahra (Saad Al Abdullah),kfc south gahra saad al abdullah
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029212,KFC - South Gahra (Saad Al Abdullah),kfc south gahra saad al abdullah
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029220,KFC - South Gahra (Saad Al Abdullah),kfc south gahra saad al abdullah
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029459,KFC - South Gahra (Saad Al Abdullah),kfc south gahra saad al abdullah
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029551,KFC - South Gahra (Saad Al Abdullah),kfc south gahra saad al abdullah
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029566,KFC - South Gahra (Saad Al Abdullah),kfc south gahra saad al abdullah
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029690,KFC - South Gahra (Saad Al Abdullah),kfc south gahra saad al abdullah
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030005,KFC - South Gahra (Saad Al Abdullah),kfc south gahra saad al abdullah
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030239,KFC - South Gahra (Saad Al Abdullah),kfc south gahra saad al abdullah
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030240,KFC - South Gahra (Saad Al Abdullah),kfc south gahra saad al abdullah
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030242,KFC - South Gahra (Saad Al Abdullah),kfc south gahra saad al abdullah
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11006444,KFC - South Surra,kfc south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11016562,KFC - South Surra,kfc south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11022510,KFC - South Surra,kfc south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026484,KFC - South Surra,kfc south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026840,KFC - South Surra,kfc south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027015,KFC - South Surra,kfc south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027033,KFC - South Surra,kfc south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027226,KFC - South Surra,kfc south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028150,KFC - South Surra,kfc south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028329,KFC - South Surra,kfc south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028330,KFC - South Surra,kfc south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029313,KFC - South Surra,kfc south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029368,KFC - South Surra,kfc south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029753,KFC - South Surra,kfc south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029755,KFC - South Surra,kfc south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029961,KFC - South Surra,kfc south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030231,KFC - South Surra,kfc south surra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11007782,KFC - Square Park,kfc square park
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024834,KFC - Square Park,kfc square park
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11025616,KFC - Square Park,kfc square park
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027321,KFC - Square Park,kfc square park
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027580,KFC - Square Park,kfc square park
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028073,KFC - Square Park,kfc square park
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028106,KFC - Square Park,kfc square park
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028497,KFC - Square Park,kfc square park
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028997,KFC - Square Park,kfc square park
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029206,KFC - Square Park,kfc square park
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029514,KFC - Square Park,kfc square park
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029664,KFC - Square Park,kfc square park
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029712,KFC - Square Park,kfc square park
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029952,KFC - Square Park,kfc square park
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029965,KFC - Square Park,kfc square park
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11004707,KFC - Sulaibikhat 3,kfc sulaibikhat 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11006258,KFC - Sulaibikhat 3,kfc sulaibikhat 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11018823,KFC - Sulaibikhat 3,kfc sulaibikhat 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11020710,KFC - Sulaibikhat 3,kfc sulaibikhat 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11025188,KFC - Sulaibikhat 3,kfc sulaibikhat 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11025614,KFC - Sulaibikhat 3,kfc sulaibikhat 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11025687,KFC - Sulaibikhat 3,kfc sulaibikhat 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026630,KFC - Sulaibikhat 3,kfc sulaibikhat 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026900,KFC - Sulaibikhat 3,kfc sulaibikhat 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028620,KFC - Sulaibikhat 3,kfc sulaibikhat 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028659,KFC - Sulaibikhat 3,kfc sulaibikhat 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028770,KFC - Sulaibikhat 3,kfc sulaibikhat 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028828,KFC - Sulaibikhat 3,kfc sulaibikhat 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029151,KFC - Sulaibikhat 3,kfc sulaibikhat 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029154,KFC - Sulaibikhat 3,kfc sulaibikhat 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029160,KFC - Sulaibikhat 3,kfc sulaibikhat 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029234,KFC - Sulaibikhat 3,kfc sulaibikhat 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029305,KFC - Sulaibikhat 3,kfc sulaibikhat 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029569,KFC - Sulaibikhat 3,kfc sulaibikhat 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029834,KFC - Sulaibikhat 3,kfc sulaibikhat 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030203,KFC - Sulaibikhat 3,kfc sulaibikhat 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030210,KFC - Sulaibikhat 3,kfc sulaibikhat 3
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11020224,KFC - Sulibiya,kfc sulibiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11021412,KFC - Sulibiya,kfc sulibiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026410,KFC - Sulibiya,kfc sulibiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026897,KFC - Sulibiya,kfc sulibiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026898,KFC - Sulibiya,kfc sulibiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027314,KFC - Sulibiya,kfc sulibiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027792,KFC - Sulibiya,kfc sulibiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027826,KFC - Sulibiya,kfc sulibiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027829,KFC - Sulibiya,kfc sulibiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028170,KFC - Sulibiya,kfc sulibiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028215,KFC - Sulibiya,kfc sulibiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028437,KFC - Sulibiya,kfc sulibiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028768,KFC - Sulibiya,kfc sulibiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028967,KFC - Sulibiya,kfc sulibiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029306,KFC - Sulibiya,kfc sulibiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029996,KFC - Sulibiya,kfc sulibiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11023359,KFC - Tadamoun Club,kfc tadamoun club
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024521,KFC - Tadamoun Club,kfc tadamoun club
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026740,KFC - Tadamoun Club,kfc tadamoun club
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026742,KFC - Tadamoun Club,kfc tadamoun club
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026746,KFC - Tadamoun Club,kfc tadamoun club
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027180,KFC - Tadamoun Club,kfc tadamoun club
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027479,KFC - Tadamoun Club,kfc tadamoun club
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027640,KFC - Tadamoun Club,kfc tadamoun club
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028327,KFC - Tadamoun Club,kfc tadamoun club
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028477,KFC - Tadamoun Club,kfc tadamoun club
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028650,KFC - Tadamoun Club,kfc tadamoun club
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029233,KFC - Tadamoun Club,kfc tadamoun club
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029581,KFC - Tadamoun Club,kfc tadamoun club
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029598,KFC - Tadamoun Club,kfc tadamoun club
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029819,KFC - Tadamoun Club,kfc tadamoun club
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11007309,KFC - The Cube Mall,kfc the cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024801,KFC - The Cube Mall,kfc the cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026228,KFC - The Cube Mall,kfc the cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026666,KFC - The Cube Mall,kfc the cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028091,KFC - The Cube Mall,kfc the cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028184,KFC - The Cube Mall,kfc the cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028480,KFC - The Cube Mall,kfc the cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028482,KFC - The Cube Mall,kfc the cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029171,KFC - The Cube Mall,kfc the cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029257,KFC - The Cube Mall,kfc the cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029473,KFC - The Cube Mall,kfc the cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029613,KFC - The Cube Mall,kfc the cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029623,KFC - The Cube Mall,kfc the cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029704,KFC - The Cube Mall,kfc the cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024811,Krispy Kreme - Al Zahraa Coop,krispy kreme al zahraa coop
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029110,Krispy Kreme - Al Zahraa Coop,krispy kreme al zahraa coop
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028211,Krispy Kreme - Ardiya Herafi,krispy kreme ardiya herafi
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029080,Krispy Kreme - Ardiya Herafi,krispy kreme ardiya herafi
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030258,Krispy Kreme - Ardiya Herafi,krispy kreme ardiya herafi
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028055,Krispy Kreme - Dajej,krispy kreme dajej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029847,Krispy Kreme - Dajej,krispy kreme dajej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030272,Krispy Kreme - Dajej,krispy kreme dajej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026381,Krispy Kreme - El Daiya,krispy kreme el daiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029399,Krispy Kreme - El Daiya,krispy kreme el daiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024757,Krispy Kreme - El Yarmouk,krispy kreme el yarmouk
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024765,Krispy Kreme - Jaber Al Ahmad Coop Block 5,krispy kreme jaber al ahmad coop block 5
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026380,Krispy Kreme - Jaber Al Ahmad Coop Block 5,krispy kreme jaber al ahmad coop block 5
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029213,Krispy Kreme - Jaber Al Ahmad Coop Block 5,krispy kreme jaber al ahmad coop block 5
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11021095,Krispy Kreme - Jabryia,krispy kreme jabryia
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028043,Krispy Kreme - Jabryia,krispy kreme jabryia
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029104,Krispy Kreme - Jabryia,krispy kreme jabryia
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029111,Krispy Kreme - Jabryia,krispy kreme jabryia
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029972,Krispy Kreme - Jabryia,krispy kreme jabryia
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030256,Krispy Kreme - Jabryia,krispy kreme jabryia
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029396,Krispy Kreme - Jahra Carve Out,krispy kreme jahra carve out
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11015294,Krispy Kreme - Jahra Industrial,krispy kreme jahra industrial
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030179,Krispy Kreme - Jahra Industrial,krispy kreme jahra industrial
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024492,Krispy Kreme - Kifan,krispy kreme kifan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029105,Krispy Kreme - Kifan,krispy kreme kifan
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11006402,Krispy Kreme - Marina Mall,krispy kreme marina mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029397,Krispy Kreme - Marina Mall,krispy kreme marina mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029406,Krispy Kreme - Marina Mall,krispy kreme marina mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028610,Krispy Kreme - Marina Mall 2,krispy kreme marina mall 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029660,Krispy Kreme - Marina Mall 2,krispy kreme marina mall 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029095,Krispy Kreme - Sabah Al Ahmed Coop,krispy kreme sabah al ahmed coop
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029106,Krispy Kreme - Sabah Al Ahmed Coop,krispy kreme sabah al ahmed coop
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030182,Krispy Kreme - Sabah Al Ahmed Coop,krispy kreme sabah al ahmed coop
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029662,Krispy Kreme - Salwa Coop Relocation,krispy kreme salwa coop relocation
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030038,Krispy Kreme - Salwa Coop Relocation,krispy kreme salwa coop relocation
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028528,Krispy Kreme - Seaside Food Hub,krispy kreme seaside food hub
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029414,Krispy Kreme - Seaside Food Hub,krispy kreme seaside food hub
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028079,Krispy Kreme - Seaside Tower,krispy kreme seaside tower
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029730,Krispy Kreme - Seaside Tower,krispy kreme seaside tower
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026447,Krispy Kreme - Shamiya Relocation,krispy kreme shamiya relocation
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029409,Krispy Kreme - Shamiya Relocation,krispy kreme shamiya relocation
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029112,Krispy Kreme - Sulaibikhat,krispy kreme sulaibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029782,Krispy Kreme - Sulaibikhat,krispy kreme sulaibikhat
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029410,Krispy Kreme - The Cube Mall,krispy kreme the cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11021729,TGIF - Al Jahra,tgif al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024856,TGIF - Al Jahra,tgif al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026441,TGIF - Al Jahra,tgif al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026709,TGIF - Al Jahra,tgif al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026748,TGIF - Al Jahra,tgif al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027104,TGIF - Al Jahra,tgif al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027276,TGIF - Al Jahra,tgif al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027503,TGIF - Al Jahra,tgif al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028044,TGIF - Al Jahra,tgif al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028825,TGIF - Al Jahra,tgif al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029416,TGIF - Al Jahra,tgif al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029445,TGIF - Al Jahra,tgif al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029759,TGIF - Al Jahra,tgif al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030023,TGIF - Al Jahra,tgif al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030050,TGIF - Al Jahra,tgif al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030214,TGIF - Al Jahra,tgif al jahra
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11007705,TGIF - Avenue Mall,tgif avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11018022,TGIF - Avenue Mall,tgif avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11019474,TGIF - Avenue Mall,tgif avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024408,TGIF - Avenue Mall,tgif avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026405,TGIF - Avenue Mall,tgif avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026658,TGIF - Avenue Mall,tgif avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026785,TGIF - Avenue Mall,tgif avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026795,TGIF - Avenue Mall,tgif avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026957,TGIF - Avenue Mall,tgif avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027234,TGIF - Avenue Mall,tgif avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027280,TGIF - Avenue Mall,tgif avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027414,TGIF - Avenue Mall,tgif avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027911,TGIF - Avenue Mall,tgif avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028025,TGIF - Avenue Mall,tgif avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028841,TGIF - Avenue Mall,tgif avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028886,TGIF - Avenue Mall,tgif avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028888,TGIF - Avenue Mall,tgif avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029185,TGIF - Avenue Mall,tgif avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029225,TGIF - Avenue Mall,tgif avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029594,TGIF - Avenue Mall,tgif avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029761,TGIF - Avenue Mall,tgif avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030045,TGIF - Avenue Mall,tgif avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030060,TGIF - Avenue Mall,tgif avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030109,TGIF - Avenue Mall,tgif avenue mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11005845,TGIF - El Bedaa,tgif el bedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11006284,TGIF - El Bedaa,tgif el bedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11015913,TGIF - El Bedaa,tgif el bedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11020813,TGIF - El Bedaa,tgif el bedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024842,TGIF - El Bedaa,tgif el bedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026404,TGIF - El Bedaa,tgif el bedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026470,TGIF - El Bedaa,tgif el bedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026542,TGIF - El Bedaa,tgif el bedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026787,TGIF - El Bedaa,tgif el bedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026856,TGIF - El Bedaa,tgif el bedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026868,TGIF - El Bedaa,tgif el bedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027166,TGIF - El Bedaa,tgif el bedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027282,TGIF - El Bedaa,tgif el bedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027872,TGIF - El Bedaa,tgif el bedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027879,TGIF - El Bedaa,tgif el bedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027942,TGIF - El Bedaa,tgif el bedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028824,TGIF - El Bedaa,tgif el bedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029227,TGIF - El Bedaa,tgif el bedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030047,TGIF - El Bedaa,tgif el bedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030049,TGIF - El Bedaa,tgif el bedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030052,TGIF - El Bedaa,tgif el bedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030053,TGIF - El Bedaa,tgif el bedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030056,TGIF - El Bedaa,tgif el bedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030065,TGIF - El Bedaa,tgif el bedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030066,TGIF - El Bedaa,tgif el bedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030187,TGIF - El Bedaa,tgif el bedaa
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11004666,TGIF - Jabriya,tgif jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11015970,TGIF - Jabriya,tgif jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11020061,TGIF - Jabriya,tgif jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11023871,TGIF - Jabriya,tgif jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024124,TGIF - Jabriya,tgif jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024622,TGIF - Jabriya,tgif jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026691,TGIF - Jabriya,tgif jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026783,TGIF - Jabriya,tgif jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026794,TGIF - Jabriya,tgif jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026938,TGIF - Jabriya,tgif jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027275,TGIF - Jabriya,tgif jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027697,TGIF - Jabriya,tgif jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027769,TGIF - Jabriya,tgif jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027878,TGIF - Jabriya,tgif jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027881,TGIF - Jabriya,tgif jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027976,TGIF - Jabriya,tgif jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028157,TGIF - Jabriya,tgif jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028884,TGIF - Jabriya,tgif jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029184,TGIF - Jabriya,tgif jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029415,TGIF - Jabriya,tgif jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029422,TGIF - Jabriya,tgif jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029493,TGIF - Jabriya,tgif jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029511,TGIF - Jabriya,tgif jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029526,TGIF - Jabriya,tgif jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029760,TGIF - Jabriya,tgif jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030046,TGIF - Jabriya,tgif jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030103,TGIF - Jabriya,tgif jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030216,TGIF - Jabriya,tgif jabriya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11007818,TGIF - Mall 360,tgif mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11015650,TGIF - Mall 360,tgif mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11015681,TGIF - Mall 360,tgif mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024430,TGIF - Mall 360,tgif mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11025022,TGIF - Mall 360,tgif mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026440,TGIF - Mall 360,tgif mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026645,TGIF - Mall 360,tgif mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026865,TGIF - Mall 360,tgif mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026913,TGIF - Mall 360,tgif mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027026,TGIF - Mall 360,tgif mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027114,TGIF - Mall 360,tgif mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027214,TGIF - Mall 360,tgif mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027247,TGIF - Mall 360,tgif mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027773,TGIF - Mall 360,tgif mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028818,TGIF - Mall 360,tgif mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028883,TGIF - Mall 360,tgif mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028885,TGIF - Mall 360,tgif mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028919,TGIF - Mall 360,tgif mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028933,TGIF - Mall 360,tgif mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028984,TGIF - Mall 360,tgif mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029175,TGIF - Mall 360,tgif mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029216,TGIF - Mall 360,tgif mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029224,TGIF - Mall 360,tgif mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029530,TGIF - Mall 360,tgif mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030110,TGIF - Mall 360,tgif mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030160,TGIF - Mall 360,tgif mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030215,TGIF - Mall 360,tgif mall 360
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11016993,TGIF - Marina Mall,tgif marina mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11017678,TGIF - Marina Mall,tgif marina mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11017700,TGIF - Marina Mall,tgif marina mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11019095,TGIF - Marina Mall,tgif marina mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11019519,TGIF - Marina Mall,tgif marina mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024643,TGIF - Marina Mall,tgif marina mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024862,TGIF - Marina Mall,tgif marina mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026376,TGIF - Marina Mall,tgif marina mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026735,TGIF - Marina Mall,tgif marina mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026838,TGIF - Marina Mall,tgif marina mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026877,TGIF - Marina Mall,tgif marina mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027115,TGIF - Marina Mall,tgif marina mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027206,TGIF - Marina Mall,tgif marina mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027880,TGIF - Marina Mall,tgif marina mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027967,TGIF - Marina Mall,tgif marina mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028887,TGIF - Marina Mall,tgif marina mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028892,TGIF - Marina Mall,tgif marina mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029491,TGIF - Marina Mall,tgif marina mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029595,TGIF - Marina Mall,tgif marina mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029649,TGIF - Marina Mall,tgif marina mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029678,TGIF - Marina Mall,tgif marina mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030077,TGIF - Marina Mall,tgif marina mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030108,TGIF - Marina Mall,tgif marina mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030174,TGIF - Marina Mall,tgif marina mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11005830,TGIF - Seaside 2,tgif seaside 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11017961,TGIF - Seaside 2,tgif seaside 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11018865,TGIF - Seaside 2,tgif seaside 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11023888,TGIF - Seaside 2,tgif seaside 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024445,TGIF - Seaside 2,tgif seaside 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026093,TGIF - Seaside 2,tgif seaside 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026241,TGIF - Seaside 2,tgif seaside 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026784,TGIF - Seaside 2,tgif seaside 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026829,TGIF - Seaside 2,tgif seaside 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026973,TGIF - Seaside 2,tgif seaside 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027085,TGIF - Seaside 2,tgif seaside 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027288,TGIF - Seaside 2,tgif seaside 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027806,TGIF - Seaside 2,tgif seaside 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027817,TGIF - Seaside 2,tgif seaside 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028313,TGIF - Seaside 2,tgif seaside 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028697,TGIF - Seaside 2,tgif seaside 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028719,TGIF - Seaside 2,tgif seaside 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028850,TGIF - Seaside 2,tgif seaside 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028920,TGIF - Seaside 2,tgif seaside 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028928,TGIF - Seaside 2,tgif seaside 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029077,TGIF - Seaside 2,tgif seaside 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029421,TGIF - Seaside 2,tgif seaside 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029443,TGIF - Seaside 2,tgif seaside 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029489,TGIF - Seaside 2,tgif seaside 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029512,TGIF - Seaside 2,tgif seaside 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029993,TGIF - Seaside 2,tgif seaside 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030057,TGIF - Seaside 2,tgif seaside 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030061,TGIF - Seaside 2,tgif seaside 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030067,TGIF - Seaside 2,tgif seaside 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030158,TGIF - Seaside 2,tgif seaside 2
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11003142,Tikka - Adiliya,tikka adiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11003239,Tikka - Adiliya,tikka adiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026178,Tikka - Adiliya,tikka adiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026727,Tikka - Adiliya,tikka adiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026996,Tikka - Adiliya,tikka adiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028207,Tikka - Adiliya,tikka adiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028510,Tikka - Adiliya,tikka adiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028936,Tikka - Adiliya,tikka adiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029482,Tikka - Adiliya,tikka adiliya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11007226,Tikka - Cube Mall,tikka cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026198,Tikka - Cube Mall,tikka cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026574,Tikka - Cube Mall,tikka cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027001,Tikka - Cube Mall,tikka cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028033,Tikka - Cube Mall,tikka cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028051,Tikka - Cube Mall,tikka cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028548,Tikka - Cube Mall,tikka cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028562,Tikka - Cube Mall,tikka cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029202,Tikka - Cube Mall,tikka cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029486,Tikka - Cube Mall,tikka cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029506,Tikka - Cube Mall,tikka cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029532,Tikka - Cube Mall,tikka cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029537,Tikka - Cube Mall,tikka cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029539,Tikka - Cube Mall,tikka cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029541,Tikka - Cube Mall,tikka cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029583,Tikka - Cube Mall,tikka cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030149,Tikka - Cube Mall,tikka cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030241,Tikka - Cube Mall,tikka cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11006509,Tikka - Farwaniya,tikka farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024714,Tikka - Farwaniya,tikka farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027017,Tikka - Farwaniya,tikka farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027031,Tikka - Farwaniya,tikka farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028767,Tikka - Farwaniya,tikka farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029127,Tikka - Farwaniya,tikka farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029641,Tikka - Farwaniya,tikka farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030253,Tikka - Farwaniya,tikka farwaniya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026580,Tikka - Fordha Co,tikka fordha co
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026779,Tikka - Fordha Co,tikka fordha co
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029091,Tikka - Fordha Co,tikka fordha co
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029092,Tikka - Fordha Co,tikka fordha co
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029538,Tikka - Fordha Co,tikka fordha co
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029636,Tikka - Fordha Co,tikka fordha co
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029637,Tikka - Fordha Co,tikka fordha co
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029808,Tikka - Fordha Co,tikka fordha co
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026239,Tikka - Hawally,tikka hawally
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026430,Tikka - Hawally,tikka hawally
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026981,Tikka - Hawally,tikka hawally
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028208,Tikka - Hawally,tikka hawally
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029507,Tikka - Hawally,tikka hawally
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029531,Tikka - Hawally,tikka hawally
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029535,Tikka - Hawally,tikka hawally
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029582,Tikka - Hawally,tikka hawally
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029626,Tikka - Hawally,tikka hawally
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030184,Tikka - Hawally,tikka hawally
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030193,Tikka - J2 Mall,tikka j2 mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11001482,Tikka - Seaside Food Hub,tikka seaside food hub
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026265,Tikka - Seaside Food Hub,tikka seaside food hub
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026983,Tikka - Seaside Food Hub,tikka seaside food hub
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027666,Tikka - Seaside Food Hub,tikka seaside food hub
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028049,Tikka - Seaside Food Hub,tikka seaside food hub
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028935,Tikka - Seaside Food Hub,tikka seaside food hub
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029642,Tikka - Seaside Food Hub,tikka seaside food hub
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11015027,Tikka - Shamiya Coop,tikka shamiya coop
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026297,Tikka - Shamiya Coop,tikka shamiya coop
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026428,Tikka - Shamiya Coop,tikka shamiya coop
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028210,Tikka - Shamiya Coop,tikka shamiya coop
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028512,Tikka - Shamiya Coop,tikka shamiya coop
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029533,Tikka - Shamiya Coop,tikka shamiya coop
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029639,Tikka - Shamiya Coop,tikka shamiya coop
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029643,Tikka - Shamiya Coop,tikka shamiya coop
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030104,Tikka - Shamiya Coop,tikka shamiya coop
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030185,Tikka - Shamiya Coop,tikka shamiya coop
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11023630,Tikka - Souq Salmiya,tikka souq salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11024963,Tikka - Souq Salmiya,tikka souq salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026375,Tikka - Souq Salmiya,tikka souq salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026935,Tikka - Souq Salmiya,tikka souq salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027667,Tikka - Souq Salmiya,tikka souq salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029090,Tikka - Souq Salmiya,tikka souq salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029504,Tikka - Souq Salmiya,tikka souq salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029540,Tikka - Souq Salmiya,tikka souq salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030186,Tikka - Souq Salmiya,tikka souq salmiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026733,Wimpy - Al Shamiya,wimpy al shamiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027945,Wimpy - Al Shamiya,wimpy al shamiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029391,Wimpy - Al Shamiya,wimpy al shamiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029644,Wimpy - Al Shamiya,wimpy al shamiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029666,Wimpy - Al Shamiya,wimpy al shamiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029669,Wimpy - Al Shamiya,wimpy al shamiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029988,Wimpy - Al Shamiya,wimpy al shamiya
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026260,Wimpy - Alnozha,wimpy alnozha
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026497,Wimpy - Alnozha,wimpy alnozha
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027936,Wimpy - Alnozha,wimpy alnozha
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029310,Wimpy - Alnozha,wimpy alnozha
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029525,Wimpy - Alnozha,wimpy alnozha
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029828,Wimpy - Alnozha,wimpy alnozha
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029989,Wimpy - Alnozha,wimpy alnozha
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026325,Wimpy - Avenues Mall,wimpy avenues mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026649,Wimpy - Avenues Mall,wimpy avenues mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028213,Wimpy - Avenues Mall,wimpy avenues mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028844,Wimpy - Avenues Mall,wimpy avenues mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029880,Wimpy - Avenues Mall,wimpy avenues mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029990,Wimpy - Avenues Mall,wimpy avenues mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030148,Wimpy - Avenues Mall,wimpy avenues mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026296,Wimpy - Cube Mall,wimpy cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027691,Wimpy - Cube Mall,wimpy cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028634,Wimpy - Cube Mall,wimpy cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029652,Wimpy - Cube Mall,wimpy cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029654,Wimpy - Cube Mall,wimpy cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029908,Wimpy - Cube Mall,wimpy cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030288,Wimpy - Cube Mall,wimpy cube mall
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11005240,Wimpy - Jabriya Carve Out,wimpy jabriya carve out
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026659,Wimpy - Jabriya Carve Out,wimpy jabriya carve out
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028083,Wimpy - Jabriya Carve Out,wimpy jabriya carve out
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028542,Wimpy - Jabriya Carve Out,wimpy jabriya carve out
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029437,Wimpy - Jabriya Carve Out,wimpy jabriya carve out
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029524,Wimpy - Jabriya Carve Out,wimpy jabriya carve out
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029876,Wimpy - Jabriya Carve Out,wimpy jabriya carve out
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029914,Wimpy - Jabriya Carve Out,wimpy jabriya carve out
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030289,Wimpy - Jabriya Carve Out,wimpy jabriya carve out
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028200,Wimpy - Jahra - Dark Kitchen,wimpy jahra dark kitchen
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029423,Wimpy - Jahra - Dark Kitchen,wimpy jahra dark kitchen
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029632,Wimpy - Jahra - Dark Kitchen,wimpy jahra dark kitchen
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029648,Wimpy - Jahra - Dark Kitchen,wimpy jahra dark kitchen
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029715,Wimpy - Jahra - Dark Kitchen,wimpy jahra dark kitchen
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029813,Wimpy - Jahra - Dark Kitchen,wimpy jahra dark kitchen
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029915,Wimpy - Jahra - Dark Kitchen,wimpy jahra dark kitchen
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026064,Wimpy - Lily Center,wimpy lily center
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026639,Wimpy - Lily Center,wimpy lily center
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027897,Wimpy - Lily Center,wimpy lily center
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028202,Wimpy - Lily Center,wimpy lily center
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029389,Wimpy - Lily Center,wimpy lily center
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029852,Wimpy - Lily Center,wimpy lily center
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026498,Wimpy - National Guard,wimpy national guard
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029893,Wimpy - National Guard,wimpy national guard
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026604,Wimpy - Seaside Food Hub,wimpy seaside food hub
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028843,Wimpy - Seaside Food Hub,wimpy seaside food hub
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029488,Wimpy - Seaside Food Hub,wimpy seaside food hub
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029645,Wimpy - Seaside Food Hub,wimpy seaside food hub
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029680,Wimpy - Seaside Food Hub,wimpy seaside food hub
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029918,Wimpy - Seaside Food Hub,wimpy seaside food hub
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030290,Wimpy - Seaside Food Hub,wimpy seaside food hub
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11023547,Wimpy - Sky Mall Dajeej,wimpy sky mall dajeej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026264,Wimpy - Sky Mall Dajeej,wimpy sky mall dajeej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11027937,Wimpy - Sky Mall Dajeej,wimpy sky mall dajeej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028082,Wimpy - Sky Mall Dajeej,wimpy sky mall dajeej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028204,Wimpy - Sky Mall Dajeej,wimpy sky mall dajeej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028232,Wimpy - Sky Mall Dajeej,wimpy sky mall dajeej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028769,Wimpy - Sky Mall Dajeej,wimpy sky mall dajeej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028863,Wimpy - Sky Mall Dajeej,wimpy sky mall dajeej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028916,Wimpy - Sky Mall Dajeej,wimpy sky mall dajeej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029388,Wimpy - Sky Mall Dajeej,wimpy sky mall dajeej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029390,Wimpy - Sky Mall Dajeej,wimpy sky mall dajeej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029646,Wimpy - Sky Mall Dajeej,wimpy sky mall dajeej
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026259,Wimpy - Square Park,wimpy square park
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026326,Wimpy - Square Park,wimpy square park
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11026684,Wimpy - Square Park,wimpy square park
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028201,Wimpy - Square Park,wimpy square park
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11028792,Wimpy - Square Park,wimpy square park
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029417,Wimpy - Square Park,wimpy square park
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029634,Wimpy - Square Park,wimpy square park
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11029738,Wimpy - Square Park,wimpy square park
+Employee_Shift_Assignment.xlsx,Sheet1,STORE_NAME,11030223,Wimpy - Square Park,wimpy square park
