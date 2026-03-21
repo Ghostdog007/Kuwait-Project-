@@ -1,152 +1,79 @@
-bus_id,trip_id,trip_type,shift_time,trip_start_time,trip_end_time,scheduled_trip_minutes,scheduled_deadhead_minutes,mission_passengers,original_stop_count,matched_stop_count,unmatched_stop_count,routeable_trip,fully_matched_trip,routed_store_sequence,route_distance_km,estimated_route_minutes,start_min,end_min
-1,MIX_3,MIXED,12:00 AM,12:00 AM,02:15 AM,136.0,0.0,17.0,7,7,0,True,True,Hardees - Sabah Al Ahmed -> KFC - S Al Salem -> TGIF - The Lake Mall -> Hardees - Al Qureen 2 -> Hardees - Al Sbahiya -> KFC - Alreqa -> TGIF - Abu Halifa,76.141,130.53,0,135
-2,MIX_22,MIXED,12:30 AM,12:00 AM,12:22 AM,22.0,0.0,4.0,3,3,0,True,True,Wimpy - Divonne Complex -> KFC - Village -> TGIF - Abu Halifa,6.96,11.93,0,22
-2,84,OUTBOUND,01:00 AM,01:00 AM,01:25 AM,26.0,22.0,11.0,3,3,0,True,True,KFC - Om El Himan -> KFC - Al Kout Mall -> TGIF - Al Kout Mall,13.108,22.47,60,85
-3,85,OUTBOUND,01:00 AM,01:00 AM,01:21 AM,22.0,14.0,12.0,4,4,0,True,True,Hardees - Sabah Al Salem -> KFC - S Al Salem -> TGIF - The Lake Mall -> TGIF - Gate Mall,11.368,19.49,60,81
-4,86,OUTBOUND,01:00 AM,01:00 AM,01:19 AM,20.0,9.0,4.0,4,4,0,True,True,Hardees - Al Ahmadi -> KFC - Al Mangaf -> KFC - Fahd Al Ahmad -> Hardees - Fahd El Ahmed,11.543,19.79,60,79
-5,87,OUTBOUND,01:00 AM,01:00 AM,01:12 AM,12.0,6.0,9.0,3,3,0,True,True,Hardees - Al Zahr -> KFC - Al Bairak Mall -> TGIF - Abu Halifa,6.761,11.59,60,72
-6,88,OUTBOUND,01:30 AM,01:30 AM,02:11 AM,42.0,42.0,3.0,1,1,0,True,True,KFC - Sabah Al Ahmad 2,0.0,0.0,90,131
-7,89,OUTBOUND,01:30 AM,01:30 AM,01:53 AM,24.0,14.0,6.0,4,4,0,True,True,Hardees - Sabah Al Salem -> KFC - S Al Salem -> Hardees - Al Qureen 2 -> Hardees - Village,9.442,16.19,90,113
-8,90,OUTBOUND,01:30 AM,01:30 AM,01:38 AM,8.0,8.0,4.0,1,1,0,True,True,TGIF - The Lake Mall,0.0,0.0,90,98
-2,91,OUTBOUND,02:00 AM,02:00 AM,02:01 AM,2.0,2.0,1.0,1,1,0,True,True,KFC - Alreqa,0.0,0.0,120,121
-4,92,OUTBOUND,02:30 AM,02:30 AM,03:38 AM,68.0,60.0,9.0,5,5,0,True,True,BR - Khiran Outlet -> KFC - Khiran Outlet -> Krispy Kreme - Khiran Hybrid O -> Hardees - Khiran Hybrid Outlet -> Krispy Kreme - Khiran Square M,1.632,2.8,150,218
-3,93,OUTBOUND,02:30 AM,02:30 AM,03:13 AM,44.0,42.0,3.0,2,2,0,True,True,Hardees - Sabah Al Ahmed -> KFC - Sabah Al Ahmad 2,0.022,0.04,150,193
-2,94,OUTBOUND,02:30 AM,02:30 AM,02:47 AM,18.0,8.0,10.0,5,5,0,True,True,Krispy Kreme - Divonne -> Hardees - Village -> KFC - Village -> KFC - Loft Fintas -> Hardees - Al Fintas,8.19,14.04,150,167
-5,95,OUTBOUND,02:30 AM,02:30 AM,02:47 AM,17.0,6.0,14.0,5,5,0,True,True,KFC - Al Mangaf -> KFC - Abo Helifa -> KFC - Fahd Al Ahmad -> Hardees - Fahd El Ahmed -> KFC - Alreqa,7.383,12.66,150,167
-8,96,OUTBOUND,03:00 AM,03:00 AM,03:59 AM,60.0,60.0,1.0,1,1,0,True,True,Krispy Kreme - Khiran Hybrid O,0.0,0.0,180,239
-7,97,OUTBOUND,03:00 AM,03:00 AM,03:51 AM,52.0,52.0,3.0,1,1,0,True,True,Tikka - Fahaheel DK,0.0,0.0,180,231
-9,98,OUTBOUND,03:00 AM,03:00 AM,03:45 AM,45.0,43.0,3.0,2,2,0,True,True,BR - Sabah Al Ahmed Coop -> KFC - Sabah Al Ahmad 2,1.767,3.03,180,225
-1,99,OUTBOUND,03:00 AM,03:00 AM,03:27 AM,28.0,22.0,11.0,4,4,0,True,True,KFC - Om El Himan -> Hardees - Om El Himan -> BR - Kout Mall -> Krispy Kreme - Fahaheel,13.296,22.79,180,207
-6,100,OUTBOUND,03:00 AM,03:00 AM,03:26 AM,26.0,14.0,14.0,5,5,0,True,True,Hardees - Sabah Al Salem Block -> Krispy Kreme - Sabah Al Salem -> KFC - S Al Salem -> KFC - Sabah Al Salem 2 -> Hardees - Al Qureen,6.207,10.64,180,206
-10,101,OUTBOUND,03:00 AM,03:00 AM,03:23 AM,23.0,14.0,18.0,5,5,0,True,True,Hardees - Sabah Al Salem -> Hardees - Adan -> KFC - Adan -> KFC - Qureen -> Tikka - Qurain,7.11,12.19,180,203
-11,102,OUTBOUND,03:00 AM,03:00 AM,03:19 AM,19.0,9.0,13.0,5,5,0,True,True,Hardees - Qurain Markets -> Krispy Kreme - Aswaq Al Qurain -> Hardees - Al Qureen 2 -> KFC Mubarek El-Kaber(Qurain 2) -> Hardees - Augiela 2,7.206,12.35,180,199
-12,103,OUTBOUND,03:00 AM,03:00 AM,03:20 AM,21.0,9.0,15.0,5,5,0,True,True,Hardees - Al Ahmadi -> KFC - Al Ahmadi -> Hardees - Al Mangaf -> Krispy Kreme Mangaf Sultan Centr -> KFC - Mangaf 2,7.583,13.0,180,200
-13,104,OUTBOUND,03:00 AM,03:00 AM,03:18 AM,19.0,8.0,13.0,5,5,0,True,True,KFC - Fahaheel -> KFC - Al Mangaf -> Hardees - Al Fintas -> KFC - Al Mahboola -> Krispy Kreme Alyia Ghalyia Tower,9.311,15.96,180,198
-5,105,OUTBOUND,03:00 AM,03:03 AM,03:17 AM,14.0,6.0,12.0,4,4,0,True,True,KFC - Al Zahr -> Hardees - Al Zahr -> KFC - Augiela 2 -> Wimpy - Abu Halifa,6.626,11.36,183,197
-2,106,OUTBOUND,03:00 AM,03:00 AM,03:01 AM,2.0,2.0,1.0,1,1,0,True,True,KFC - Fahd Al Ahmad,0.0,0.0,180,181
-2,107,OUTBOUND,03:30 AM,03:53 AM,04:36 AM,44.0,42.0,11.0,2,2,0,True,True,Hardees - Sabah Al Ahmed -> KFC - Sabah Al Ahmad 2,0.022,0.04,233,276
-3,108,OUTBOUND,03:30 AM,03:37 AM,03:58 AM,21.0,14.0,7.0,4,4,0,True,True,Hardees - Sabah Al Salem -> KFC - S Al Salem -> Tikka - Qurain -> Hardees - Al Qureen 2,6.724,11.53,217,238
-5,109,OUTBOUND,03:30 AM,03:33 AM,03:48 AM,15.0,6.0,6.0,4,4,0,True,True,Hardees - Al Mangaf -> Hardees - Al Sbahiya -> KFC - Al Mahboola -> Wimpy - Abu Halifa,7.828,13.42,213,228
-13,110,OUTBOUND,03:30 AM,03:32 AM,03:41 AM,9.0,4.0,4.0,3,3,0,True,True,BR - The Gate Mall -> KFC - Augiela 2 -> Krispy Kreme - Gate Mall,0.893,1.53,212,221
-1,111,OUTBOUND,04:30 AM,04:30 AM,04:55 AM,26.0,22.0,3.0,3,3,0,True,True,KFC - Om El Himan -> Hardees - Al Fahaheel -> Hardees - Al Mangaf,15.405,26.41,270,295
-3,112,OUTBOUND,04:30 AM,04:30 AM,04:55 AM,26.0,13.0,14.0,5,5,0,True,True,KFC - Sabah Al Salem 2 -> Hardees - Adan -> KFC - Adan -> KFC - Aswaq Al Qurain -> BR - Qurain 1,9.475,16.24,270,295
-4,113,OUTBOUND,04:30 AM,04:30 AM,04:48 AM,18.0,4.0,18.0,5,5,0,True,True,KFC - Loft Fintas -> KFC - Fahd Al Ahmad -> Hardees - Fahd El Ahmed -> Hardees - Al Fintas -> Wimpy - Abu Halifa,8.909,15.27,270,288
-5,114,OUTBOUND,04:30 AM,04:30 AM,04:38 AM,8.0,2.0,5.0,3,3,0,True,True,BR - Reqa -> BR - Fahd El Ahmed -> KFC - Alreqa,2.408,4.13,270,278
-6,115,OUTBOUND,05:00 AM,05:00 AM,05:43 AM,44.0,42.0,10.0,2,2,0,True,True,Hardees - Sabah Al Ahmed -> KFC - Sabah Al Ahmad 2,0.022,0.04,300,343
-7,116,OUTBOUND,05:00 AM,05:00 AM,05:27 AM,28.0,22.0,10.0,4,4,0,True,True,KFC - Om El Himan -> BR - Om El Haiman -> Hardees - Om El Himan -> BR - Fahaheel,13.066,22.4,300,327
-8,117,OUTBOUND,05:00 AM,05:00 AM,05:26 AM,26.0,14.0,20.0,5,5,0,True,True,Hardees - Sabah Al Salem Block -> BR - Sabah Al Salem Block 1 -> KFC - S Al Salem -> KFC - Sabah Al Salem 2 -> Hardees - Al Qureen,6.213,10.65,300,326
-9,118,OUTBOUND,05:00 AM,05:00 AM,05:23 AM,24.0,14.0,12.0,5,5,0,True,True,Hardees - Sabah Al Salem -> BR - Qurain 3 -> Hardees - Adan -> KFC - Qureen -> BR - Qurain 1,7.647,13.11,300,323
-2,119,OUTBOUND,05:00 AM,05:00 AM,05:19 AM,19.0,9.0,20.0,5,5,0,True,True,Hardees - Qurain Markets -> KFC - Aswaq Al Qurain -> BR - Aswaq Al Qurain -> Hardees - Al Qureen 2 -> KFC Mubarek El-Kaber(Qurain 2),4.917,8.43,300,319
-5,120,OUTBOUND,05:00 AM,05:00 AM,05:21 AM,21.0,9.0,9.0,5,5,0,True,True,Hardees - Al Ahmadi -> KFC - Al Ahmadi -> KFC - Al Mangaf -> Hardees - Al Mangaf -> KFC - Mangaf 2,8.022,13.75,300,321
-10,121,OUTBOUND,05:00 AM,05:00 AM,05:14 AM,15.0,8.0,11.0,4,4,0,True,True,KFC - Fahaheel -> KFC - Fahd Al Ahmad -> Hardees - Fahd El Ahmed -> BR - Qurain 2,6.821,11.69,300,314
-11,122,OUTBOUND,05:00 AM,05:00 AM,05:16 AM,16.0,8.0,22.0,5,5,0,True,True,Wimpy - Divonne Complex -> BR - Divonne -> Hardees - Village -> KFC - Village -> BR - Al Fintas,4.984,8.54,300,316
-12,123,OUTBOUND,05:00 AM,05:00 AM,05:08 AM,8.0,6.0,5.0,2,2,0,True,True,KFC - Al Zahr -> Hardees - Al Zahr,0.018,0.03,300,308
-13,124,OUTBOUND,05:30 AM,05:30 AM,06:33 AM,64.0,61.0,4.0,2,2,0,True,True,Hardees - Khairan -> KFC - Khiran Outlet,2.087,3.58,330,393
-4,125,OUTBOUND,05:30 AM,05:39 AM,06:23 AM,44.0,42.0,2.0,2,2,0,True,True,Hardees - Sabah Al Ahmed -> KFC - Sabah Al Ahmad 2,0.022,0.04,339,383
-1,126,OUTBOUND,05:30 AM,05:30 AM,05:57 AM,28.0,22.0,3.0,2,2,0,True,True,KFC - Om El Himan -> Hardees - Al Ahmadi,15.972,27.38,330,357
-3,127,OUTBOUND,05:30 AM,05:30 AM,05:50 AM,21.0,14.0,10.0,4,4,0,True,True,Hardees - Sabah Al Salem -> KFC Mubarek El-Kaber(Qurain 2) -> Hardees - Augiela 2 -> KFC - Augiela 2,10.336,17.72,330,350
-12,128,OUTBOUND,05:30 AM,05:30 AM,05:45 AM,16.0,6.0,13.0,4,4,0,True,True,KFC - Al Zahr -> KFC - Alreqa -> Hardees - Al Fintas -> KFC - Al Mahboola,8.11,13.9,330,345
-10,129,OUTBOUND,05:30 AM,05:30 AM,05:34 AM,4.0,4.0,1.0,1,1,0,True,True,Hardees - Al Sbahiya,0.0,0.0,330,334
-11,130,OUTBOUND,06:00 AM,06:07 AM,06:53 AM,46.0,42.0,2.0,2,2,0,True,True,Hardees - Sabah Al Ahmed -> Hardees - Om El Himan,21.756,37.3,367,413
-2,131,OUTBOUND,06:00 AM,06:00 AM,06:13 AM,13.0,6.0,7.0,3,3,0,True,True,Hardees - Al Zahr -> Hardees - Augiela 2 -> Hardees - Al Fintas,7.724,13.24,360,373
-5,132,OUTBOUND,06:00 AM,06:00 AM,06:05 AM,6.0,6.0,4.0,1,1,0,True,True,Hardees - Al Mangaf,0.0,0.0,360,365
-1,56,INBOUND,07:30 AM,06:29 AM,06:30 AM,1.0,0.0,1.0,1,1,0,True,True,Krispy Kreme Alyia Ghalyia Tower,0.0,0.0,389,390
-3,133,OUTBOUND,06:30 AM,06:30 AM,06:56 AM,26.0,22.0,9.0,3,3,0,True,True,Hardees - Om El Himan -> KFC - Al Mangaf -> KFC - Mangaf 2,16.463,28.22,390,416
-6,134,OUTBOUND,06:30 AM,06:30 AM,06:52 AM,23.0,14.0,6.0,4,4,0,True,True,Hardees - Sabah Al Salem Block -> Hardees - Al Qureen -> Hardees - Adan -> Hardees - Al Qureen 2,8.487,14.55,390,412
-2,135,OUTBOUND,06:30 AM,06:30 AM,06:35 AM,6.0,2.0,3.0,2,2,0,True,True,KFC - Fahd Al Ahmad -> Hardees - Al Fintas,2.329,3.99,390,395
-2,57,INBOUND,08:30 AM,07:13 AM,07:30 AM,16.0,0.0,5.0,3,3,0,True,True,Hardees - Al Fintas -> KFC - Alreqa -> TGIF - The Lake Mall,10.779,18.48,433,450
-3,MIX_15,MIXED,09:00 AM,07:38 AM,11:31 AM,233.0,0.0,28.0,11,11,0,True,True,Tikka - Fahaheel DK -> Hardees - Sabah Al Ahmed -> KFC - Om El Himan -> Hardees - Om El Himan -> Hardees - Sabah Al Salem Block -> Krispy Kreme - Sabah Al Salem -> KFC - S Al Salem -> KFC - Sabah Al Salem 2 -> Hardees - Adan -> KFC - Adan -> Hardees - Al Sbahiya,149.241,255.84,458,691
-4,MIX_10,MIXED,09:30 AM,08:16 AM,11:01 AM,164.0,0.0,23.0,10,10,0,True,True,BR - Sabah Al Ahmed Coop -> Hardees - Sabah Al Ahmed -> KFC - Sabah Al Ahmad 2 -> Hardees - Sabah Al Salem -> KFC - S Al Salem -> Hardees - Al Ahmadi -> KFC - Al Ahmadi -> Wimpy - Divonne Complex -> Krispy Kreme - Gate Mall -> KFC - Al Bairak Mall,93.591,160.44,496,661
-5,MIX_16,MIXED,09:00 AM,08:18 AM,10:09 AM,111.0,0.0,22.0,11,11,0,True,True,Hardees - Al Qureen -> Hardees - Qurain Markets -> Hardees - Al Ahmadi -> KFC - Al Ahmadi -> KFC - Qureen -> Krispy Kreme - Aswaq Al Qurain -> KFC - Aswaq Al Qurain -> KFC - Al Kout Mall -> Hardees - Al Fahaheel -> Wimpy - Divonne Complex -> Krispy Kreme - Divonne,67.166,115.14,498,609
-6,60,INBOUND,10:30 AM,08:20 AM,09:30 AM,70.0,0.0,6.0,5,5,0,True,True,Hardees - Khiran Hybrid Outlet -> Krispy Kreme - Khiran Hybrid O -> KFC - Khiran Outlet -> BR - Khiran Outlet -> Hardees - Khairan,2.159,3.7,500,570
-7,MIX_17,MIXED,09:00 AM,08:21 AM,09:26 AM,64.0,0.0,25.0,8,8,0,True,True,KFC - Fahaheel -> Tikka - Qurain -> Hardees - Al Qureen 2 -> Hardees - Village -> KFC - Village -> KFC Mubarek El-Kaber(Qurain 2) -> KFC - Al Zahr -> Krispy Kreme Mangaf Sultan Centr,33.57,57.55,501,566
-8,MIX_18,MIXED,09:00 AM,08:23 AM,09:27 AM,64.0,0.0,22.0,11,11,0,True,True,Hardees - Al Zahr -> KFC - Al Mangaf -> Hardees - Al Mangaf -> KFC - Mangaf 2 -> KFC - Loft Fintas -> TGIF - Gate Mall -> Hardees - Augiela 2 -> KFC - Augiela 2 -> KFC - Abo Helifa -> KFC - Fahd Al Ahmad -> Wimpy - Abu Halifa,33.191,56.9,503,567
-9,MIX_19,MIXED,09:00 AM,08:28 AM,08:40 AM,12.0,0.0,8.0,3,3,0,True,True,Hardees - Fahd El Ahmed -> KFC - Alreqa -> KFC - Al Mahboola,3.359,5.76,508,520
-10,58,INBOUND,10:00 AM,08:37 AM,09:00 AM,22.0,0.0,8.0,4,4,0,True,True,KFC - Loft Fintas -> TGIF - Al Kout Mall -> BR - Kout Mall -> Krispy Kreme - Kout Mall,11.738,20.12,517,540
-11,61,INBOUND,10:30 AM,08:44 AM,09:30 AM,45.0,0.0,2.0,2,2,0,True,True,KFC - Sabah Al Ahmad 2 -> BR - Sabah Al Ahmed Coop,1.767,3.03,524,570
-9,59,INBOUND,10:00 AM,08:51 AM,09:00 AM,8.0,0.0,1.0,1,1,0,True,True,TGIF - The Lake Mall,0.0,0.0,531,540
-12,MIX_11,MIXED,09:30 AM,08:55 AM,09:06 AM,11.0,0.0,4.0,1,1,0,True,True,Hardees - Al Sbahiya,0.0,0.0,535,546
-13,62,INBOUND,10:30 AM,09:04 AM,09:30 AM,26.0,0.0,3.0,3,3,0,True,True,KFC - Al Mangaf -> Hardees - Al Fahaheel -> Hardees - Om El Himan,15.396,26.39,544,570
-1,63,INBOUND,10:30 AM,09:12 AM,09:30 AM,18.0,1.0,6.0,4,4,0,True,True,TGIF - Abu Halifa -> BR - Al Fintas -> KFC - Loft Fintas -> KFC - Adan,10.163,17.42,552,570
-2,64,INBOUND,10:30 AM,09:13 AM,09:30 AM,17.0,8.0,7.0,4,4,0,True,True,KFC - Al Mahboola -> KFC - Alreqa -> KFC - Fahd Al Ahmad -> KFC - Al Zahr,9.057,15.53,553,570
-12,65,INBOUND,10:30 AM,09:22 AM,09:30 AM,8.0,0.0,4.0,2,2,0,True,True,Hardees - Al Fintas -> KFC - Mangaf 2,4.322,7.41,562,570
-9,66,INBOUND,11:00 AM,09:32 AM,10:00 AM,28.0,8.0,7.0,4,4,0,True,True,KFC - Al Kout Mall -> Hardees - Om El Himan -> BR - Om El Haiman -> KFC - Om El Himan,12.992,22.27,572,600
-10,67,INBOUND,11:00 AM,09:32 AM,10:00 AM,27.0,8.0,11.0,5,5,0,True,True,KFC - Adan -> BR - Qurain 3 -> KFC - Sabah Al Salem 2 -> KFC - S Al Salem -> BR - Sabah Al Salem Block 1,7.903,13.55,572,600
-7,68,INBOUND,11:00 AM,09:40 AM,10:00 AM,20.0,0.0,11.0,5,5,0,True,True,Hardees - Al Qureen 2 -> BR - Qurain 1 -> Tikka - Qurain -> KFC - Qureen -> Hardees - Adan,3.591,6.16,580,600
-8,70,INBOUND,11:00 AM,09:40 AM,10:00 AM,19.0,0.0,4.0,4,4,0,True,True,KFC - Mangaf 2 -> Hardees - Al Mangaf -> KFC - Al Mangaf -> KFC - Al Ahmadi,8.003,13.72,580,600
-12,69,INBOUND,11:00 AM,09:44 AM,10:02 AM,18.0,5.0,14.0,5,5,0,True,True,TGIF - Gate Mall -> KFC Mubarek El-Kaber(Qurain 2) -> BR - Aswaq Al Qurain -> KFC - Aswaq Al Qurain -> Hardees - Qurain Markets,5.699,9.77,584,602
-2,72,INBOUND,11:00 AM,09:46 AM,10:03 AM,17.0,6.0,12.0,5,5,0,True,True,KFC - Abo Helifa -> KFC - Fahaheel -> TGIF - Al Kout Mall -> BR - Fahaheel -> Krispy Kreme - Fahaheel,7.043,12.07,586,603
-1,71,INBOUND,11:00 AM,09:50 AM,10:07 AM,16.0,11.0,12.0,5,5,0,True,True,KFC - Loft Fintas -> KFC - Village -> Hardees - Village -> BR - Divonne -> TGIF - The Lake Mall,4.095,7.02,590,607
-13,73,INBOUND,11:00 AM,10:01 AM,10:17 AM,15.0,22.0,7.0,5,5,0,True,True,BR - Fahd El Ahmed -> BR - Reqa -> KFC - Augiela 2 -> BR - The Gate Mall -> Hardees - Augiela 2,5.388,9.24,601,617
-8,74,INBOUND,11:00 AM,10:19 AM,10:28 AM,9.0,9.0,7.0,4,4,0,True,True,KFC - Al Mahboola -> BR - Qurain 2 -> Hardees - Fahd El Ahmed -> KFC - Fahd Al Ahmad,1.667,2.86,619,628
-5,75,INBOUND,11:30 AM,10:19 AM,10:45 AM,26.0,0.0,3.0,3,3,0,True,True,KFC - Al Kout Mall -> BR - Om El Haiman -> KFC - Om El Himan,12.986,22.26,619,645
-7,76,INBOUND,11:30 AM,10:21 AM,10:46 AM,25.0,11.0,6.0,4,4,0,True,True,Hardees - Adan -> Hardees - Al Qureen -> BR - Sabah Al Salem Block 1 -> Hardees - Sabah Al Salem,7.786,13.35,621,646
-2,77,INBOUND,11:30 AM,10:21 AM,10:46 AM,25.0,8.0,4.0,4,4,0,True,True,Hardees - Al Zahr -> Hardees - Village -> Tikka - Qurain -> Hardees - Qurain Markets,12.078,20.7,621,646
-12,78,INBOUND,11:30 AM,10:22 AM,10:36 AM,14.0,9.0,3.0,3,3,0,True,True,KFC - Alreqa -> Hardees - Fahd El Ahmed -> Hardees - Al Ahmadi,8.307,14.24,622,636
-1,79,INBOUND,11:30 AM,10:26 AM,10:30 AM,4.0,8.0,1.0,1,1,0,True,True,BR - Al Bairak Mall,0.0,0.0,626,630
-8,80,INBOUND,12:00 PM,10:46 AM,11:00 AM,14.0,2.0,2.0,2,2,0,True,True,TGIF - Gate Mall -> Hardees - Al Qureen,7.573,12.98,646,660
-1,81,INBOUND,12:00 PM,10:55 AM,11:00 AM,4.0,4.0,1.0,1,1,0,True,True,Hardees - Al Sbahiya,0.0,0.0,655,660
-4,82,INBOUND,12:30 PM,11:12 AM,11:30 AM,18.0,0.0,5.0,4,4,0,True,True,KFC - Alreqa -> BR - Fahd El Ahmed -> KFC Mubarek El-Kaber(Qurain 2) -> Hardees - Al Qureen 2,9.465,16.23,672,690
-13,35,INBOUND,01:30 PM,11:26 AM,12:30 PM,64.0,4.0,2.0,2,2,0,True,True,Hardees - Khiran Hybrid Outlet -> Hardees - Khairan,2.078,3.56,686,750
-1,83,INBOUND,12:30 PM,11:28 AM,11:30 AM,1.0,4.0,1.0,1,1,0,True,True,KFC - Al Mahboola,0.0,0.0,688,690
-3,33,INBOUND,01:00 PM,11:45 AM,12:00 PM,14.0,0.0,5.0,3,3,0,True,True,TGIF - Abu Halifa -> KFC - Fahaheel -> TGIF - Al Kout Mall,8.91,15.27,705,720
-1,34,INBOUND,01:00 PM,11:56 AM,12:00 PM,4.0,1.0,1.0,1,1,0,True,True,KFC - Al Bairak Mall,0.0,0.0,716,720
-1,38,INBOUND,02:00 PM,12:18 PM,01:00 PM,42.0,4.0,1.0,1,1,0,True,True,Hardees - Sabah Al Ahmed,0.0,0.0,738,780
-4,36,INBOUND,01:30 PM,12:19 PM,12:30 PM,11.0,8.0,3.0,2,2,0,True,True,KFC - Fahd Al Ahmad -> TGIF - Al Kout Mall,6.89,11.81,739,750
-3,37,INBOUND,01:30 PM,12:23 PM,12:30 PM,6.0,8.0,2.0,1,1,0,True,True,KFC Mubarek El-Kaber(Qurain 2),0.0,0.0,743,750
-12,39,INBOUND,02:00 PM,12:38 PM,01:00 PM,21.0,9.0,6.0,4,4,0,True,True,Wimpy - Divonne Complex -> TGIF - The Lake Mall -> Hardees - Al Qureen -> KFC - Sabah Al Salem 2,7.155,12.27,758,780
-2,42,INBOUND,02:30 PM,12:43 PM,01:30 PM,46.0,9.0,3.0,2,2,0,True,True,KFC - Om El Himan -> Hardees - Sabah Al Ahmed,21.744,37.27,763,810
-3,40,INBOUND,02:00 PM,12:46 PM,01:00 PM,13.0,6.0,6.0,3,3,0,True,True,Hardees - Fahd El Ahmed -> KFC - Al Mangaf -> TGIF - Al Kout Mall,6.982,11.97,766,780
-4,41,INBOUND,02:00 PM,12:51 PM,01:00 PM,8.0,8.0,9.0,2,2,0,True,True,TGIF - Gate Mall -> KFC Mubarek El-Kaber(Qurain 2),2.297,3.94,771,780
-8,43,INBOUND,02:30 PM,01:04 PM,01:30 PM,26.0,12.0,4.0,3,3,0,True,True,KFC - Mangaf 2 -> KFC - Fahaheel -> Hardees - Om El Himan,16.165,27.71,784,810
-10,44,INBOUND,02:30 PM,01:08 PM,01:30 PM,22.0,14.0,5.0,4,4,0,True,True,KFC - Augiela 2 -> KFC - Loft Fintas -> KFC - Al Zahr -> Hardees - Qurain Markets,11.29,19.35,788,810
-7,45,INBOUND,02:30 PM,01:11 PM,01:30 PM,19.0,14.0,5.0,4,4,0,True,True,Wimpy - Abu Halifa -> KFC - Abo Helifa -> Hardees - Al Sbahiya -> Hardees - Al Ahmadi,11.112,19.05,791,810
-4,47,INBOUND,03:00 PM,01:18 PM,02:00 PM,42.0,6.0,1.0,1,1,0,True,True,Hardees - Sabah Al Ahmed,0.0,0.0,798,840
-3,46,INBOUND,02:30 PM,01:22 PM,01:30 PM,8.0,8.0,1.0,1,1,0,True,True,Wimpy - Divonne Complex,0.0,0.0,802,810
-12,48,INBOUND,03:00 PM,01:42 PM,02:00 PM,18.0,13.0,3.0,3,3,0,True,True,TGIF - Abu Halifa -> TGIF - The Lake Mall -> KFC - S Al Salem,12.377,21.22,822,840
-3,49,INBOUND,03:00 PM,01:58 PM,02:00 PM,2.0,8.0,1.0,1,1,0,True,True,KFC - Alreqa,0.0,0.0,838,840
-3,50,INBOUND,03:30 PM,02:19 PM,02:30 PM,10.0,2.0,3.0,2,2,0,True,True,TGIF - Abu Halifa -> KFC - Village,6.759,11.59,859,870
-7,51,INBOUND,04:00 PM,02:34 PM,03:00 PM,26.0,9.0,11.0,3,3,0,True,True,TGIF - Al Kout Mall -> KFC - Al Kout Mall -> KFC - Om El Himan,13.108,22.47,874,900
-10,52,INBOUND,04:00 PM,02:38 PM,03:00 PM,22.0,9.0,12.0,4,4,0,True,True,TGIF - Gate Mall -> TGIF - The Lake Mall -> KFC - S Al Salem -> Hardees - Sabah Al Salem,11.368,19.49,878,900
-12,53,INBOUND,04:00 PM,02:40 PM,03:00 PM,20.0,13.0,4.0,4,4,0,True,True,Hardees - Fahd El Ahmed -> KFC - Fahd Al Ahmad -> KFC - Al Mangaf -> Hardees - Al Ahmadi,11.543,19.79,880,900
-3,54,INBOUND,04:00 PM,02:47 PM,03:00 PM,12.0,8.0,9.0,3,3,0,True,True,TGIF - Abu Halifa -> KFC - Al Bairak Mall -> Hardees - Al Zahr,6.761,11.59,887,900
-3,MIX_30,MIXED,04:30 PM,03:18 PM,05:28 PM,130.0,6.0,14.0,7,7,0,True,True,KFC - Sabah Al Ahmad 2 -> Hardees - Sabah Al Salem -> KFC - S Al Salem -> TGIF - The Lake Mall -> Hardees - Al Qureen 2 -> Hardees - Village -> Krispy Kreme Alyia Ghalyia Tower,71.231,122.11,918,1048
-12,55,INBOUND,05:00 PM,03:58 PM,04:00 PM,2.0,9.0,1.0,1,1,0,True,True,KFC - Alreqa,0.0,0.0,958,960
-10,MIX_1,MIXED,05:30 PM,04:00 PM,07:23 PM,203.0,14.0,23.0,15,15,0,True,True,BR - Khiran Outlet -> KFC - Khiran Outlet -> Krispy Kreme - Khiran Hybrid O -> Hardees - Khiran Hybrid Outlet -> Krispy Kreme - Khiran Square M -> Hardees - Sabah Al Ahmed -> KFC - Sabah Al Ahmad 2 -> TGIF - The Lake Mall -> Krispy Kreme - Divonne -> Hardees - Village -> KFC - Village -> KFC - Al Mangaf -> KFC - Loft Fintas -> KFC - Fahd Al Ahmad -> Hardees - Fahd El Ahmed,106.971,183.38,960,1163
-12,MIX_4,MIXED,06:00 PM,04:30 PM,11:04 PM,394.0,2.0,44.0,18,18,0,True,True,Krispy Kreme - Khiran Hybrid O -> Tikka - Fahaheel DK -> BR - Sabah Al Ahmed Coop -> KFC - Sabah Al Ahmad 2 -> KFC - Om El Himan -> Hardees - Om El Himan -> Hardees - Sabah Al Salem Block -> Hardees - Sabah Al Salem -> Krispy Kreme - Sabah Al Salem -> KFC - Aswaq Al Qurain -> KFC - Al Kout Mall -> Hardees - Al Fahaheel -> Wimpy - Divonne Complex -> Krispy Kreme - Divonne -> Hardees - Village -> KFC - Village -> KFC - Loft Fintas -> TGIF - Gate Mall,282.818,484.83,990,1384
-8,MIX_2,MIXED,05:30 PM,04:57 PM,05:13 PM,15.0,22.0,18.0,3,3,0,True,True,KFC - Abo Helifa -> KFC - Alreqa -> Hardees - Al Fintas,5.806,9.95,1017,1033
-5,MIX_31,MIXED,06:30 PM,05:16 PM,07:56 PM,160.0,22.0,38.0,9,9,0,True,True,BR - Sabah Al Ahmed Coop -> Hardees - Sabah Al Ahmed -> KFC - Sabah Al Ahmad 2 -> Hardees - Sabah Al Salem -> KFC - S Al Salem -> Hardees - Al Ahmadi -> KFC - Al Ahmadi -> Tikka - Qurain -> KFC - Al Bairak Mall,91.655,157.12,1036,1196
-7,MIX_5,MIXED,06:00 PM,05:16 PM,06:21 PM,65.0,22.0,39.0,8,8,0,True,True,KFC - S Al Salem -> KFC - Sabah Al Salem 2 -> Hardees - Al Qureen -> Hardees - Adan -> KFC - Adan -> Hardees - Qurain Markets -> KFC - Al Ahmadi -> KFC - Abo Helifa,32.634,55.94,1036,1101
-9,MIX_6,MIXED,06:00 PM,05:20 PM,07:00 PM,100.0,22.0,41.0,10,10,0,True,True,Hardees - Al Ahmadi -> KFC - Qureen -> Krispy Kreme - Aswaq Al Qurain -> BR - Kout Mall -> Krispy Kreme - Fahaheel -> KFC - Fahaheel -> Tikka - Qurain -> Krispy Kreme Mangaf Sultan Centr -> Hardees - Fahd El Ahmed -> KFC - Alreqa,66.298,113.65,1040,1140
-1,MIX_7,MIXED,06:00 PM,05:22 PM,06:10 PM,48.0,42.0,42.0,6,6,0,True,True,Hardees - Al Qureen 2 -> KFC Mubarek El-Kaber(Qurain 2) -> KFC - Al Zahr -> Hardees - Al Zahr -> KFC - Al Mangaf -> KFC - Augiela 2,23.774,40.76,1042,1090
-8,MIX_8,MIXED,06:00 PM,05:24 PM,06:06 PM,42.0,0.0,31.0,8,8,0,True,True,Hardees - Al Mangaf -> KFC - Mangaf 2 -> Hardees - Augiela 2 -> KFC - Fahd Al Ahmad -> Hardees - Al Fintas -> KFC - Al Mahboola -> Wimpy - Abu Halifa -> Krispy Kreme Alyia Ghalyia Tower,18.938,32.46,1044,1086
-3,MIX_32,MIXED,06:30 PM,05:52 PM,06:48 PM,56.0,0.0,16.0,8,8,0,True,True,Hardees - Al Qureen 2 -> Hardees - Al Mangaf -> Hardees - Al Sbahiya -> BR - The Gate Mall -> KFC - Augiela 2 -> Krispy Kreme - Gate Mall -> KFC - Al Mahboola -> Wimpy - Abu Halifa,30.199,51.77,1072,1128
-2,MIX_12,MIXED,07:30 PM,05:58 PM,10:17 PM,259.0,42.0,35.0,20,20,0,True,True,Hardees - Khairan -> BR - Khiran Outlet -> KFC - Khiran Outlet -> Krispy Kreme - Khiran Hybrid O -> Hardees - Khiran Hybrid Outlet -> BR - Sabah Al Ahmed Coop -> KFC - Sabah Al Ahmad 2 -> KFC - Om El Himan -> Hardees - Om El Himan -> KFC - Sabah Al Salem 2 -> Hardees - Adan -> KFC - Adan -> KFC - Aswaq Al Qurain -> Hardees - Al Fahaheel -> KFC - Al Zahr -> KFC - Al Mangaf -> KFC - Mangaf 2 -> BR - Al Fintas -> KFC - Al Mahboola -> TGIF - Abu Halifa,150.258,257.58,1078,1337
-1,MIX_24,MIXED,08:00 PM,06:48 PM,10:19 PM,211.0,0.0,44.0,14,14,0,True,True,Hardees - Sabah Al Ahmed -> KFC - Sabah Al Ahmad 2 -> KFC - Om El Himan -> BR - Om El Haiman -> Hardees - Om El Himan -> Hardees - Sabah Al Salem -> KFC - Adan -> KFC - Al Kout Mall -> TGIF - The Lake Mall -> Krispy Kreme - Fahaheel -> TGIF - Al Kout Mall -> Tikka - Qurain -> KFC - Loft Fintas -> Hardees - Augiela 2,131.987,226.26,1128,1339
-7,MIX_13,MIXED,07:30 PM,06:52 PM,07:45 PM,54.0,0.0,27.0,7,7,0,True,True,BR - Qurain 1 -> Hardees - Al Mangaf -> KFC - Loft Fintas -> BR - Reqa -> KFC - Fahd Al Ahmad -> Hardees - Fahd El Ahmed -> KFC - Alreqa,28.885,49.52,1132,1185
-8,MIX_14,MIXED,07:30 PM,06:58 PM,07:10 PM,13.0,0.0,6.0,3,3,0,True,True,BR - Fahd El Ahmed -> Hardees - Al Fintas -> Wimpy - Abu Halifa,3.624,6.21,1138,1150
-3,MIX_20,MIXED,08:30 PM,06:58 PM,11:43 PM,285.0,0.0,33.0,23,23,0,True,True,Hardees - Khairan -> KFC - Khiran Outlet -> Hardees - Sabah Al Ahmed -> KFC - Sabah Al Ahmad 2 -> KFC - Om El Himan -> BR - Om El Haiman -> Hardees - Sabah Al Salem -> BR - Sabah Al Salem Block 1 -> Hardees - Al Qureen -> Hardees - Adan -> Hardees - Qurain Markets -> Hardees - Al Ahmadi -> KFC - Al Kout Mall -> Tikka - Qurain -> Hardees - Village -> KFC Mubarek El-Kaber(Qurain 2) -> KFC - Al Zahr -> Hardees - Al Zahr -> Hardees - Al Sbahiya -> Hardees - Augiela 2 -> BR - Al Bairak Mall -> Hardees - Fahd El Ahmed -> Hardees - Al Fintas,169.393,290.39,1138,1423
-4,136,OUTBOUND,07:00 PM,07:00 PM,07:22 PM,22.0,34.0,8.0,4,4,0,True,True,Krispy Kreme - Kout Mall -> BR - Kout Mall -> TGIF - Al Kout Mall -> KFC - Loft Fintas,11.738,20.12,1140,1162
-11,137,OUTBOUND,07:00 PM,07:00 PM,07:08 PM,8.0,51.0,1.0,1,1,0,True,True,TGIF - The Lake Mall,0.0,0.0,1140,1148
-9,MIX_25,MIXED,08:00 PM,07:15 PM,08:25 PM,70.0,0.0,44.0,12,12,0,True,True,Hardees - Sabah Al Salem Block -> BR - Sabah Al Salem Block 1 -> KFC - S Al Salem -> KFC - Sabah Al Salem 2 -> BR - Qurain 3 -> Hardees - Adan -> Hardees - Qurain Markets -> TGIF - Gate Mall -> BR - The Gate Mall -> KFC - Augiela 2 -> KFC - Abo Helifa -> BR - Reqa,28.283,48.49,1155,1225
-11,MIX_26,MIXED,08:00 PM,07:18 PM,08:50 PM,92.0,0.0,36.0,9,9,0,True,True,Hardees - Al Qureen -> Hardees - Al Ahmadi -> KFC - Al Ahmadi -> KFC - Qureen -> KFC - Aswaq Al Qurain -> BR - Aswaq Al Qurain -> BR - Fahaheel -> BR - Fahd El Ahmed -> KFC - Al Mahboola,59.148,101.4,1158,1250
-8,MIX_27,MIXED,08:00 PM,07:21 PM,08:11 PM,50.0,0.0,35.0,6,6,0,True,True,KFC - Fahaheel -> Wimpy - Divonne Complex -> BR - Divonne -> BR - Qurain 1 -> Hardees - Al Qureen 2 -> Hardees - Village,20.914,35.85,1161,1211
-6,MIX_28,MIXED,08:00 PM,07:22 PM,08:05 PM,43.0,61.0,30.0,6,6,0,True,True,KFC - Village -> KFC Mubarek El-Kaber(Qurain 2) -> KFC - Al Zahr -> Hardees - Al Zahr -> KFC - Al Mangaf -> Hardees - Al Mangaf,16.784,28.77,1162,1205
-13,MIX_29,MIXED,08:00 PM,07:25 PM,07:53 PM,29.0,61.0,15.0,5,5,0,True,True,KFC - Mangaf 2 -> BR - Al Fintas -> KFC - Fahd Al Ahmad -> Hardees - Fahd El Ahmed -> BR - Qurain 2,11.739,20.12,1165,1193
-4,MIX_9,MIXED,09:00 PM,07:48 PM,10:18 PM,150.0,0.0,16.0,9,9,0,True,True,Hardees - Sabah Al Ahmed -> Hardees - Om El Himan -> Hardees - Al Qureen -> Hardees - Al Zahr -> Hardees - Al Mangaf -> Hardees - Al Sbahiya -> TGIF - Gate Mall -> Hardees - Augiela 2 -> Hardees - Al Fintas,86.167,147.71,1188,1338
-7,MIX_21,MIXED,08:30 PM,07:56 PM,08:12 PM,17.0,0.0,17.0,3,3,0,True,True,KFC - Augiela 2 -> KFC - Alreqa -> KFC - Al Mahboola,5.6,9.6,1196,1212
-5,MIX_23,MIXED,09:30 PM,08:38 PM,10:35 PM,117.0,0.0,24.0,13,13,0,True,True,Hardees - Om El Himan -> Hardees - Sabah Al Salem Block -> Hardees - Al Qureen -> Hardees - Adan -> Hardees - Al Qureen 2 -> KFC Mubarek El-Kaber(Qurain 2) -> KFC - Al Mangaf -> KFC - Mangaf 2 -> KFC - Fahd Al Ahmad -> BR - Fahd El Ahmed -> KFC - Alreqa -> Hardees - Al Fintas -> KFC - Al Mahboola,65.496,112.28,1238,1355
-6,138,OUTBOUND,10:00 PM,10:00 PM,10:14 PM,14.0,8.0,5.0,3,3,0,True,True,TGIF - Al Kout Mall -> KFC - Fahaheel -> TGIF - Abu Halifa,8.91,15.27,1320,1334
-7,139,OUTBOUND,10:00 PM,10:00 PM,10:03 PM,4.0,4.0,1.0,1,1,0,True,True,KFC - Al Bairak Mall,0.0,0.0,1320,1323
-8,140,OUTBOUND,10:30 PM,10:30 PM,11:33 PM,64.0,61.0,2.0,2,2,0,True,True,Hardees - Khairan -> Hardees - Khiran Hybrid Outlet,2.078,3.56,1350,1413
-7,141,OUTBOUND,10:30 PM,10:30 PM,10:40 PM,11.0,8.0,3.0,2,2,0,True,True,TGIF - Al Kout Mall -> KFC - Fahd Al Ahmad,6.89,11.81,1350,1360
-9,142,OUTBOUND,10:30 PM,10:30 PM,10:36 PM,6.0,6.0,2.0,1,1,0,True,True,KFC Mubarek El-Kaber(Qurain 2),0.0,0.0,1350,1356
-10,143,OUTBOUND,11:00 PM,11:00 PM,11:41 PM,42.0,42.0,1.0,1,1,0,True,True,Hardees - Sabah Al Ahmed,0.0,0.0,1380,1421
-1,144,OUTBOUND,11:00 PM,11:00 PM,11:21 PM,21.0,13.0,6.0,4,4,0,True,True,KFC - Sabah Al Salem 2 -> Hardees - Al Qureen -> TGIF - The Lake Mall -> Wimpy - Divonne Complex,7.155,12.27,1380,1401
-2,145,OUTBOUND,11:00 PM,11:00 PM,11:13 PM,13.0,8.0,6.0,3,3,0,True,True,TGIF - Al Kout Mall -> KFC - Al Mangaf -> Hardees - Fahd El Ahmed,6.982,11.97,1380,1393
-4,146,OUTBOUND,11:00 PM,11:00 PM,11:08 PM,8.0,6.0,9.0,2,2,0,True,True,KFC Mubarek El-Kaber(Qurain 2) -> TGIF - Gate Mall,2.297,3.94,1380,1388
-5,147,OUTBOUND,11:30 PM,11:30 PM,12:16 AM,46.0,42.0,3.0,2,2,0,True,True,Hardees - Sabah Al Ahmed -> KFC - Om El Himan,21.744,37.27,1410,1456
-6,148,OUTBOUND,11:30 PM,11:30 PM,11:55 PM,26.0,22.0,4.0,3,3,0,True,True,Hardees - Om El Himan -> KFC - Fahaheel -> KFC - Mangaf 2,16.165,27.71,1410,1435
-4,149,OUTBOUND,11:30 PM,11:30 PM,11:51 PM,22.0,9.0,5.0,4,4,0,True,True,Hardees - Qurain Markets -> KFC - Al Zahr -> KFC - Loft Fintas -> KFC - Augiela 2,11.29,19.35,1410,1431
-7,150,OUTBOUND,11:30 PM,11:30 PM,11:48 PM,19.0,9.0,5.0,4,4,0,True,True,Hardees - Al Ahmadi -> Hardees - Al Sbahiya -> KFC - Abo Helifa -> Wimpy - Abu Halifa,11.112,19.05,1410,1428
-9,151,OUTBOUND,11:30 PM,11:30 PM,11:37 PM,8.0,8.0,1.0,1,1,0,True,True,Wimpy - Divonne Complex,0.0,0.0,1410,1417
+drive_id,driver_number,driver_name,trip_no,trip_id,trip_key,scheduled_capacity,original_stop_count,matched_stop_count,routeable_trip,trip_start_min,trip_end_min,trip_duration_min,route_distance_km,routed_store_sequence
+D1,11029412,Mahmoud Rezk Abdelwahab Abdelsamad,8,T3,D1|8|T3,,3,3,True,4.0,1419.0,1415.0,15.994,BR - Qurain 2 -> BR - Qurain 3 -> BR - Qurain 1
+D1,11029412,Mahmoud Rezk Abdelwahab Abdelsamad,5,T2,D1|5|T2,22.0,7,7,True,184.0,239.0,55.0,20.744,KFC - Adan -> Hardees - Adan -> Hardees - Qurain Markets -> BR - Qurain 1 -> Tikka - Qurain -> Hardees - Qurain Markets -> BR - Qurain 2
+D1,11029412,Mahmoud Rezk Abdelwahab Abdelsamad,6,T2,D1|6|T2,22.0,7,7,True,299.0,369.0,70.0,20.744,KFC - Adan -> Hardees - Adan -> Hardees - Qurain Markets -> BR - Qurain 1 -> Tikka - Qurain -> Hardees - Qurain Markets -> BR - Qurain 2
+D1,11029412,Mahmoud Rezk Abdelwahab Abdelsamad,1,T1,D1|1|T1,22.0,7,7,True,494.0,569.0,75.0,20.744,KFC - Adan -> Hardees - Adan -> Hardees - Qurain Markets -> BR - Qurain 1 -> Tikka - Qurain -> Hardees - Qurain Markets -> BR - Qurain 2
+D1,11029412,Mahmoud Rezk Abdelwahab Abdelsamad,2,T1,D1|2|T1,22.0,7,7,True,614.0,689.0,75.0,20.744,KFC - Adan -> Hardees - Adan -> Hardees - Qurain Markets -> BR - Qurain 1 -> Tikka - Qurain -> Hardees - Qurain Markets -> BR - Qurain 2
+D1,11029412,Mahmoud Rezk Abdelwahab Abdelsamad,7,T3,D1|7|T3,22.0,3,3,True,694.0,1439.0,745.0,15.994,BR - Qurain 2 -> BR - Qurain 3 -> BR - Qurain 1
+D1,11029412,Mahmoud Rezk Abdelwahab Abdelsamad,3,T1,D1|3|T1,22.0,7,7,True,1019.0,1109.0,90.0,20.744,KFC - Adan -> Hardees - Adan -> Hardees - Qurain Markets -> BR - Qurain 1 -> Tikka - Qurain -> Hardees - Qurain Markets -> BR - Qurain 2
+D1,11029412,Mahmoud Rezk Abdelwahab Abdelsamad,4,T1,D1|4|T1,22.0,7,7,True,1139.0,1219.0,80.0,20.744,KFC - Adan -> Hardees - Adan -> Hardees - Qurain Markets -> BR - Qurain 1 -> Tikka - Qurain -> Hardees - Qurain Markets -> BR - Qurain 2
+D10,11029721,Faridul Islam Jalal Uddin,7,T2,D10|7|T2,,4,0,False,14.0,1439.0,1425.0,0.0,
+D10,11029721,Faridul Islam Jalal Uddin,5,T2,D10|5|T2,,11,11,True,149.0,204.0,55.0,11.514,BR - Divonne -> Wimpy - Divonne Complex -> Krispy Kreme - Divonne -> KFC - Village -> Hardees - Village -> KFC - S Al Salem -> Hardees - Sabah Al Salem -> BR - Sabah Al Salem Block 1 -> Krispy Kreme - Sabah Al Salem -> Hardees - Sabah Al Salem Block -> KFC - Sabah Al Salem 2
+D10,11029721,Faridul Islam Jalal Uddin,6,T2,D10|6|T2,,11,11,True,314.0,374.0,60.0,11.514,BR - Divonne -> Wimpy - Divonne Complex -> Krispy Kreme - Divonne -> KFC - Village -> Hardees - Village -> KFC - S Al Salem -> Hardees - Sabah Al Salem -> BR - Sabah Al Salem Block 1 -> Krispy Kreme - Sabah Al Salem -> Hardees - Sabah Al Salem Block -> KFC - Sabah Al Salem 2
+D10,11029721,Faridul Islam Jalal Uddin,1,T1,D10|1|T1,,11,11,True,494.0,559.0,65.0,11.514,BR - Divonne -> Wimpy - Divonne Complex -> Krispy Kreme - Divonne -> KFC - Village -> Hardees - Village -> KFC - S Al Salem -> Hardees - Sabah Al Salem -> BR - Sabah Al Salem Block 1 -> Krispy Kreme - Sabah Al Salem -> Hardees - Sabah Al Salem Block -> KFC - Sabah Al Salem 2
+D10,11029721,Faridul Islam Jalal Uddin,2,T1,D10|2|T1,,11,11,True,614.0,674.0,60.0,11.514,BR - Divonne -> Wimpy - Divonne Complex -> Krispy Kreme - Divonne -> KFC - Village -> Hardees - Village -> KFC - S Al Salem -> Hardees - Sabah Al Salem -> BR - Sabah Al Salem Block 1 -> Krispy Kreme - Sabah Al Salem -> Hardees - Sabah Al Salem Block -> KFC - Sabah Al Salem 2
+D10,11029721,Faridul Islam Jalal Uddin,3,T1,D10|3|T1,,11,11,True,1019.0,1074.0,55.0,11.514,BR - Divonne -> Wimpy - Divonne Complex -> Krispy Kreme - Divonne -> KFC - Village -> Hardees - Village -> KFC - S Al Salem -> Hardees - Sabah Al Salem -> BR - Sabah Al Salem Block 1 -> Krispy Kreme - Sabah Al Salem -> Hardees - Sabah Al Salem Block -> KFC - Sabah Al Salem 2
+D10,11029721,Faridul Islam Jalal Uddin,4,T1,D10|4|T1,,11,11,True,1139.0,1194.0,55.0,11.514,BR - Divonne -> Wimpy - Divonne Complex -> Krispy Kreme - Divonne -> KFC - Village -> Hardees - Village -> KFC - S Al Salem -> Hardees - Sabah Al Salem -> BR - Sabah Al Salem Block 1 -> Krispy Kreme - Sabah Al Salem -> Hardees - Sabah Al Salem Block -> KFC - Sabah Al Salem 2
+D11,11015986,Abdalla Fawzy Ali Abdelaziz,3,T3,D11|3|T3,,4,3,True,194.0,254.0,60.0,1.771,KFC - Sabah Al Ahmad 2 -> Hardees - Sabah Al Ahmed -> BR - Sabah Al Ahmed Coop
+D11,11015986,Abdalla Fawzy Ali Abdelaziz,4,T4,D11|4|T4,,4,4,True,324.0,399.0,75.0,2.21,KFC - Khiran Outlet -> Hardees - Khiran Hybrid Outlet -> BR - Khiran Outlet -> Hardees - Khairan
+D11,11015986,Abdalla Fawzy Ali Abdelaziz,1,T1,D11|1|T1,,8,7,True,734.0,829.0,95.0,36.173,KFC - Sabah Al Ahmad 2 -> Hardees - Sabah Al Ahmed -> BR - Sabah Al Ahmed Coop -> KFC - Khiran Outlet -> Hardees - Khiran Hybrid Outlet -> BR - Khiran Outlet -> Hardees - Khairan
+D11,11015986,Abdalla Fawzy Ali Abdelaziz,2,T2,D11|2|T2,,4,4,True,1139.0,1239.0,100.0,2.21,KFC - Khiran Outlet -> Hardees - Khiran Hybrid Outlet -> BR - Khiran Outlet -> Hardees - Khairan
+D12,11015821,Rajesh Rajesh Dhaklo Dhaklo Fadte,1,T1,D12|1|T1,,4,4,True,494.0,539.0,45.0,6.305,Hardees - Arifjan Camp -> KFC - Arifjan Camp -> BR - Camp Arifjan 1 -> BR - Camp Arifjan 2
+D12,11015821,Rajesh Rajesh Dhaklo Dhaklo Fadte,3,T1,D12|3|T1,,4,4,True,724.0,1384.0,660.0,6.305,Hardees - Arifjan Camp -> KFC - Arifjan Camp -> BR - Camp Arifjan 1 -> BR - Camp Arifjan 2
+D12,11015821,Rajesh Rajesh Dhaklo Dhaklo Fadte,4,T2,D12|4|T2,,3,3,True,734.0,779.0,45.0,0.099,BR - Divonne -> Wimpy - Divonne Complex -> Krispy Kreme - Divonne
+D12,11015821,Rajesh Rajesh Dhaklo Dhaklo Fadte,2,T1,D12|2|T1,,4,4,True,864.0,914.0,50.0,6.305,Hardees - Arifjan Camp -> KFC - Arifjan Camp -> BR - Camp Arifjan 1 -> BR - Camp Arifjan 2
+D13,11005246,Mohamed Osman Saied,6,T5,D13|6|T5,,4,4,True,159.0,214.0,55.0,8.728,KFC - Al Mahboola -> BR - Divonne -> Wimpy - Divonne Complex -> Krispy Kreme - Divonne
+D13,11005246,Mohamed Osman Saied,1,T1,D13|1|T1,,2,2,True,554.0,594.0,40.0,8.45,TGIF - Abu Halifa -> TGIF - Al Kout Mall
+D13,11005246,Mohamed Osman Saied,2,T1,D13|2|T1,,2,2,True,624.0,654.0,30.0,8.45,TGIF - Abu Halifa -> TGIF - Al Kout Mall
+D13,11005246,Mohamed Osman Saied,3,T2,D13|3|T2,,2,2,True,674.0,689.0,15.0,0.006,Krispy Kreme - Gate Mall -> BR - The Gate Mall
+D13,11005246,Mohamed Osman Saied,4,T3,D13|4|T3,,2,2,True,959.0,974.0,15.0,0.007,BR - Kout Mall -> Krispy Kreme - Kout Mall
+D13,11005246,Mohamed Osman Saied,5,T4,D13|5|T4,,4,4,True,1139.0,1174.0,35.0,15.279,KFC - Loft Fintas -> Hardees - Al Qureen -> KFC Mubarek El-Kaber(Qurain 2) -> BR - Qurain 1
+D2,11006747,Ahmed Mohamed Osman,7,T2,D2|7|T2,,2,2,True,29.0,94.0,65.0,8.45,TGIF - Al Kout Mall -> TGIF - Abu Halifa
+D2,11006747,Ahmed Mohamed Osman,1,T1,D2|1|T1,,2,2,True,554.0,614.0,60.0,8.45,TGIF - Abu Halifa -> TGIF - Al Kout Mall
+D2,11006747,Ahmed Mohamed Osman,2,T1,D2|2|T1,,2,2,True,614.0,644.0,30.0,8.45,TGIF - Abu Halifa -> TGIF - Al Kout Mall
+D2,11006747,Ahmed Mohamed Osman,3,T1,D2|3|T1,,2,2,True,734.0,764.0,30.0,8.45,TGIF - Abu Halifa -> TGIF - Al Kout Mall
+D2,11006747,Ahmed Mohamed Osman,4,T1,D2|4|T1,,2,2,True,914.0,944.0,30.0,8.45,TGIF - Abu Halifa -> TGIF - Al Kout Mall
+D2,11006747,Ahmed Mohamed Osman,5,T1,D2|5|T1,,2,2,True,1154.0,1184.0,30.0,8.45,TGIF - Abu Halifa -> TGIF - Al Kout Mall
+D2,11006747,Ahmed Mohamed Osman,6,T2,D2|6|T2,,2,2,True,1334.0,1414.0,80.0,8.45,TGIF - Abu Halifa -> TGIF - Al Kout Mall
+D3,11029904,Mahmoud Anwar Mohamed Koshir,6,T2,D3|6|T2,,0,0,False,29.0,34.0,5.0,0.0,
+D3,11029904,Mahmoud Anwar Mohamed Koshir,7,T2,D3|7|T2,,2,2,True,59.0,149.0,90.0,4.628,TGIF - Gate Mall -> TGIF - The Lake Mall
+D3,11029904,Mahmoud Anwar Mohamed Koshir,1,T1,D3|1|T1,,4,4,True,554.0,654.0,100.0,13.884,TGIF - Gate Mall -> TGIF - The Lake Mall -> TGIF - Gate Mall -> TGIF - The Lake Mall
+D3,11029904,Mahmoud Anwar Mohamed Koshir,2,T1,D3|2|T1,,2,2,True,734.0,769.0,35.0,4.628,TGIF - Gate Mall -> TGIF - The Lake Mall
+D3,11029904,Mahmoud Anwar Mohamed Koshir,3,T1,D3|3|T1,,2,2,True,914.0,949.0,35.0,4.628,TGIF - Gate Mall -> TGIF - The Lake Mall
+D3,11029904,Mahmoud Anwar Mohamed Koshir,4,T1,D3|4|T1,,2,2,True,1154.0,1189.0,35.0,4.628,TGIF - Gate Mall -> TGIF - The Lake Mall
+D3,11029904,Mahmoud Anwar Mohamed Koshir,5,T2,D3|5|T2,,2,2,True,1334.0,1429.0,95.0,4.628,TGIF - Gate Mall -> TGIF - The Lake Mall
+D4,11029625,Ayman Kamel Ibrahim Younes,8,T4,D4|8|T4,,1,1,True,14.0,1424.0,1410.0,0.0,BR - Reqa
+D4,11029625,Ayman Kamel Ibrahim Younes,5,T2,D4|5|T2,,7,7,True,149.0,264.0,115.0,19.67,KFC - Alreqa -> BR - Reqa -> Hardees - Al Zahr -> KFC - Al Zahr -> KFC - Al Ahmadi -> Hardees - Al Ahmadi -> Hardees - Al Sbahiya
+D4,11029625,Ayman Kamel Ibrahim Younes,6,T2,D4|6|T2,,7,7,True,284.0,394.0,110.0,19.67,KFC - Alreqa -> BR - Reqa -> Hardees - Al Zahr -> KFC - Al Zahr -> KFC - Al Ahmadi -> Hardees - Al Ahmadi -> Hardees - Al Sbahiya
+D4,11029625,Ayman Kamel Ibrahim Younes,1,T1,D4|1|T1,,7,7,True,494.0,554.0,60.0,19.67,KFC - Alreqa -> BR - Reqa -> Hardees - Al Zahr -> KFC - Al Zahr -> KFC - Al Ahmadi -> Hardees - Al Ahmadi -> Hardees - Al Sbahiya
+D4,11029625,Ayman Kamel Ibrahim Younes,2,T1,D4|2|T1,,7,7,True,614.0,674.0,60.0,19.67,KFC - Alreqa -> BR - Reqa -> Hardees - Al Zahr -> KFC - Al Zahr -> KFC - Al Ahmadi -> Hardees - Al Ahmadi -> Hardees - Al Sbahiya
+D4,11029625,Ayman Kamel Ibrahim Younes,7,T3,D4|7|T3,,1,1,True,694.0,1439.0,745.0,0.0,BR - Reqa
+D4,11029625,Ayman Kamel Ibrahim Younes,3,T1,D4|3|T1,,7,7,True,1019.0,1124.0,105.0,19.67,KFC - Alreqa -> BR - Reqa -> Hardees - Al Zahr -> KFC - Al Zahr -> KFC - Al Ahmadi -> Hardees - Al Ahmadi -> Hardees - Al Sbahiya
+D4,11029625,Ayman Kamel Ibrahim Younes,4,T1,D4|4|T1,,7,7,True,1139.0,1234.0,95.0,19.67,KFC - Alreqa -> BR - Reqa -> Hardees - Al Zahr -> KFC - Al Zahr -> KFC - Al Ahmadi -> Hardees - Al Ahmadi -> Hardees - Al Sbahiya
+D5,11026177,Zeinhum Hassanein Younes Farrag,3,T2,D5|3|T2,,5,4,True,14.0,159.0,145.0,2.21,KFC - Khiran Outlet -> Hardees - Khiran Hybrid Outlet -> BR - Khiran Outlet -> Hardees - Khairan
+D5,11026177,Zeinhum Hassanein Younes Farrag,1,T1,D5|1|T1,,5,4,True,554.0,699.0,145.0,2.21,KFC - Khiran Outlet -> Hardees - Khiran Hybrid Outlet -> BR - Khiran Outlet -> Hardees - Khairan
+D5,11026177,Zeinhum Hassanein Younes Farrag,2,T2,D5|2|T2,,10,8,True,974.0,1194.0,220.0,6.508,KFC - Khiran Outlet -> Hardees - Khiran Hybrid Outlet -> BR - Khiran Outlet -> Hardees - Khairan -> KFC - Khiran Outlet -> Hardees - Khiran Hybrid Outlet -> BR - Khiran Outlet -> Hardees - Khairan
+D6,11025882,Mohammed Safayet Hossain,4,T3,D6|4|T3,,4,3,True,304.0,379.0,75.0,1.771,KFC - Sabah Al Ahmad 2 -> Hardees - Sabah Al Ahmed -> BR - Sabah Al Ahmed Coop
+D6,11025882,Mohammed Safayet Hossain,1,T1,D6|1|T1,,4,3,True,479.0,634.0,155.0,1.771,KFC - Sabah Al Ahmad 2 -> Hardees - Sabah Al Ahmed -> BR - Sabah Al Ahmed Coop
+D6,11025882,Mohammed Safayet Hossain,2,T2,D6|2|T2,,4,3,True,1019.0,1094.0,75.0,1.771,KFC - Sabah Al Ahmad 2 -> Hardees - Sabah Al Ahmed -> BR - Sabah Al Ahmed Coop
+D6,11025882,Mohammed Safayet Hossain,3,T2,D6|3|T2,,4,3,True,1159.0,1309.0,150.0,1.771,KFC - Sabah Al Ahmad 2 -> Hardees - Sabah Al Ahmed -> BR - Sabah Al Ahmed Coop
+D7,11027859,Gouda Abdelfattah Gouda Ahmed,6,T2,D7|6|T2,,15,15,True,164.0,249.0,85.0,114.879,Hardees - Al Fintas -> KFC - Al Mahboola -> KFC - Abo Helifa -> KFC - Al Mangaf -> Hardees - Al Mangaf -> KFC - Mangaf 2 -> Krispy Kreme Mangaf Sultan Centr -> Tikka - Fahaheel DK -> KFC - Fahaheel -> Hardees - Al Fahaheel -> BR - Fahaheel -> Krispy Kreme - Fahaheel -> KFC - Al Kout Mall -> BR - Kout Mall -> Krispy Kreme - Kout Mall
+D7,11027859,Gouda Abdelfattah Gouda Ahmed,7,T2,D7|7|T2,,15,15,True,304.0,379.0,75.0,114.879,Hardees - Al Fintas -> KFC - Al Mahboola -> KFC - Abo Helifa -> KFC - Al Mangaf -> Hardees - Al Mangaf -> KFC - Mangaf 2 -> Krispy Kreme Mangaf Sultan Centr -> Tikka - Fahaheel DK -> KFC - Fahaheel -> Hardees - Al Fahaheel -> BR - Fahaheel -> Krispy Kreme - Fahaheel -> KFC - Al Kout Mall -> BR - Kout Mall -> Krispy Kreme - Kout Mall
+D7,11027859,Gouda Abdelfattah Gouda Ahmed,1,T1,D7|1|T1,,15,15,True,494.0,544.0,50.0,114.879,Hardees - Al Fintas -> KFC - Al Mahboola -> KFC - Abo Helifa -> KFC - Al Mangaf -> Hardees - Al Mangaf -> KFC - Mangaf 2 -> Krispy Kreme Mangaf Sultan Centr -> Tikka - Fahaheel DK -> KFC - Fahaheel -> Hardees - Al Fahaheel -> BR - Fahaheel -> Krispy Kreme - Fahaheel -> KFC - Al Kout Mall -> BR - Kout Mall -> Krispy Kreme - Kout Mall
+D7,11027859,Gouda Abdelfattah Gouda Ahmed,2,T1,D7|2|T1,,15,15,True,614.0,659.0,45.0,114.879,Hardees - Al Fintas -> KFC - Al Mahboola -> KFC - Abo Helifa -> KFC - Al Mangaf -> Hardees - Al Mangaf -> KFC - Mangaf 2 -> Krispy Kreme Mangaf Sultan Centr -> Tikka - Fahaheel DK -> KFC - Fahaheel -> Hardees - Al Fahaheel -> BR - Fahaheel -> Krispy Kreme - Fahaheel -> KFC - Al Kout Mall -> BR - Kout Mall -> Krispy Kreme - Kout Mall
+D7,11027859,Gouda Abdelfattah Gouda Ahmed,4,T1,D7|4|T1,,15,15,True,1019.0,1064.0,45.0,114.879,Hardees - Al Fintas -> KFC - Al Mahboola -> KFC - Abo Helifa -> KFC - Al Mangaf -> Hardees - Al Mangaf -> KFC - Mangaf 2 -> Krispy Kreme Mangaf Sultan Centr -> Tikka - Fahaheel DK -> KFC - Fahaheel -> Hardees - Al Fahaheel -> BR - Fahaheel -> Krispy Kreme - Fahaheel -> KFC - Al Kout Mall -> BR - Kout Mall -> Krispy Kreme - Kout Mall
+D7,11027859,Gouda Abdelfattah Gouda Ahmed,5,T1,D7|5|T1,,15,15,True,1139.0,1184.0,45.0,114.879,Hardees - Al Fintas -> KFC - Al Mahboola -> KFC - Abo Helifa -> KFC - Al Mangaf -> Hardees - Al Mangaf -> KFC - Mangaf 2 -> Krispy Kreme Mangaf Sultan Centr -> Tikka - Fahaheel DK -> KFC - Fahaheel -> Hardees - Al Fahaheel -> BR - Fahaheel -> Krispy Kreme - Fahaheel -> KFC - Al Kout Mall -> BR - Kout Mall -> Krispy Kreme - Kout Mall
+D8,11015600,Abdulwali Khan Haji Hukam,5,T2,D8|5|T2,,6,6,True,194.0,254.0,60.0,19.809,KFC - Om El Himan -> Hardees - Om El Himan -> BR - Om El Haiman -> KFC - Fahd Al Ahmad -> BR - Fahd El Ahmed -> Hardees - Fahd El Ahmed
+D8,11015600,Abdulwali Khan Haji Hukam,6,T2,D8|6|T2,,6,6,True,304.0,374.0,70.0,19.809,KFC - Om El Himan -> Hardees - Om El Himan -> BR - Om El Haiman -> KFC - Fahd Al Ahmad -> BR - Fahd El Ahmed -> Hardees - Fahd El Ahmed
+D8,11015600,Abdulwali Khan Haji Hukam,1,T1,D8|1|T1,,6,6,True,494.0,539.0,45.0,19.812,KFC - Fahd Al Ahmad -> BR - Fahd El Ahmed -> Hardees - Fahd El Ahmed -> KFC - Om El Himan -> Hardees - Om El Himan -> BR - Om El Haiman
+D8,11015600,Abdulwali Khan Haji Hukam,2,T1,D8|2|T1,,6,6,True,614.0,669.0,55.0,19.812,KFC - Fahd Al Ahmad -> BR - Fahd El Ahmed -> Hardees - Fahd El Ahmed -> KFC - Om El Himan -> Hardees - Om El Himan -> BR - Om El Haiman
+D8,11015600,Abdulwali Khan Haji Hukam,3,T1,D8|3|T1,,6,6,True,1019.0,1089.0,70.0,19.812,KFC - Fahd Al Ahmad -> BR - Fahd El Ahmed -> Hardees - Fahd El Ahmed -> KFC - Om El Himan -> Hardees - Om El Himan -> BR - Om El Haiman
+D8,11015600,Abdulwali Khan Haji Hukam,4,T1,D8|4|T1,,6,6,True,1139.0,1204.0,65.0,19.812,KFC - Fahd Al Ahmad -> BR - Fahd El Ahmed -> Hardees - Fahd El Ahmed -> KFC - Om El Himan -> Hardees - Om El Himan -> BR - Om El Haiman
+D9,11030164,Ahmed Ali Khaled Ali,7,T3,D9|7|T3,,2,1,True,29.0,1414.0,1385.0,0.0,BR - Qurain 3
+D9,11030164,Ahmed Ali Khaled Ali,5,T2,D9|5|T2,,10,9,True,134.0,204.0,70.0,19.255,KFC - Loft Fintas -> KFC - Aswaq Al Qurain -> Krispy Kreme - Aswaq Al Qurain -> Wimpy - Qurain Dark Kitchen -> BR - Qurain 3 -> KFC - Al Bairak Mall -> BR - Al Bairak Mall -> KFC - Augiela 2 -> Hardees - Augiela 2
+D9,11030164,Ahmed Ali Khaled Ali,6,T2,D9|6|T2,,10,9,True,314.0,374.0,60.0,19.255,KFC - Loft Fintas -> KFC - Aswaq Al Qurain -> Krispy Kreme - Aswaq Al Qurain -> Wimpy - Qurain Dark Kitchen -> BR - Qurain 3 -> KFC - Al Bairak Mall -> BR - Al Bairak Mall -> KFC - Augiela 2 -> Hardees - Augiela 2
+D9,11030164,Ahmed Ali Khaled Ali,1,T1,D9|1|T1,,10,9,True,494.0,554.0,60.0,19.255,KFC - Loft Fintas -> KFC - Aswaq Al Qurain -> Krispy Kreme - Aswaq Al Qurain -> Wimpy - Qurain Dark Kitchen -> BR - Qurain 3 -> KFC - Al Bairak Mall -> BR - Al Bairak Mall -> KFC - Augiela 2 -> Hardees - Augiela 2
+D9,11030164,Ahmed Ali Khaled Ali,2,T1,D9|2|T1,,10,9,True,614.0,674.0,60.0,19.255,KFC - Loft Fintas -> KFC - Aswaq Al Qurain -> Krispy Kreme - Aswaq Al Qurain -> Wimpy - Qurain Dark Kitchen -> BR - Qurain 3 -> KFC - Al Bairak Mall -> BR - Al Bairak Mall -> KFC - Augiela 2 -> Hardees - Augiela 2
+D9,11030164,Ahmed Ali Khaled Ali,8,T3,D9|8|T3,,2,1,True,689.0,1439.0,750.0,0.0,BR - Qurain 3
+D9,11030164,Ahmed Ali Khaled Ali,3,T1,D9|3|T1,,10,9,True,1019.0,1094.0,75.0,19.255,KFC - Loft Fintas -> KFC - Aswaq Al Qurain -> Krispy Kreme - Aswaq Al Qurain -> Wimpy - Qurain Dark Kitchen -> BR - Qurain 3 -> KFC - Al Bairak Mall -> BR - Al Bairak Mall -> KFC - Augiela 2 -> Hardees - Augiela 2
+D9,11030164,Ahmed Ali Khaled Ali,4,T1,D9|4|T1,,10,9,True,1139.0,1214.0,75.0,19.255,KFC - Loft Fintas -> KFC - Aswaq Al Qurain -> Krispy Kreme - Aswaq Al Qurain -> Wimpy - Qurain Dark Kitchen -> BR - Qurain 3 -> KFC - Al Bairak Mall -> BR - Al Bairak Mall -> KFC - Augiela 2 -> Hardees - Augiela 2

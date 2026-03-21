@@ -15,17 +15,16 @@ This document consolidates the current understanding of the Kuwait employee tran
 From requirements and metadata:
 - Fixed depot: accommodation (single start/end point per trip).
 - Store locations (geocoordinates) and store IDs.
-- Employee master data with accommodation and store mapping.
-- Weekly shift schedule by brand (April 5-11, 2026) with shift start/end and split shift fields.
-- Standard shift assignment data with employee, store, and standard shift start/end times.
-- Current route execution logs and itinerary history for calibration.
+- Employee information and weekly shift schedule by brand (April 5-11, 2026), including accommodation, store, role, and split-shift fields.
+- Current route execution logs and payroll/overtime summaries for calibration.
+- System overview metrics for scale, fleet context, and operating assumptions.
 - Resource counts: 13 buses, single vehicle type, 22 seats (max 25).
 - Operational variables: driver availability; no traffic/festival modeling.
 
 ## Outputs (Model)
 - Optimized trip templates by time window and service direction.
 - Bus and driver schedules, including legal buffers and split-shift handling where allowed.
-- Employee-to-trip assignment tables.
+- Store- and wave-level service plans derived from employee shift demand.
 - Stop-level load and timing plans for validating `MIXED` trip feasibility.
 - KPI comparison covering overtime, service coverage, occupancy, deadhead, waiting time, and on-time compliance.
 
@@ -75,50 +74,38 @@ File: `Metadata/Bus_Routes_current_description.md`
 - Includes driver info, vehicle capacity, store details, stop timing, and operational notes.
 - Used to reconstruct actual routes and analyze execution and payroll discrepancies.
 
-### 2) Employee Shift Assignments
-File: `Metadata/Employee_shift_assignment.md`
-- Standard shift schedule per employee and store (brand + location).
-- Includes employee number/name, store name, and standard shift start/end times (AM/PM).
-- Used for baseline staffing windows, shift timing, and allocation.
-
-### 3) Employee Information and Weekly Shift Schedule
+### 2) Employee Information and Weekly Shift Schedule
 File: `Metadata/Employee_shift_data_desciption.md`
-- Weekly shift schedule context for April 5-11, 2026 across multiple brands (Wimpy, BR, TGIF, KFC, Hardees, CT, KK).
-- Tabs represent brands; headers are multi-row (labels, dates, then core columns).
-- Columns A-H include employee and store metadata; columns I-AJ hold repeated daily shift start/end patterns (including split shifts).
-- Used to map employees to accommodation/stores and derive shift windows by date.
+- Employee records include accommodation, store, brand, and role information.
+- Repeating daily shift columns provide primary and split-shift timing for the week in scope.
+- Used to derive demand waves, shift compatibility, accommodation-to-store relationships, and candidate inbound/outbound service windows.
 
-### 4) Passenger Itinerary
-File: `Metadata/passenger_itinerary_description.md`
-- Each row is one employee's daily commute plan tied to their shift.
-- Contains shift start/end plus two transport legs (bus number, direction, boarding/drop-off times).
-- Used to align employee schedules with inbound/outbound bus trips and validate timing coverage.
-
-### 5) Final Schedule (v11)
-File: `Metadata/final_shedule_v11_description.md`
-- Each row is a stop within a trip in the finalized schedule.
-- Defines planned route sequences and timing.
-- Useful for benchmarking and constraints.
-
-### 6) Store Geocoordinates
+### 3) Store Geocoordinates
 File: `Metadata/Geocordinates_decription.md`
 - Store ID, name, latitude/longitude (WGS84).
 - Supports distance calculations, clustering, and routing.
 - Use Haversine distances unless projecting coordinates.
 
-### 7) System Overview
+### 4) System Overview
 File: `Metadata/Kuwait_Route_optimization_Overview.md`
 - Summary metrics for stores, employees, routes, accommodations, and constraints.
 - Provides scale and context across datasets.
 
 ## Assumptions (Current)
 - Each row in trip datasets is a stop; trips are reconstructed by grouping on trip ID.
-- Employees belong to accommodation locations and stores; transportation is between these.
-- Peak hours are derived from shift overlaps and itinerary volumes.
+- Employees belong to accommodation locations and stores; transportation demand is aggregated from those relationships rather than assigned from a prebuilt itinerary file.
+- Peak hours are derived from shift overlaps in the weekly schedule plus observed route activity.
 - The system operates like a scheduled metro service, not ad hoc routes.
 - Pilot travel distance/time uses geocoordinates with Haversine distance plus fixed speed and dwell assumptions; no external road-time API is used.
 - Mixed routing is heuristic and compatibility-based, not a full exact optimization over all possible pickup/drop combinations.
 - Pilot scope uses only stores that have valid coordinates in `Geocoordinates.xlsx`; unmatched stores are ignored for routing and KPI generation.
+
+## Prototype Scope
+- Prototype inputs should be limited to `Employee Shift data.xlsx`, `Bus Routes curent.xlsx`, `Geocoordinates.xlsx`, and `Kuwait Route Optimization - Overview.xlsx`.
+- Weekly shift data is the source of store demand and time-window construction.
+- Current bus route logs are the source of baseline trip structure, observed duty patterns, and overtime calibration.
+- Geocoordinates are the source of routeable store locations and distance computation.
+- Stores without geocoordinates must be excluded from routing logic and logged explicitly for review.
 
 ## Duty-Feasibility Handoff
 - Routing should output more than store sequences. Each generated trip should carry start time, end time, duration, slack, stop-level load profile, and compatibility markers for chaining into a legal bus/driver duty.
@@ -142,12 +129,14 @@ File: `Metadata/Kuwait_Route_optimization_Overview.md`
 
 ## Next Step (Approach-Ready)
 This section is aligned with `Approaches/approach.md` (Section 5: Recommended Starting Point).
-1. Normalize datasets into a unified schema (employees, stores, shifts, trips, itineraries).
-2. Filter pilot scope to stores with valid geocoordinates and build demand tables by store and shift window (inbound/outbound).
-3. Run capacity-aware clustering using geocoordinates plus time-window compatibility, avoiding purely spatial clusters that ignore demand timing.
-4. Solve routing per cluster or time wave with support for `IN`, `OUT`, and `MIXED` trip construction, preferring changes that reduce total required driver duty time and emitting duty-feasibility information for chaining.
-5. Chain trips into bus and driver schedules with legal buffers, stop-level load tracking, and opportunistic pickup checks, treating overtime as the main penalty.
-6. Assign employees to trips, validate waiting, capacity, and timing constraints, surface any infeasible or unserved demand explicitly, then compute KPIs with overtime reported first.
+1. Normalize datasets into a unified schema (employees, stores, shifts, trips, overtime summaries).
+2. Build store- and wave-level demand from the weekly shift schedule, including split-shift handling where present.
+3. Filter pilot scope to stores with valid geocoordinates and log unmatched stores separately for review.
+4. Use current route execution logs to reconstruct baseline trips and calibrate reasonable trip duration, stop sequencing, and driver-duty patterns.
+5. Run capacity-aware clustering using geocoordinates plus time-window compatibility, avoiding purely spatial clusters that ignore demand timing.
+6. Solve routing per cluster or time wave with support for `IN`, `OUT`, and `MIXED` trip construction, preferring changes that reduce total required driver duty time and emitting duty-feasibility information for chaining.
+7. Chain trips into bus and driver schedules with legal buffers, stop-level load tracking, and opportunistic pickup checks, treating overtime as the main penalty.
+8. Validate waiting, capacity, and timing constraints against the weekly shift schedule, surface any infeasible or unserved demand explicitly, then compute KPIs with overtime reported first.
 
 ## Working Notes
 - Visualize geocoordinates on a map to identify spatial clusters (e.g., south/central/north).
