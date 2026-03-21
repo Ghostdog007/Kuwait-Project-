@@ -1,6 +1,6 @@
 # Context: Kuwait Employee Transportation Optimization
 
-This document consolidates the current understanding of the problem, data, and constraints. It is optimized to support the integrated approach in `Approaches/approach.md`.
+This document consolidates the current understanding of the Kuwait employee transport problem, its data assets, and its operating constraints. It serves as the problem-definition companion to `Approaches/approach.md`.
 
 ## Problem Summary
 - Employees live in accommodation and must be transported to and from stores on fixed shift windows.
@@ -8,8 +8,8 @@ This document consolidates the current understanding of the problem, data, and c
 - Trips may be `IN`, `OUT`, or `MIXED` when a bus drops inbound passengers and then opportunistically picks up shift-ended employees on the return path.
 - Current routes are relatively fixed while demand and staffing vary.
 - Pain point: high driver overtime and idle/deadhead time.
-- Goal: build a constraint-first optimization pipeline for demand, routing, scheduling, and assignment.
-- Optimization priority: reduce driver overtime first, then increase occupancy, then reduce deadhead and waiting where feasible.
+- Goal: build a constraint-first optimization pipeline covering demand estimation, routing, duty construction, and passenger assignment.
+- Optimization priority: reduce driver overtime first, then preserve service coverage, then improve occupancy, then reduce deadhead and waiting where feasible.
 
 ## Inputs (Model)
 From requirements and metadata:
@@ -23,17 +23,24 @@ From requirements and metadata:
 - Operational variables: driver availability; no traffic/festival modeling.
 
 ## Outputs (Model)
-- Trip templates and optimized routes per time window.
-- Bus and driver schedules (including buffers and split shifts).
+- Optimized trip templates by time window and service direction.
+- Bus and driver schedules, including legal buffers and split-shift handling where allowed.
 - Employee-to-trip assignment tables.
-- Stop-level load and timing plans for mixed pickup/drop feasibility.
-- KPI comparison: overtime, occupancy, deadhead, waiting time, on-time compliance.
+- Stop-level load and timing plans for validating `MIXED` trip feasibility.
+- KPI comparison covering overtime, service coverage, occupancy, deadhead, waiting time, and on-time compliance.
 
 ## Optimization Priorities
 - Primary objective: minimize driver overtime across the fixed 13-driver fleet.
-- Secondary objective: increase occupancy by consolidating compatible demand and using `MIXED` return pickups.
-- Tertiary objective: reduce deadhead and passenger waiting without violating the higher-priority overtime goal.
-- Practical interpretation: a fuller trip is only preferred if it does not materially worsen driver overtime or break timing feasibility.
+- Secondary objective: maximize feasible service coverage while respecting hard operating constraints.
+- Tertiary objective: increase occupancy by consolidating compatible demand and using `MIXED` return pickups where feasible.
+- Fourth objective: reduce deadhead and passenger waiting without violating higher-priority goals.
+- Practical interpretation: a fuller trip is only preferred if it does not materially worsen overtime, reduce coverage, or break chaining feasibility.
+
+## Objective Structure
+- Hard constraints first: fleet size, seat capacity, trip start/end at accommodation, stop-level load feasibility, shift-time compatibility, trip-duration caps, and mandatory 30-45 minute buffer feasibility between chained trips.
+- Soft objective hierarchy: minimize overtime first, then maximize feasible coverage/serviceability, then improve occupancy, then reduce deadhead and waiting.
+- Modeling note: treat this as a lexicographic or strongly tiered penalty structure, not a loose weighted average that could trade overtime for fuller buses or reduced coverage.
+- Practical interpretation: if two solutions have similar occupancy but one creates additional overtime or makes legal trip chaining impossible, reject it even if the route looks geographically efficient.
 
 ## Known Constraints and Notes
 - Accommodation is the start/end anchor for the system.
@@ -55,6 +62,8 @@ From requirements and metadata:
 - Mixed trips must track onboard load after every stop; pickups cannot violate seat capacity at any point on the route.
 - Mixed routing should reduce deadhead and improve occupancy without creating excessive detours or pushing driver hours beyond daily limits.
 - Trip chaining and trip consolidation should be evaluated mainly by their overtime impact; occupancy gains are secondary unless overtime is unchanged or improved.
+- Borderline demand near overlapping duty windows should not be forced too early into a rigid time bucket if doing so removes a better chaining option.
+- Some demand may naturally fit more than one duty window; assignment should remain flexible long enough to preserve better route-chaining opportunities.
 
 ## Data Assets (Metadata Summaries)
 
@@ -111,30 +120,45 @@ File: `Metadata/Kuwait_Route_optimization_Overview.md`
 - Mixed routing is heuristic and compatibility-based, not a full exact optimization over all possible pickup/drop combinations.
 - Pilot scope uses only stores that have valid coordinates in `Geocoordinates.xlsx`; unmatched stores are ignored for routing and KPI generation.
 
+## Duty-Feasibility Handoff
+- Routing should output more than store sequences. Each generated trip should carry start time, end time, duration, slack, stop-level load profile, and compatibility markers for chaining into a legal bus/driver duty.
+- Trip generation should expose whether a trip can be followed by another trip while preserving the required 30-45 minute buffer.
+- `MIXED` trips should retain enough stop-level timing detail to verify that opportunistic pickups do not create infeasible downstream duties.
+- Scheduling should be allowed to reject or penalize trips that are route-feasible in isolation but create overtime or illegal buffers when chained.
+
+## Serviceability Policy
+- Full employee coverage is the target, but the model should explicitly handle infeasible demand rather than assuming every request can always be served.
+- If demand cannot be assigned within hard timing, capacity, or duty constraints, the system should surface the exception clearly rather than hiding it inside an invalid route.
+- Allowed fallback actions should be explicit in implementation: create an extra trip if feasible, flag for manual review, or record the demand as unserved with a very large penalty for KPI reporting.
+- Coverage shortfalls should be reported separately from overtime so that a solution does not appear successful merely because it dropped hard-to-serve demand.
+
 ## Open Questions / Gaps
 - Confirm which week/brand tabs are in scope for modeling (pilot vs. full market).
 - Resolve data quality issues in itinerary timing and route logs.
 - Set the final compatibility tolerance for mixed pickups (for example, how many minutes after shift end a bus may wait or how much detour is acceptable).
 - Validate whether mixed trips should prioritize occupancy gain, overtime reduction, or waiting-time control when those objectives conflict.
+- Define the exact optimization structure to use in implementation: lexicographic solve, staged solve, or hard constraints plus tiered penalties.
+- Decide how much flexibility to preserve for demand near overlapping shift boundaries before assigning it to a fixed time wave.
 
 ## Next Step (Approach-Ready)
 This section is aligned with `Approaches/approach.md` (Section 5: Recommended Starting Point).
 1. Normalize datasets into a unified schema (employees, stores, shifts, trips, itineraries).
 2. Filter pilot scope to stores with valid geocoordinates and build demand tables by store and shift window (inbound/outbound).
-3. Run capacity-aware clustering using geocoordinates plus time-window compatibility.
-4. Solve routing per cluster/time wave with support for `IN`, `OUT`, and `MIXED` trip construction, preferring changes that reduce total required driver duty time.
-5. Chain trips into bus and driver schedules with buffers, stop-level load tracking, and opportunistic pickup checks, treating overtime as the main penalty.
-6. Assign employees to trips, validate waiting/capacity/timing constraints, then compute KPIs with overtime reported first.
+3. Run capacity-aware clustering using geocoordinates plus time-window compatibility, avoiding purely spatial clusters that ignore demand timing.
+4. Solve routing per cluster or time wave with support for `IN`, `OUT`, and `MIXED` trip construction, preferring changes that reduce total required driver duty time and emitting duty-feasibility information for chaining.
+5. Chain trips into bus and driver schedules with legal buffers, stop-level load tracking, and opportunistic pickup checks, treating overtime as the main penalty.
+6. Assign employees to trips, validate waiting, capacity, and timing constraints, surface any infeasible or unserved demand explicitly, then compute KPIs with overtime reported first.
 
 ## Working Notes
 - Visualize geocoordinates on a map to identify spatial clusters (e.g., south/central/north).
 - Use inter-cluster travel time as a key driver for route structuring.
 - Smart-routing target: allow opportunistic pickups on the return to accommodation if a shift-ended employee is near the bus path after inbound drops are completed.
-- Mixed routing should be evaluated as a capacity-recovery mechanism: inbound drops free seats, then nearby outbound pickups fill those seats on the return leg.
+- Mixed routing should be evaluated as a capacity-recovery mechanism: inbound drops free seats, then nearby outbound pickups can fill those seats on the return leg.
+- Mixed routing should only be accepted when detour, employee readiness, stop-level seat feasibility, and downstream duty compatibility all remain acceptable.
 - Consolidation rule of thumb: remove or absorb low-value trips when doing so lowers total duty hours, even if occupancy gains are only moderate.
 - Occupancy improvement is desirable, but not at the cost of adding extra duties or extending too many drivers past the 9-hour target.
 - Store-level stop times matter because mixed routing depends on whether a bus reaches a pickup point after the employee is actually ready.
-- Note: clustering alone is insufficient due to fixed bus capacity and scheduling constraints.
+- Note: clustering alone is insufficient due to fixed bus capacity and scheduling constraints; geographic closeness without time compatibility can produce poor route groups.
 
 ## Update Checklist (with Smoke Tests)
 
