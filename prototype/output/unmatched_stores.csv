@@ -1,25 +1,21 @@
-source_dataset,source_sheet,source_column,origin_id,store_name,normalized_store_name
-Bus Routes curent.xlsx,Bus Route Details,Store Name,D9|1.0|T1,BR - Aswaq Al Qurain - KFC Mubarek El-Kaber(Qurain 2),br aswaq al qurain kfc mubarek el kaber qurain 2
-Bus Routes curent.xlsx,Bus Route Details,Store Name,D9|2.0|T1,BR - Aswaq Al Qurain - KFC Mubarek El-Kaber(Qurain 2),br aswaq al qurain kfc mubarek el kaber qurain 2
-Bus Routes curent.xlsx,Bus Route Details,Store Name,D9|3.0|T1,BR - Aswaq Al Qurain - KFC Mubarek El-Kaber(Qurain 2),br aswaq al qurain kfc mubarek el kaber qurain 2
-Bus Routes curent.xlsx,Bus Route Details,Store Name,D9|4.0|T1,BR - Aswaq Al Qurain - KFC Mubarek El-Kaber(Qurain 2),br aswaq al qurain kfc mubarek el kaber qurain 2
-Bus Routes curent.xlsx,Bus Route Details,Store Name,D9|5.0|T2,BR - Aswaq Al Qurain - KFC Mubarek El-Kaber(Qurain 2),br aswaq al qurain kfc mubarek el kaber qurain 2
-Bus Routes curent.xlsx,Bus Route Details,Store Name,D9|6.0|T2,BR - Aswaq Al Qurain - KFC Mubarek El-Kaber(Qurain 2),br aswaq al qurain kfc mubarek el kaber qurain 2
-Bus Routes curent.xlsx,Bus Route Details,Store Name,D9|7.0|T3,BR - Aswaq Al Qurain - Krispy Kreme - Aswaq Al Qurain,br aswaq al qurain krispy kreme aswaq al qurain
-Bus Routes curent.xlsx,Bus Route Details,Store Name,D9|8.0|T3,BR - Aswaq Al Qurain - Krispy Kreme - Aswaq Al Qurain,br aswaq al qurain krispy kreme aswaq al qurain
-Bus Routes curent.xlsx,Bus Route Details,Store Name,D5|1.0|T1,Krispy Kreme - Khiran Hybrid O.Krispy Kreme - Khiran Square M,krispy kreme khiran hybrid o krispy kreme khiran square m
-Bus Routes curent.xlsx,Bus Route Details,Store Name,D5|2.0|T2,Krispy Kreme - Khiran Hybrid O.Krispy Kreme - Khiran Square M,krispy kreme khiran hybrid o krispy kreme khiran square m
-Bus Routes curent.xlsx,Bus Route Details,Store Name,D5|3.0|T2,Krispy Kreme - Khiran Hybrid O.Krispy Kreme - Khiran Square M,krispy kreme khiran hybrid o krispy kreme khiran square m
-Bus Routes curent.xlsx,Bus Route Details,Store Name,D11|1.0|T1,Krispy Kreme - Sabah Al Ahmed,krispy kreme sabah al ahmed
-Bus Routes curent.xlsx,Bus Route Details,Store Name,D11|3.0|T3,Krispy Kreme - Sabah Al Ahmed,krispy kreme sabah al ahmed
-Bus Routes curent.xlsx,Bus Route Details,Store Name,D6|1.0|T1,Krispy Kreme - Sabah Al Ahmed,krispy kreme sabah al ahmed
-Bus Routes curent.xlsx,Bus Route Details,Store Name,D6|2.0|T2,Krispy Kreme - Sabah Al Ahmed,krispy kreme sabah al ahmed
-Bus Routes curent.xlsx,Bus Route Details,Store Name,D6|3.0|T2,Krispy Kreme - Sabah Al Ahmed,krispy kreme sabah al ahmed
-Bus Routes curent.xlsx,Bus Route Details,Store Name,D6|4.0|T3,Krispy Kreme - Sabah Al Ahmed,krispy kreme sabah al ahmed
-Bus Routes curent.xlsx,Bus Route Details,Store Name,D10|7.0|T2,Krispy Kreme - Sabah Al Salem - Krispy Kreme - Divonne,krispy kreme sabah al salem krispy kreme divonne
-Bus Routes curent.xlsx,Bus Route Details,Store Name,D10|7.0|T2,Sabah Al Salem Block 1,sabah al salem block 1
-Employee Shift data.xlsx,BR,Store Name,11030063,BR - Al Mangaf,br al mangaf
-Employee Shift data.xlsx,KK,Store Name,11028960,Krispy Kreme - Fintas Co,krispy kreme fintas co
-Employee Shift data.xlsx,KK,Store Name,11030195,Krispy Kreme - Fintas Co,krispy kreme fintas co
-Employee Shift data.xlsx,KK,Store Name,11029106,Krispy Kreme - Sabah Al Ahmed,krispy kreme sabah al ahmed
-Employee Shift data.xlsx,KK,Store Name,11030182,Krispy Kreme - Sabah Al Ahmed,krispy kreme sabah al ahmed
+source_dataset,source_sheet,source_column,origin_id,store_name,normalized_store_name,source_store_id,reason
+Employee Shift data.xlsx,TGIF,Store Name,11022411,TGIF - Gate Mall,tgif gate mall,11188220,no_strict_name_id_match
+Employee Shift data.xlsx,TGIF,Store Name,11024174,TGIF - Gate Mall,tgif gate mall,11188090,no_strict_name_id_match
+Employee Shift data.xlsx,TGIF,Store Name,11024120,TGIF - Gate Mall,tgif gate mall,11188090,no_strict_name_id_match
+Employee Shift data.xlsx,TGIF,Store Name,11025308,TGIF - Gate Mall,tgif gate mall,11188090,no_strict_name_id_match
+Employee Shift data.xlsx,TGIF,Store Name,11026504,TGIF - Gate Mall,tgif gate mall,11188090,no_strict_name_id_match
+Employee Shift data.xlsx,TGIF,Store Name,11026646,TGIF - Gate Mall,tgif gate mall,11188090,no_strict_name_id_match
+Employee Shift data.xlsx,TGIF,Store Name,11026836,TGIF - Gate Mall,tgif gate mall,11188090,no_strict_name_id_match
+Employee Shift data.xlsx,TGIF,Store Name,11027086,TGIF - Gate Mall,tgif gate mall,11188090,no_strict_name_id_match
+Employee Shift data.xlsx,TGIF,Store Name,11027511,TGIF - Gate Mall,tgif gate mall,11188090,no_strict_name_id_match
+Employee Shift data.xlsx,TGIF,Store Name,11028846,TGIF - Gate Mall,tgif gate mall,11188090,no_strict_name_id_match
+Employee Shift data.xlsx,TGIF,Store Name,11029629,TGIF - Gate Mall,tgif gate mall,11188090,no_strict_name_id_match
+Employee Shift data.xlsx,TGIF,Store Name,11027197,TGIF - Gate Mall,tgif gate mall,11188090,no_strict_name_id_match
+Employee Shift data.xlsx,TGIF,Store Name,11028917,TGIF - Gate Mall,tgif gate mall,11188090,no_strict_name_id_match
+Employee Shift data.xlsx,TGIF,Store Name,11027633,TGIF - Gate Mall,tgif gate mall,11188090,no_strict_name_id_match
+Employee Shift data.xlsx,TGIF,Store Name,11027822,TGIF - Gate Mall,tgif gate mall,11188090,no_strict_name_id_match
+Employee Shift data.xlsx,TGIF,Store Name,11029400,TGIF - Gate Mall,tgif gate mall,11188090,no_strict_name_id_match
+Employee Shift data.xlsx,TGIF,Store Name,11029446,TGIF - Gate Mall,tgif gate mall,11188090,no_strict_name_id_match
+Employee Shift data.xlsx,TGIF,Store Name,11029494,TGIF - Gate Mall,tgif gate mall,11188090,no_strict_name_id_match
+Employee Shift data.xlsx,KK,Store Name,11026426,Krispy Kre Mangaf Sultan Centr,krispy kre mangaf sultan centr,11198700,no_strict_name_id_match
+Employee Shift data.xlsx,KK,Store Name,11029729,Krispy Kre Mangaf Sultan Centr,krispy kre mangaf sultan centr,11198700,no_strict_name_id_match

@@ -1,0 +1,31 @@
+driver_key,driver_number,driver_name,new_trips,schedule_trip_count,schedule_avg_trip_hours,schedule_total_working_hours,payment_trip_count,payment_avg_trip_hours,payment_total_working_hours,overtime_hours,issue,reported_overtime_hours,schedule_avg_trip_hours_num
+Driver #,Driver Number,Driver Name,New - Trips (10th feb),No of Trips (Schedule),Avg Trip Duraiton (Schedule),Total Working Hours,No of Trips (Payment),Avg Trip Duraiton (Payment),Total Working Hours,Overtime Hrs,Issue,,
+D1,11029721,"Faridul Islam Jalal Uddin
+Mahmoud Rezk Abdelwahab Abdelsamad ",8,6,1.5 Hrs,,,1.75 Hr,,3.25 Hrs,- driver is abdel wahab,3.25,1.5
+D2,11006747,Ahmed Mohamed Osman,7,7,1.25,,8,1.5 Hrs,,3 Hrs,"- Start time and location is missing in 2 trips
+- For 2 trips, he is waiting for 15-20 mins for picking up the split shift/ closing restaurants - staff. 
+- Avg duration is less by 30 mins, because of trafffic.
+- 1 trip is less than payment (Barakat) - emergency/ extra trip if needed",3.0,1.25
+D3,11029904,Mahmoud Anwar Mohamed Koshir,7,7,1.25 Hrs,,8,1.5 Hr,,3 Hrs,"- End time & location is mising in 4 trips
+- Start time and location is missing in 2 trips
+- Avg duration is less by 15 mins, because of trafffic.
+- 1 trip is less than payment (Barakat) - emergency/ extra trip if needed (ops requ.)",3.0,1.25
+D4,11029625,Ayman Kamel Ibrahim Younes,8,12,1.5,,7,,12.75,3.75 Hrs,"- End time & location is mising in 12 trips
+- Start time and location is missing in 4 trips
+- Schedule Avg trip duration is 1/2 of payment avg. trip duration which seems incorrect",3.75,1.5
+D5,11029480,Amin Khalaf Amin Mohamed,,3,2.16 Hrs,,8,1.5,12,3 Hrs,-2 hour break for 1 trip,3.0,2.16
+D6,11030164,Ahmed Ali Khaled Ali,,4,2 hrs,8,7,,12.25,3.25 Hrs,"- End time & location is mising in 2 trips
+- Start and Ending  time missing for 1 trip",3.25,2.0
+D7,11027859,Gouda Abdelfattah Gouda Ahmed,,6,0.75 hr,,8,,12,3 Hrs,"- End time & location is mising in 4 trips
+- Start time and location is missing in 2 trips
+- Schedule Avg trip duration is 1/2 of payment avg. trip duration which seems incorrect",3.0,0.75
+D8,11015600,Abdulwali Khan Haji Hukam,7,6,1.5,4.5,7,,10.5,1.5 hrs,,1.5,1.5
+D9,11025950,Abdul Mannan,8,6,1.25 hrs,6,8,1.5,12,3 hrs,"-  Avg duration is less by 15 mins, because of trafffic.",3.0,1.25
+D10,11002567,Haje Mohamed Housain,7,6,1.25,4,7,1.5,10.5,1.5 hrs,"-  Avg duration is less by 15 mins, because of trafffic.",1.5,1.25
+D11,11029136,Mohamed Abbady Diab Ali,4,4,2.5 hrs,,8,1.5,12,3 hrs,"- Additional trips may be there
+",3.0,2.5
+D12,11015821,Rajesh Rajesh Dhaklo Dhaklo Fadte,4,4,0.75 hrs,3,8,1.5,12,3 hrs,"- End time & location is mising in 3 trips
+- Start time and location is missing in 1 trips",3.0,0.75
+D13,11015986,"Abdalla Fawzy Ali Abdelaziz
+Mohamed Osman Saied ",6,6,1 hr,,8,1.5,12,3 hrs,"- End time & location is mising in 5 trips
+- Start time and location is missing in 1 trips",3.0,1.0
