@@ -10,7 +10,8 @@ This document consolidates the current understanding of the Kuwait employee tran
 - The optimization target is to design new trips from demand and constraints, not to preserve current trip shapes.
 - Pain point: high driver overtime and idle/deadhead time.
 - Goal: build a constraint-first optimization pipeline covering demand estimation, routing, duty construction, and passenger assignment.
-- Optimization priority in the implemented prototype should begin with fleet-feasible concurrency, then engineer legal and practical driver rotations, then reduce driver overtime, then preserve service coverage, then improve occupancy, then reduce deadhead and waiting where feasible.
+- Current prototype priority: keep the schedule within the 13-bus fleet, then enforce driver freshness through morning/evening rotation slots, then reduce duty overtime, then preserve service coverage, then improve occupancy, then reduce deadhead and waiting where feasible.
+- Current improvement direction: make trip construction aware of downstream slot pressure so fewer trips are created in windows that the 13-bus schedule cannot realistically absorb.
 
 ## Inputs (Model)
 From requirements and metadata:
@@ -24,14 +25,14 @@ From requirements and metadata:
 
 ## Outputs (Model)
 - Optimized trip templates by time window and service direction.
-- Bus and driver schedules, including legal buffers and split-shift handling where allowed.
+- Bus and driver schedules, including legal buffers and morning/evening rotation tagging.
 - Store- and wave-level service plans derived from employee shift demand.
 - Stop-level load and timing plans for validating `MIXED` trip feasibility.
 - KPI comparison covering overtime, service coverage, occupancy, deadhead, waiting time, and on-time compliance.
 
 ## Optimization Priorities
 - Primary objective: keep simultaneous active trips within the fixed 13-bus fleet limit.
-- Secondary objective: engineer legal driver rotations, including broken shifts and handovers, so daily work is split into practical blocks rather than one long spread.
+- Secondary objective: engineer legal driver rotations through morning/evening slot assignment and handovers so one bus can be reused without forcing one continuous all-day duty.
 - Tertiary objective: minimize driver overtime across that fleet.
 - Fourth objective: maximize feasible service coverage while respecting hard operating constraints.
 - Fifth objective: increase occupancy by consolidating compatible demand and using `MIXED` return pickups where feasible.
@@ -40,7 +41,7 @@ From requirements and metadata:
 
 ## Objective Structure
 - Hard constraints first: simultaneous fleet limit of 13 buses, seat capacity, trip start/end at accommodation, stop-level load feasibility, shift-time compatibility, trip-duration caps, and mandatory 30-45 minute buffer feasibility between chained trips.
-- Soft objective hierarchy: regularize duty spans and handovers first, minimize overtime second, maximize feasible coverage/serviceability third, improve occupancy fourth, and reduce deadhead and waiting fifth.
+- Soft objective hierarchy in the current prototype: regularize duty spans through slot freshness and evening seeding first, minimize overtime second, maximize feasible coverage/serviceability third, improve occupancy fourth, and reduce deadhead and waiting fifth.
 - Modeling note: treat this as a lexicographic or strongly tiered penalty structure, not a loose weighted average that could trade fleet infeasibility, excessive duty spread, broken handovers, or overtime for fuller buses.
 - Practical interpretation: if two solutions have similar occupancy but one creates peak-hour fleet overload, extreme duty spread, or illegal trip chaining, reject it even if the route looks geographically efficient.
 
@@ -57,14 +58,15 @@ From requirements and metadata:
 - Vehicle type: single type only, 22-seat capacity (can go up to 25 if crowded, never above 25).
 - Trip duration target: average 2.5 hours per trip.
 - Driver total driving hours: ideally 9 hours per day, with acceptable range 8-10 hours.
-- Broken shifts allowed: a 9-hour workday can be split into a 4-hour shift and a 5-hour shift, with separate pickup/drop trips.
-- Long idle gaps should be treated as shift-break candidates rather than automatically stretched into one continuous duty.
+- Broken shifts are allowed operationally, but the current prototype approximates this through separate morning/evening duty slots rather than a full duty bifurcation optimizer.
+- Long idle gaps should not automatically stretch one duty across the whole day; in the current prototype this is handled mainly by assigning late work to fresh evening slots when feasible.
 - Late-night `OUT` waves should preferentially be served through evening rotations or handovers instead of being tacked onto already-long day duties.
 - Max waiting time: 30-40 minutes (upper bound), to reduce overtime risk.
 - Employees should arrive at pickup no earlier than 30 minutes before the scheduled bus trip (to avoid excessive waiting).
 - Opportunistic pickup rule: after completing required inbound drops, a bus may collect outbound employees only if the pickup store is near the return path, the employees' shifts have ended or are within a small compatibility tolerance, and capacity remains available after earlier drops.
 - Mixed trips must track onboard load after every stop; pickups cannot violate seat capacity at any point on the route.
 - Mixed routing should reduce deadhead and improve occupancy without creating excessive detours or pushing driver hours beyond daily limits.
+- In the current prototype, `MIXED` is now treated as a lightweight constructed option: an `IN` trip may absorb a nearby `OUT` trip on the return side when the timing gap, detour, and load profile remain feasible.
 - Trip chaining and trip consolidation should be evaluated first by their effect on peak fleet concurrency, then by duty spread and overtime impact; occupancy gains are secondary unless concurrency, duty spread, and overtime are unchanged or improved.
 - Borderline demand near overlapping duty windows should not be forced too early into a rigid time bucket if doing so removes a better chaining option.
 - Some demand may naturally fit more than one duty window; assignment should remain flexible long enough to preserve better route-chaining opportunities.
@@ -115,46 +117,41 @@ File: `Metadata/Kuwait_Route_optimization_Overview.md`
 - Prototype trips must be newly generated from demand waves, store compatibility, and operating constraints rather than copied from current route logs.
 - Prototype scheduling must treat the fixed 13-bus concurrency limit as a hard feasibility rule, not just a KPI reported after schedule generation.
 - Prototype scheduling must treat driver freshness as part of feasibility during assignment, not as a post-processing label added after trips are already chained.
+- Prototype scheduling currently uses separate `morning` and `evening` duty slots per physical bus to approximate split shifts and handovers.
 
 ## Trip Design Approach
 - Build demand from `Employee Shift data.xlsx` at the store-wave level: each shift start creates inbound demand and each shift end creates outbound demand.
 - Restrict routing to stores that pass the strict `Store Name` plus `Store ID` match between `Employee Shift data.xlsx` and `Geocoordinates.xlsx`.
-- Group routeable stores by both geography and time compatibility so trips are built around realistic waves rather than historical route IDs.
-- Aggregate demand into short sliding or rolling time windows so peak pressure is visible before trips are opened.
-- Shift soft demand into adjacent feasible windows when doing so preserves employee waiting tolerance and helps keep simultaneous bus demand within fleet capacity.
+- Group routeable stores by geography; keep time compatibility visible through wave-level demand buckets rather than inherited route IDs.
+- Aggregate demand into short time windows so peak pressure is visible before trips are opened.
+- Current prototype uses peak pressure as a trip-opening signal, preferring start times and wider trip groupings that consume less scarce peak-slot budget.
 - Generate new candidate trips from scratch for each wave using a fleet-aware construction heuristic:
   - `IN` trips carry employees from accommodation to stores before shift start.
   - `OUT` trips collect employees from stores after shift end and return to accommodation.
-  - `MIXED` trips are allowed only when inbound drops create free capacity and outbound pickups remain near the return path without violating timing.
+  - `MIXED` trips are built opportunistically by pairing a feasible `IN` trip with a nearby `OUT` return opportunity when the bus can absorb that return demand without breaking time or load limits.
 - Size each trip using hard operating limits: vehicle capacity, trip duration cap, waiting tolerance, maximum practical stop count, and the requirement that opening the trip should not force active fleet concurrency above 13 unless no feasible alternative exists.
-- During assignment, every candidate bus-trip match must also pass a freshness check: if attaching the trip would push that duty beyond its practical span, the trip must trigger a rotation reset or be assigned elsewhere.
+- Before opening a new narrow trip in a crowded window, try to widen a compatible trip by adding nearby demand rather than consuming another peak-time slot.
+- During assignment, every candidate bus-trip match must also pass a freshness check: if attaching the trip would push that duty beyond its practical span, the trip must be assigned to another slot or remain unscheduled.
 - Use current route logs only to calibrate realistic trip characteristics such as typical duration bands, common stop density, and plausible duty spacing.
-- After trip generation, chain the new trips into bus and driver duties with 30-45 minute buffers and measure overtime on those designed duties, not on the raw current schedule.
-- If the first-pass design still breaches the 13-bus limit, run a destroy-and-repair loop that targets the worst overlap windows, removes weak trips, and re-inserts that demand through merging, staggering, or mixed-trip conversion.
-- If the first-pass duties remain over-stretched, run a duty-repair pass that:
-  - detects spreads above 10-11 hours,
-  - splits duties around long gaps,
-  - seeds fresh evening rotations for late `OUT` waves,
-  - and retries unscheduled work through small departure shifts within tolerance.
+- After trip generation, chain the new trips into bus and driver duties with 30-minute buffers and measure overtime on those designed duties, not on the raw current schedule.
+- Current prototype scheduling uses soft morning/evening slot testing, hard span blocking, opportunistic `MIXED` candidates, and a lightweight greedy repair pass for blocked trips. Full destroy-and-repair and deeper duty-repair loops remain future work.
 
 ## Fleet-Constrained Heuristic
-- Construction phase: use a greedy randomized adaptive search style approach that seeds urgent trips first and then inserts nearby compatible demand only when capacity, timing, duration, and fleet concurrency remain feasible.
-- Peak control phase: compute theoretical bus pressure in each short time window and proactively smooth overloaded windows before the main routing step.
-- Repair phase: apply a large neighborhood search style loop to the worst bottleneck windows by removing low-efficiency trips and re-inserting their demand through fuller trips, shifted departures, `MIXED` conversions, or split-shift duty resets.
-- Duty-splitting phase: identify long gaps between trips and treat them as opportunities to end one duty and begin another, especially when doing so prevents a 13-15 hour spread from being counted as one driver day.
-- Rotation phase: try late-wave handovers by assigning late `OUT` trips to fresh evening duties instead of extending day duties past practical limits.
-- Slot-allocation phase: treat the 13 physical buses as supporting separate morning and evening duty slots, with handover logic controlling when a fresh evening driver can reuse the same bus.
-- Acceptance rule: prefer solutions that reduce concurrency breaches first, then reduce duty spread, then reduce overtime, then improve coverage and occupancy.
+- Current construction phase: use a deterministic greedy heuristic that seeds early demand first and inserts nearby compatible stores only when capacity, timing, duration, and downstream slot feasibility remain acceptable.
+- Peak control phase: compute theoretical bus pressure in short time windows and use that pressure as a budget signal when choosing start times and whether to open another trip.
+- Rotation phase: treat the 13 physical buses as supporting separate morning and evening duty slots, with freshness checks controlling when a bus can be reused by a fresh evening duty.
+- Rescue phase: allow limited delay-based rescue and retry for blocked trips within waiting tolerance when that helps fit the trip into an available slot.
+- Acceptance rule: prefer solutions that keep concurrency within 13 first, then keep duty spans under control, then reduce overtime, then improve coverage and occupancy.
+- Future extension: add a full destroy-and-repair / LNS stage for overloaded windows and unscheduled trips after the current greedy repair baseline is stable.
 
 ## Duty-Feasibility Handoff
 - Routing should output more than store sequences. Each generated trip should carry start time, end time, duration, slack, stop-level load profile, and compatibility markers for chaining into a legal bus/driver duty.
 - Trip generation should expose whether a trip can be followed by another trip while preserving the required 30-45 minute buffer.
 - `MIXED` trips should retain enough stop-level timing detail to verify that opportunistic pickups do not create infeasible downstream duties.
 - Scheduling should be allowed to reject or penalize trips that are route-feasible in isolation but create overtime or illegal buffers when chained.
-- Scheduling should also surface peak concurrency by time window so trip construction and repair can see exactly where the fleet limit is being breached.
-- Scheduling should also emit long-gap markers so the duty builder can split a stretched day into separate morning and evening blocks when policy allows.
-- Scheduling should emit handover candidates for late trips so the repair stage can attempt a fresh evening rotation before extending a day duty into overtime.
-- Scheduling should explicitly distinguish physical bus reuse from driver continuity: a bus ID may stay in service across the day, but the driver attached to that bus must be allowed to reset at a planned handover.
+- Scheduling should surface peak concurrency by time window so fleet usage can be compared against the 13-bus cap.
+- Scheduling should explicitly distinguish physical bus reuse from driver continuity: a bus ID may stay in service across the day, but the current prototype represents driver resets through separate morning/evening duty slots.
+- Scheduling should emit enough timing detail to explain why a trip was accepted, delayed, or blocked by buffer or freshness limits.
 
 ## Serviceability Policy
 - Full employee coverage is the target, but the model should explicitly handle infeasible demand rather than assuming every request can always be served.
@@ -180,10 +177,10 @@ This section is aligned with `Approaches/approach.md` (Section 5: Recommended St
 6. Smooth overloaded demand windows within allowed waiting tolerances before final trip opening so the 13-bus fleet limit remains achievable.
 7. Generate new `IN`, `OUT`, and conditionally `MIXED` trips from scratch for each cluster or time wave using fleet-aware construction rules.
 8. Chain those designed trips into bus and driver schedules with legal buffers, stop-level load tracking, opportunistic pickup checks, and explicit split-shift reset logic when long idle gaps are available.
-9. Run a destroy-and-repair loop on bottleneck windows and unscheduled trips until concurrency, duty spread, overtime, or explicit infeasibility stabilizes.
-10. Run a duty-repair pass that splits stretched duties, seeds fresh evening rotations, and swaps late trips away from already-long day duties when feasible.
-11. Use waiting tolerance to rescue unscheduled trips where a short departure shift allows an existing bus to finish its buffer and absorb the work.
-12. Validate waiting, capacity, and timing constraints against the weekly shift schedule, surface any infeasible or unserved demand explicitly, then compute KPIs with fleet-feasibility, duty regularity, and overtime reported first.
+9. Convert feasible `IN` plus nearby `OUT` pairs into lightweight `MIXED` candidates when that removes a separate return trip without breaking trip limits.
+10. Assign trips into morning/evening bus slots using legal buffers, soft slot testing, hard freshness checks, and physical bus reuse rules.
+11. Run a greedy repair pass on blocked trips using small timing shifts and simple re-assignment logic before classifying the demand as unscheduled.
+12. Validate waiting, capacity, and timing constraints against the weekly shift schedule, surface any infeasible or unserved demand explicitly, then compute KPIs with fleet-feasibility, duty regularity, overtime, coverage, and rescued trips reported first.
 
 ## Working Notes
 - Visualize geocoordinates on a map to identify spatial clusters (e.g., south/central/north).

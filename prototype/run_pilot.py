@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import math
 import re
 from dataclasses import dataclass
@@ -38,6 +39,10 @@ IN_TARGET_LEAD_MIN = 15
 OUT_WAIT_LIMIT_MIN = 40
 OUT_RESCUE_SHIFT_MIN = 40
 MIXED_MAX_WAIT_MIN = 20
+MIXED_MAX_ATTACH_MIN = 60
+MIXED_MAX_DETOUR_KM = 6.0
+REPAIR_SHIFT_OPTIONS_OUT = [10, 20, 30, 40]
+REPAIR_SHIFT_OPTIONS_IN = [-15, 15, -30, 30]
 
 
 @dataclass(frozen=True)
@@ -313,6 +318,12 @@ def route_metrics(depot: GeoPoint, stops: list[GeoPoint]) -> tuple[float, float]
     if not stops:
         return 0.0, 0.0
     ordered = nearest_neighbor_sequence(depot, stops)
+    return route_metrics_ordered(depot, ordered)
+
+
+def route_metrics_ordered(depot: GeoPoint, ordered: list[GeoPoint]) -> tuple[float, float]:
+    if not ordered:
+        return 0.0, 0.0
     distance = road_km(depot, ordered[0])
     for prev, curr in zip(ordered, ordered[1:]):
         distance += road_km(prev, curr)
@@ -321,9 +332,62 @@ def route_metrics(depot: GeoPoint, stops: list[GeoPoint]) -> tuple[float, float]
     return distance, duration
 
 
+def candidate_start_times(earliest: pd.Timestamp, latest: pd.Timestamp) -> list[pd.Timestamp]:
+    if latest < earliest:
+        return [earliest]
+    current = earliest.floor(f"{PEAK_BIN_MIN}min")
+    if current < earliest:
+        current += timedelta(minutes=PEAK_BIN_MIN)
+    starts = [earliest]
+    while current < latest:
+        starts.append(current)
+        current += timedelta(minutes=PEAK_BIN_MIN)
+    if latest not in starts:
+        starts.append(latest)
+    return sorted(set(starts))
+
+
+def overlap_bins(start_dt: pd.Timestamp, end_dt: pd.Timestamp) -> list[pd.Timestamp]:
+    current = start_dt.floor(f"{PEAK_BIN_MIN}min")
+    end_floor = end_dt.floor(f"{PEAK_BIN_MIN}min")
+    bins: list[pd.Timestamp] = []
+    while current <= end_floor:
+        bins.append(current)
+        current += timedelta(minutes=PEAK_BIN_MIN)
+    return bins
+
+
+def choose_start_with_pressure(
+    requested_start: pd.Timestamp,
+    earliest_start: pd.Timestamp,
+    latest_start: pd.Timestamp,
+    duration_min: float,
+    activity_counts: dict[pd.Timestamp, int],
+) -> pd.Timestamp:
+    best_start = requested_start
+    best_score: tuple[float, float, pd.Timestamp] | None = None
+    for candidate in candidate_start_times(earliest_start, latest_start):
+        end_dt = candidate + timedelta(minutes=float(duration_min))
+        bins = overlap_bins(candidate, end_dt)
+        overload = sum(max(0, activity_counts.get(bin_dt, 0) + 1 - BUS_COUNT) for bin_dt in bins)
+        pressure = sum(activity_counts.get(bin_dt, 0) for bin_dt in bins)
+        deviation = abs((candidate - requested_start).total_seconds()) / 60.0
+        score = (overload * 1000 + pressure, deviation, candidate)
+        if best_score is None or score < best_score:
+            best_score = score
+            best_start = candidate
+    return best_start
+
+
+def add_trip_to_activity(start_dt: pd.Timestamp, end_dt: pd.Timestamp, activity_counts: dict[pd.Timestamp, int]) -> None:
+    for bin_dt in overlap_bins(start_dt, end_dt):
+        activity_counts[bin_dt] = activity_counts.get(bin_dt, 0) + 1
+
+
 def build_base_trips(demand: pd.DataFrame, depot: GeoPoint) -> pd.DataFrame:
     trip_rows: list[dict[str, object]] = []
     trip_counter = 1
+    activity_counts: dict[pd.Timestamp, int] = {}
     for direction, direction_group in demand.groupby("direction", dropna=False):
         pool = direction_group.copy().reset_index(drop=True)
         pool["remaining"] = pool["employees"]
@@ -386,8 +450,10 @@ def build_base_trips(demand: pd.DataFrame, depot: GeoPoint) -> pd.DataFrame:
                 earliest_start = min_wave
                 latest_start = max_wave + timedelta(minutes=OUT_WAIT_LIMIT_MIN)
                 requested_start = earliest_start
-            planned_start = max(earliest_start, min(requested_start, latest_start))
+            requested_start = max(earliest_start, min(requested_start, latest_start))
+            planned_start = choose_start_with_pressure(requested_start, earliest_start, latest_start, duration, activity_counts)
             planned_end = planned_start + timedelta(minutes=duration)
+            add_trip_to_activity(planned_start, planned_end, activity_counts)
             trip_rows.append(
                 {
                     "trip_id": f"NEW_{trip_counter:04d}",
@@ -409,10 +475,112 @@ def build_base_trips(demand: pd.DataFrame, depot: GeoPoint) -> pd.DataFrame:
                     "occupancy_pct": round((passengers / BUS_CAPACITY) * 100, 2),
                     "store_sequence": " -> ".join(ordered_names),
                     "store_passenger_plan": " | ".join(f"{row['store_name']} ({int(row['allocated_passengers'])})" for row in selected_rows),
+                    "stop_data_json": json.dumps(selected_rows, default=str),
                 }
             )
             trip_counter += 1
     return pd.DataFrame(trip_rows).sort_values(["planned_start_dt", "trip_type", "trip_id"]).reset_index(drop=True)
+
+
+def decode_stop_data(stop_data_json: str) -> list[dict[str, object]]:
+    return json.loads(stop_data_json) if isinstance(stop_data_json, str) and stop_data_json else []
+
+
+def point_from_stop(stop: dict[str, object]) -> GeoPoint:
+    return GeoPoint(
+        store_name=str(stop["store_name"]),
+        store_id=int(stop["store_id"]),
+        latitude=float(stop["latitude"]),
+        longitude=float(stop["longitude"]),
+    )
+
+
+def nearest_from_current(current: GeoPoint, stops: list[GeoPoint]) -> list[GeoPoint]:
+    remaining = stops.copy()
+    ordered: list[GeoPoint] = []
+    while remaining:
+        next_point = min(remaining, key=lambda point: road_km(current, point))
+        ordered.append(next_point)
+        remaining.remove(next_point)
+        current = next_point
+    return ordered
+
+
+def build_mixed_candidates(base_trips: pd.DataFrame, depot: GeoPoint) -> pd.DataFrame:
+    if base_trips.empty:
+        return base_trips
+    trips = base_trips.copy().sort_values(["planned_start_dt", "trip_type", "trip_id"]).reset_index(drop=True)
+    used_out: set[str] = set()
+    mixed_rows: list[dict[str, object]] = []
+    for _, trip in trips.iterrows():
+        if trip["trip_type"] != "IN":
+            continue
+        in_stops = decode_stop_data(trip.get("stop_data_json", ""))
+        if not in_stops:
+            continue
+        in_points = [point_from_stop(stop) for stop in in_stops]
+        in_end = pd.Timestamp(trip["planned_end_dt"])
+        last_in = in_points[-1]
+        candidates = trips[
+            (trips["trip_type"] == "OUT")
+            & (~trips["trip_id"].isin(used_out))
+            & (trips["service_date"] == trip["service_date"])
+        ].copy()
+        if candidates.empty:
+            continue
+        best_idx = None
+        best_score = None
+        for idx, out_trip in candidates.iterrows():
+            gap_min = (pd.Timestamp(out_trip["planned_start_dt"]) - in_end).total_seconds() / 60.0
+            if gap_min < 0 or gap_min > MIXED_MAX_ATTACH_MIN:
+                continue
+            out_stops = decode_stop_data(out_trip.get("stop_data_json", ""))
+            if not out_stops:
+                continue
+            out_points = [point_from_stop(stop) for stop in out_stops]
+            first_leg = min(road_km(last_in, point) for point in out_points)
+            if first_leg > MIXED_MAX_DETOUR_KM:
+                continue
+            out_order = nearest_from_current(last_in, out_points)
+            combined_points = in_points + out_order
+            distance, duration = route_metrics_ordered(depot, combined_points)
+            if duration > MAX_TRIP_DURATION_MIN:
+                continue
+            peak_load = max(int(trip["peak_load"]), int(out_trip["peak_load"]))
+            if peak_load > BUS_CAPACITY:
+                continue
+            score = (first_leg, gap_min, float(duration))
+            if best_score is None or score < best_score:
+                best_score = score
+                best_idx = idx
+        if best_idx is None:
+            continue
+        out_trip = trips.loc[best_idx]
+        out_stops = decode_stop_data(out_trip.get("stop_data_json", ""))
+        out_points = nearest_from_current(last_in, [point_from_stop(stop) for stop in out_stops])
+        combined_points = in_points + out_points
+        distance, duration = route_metrics_ordered(depot, combined_points)
+        ordered_names = [point.store_name for point in combined_points]
+        combined_trip = trip.to_dict()
+        combined_trip["trip_type"] = "MIXED"
+        combined_trip["direction"] = "MIXED"
+        combined_trip["planned_end_dt"] = pd.Timestamp(trip["planned_start_dt"]) + timedelta(minutes=float(duration))
+        combined_trip["trip_duration_min"] = round(float(duration), 2)
+        combined_trip["route_distance_km"] = round(float(distance), 3)
+        combined_trip["stop_count"] = len(combined_points)
+        combined_trip["assigned_passengers"] = int(trip["assigned_passengers"]) + int(out_trip["assigned_passengers"])
+        combined_trip["peak_load"] = max(int(trip["peak_load"]), int(out_trip["peak_load"]))
+        combined_trip["occupancy_pct"] = round((combined_trip["peak_load"] / BUS_CAPACITY) * 100, 2)
+        combined_trip["store_sequence"] = " -> ".join(ordered_names)
+        combined_trip["store_passenger_plan"] = f"{trip['store_passenger_plan']} || RETURN || {out_trip['store_passenger_plan']}"
+        combined_trip["stop_data_json"] = json.dumps(in_stops + out_stops, default=str)
+        mixed_rows.append(combined_trip)
+        used_out.add(str(out_trip["trip_id"]))
+        trips.loc[trips["trip_id"] == trip["trip_id"], "trip_type"] = "MIXED_USED"
+    keep = trips[(trips["trip_type"] != "MIXED_USED") & (~trips["trip_id"].isin(used_out))].copy()
+    if mixed_rows:
+        keep = pd.concat([keep, pd.DataFrame(mixed_rows)], ignore_index=True)
+    return keep.sort_values(["planned_start_dt", "trip_type", "trip_id"]).reset_index(drop=True)
 
 
 def init_slots(service_dates: list[str]) -> dict[tuple[str, int, str], DutySlot]:
@@ -430,24 +598,77 @@ def slot_preference(trip_type: str, start_dt: pd.Timestamp) -> list[str]:
     return ["morning", "evening"]
 
 
-def slot_is_feasible(slot: DutySlot, trip: pd.Series, day_assignments: pd.DataFrame, extra_delay_min: int = 0) -> tuple[bool, pd.Timestamp | None]:
+def slot_is_feasible(
+    slot: DutySlot,
+    trip: pd.Series,
+    day_assignments: pd.DataFrame,
+    desired_start: pd.Timestamp,
+    latest_extension_min: int = 0,
+) -> tuple[bool, pd.Timestamp | None, float]:
     earliest = pd.Timestamp(trip["earliest_start_dt"])
-    latest = pd.Timestamp(trip["latest_start_dt"]) + timedelta(minutes=extra_delay_min)
+    latest = pd.Timestamp(trip["latest_start_dt"]) + timedelta(minutes=latest_extension_min)
     if slot.slot_type == "evening":
         earliest = max(earliest, pd.Timestamp(earliest.date()) + timedelta(hours=EVENING_SEED_HOUR))
-    candidate_start = earliest if slot.available_after is None else max(earliest, slot.available_after + timedelta(minutes=BUFFER_MIN))
+    candidate_start = desired_start
+    candidate_start = max(candidate_start, earliest)
+    if slot.available_after is not None:
+        candidate_start = max(candidate_start, slot.available_after + timedelta(minutes=BUFFER_MIN))
     if candidate_start > latest:
-        return False, None
+        return False, None, 0.0
     candidate_end = candidate_start + timedelta(minutes=float(trip["trip_duration_min"]))
+    projected_span = float(trip["trip_duration_min"])
     if slot.first_start is not None:
-        span = (candidate_end - slot.first_start).total_seconds() / 60.0
-        if span > HARD_DUTY_SPAN_MIN:
-            return False, None
+        projected_span = (candidate_end - slot.first_start).total_seconds() / 60.0
+        if projected_span > HARD_DUTY_SPAN_MIN:
+            return False, None, projected_span
     if not day_assignments.empty and "bus_id" in day_assignments.columns:
         for row in day_assignments[day_assignments["bus_id"] == slot.bus_id].itertuples(index=False):
             if not (candidate_end <= pd.Timestamp(row.planned_start_dt) or candidate_start >= pd.Timestamp(row.planned_end_dt)):
-                return False, None
-    return True, candidate_start
+                return False, None, projected_span
+    return True, candidate_start, projected_span
+
+
+def choose_slot_assignment(
+    trip: pd.Series,
+    slots: dict[tuple[str, int, str], DutySlot],
+    assignment_rows: list[dict[str, object]],
+    repair_mode: bool = False,
+) -> tuple[tuple[str, int, str], pd.Timestamp, bool] | None:
+    service_day = str(trip["service_date"])
+    day_assignments = pd.DataFrame(assignment_rows)
+    if not day_assignments.empty:
+        day_assignments = day_assignments[day_assignments["service_date"] == service_day]
+    deltas = [0]
+    if repair_mode:
+        deltas = REPAIR_SHIFT_OPTIONS_OUT if trip["trip_type"] == "OUT" else REPAIR_SHIFT_OPTIONS_IN
+        deltas = [0] + deltas
+    best_choice: tuple[tuple[str, int, str], pd.Timestamp, bool] | None = None
+    best_score: tuple[float, float, float, int, str] | None = None
+    preferred_slots = slot_preference(str(trip["trip_type"]), pd.Timestamp(trip["planned_start_dt"]))
+    for slot_type in ("morning", "evening"):
+        slot_penalty = 0 if slot_type == preferred_slots[0] else 5
+        for bus_id in range(1, BUS_COUNT + 1):
+            slot_key = (service_day, bus_id, slot_type)
+            slot = slots[slot_key]
+            for delta in deltas:
+                desired_start = pd.Timestamp(trip["planned_start_dt"]) + timedelta(minutes=delta)
+                latest_extension = max(0, delta)
+                ok, start_dt, projected_span = slot_is_feasible(
+                    slot,
+                    trip,
+                    day_assignments,
+                    desired_start=desired_start,
+                    latest_extension_min=latest_extension,
+                )
+                if not ok or start_dt is None:
+                    continue
+                delay = abs((start_dt - pd.Timestamp(trip["planned_start_dt"])).total_seconds()) / 60.0
+                overtime_risk = max(0.0, projected_span - TARGET_DUTY_MIN)
+                score = (slot_penalty + overtime_risk, delay, projected_span, bus_id, slot_type)
+                if best_score is None or score < best_score:
+                    best_score = score
+                    best_choice = (slot_key, start_dt, delta != 0)
+    return best_choice
 
 
 def schedule_with_rotation_reset(base_trips: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
@@ -456,38 +677,12 @@ def schedule_with_rotation_reset(base_trips: pd.DataFrame) -> tuple[pd.DataFrame
     slots = init_slots(service_dates)
     scheduled_rows: list[dict[str, object]] = []
     assignment_rows: list[dict[str, object]] = []
-    unscheduled_rows: list[dict[str, object]] = []
+    unscheduled_trips: list[pd.Series] = []
 
     for _, trip in trips.iterrows():
-        service_day = str(trip["service_date"])
-        day_assignments = pd.DataFrame(assignment_rows)
-        if not day_assignments.empty:
-            day_assignments = day_assignments[day_assignments["service_date"] == service_day]
-        best_choice: tuple[tuple[str, int, str], pd.Timestamp, bool] | None = None
-        for rescue in (False, True):
-            extra_delay = OUT_RESCUE_SHIFT_MIN if rescue and trip["trip_type"] == "OUT" else 0
-            for slot_type in slot_preference(str(trip["trip_type"]), pd.Timestamp(trip["planned_start_dt"])):
-                for bus_id in range(1, BUS_COUNT + 1):
-                    slot_key = (service_day, bus_id, slot_type)
-                    ok, start_dt = slot_is_feasible(slots[slot_key], trip, day_assignments, extra_delay_min=extra_delay)
-                    if not ok or start_dt is None:
-                        continue
-                    candidate = (slot_key, start_dt, rescue)
-                    if best_choice is None or (start_dt, rescue, bus_id) < (best_choice[1], best_choice[2], best_choice[0][1]):
-                        best_choice = candidate
-            if best_choice is not None:
-                break
+        best_choice = choose_slot_assignment(trip, slots, assignment_rows, repair_mode=False)
         if best_choice is None:
-            unscheduled_rows.append(
-                {
-                    "trip_id": trip["trip_id"],
-                    "trip_type": trip["trip_type"],
-                    "requested_wave_label": trip["requested_wave_label"],
-                    "reason": "fleet_or_freshness_block",
-                    "assigned_passengers": int(trip["assigned_passengers"]),
-                    "peak_load": int(trip["peak_load"]),
-                }
-            )
+            unscheduled_trips.append(trip)
             continue
 
         slot_key, start_dt, rescued = best_choice
@@ -523,9 +718,57 @@ def schedule_with_rotation_reset(base_trips: pd.DataFrame) -> tuple[pd.DataFrame
             }
         )
 
+    final_unscheduled_rows: list[dict[str, object]] = []
+    for trip in unscheduled_trips:
+        best_choice = choose_slot_assignment(trip, slots, assignment_rows, repair_mode=True)
+        if best_choice is None:
+            final_unscheduled_rows.append(
+                {
+                    "trip_id": trip["trip_id"],
+                    "trip_type": trip["trip_type"],
+                    "requested_wave_label": trip["requested_wave_label"],
+                    "reason": "fleet_or_freshness_block",
+                    "assigned_passengers": int(trip["assigned_passengers"]),
+                    "peak_load": int(trip["peak_load"]),
+                }
+            )
+            continue
+        slot_key, start_dt, rescued = best_choice
+        service_day, bus_id, slot_type = slot_key
+        end_dt = pd.Timestamp(start_dt) + timedelta(minutes=float(trip["trip_duration_min"]))
+        slot = slots[slot_key]
+        if slot.first_start is None:
+            slot.first_start = pd.Timestamp(start_dt)
+        slot.available_after = end_dt
+        slot.last_end = end_dt
+        slot.trip_ids.append(str(trip["trip_id"]))
+        trip_dict = trip.to_dict()
+        trip_dict["service_date"] = service_day
+        trip_dict["planned_start_dt"] = pd.Timestamp(start_dt)
+        trip_dict["planned_end_dt"] = end_dt
+        trip_dict["rescued_by_delay"] = rescued
+        trip_dict["rotation_tag"] = slot_type
+        scheduled_rows.append(trip_dict)
+        assignment_rows.append(
+            {
+                "trip_id": trip["trip_id"],
+                "trip_type": trip["trip_type"],
+                "service_date": service_day,
+                "bus_id": bus_id,
+                "rotation_tag": slot_type,
+                "planned_start_dt": pd.Timestamp(start_dt),
+                "planned_end_dt": end_dt,
+                "trip_duration_min": float(trip["trip_duration_min"]),
+                "occupancy_pct": float(trip["occupancy_pct"]),
+                "assigned_passengers": int(trip["assigned_passengers"]),
+                "rescued_by_delay": rescued,
+                "handover_flag": slot_type == "evening",
+            }
+        )
+
     scheduled = pd.DataFrame(scheduled_rows).sort_values(["planned_start_dt", "trip_id"]).reset_index(drop=True)
     assignments = pd.DataFrame(assignment_rows).sort_values(["planned_start_dt", "bus_id"]).reset_index(drop=True)
-    unscheduled = pd.DataFrame(unscheduled_rows)
+    unscheduled = pd.DataFrame(final_unscheduled_rows)
     return scheduled, assignments, unscheduled
 
 
@@ -635,7 +878,8 @@ def build_kpis(
     assigned_passengers = int(scheduled["assigned_passengers"].sum()) if not scheduled.empty else 0
     total_demand = int(demand["employees"].sum()) if not demand.empty else 0
     total_offered_seats = int(len(scheduled) * BUS_CAPACITY)
-    weighted_occ = (assigned_passengers / total_offered_seats) * 100 if total_offered_seats else 0.0
+    occupied_seats = float(scheduled["peak_load"].sum()) if not scheduled.empty else 0.0
+    weighted_occ = (occupied_seats / total_offered_seats) * 100 if total_offered_seats else 0.0
     max_concurrent = compute_max_concurrent(assignments)
     rows = [
         ("pilot_total_stores_overview", overview.get("Total Stores", "")),
@@ -690,6 +934,7 @@ def main() -> None:
     if depot is None:
         raise RuntimeError(f"Depot '{DEPOT_NAME}' not found in geocoordinates.")
     base_trips = build_base_trips(demand, depot)
+    base_trips = build_mixed_candidates(base_trips, depot)
     scheduled, assignments, unscheduled = schedule_with_rotation_reset(base_trips)
     scheduled = add_mixed_labels(scheduled, assignments)
     duties = build_duties(assignments)
