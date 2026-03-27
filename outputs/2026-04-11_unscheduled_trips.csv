@@ -1,0 +1,13 @@
+trip_id,trip_type,requested_wave_label,reason,assigned_passengers,peak_load
+NEW_0067,OUT,2026-04-11 05:00,fleet_or_freshness_block,16,16
+NEW_0068,OUT,2026-04-11 05:00,fleet_or_freshness_block,9,9
+NEW_0008,IN,2026-04-11 09:00,fleet_or_freshness_block,11,11
+NEW_0023,IN,2026-04-11 12:00,fleet_or_freshness_block,8,8
+NEW_0028,IN,2026-04-11 18:00,fleet_or_freshness_block,18,18
+NEW_0079,OUT,2026-04-11 18:00,fleet_or_freshness_block,11,11
+NEW_0045,IN,2026-04-11 21:00,fleet_or_freshness_block,11,11
+NEW_0038,IN,2026-04-11 20:00,fleet_or_freshness_block,19,19
+NEW_0076,OUT,2026-04-11 18:00,fleet_or_freshness_block,15,15
+NEW_0081,OUT,2026-04-11 18:00,fleet_or_freshness_block,9,9
+NEW_0039,MIXED,2026-04-11 20:00,fleet_or_freshness_block,30,22
+NEW_0092,OUT,2026-04-11 22:00,fleet_or_freshness_block,20,20

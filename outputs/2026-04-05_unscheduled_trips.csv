@@ -1,0 +1,5 @@
+trip_id,trip_type,requested_wave_label,reason,assigned_passengers,peak_load
+NEW_0028,IN,2026-04-05 18:00,fleet_or_freshness_block,17,17
+NEW_0052,OUT,2026-04-05 18:00,fleet_or_freshness_block,17,17
+NEW_0058,OUT,2026-04-05 18:00,fleet_or_freshness_block,6,6
+NEW_0037,IN,2026-04-05 20:00,fleet_or_freshness_block,22,22
