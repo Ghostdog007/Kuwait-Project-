@@ -41,7 +41,7 @@ Inputs:
 - `passenger_itinerary_v11.xlsx`
 
 Outputs:
-- demand_by_store_shift_window
+- demand_by_store_shift_windowRouting Algorithms for Hard-Constrained Employee Transport.pdf
 - peak time buckets for inbound and outbound waves
 
 Practical default:
