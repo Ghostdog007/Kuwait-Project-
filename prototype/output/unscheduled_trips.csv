@@ -1,76 +1,37 @@
-trip_id,trip_type,requested_wave_label,reason,assigned_passengers,peak_load
-NEW_0028,IN,2026-04-05 18:00,fleet_or_freshness_block,17,17
-NEW_0331,OUT,2026-04-05 18:00,fleet_or_freshness_block,17,17
-NEW_0337,OUT,2026-04-05 18:00,fleet_or_freshness_block,6,6
-NEW_0037,IN,2026-04-05 20:00,fleet_or_freshness_block,22,22
-NEW_0048,IN,2026-04-06 00:00,fleet_or_freshness_block,9,9
-NEW_0364,OUT,2026-04-06 05:00,fleet_or_freshness_block,21,21
-NEW_0367,OUT,2026-04-06 05:00,fleet_or_freshness_block,17,17
-NEW_0368,OUT,2026-04-06 05:00,fleet_or_freshness_block,17,17
-NEW_0381,OUT,2026-04-06 18:00,fleet_or_freshness_block,8,8
-NEW_0378,OUT,2026-04-06 18:00,fleet_or_freshness_block,17,17
-NEW_0382,OUT,2026-04-06 18:00,fleet_or_freshness_block,9,9
-NEW_0082,IN,2026-04-06 20:00,fleet_or_freshness_block,22,22
-NEW_0384,OUT,2026-04-06 18:00,fleet_or_freshness_block,9,9
-NEW_0416,OUT,2026-04-07 06:00,fleet_or_freshness_block,8,8
-NEW_0115,IN,2026-04-07 12:00,fleet_or_freshness_block,8,8
-NEW_0114,IN,2026-04-07 11:00,fleet_or_freshness_block,10,10
-NEW_0120,IN,2026-04-07 16:00,fleet_or_freshness_block,11,11
-NEW_0117,MIXED,2026-04-07 14:00,fleet_or_freshness_block,23,22
-NEW_0139,IN,2026-04-07 21:00,fleet_or_freshness_block,3,3
-NEW_0425,OUT,2026-04-07 18:00,fleet_or_freshness_block,9,9
-NEW_0422,OUT,2026-04-07 18:00,fleet_or_freshness_block,18,18
-NEW_0427,OUT,2026-04-07 18:00,fleet_or_freshness_block,8,8
-NEW_0129,IN,2026-04-07 20:00,fleet_or_freshness_block,22,22
-NEW_0459,OUT,2026-04-08 05:00,fleet_or_freshness_block,20,20
-NEW_0458,OUT,2026-04-08 05:00,fleet_or_freshness_block,19,19
-NEW_0161,IN,2026-04-08 11:00,fleet_or_freshness_block,11,11
-NEW_0148,IN,2026-04-08 09:00,fleet_or_freshness_block,12,12
-NEW_0152,IN,2026-04-08 10:00,fleet_or_freshness_block,13,13
-NEW_0163,IN,2026-04-08 14:00,fleet_or_freshness_block,13,13
-NEW_0167,IN,2026-04-08 16:00,fleet_or_freshness_block,13,13
-NEW_0164,MIXED,2026-04-08 14:00,fleet_or_freshness_block,24,22
-NEW_0168,IN,2026-04-08 18:00,fleet_or_freshness_block,17,17
-NEW_0471,OUT,2026-04-08 18:00,fleet_or_freshness_block,9,9
-NEW_0473,OUT,2026-04-08 18:00,fleet_or_freshness_block,8,8
-NEW_0186,IN,2026-04-08 21:00,fleet_or_freshness_block,2,2
-NEW_0468,OUT,2026-04-08 18:00,fleet_or_freshness_block,19,19
-NEW_0475,OUT,2026-04-08 18:00,fleet_or_freshness_block,5,5
-NEW_0176,IN,2026-04-08 20:00,fleet_or_freshness_block,22,22
-NEW_0180,MIXED,2026-04-08 20:00,fleet_or_freshness_block,33,21
-NEW_0485,OUT,2026-04-08 22:00,fleet_or_freshness_block,18,18
-NEW_0505,OUT,2026-04-09 05:00,fleet_or_freshness_block,16,16
-NEW_0207,IN,2026-04-09 11:00,fleet_or_freshness_block,9,9
-NEW_0211,MIXED,2026-04-09 14:00,fleet_or_freshness_block,23,22
-NEW_0215,IN,2026-04-09 18:00,fleet_or_freshness_block,18,18
-NEW_0518,OUT,2026-04-09 18:00,fleet_or_freshness_block,10,10
-NEW_0515,OUT,2026-04-09 18:00,fleet_or_freshness_block,19,19
-NEW_0233,IN,2026-04-09 21:00,fleet_or_freshness_block,8,8
-NEW_0520,OUT,2026-04-09 18:00,fleet_or_freshness_block,7,7
-NEW_0230,MIXED,2026-04-09 20:00,fleet_or_freshness_block,31,21
-NEW_0550,OUT,2026-04-10 05:00,fleet_or_freshness_block,22,22
-NEW_0551,OUT,2026-04-10 05:00,fleet_or_freshness_block,20,20
-NEW_0553,OUT,2026-04-10 05:00,fleet_or_freshness_block,15,15
-NEW_0242,IN,2026-04-10 09:00,fleet_or_freshness_block,11,11
-NEW_0260,IN,2026-04-10 16:00,fleet_or_freshness_block,12,12
-NEW_0261,IN,2026-04-10 18:00,fleet_or_freshness_block,19,19
-NEW_0561,OUT,2026-04-10 16:00,fleet_or_freshness_block,13,13
-NEW_0280,IN,2026-04-10 21:00,fleet_or_freshness_block,3,3
-NEW_0566,OUT,2026-04-10 18:00,fleet_or_freshness_block,8,8
-NEW_0562,OUT,2026-04-10 18:00,fleet_or_freshness_block,19,19
-NEW_0567,OUT,2026-04-10 18:00,fleet_or_freshness_block,8,8
-NEW_0279,IN,2026-04-10 21:00,fleet_or_freshness_block,14,14
-NEW_0601,OUT,2026-04-11 05:00,fleet_or_freshness_block,16,16
-NEW_0602,OUT,2026-04-11 05:00,fleet_or_freshness_block,9,9
-NEW_0287,IN,2026-04-11 09:00,fleet_or_freshness_block,13,13
-NEW_0303,IN,2026-04-11 12:00,fleet_or_freshness_block,8,8
-NEW_0308,IN,2026-04-11 18:00,fleet_or_freshness_block,18,18
-NEW_0316,MIXED,2026-04-11 19:00,fleet_or_freshness_block,31,22
-NEW_0326,IN,2026-04-11 21:00,fleet_or_freshness_block,1,1
-NEW_0613,OUT,2026-04-11 18:00,fleet_or_freshness_block,11,11
-NEW_0325,IN,2026-04-11 21:00,fleet_or_freshness_block,11,11
-NEW_0318,IN,2026-04-11 20:00,fleet_or_freshness_block,19,19
-NEW_0610,OUT,2026-04-11 18:00,fleet_or_freshness_block,15,15
-NEW_0615,OUT,2026-04-11 18:00,fleet_or_freshness_block,9,9
-NEW_0319,MIXED,2026-04-11 20:00,fleet_or_freshness_block,30,22
-NEW_0626,OUT,2026-04-11 22:00,fleet_or_freshness_block,20,20
+trip_id,trip_type,requested_wave_label,rejection_reason,rejection_reason_counts,assigned_passengers,peak_load,stop_count,occupancy_pct
+ORT_0049,IN,2026-04-06 12:00,buffer_violation,"{""buffer_violation"": 110, ""duty_span_block"": 20}",13,13,7,59.09
+ORT_0048,MIXED,2026-04-06 10:00,buffer_violation,"{""buffer_violation"": 95, ""duty_span_block"": 35}",22,19,13,86.36
+ORT_0051,MIXED,2026-04-06 16:00,buffer_violation,"{""buffer_violation"": 70, ""duty_span_block"": 60}",23,12,11,54.55
+ORT_0084,MIXED,2026-04-07 16:00,buffer_violation,"{""buffer_violation"": 74, ""duty_span_block"": 56}",15,12,7,54.55
+ORT_0118,MIXED,2026-04-08 16:00,buffer_violation,"{""buffer_violation"": 65, ""duty_span_block"": 55, ""slot_exhausted"": 10}",33,21,14,95.45
+ORT_0135,IN,2026-04-08 22:00,small_isolated_demand,"{""buffer_violation"": 55, ""duty_span_block"": 75}",1,1,1,4.55
+ORT_0125,IN,2026-04-08 20:00,duty_span_block,"{""buffer_violation"": 55, ""duty_span_block"": 75}",19,19,7,86.36
+ORT_0154,MIXED,2026-04-09 16:00,buffer_violation,"{""buffer_violation"": 59, ""duty_span_block"": 56, ""slot_exhausted"": 15}",26,20,11,90.91
+ORT_0390,OUT,2026-04-09 19:00,duty_span_block,"{""buffer_violation"": 50, ""duty_span_block"": 80}",17,17,9,77.27
+ORT_0188,IN,2026-04-10 16:00,buffer_violation,"{""buffer_violation"": 65, ""duty_span_block"": 55, ""slot_exhausted"": 10}",20,20,7,90.91
+ORT_0205,IN,2026-04-10 20:00,duty_span_block,"{""buffer_violation"": 55, ""duty_span_block"": 75}",21,21,6,95.45
+ORT_0426,OUT,2026-04-10 19:00,duty_span_block,"{""buffer_violation"": 53, ""duty_span_block"": 77}",22,22,14,100.0
+ORT_0224,MIXED,2026-04-11 16:00,buffer_violation,"{""buffer_violation"": 65, ""duty_span_block"": 55, ""slot_exhausted"": 10}",28,20,12,90.91
+ORT_0462,OUT,2026-04-11 19:00,duty_span_block,"{""buffer_violation"": 55, ""duty_span_block"": 75}",20,20,12,90.91
+REP_0001,OUT,2026-04-09 17:00,small_isolated_demand,"{""buffer_violation"": 50, ""duty_span_block"": 80}",2,2,1,9.09
+REP_0002,OUT,2026-04-09 17:00,small_isolated_demand,"{""buffer_violation"": 50, ""duty_span_block"": 80}",1,1,1,4.55
+REP_0003,OUT,2026-04-09 18:00,duty_span_block,"{""buffer_violation"": 50, ""duty_span_block"": 80}",6,6,1,27.27
+REP_0004,OUT,2026-04-09 18:00,duty_span_block,"{""buffer_violation"": 50, ""duty_span_block"": 80}",5,5,1,22.73
+REP_0005,OUT,2026-04-09 18:00,duty_span_block,"{""buffer_violation"": 50, ""duty_span_block"": 80}",4,4,1,18.18
+REP_0006,OUT,2026-04-09 18:00,small_isolated_demand,"{""buffer_violation"": 50, ""duty_span_block"": 80}",3,3,1,13.64
+REP_0007,OUT,2026-04-09 18:00,small_isolated_demand,"{""buffer_violation"": 50, ""duty_span_block"": 80}",2,2,1,9.09
+REP_0008,OUT,2026-04-09 18:00,small_isolated_demand,"{""buffer_violation"": 50, ""duty_span_block"": 80}",2,2,1,9.09
+REP_0009,OUT,2026-04-09 18:00,small_isolated_demand,"{""buffer_violation"": 50, ""duty_span_block"": 80}",2,2,1,9.09
+REP_0010,OUT,2026-04-09 18:00,small_isolated_demand,"{""buffer_violation"": 50, ""duty_span_block"": 80}",2,2,1,9.09
+REP_0011,OUT,2026-04-09 18:00,small_isolated_demand,"{""buffer_violation"": 50, ""duty_span_block"": 80}",2,2,1,9.09
+REP_0012,OUT,2026-04-09 18:00,small_isolated_demand,"{""buffer_violation"": 50, ""duty_span_block"": 80}",2,2,1,9.09
+REP_0013,OUT,2026-04-09 18:00,small_isolated_demand,"{""buffer_violation"": 50, ""duty_span_block"": 80}",2,2,1,9.09
+REP_0014,OUT,2026-04-09 18:00,small_isolated_demand,"{""buffer_violation"": 50, ""duty_span_block"": 80}",1,1,1,4.55
+REP_0015,OUT,2026-04-09 18:00,small_isolated_demand,"{""buffer_violation"": 50, ""duty_span_block"": 80}",1,1,1,4.55
+REP_0016,OUT,2026-04-09 18:00,small_isolated_demand,"{""buffer_violation"": 50, ""duty_span_block"": 80}",1,1,1,4.55
+REP_0017,OUT,2026-04-09 18:00,small_isolated_demand,"{""buffer_violation"": 50, ""duty_span_block"": 80}",1,1,1,4.55
+REP_0018,OUT,2026-04-09 18:00,small_isolated_demand,"{""buffer_violation"": 50, ""duty_span_block"": 80}",1,1,1,4.55
+REP_0019,OUT,2026-04-09 18:00,small_isolated_demand,"{""buffer_violation"": 50, ""duty_span_block"": 80}",1,1,1,4.55
+REP_0020,OUT,2026-04-09 18:00,small_isolated_demand,"{""buffer_violation"": 50, ""duty_span_block"": 80}",1,1,1,4.55
+REP_0021,OUT,2026-04-09 18:00,small_isolated_demand,"{""buffer_violation"": 50, ""duty_span_block"": 80}",1,1,1,4.55
+REP_0022,OUT,2026-04-09 18:00,small_isolated_demand,"{""buffer_violation"": 50, ""duty_span_block"": 80}",1,1,1,4.55

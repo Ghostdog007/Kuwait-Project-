@@ -1,14 +1,21 @@
-# Integrated Approach: Kuwait Employee Transport Optimization
+# Integrated Approach: Kuwait Pilot Employee Transport Optimization
 
-This document aligns with `context.md` and translates the problem definition into a practical, implementable optimization strategy. It treats the system as a scheduled shuttle network with accommodation as the fixed depot, strict operational constraints, and a primary focus on fleet-feasible scheduling followed by rotation-aware duty assignment before overtime reduction.
+This document aligns with `context.md` and translates the pilot problem definition into a practical, implementable optimization strategy. It treats the system as a scheduled shuttle network with accommodation as the fixed depot, strict pilot operational constraints, and a primary focus on fleet-feasible scheduling followed by rotation-aware duty assignment before overtime reduction.
 
 ## 1) Problem Framing (Aligned to Context)
 - Fixed start/end depot: accommodation (single start location).
+- Pilot scope only: this approach is for the current Kuwait pilot, not full-market deployment.
 - Trips are sequences of store stops and must return to depot.
 - Routes are schedule-driven; employees are assigned to trips (not ad hoc routing).
 - Goal: keep the designed schedule within the fixed 13-bus fleet, then enforce rotation-aware duty assignment, reduce driver overtime, preserve feasible service coverage, improve occupancy, and reduce deadhead and idle time.
 - No traffic or festival modeling; travel times are static with buffers.
 - Current route logs are a baseline reference, not the target trip design.
+
+## 1.1) Current Pilot Focus
+- The current prototype is already strong on the top constraints: no fleet breach, no duties over 10 hours, and materially improved overtime versus the pilot baseline.
+- The main remaining gap is concentrated unscheduled demand in the 05:00 and 18:00 windows.
+- Current evidence shows the dominant drop-off causes are `duty_span_block` and `buffer_violation`, so the next improvements should focus on temporal repair rather than broad route redesign.
+- The deeper structural issue is that trip synthesis and trip scheduling are still too independent; the best next architecture reduces that separation by using scheduling feedback during trip construction.
 
 ## 2) Core Constraints (Hard or Near-Hard)
 - Simultaneous active buses: max 13 in the pilot.
@@ -29,15 +36,15 @@ This document aligns with `context.md` and translates the problem definition int
 ## 3) Best-of-Approaches Architecture (Hybrid Pipeline)
 
 Demand Estimation -> Peak Pressure Measurement -> Capacity-Aware Clustering
--> Fleet-Aware Trip Construction -> Rotation-Aware Scheduling
--> Service Validation -> Simulation and KPIs
+-> Schedule-Aware Trip Construction -> Rotation-Aware Scheduling
+-> Bottleneck-Window Repair -> Service Validation -> Simulation and KPIs
 
 Why this hybrid works:
 - Clustering reduces combinatorial complexity while preserving geographic and temporal structure.
 - Peak-pressure measurement shows where overload is likely before the route constructor opens too many simultaneous trips.
-- Fleet-aware routing enforces time windows, capacity, trip-level feasibility, and concurrency awareness.
+- Schedule-aware trip construction enforces time windows, capacity, trip-level feasibility, and early scheduling awareness.
 - Rotation-aware scheduling ensures legal chaining, driver-hour limits, buffers, and fresh evening slot usage.
-- Lightweight repair logic recovers some blocked trips without needing a full metaheuristic from day one.
+- Bottleneck-window repair focuses effort on the real problem windows instead of disturbing the whole pilot week.
 - Service validation guarantees that store-wave demand is covered at the required timing level.
 - Simulation validates robustness without needing full traffic modeling.
 - Current route logs remain useful as a benchmark and calibration signal, but they do not constrain the optimizer to reproduce existing trips.
@@ -89,21 +96,22 @@ Actions:
 - use that pressure signal to prefer less congested candidate start times when a trip can legally move within tolerance
 - future extension: shift soft demand more aggressively across adjacent feasible windows before trip opening
 
-### C) Fleet-Aware Trip Construction (Core Optimization Engine)
-Purpose: generate new feasible trips for each cluster and time wave without exceeding practical fleet concurrency.
+### C) Schedule-Aware Trip Construction (Core Optimization Engine)
+Purpose: generate new feasible trips for each cluster and time wave while estimating how well those trips will fit the live fleet schedule.
 
 Model:
 - nodes: accommodation + stores
 - constraints: time windows, capacity, max stops, max trip duration, ride time, and peak concurrency feasibility
-- objective: prefer trip patterns that keep bus concurrency within 13 first, then reduce overtime risk, then improve occupancy and deadhead performance within hard constraints
+- objective: prefer trip patterns that keep bus concurrency within 13 first, then reduce expected duty-span and buffer risk, then improve occupancy and deadhead performance within hard constraints
 
 Notes:
-- solve per cluster or per time wave for scalability, but score every accepted trip against the global concurrency profile
+- solve per cluster or per time wave for scalability, but score every accepted trip against the global concurrency profile and the current expected bus-duty landscape
 - use a deterministic greedy construction heuristic by default; OR-Tools or MILP can still be used on smaller subproblems if needed
 - emit duty-feasibility outputs for each trip: start/end times, duration, slack, stop-level load profile, and chaining compatibility
-- do not treat driver-duty feasibility as purely downstream; routing should already prefer trips that can be chained legally with required buffers
+- do not treat driver-duty feasibility as purely downstream; routing should already prefer trips that can be chained legally with required buffers and lower expected scheduling cost
 - generate trips from scratch from store-wave demand rather than inheriting current trip IDs from the bus route logs
 - use current route logs only to calibrate trip duration bands, stop density, and other realism checks
+- best-version direction: move toward a rolling-horizon constructor where accepted trips update the current fleet state before the next wave is built
 
 Trip construction logic:
 - `IN`: group compatible pre-shift demand into accommodation-to-store trips.
@@ -111,6 +119,7 @@ Trip construction logic:
 - `MIXED`: actively test simple `IN` plus nearby `OUT` pairings during construction when the return leg can absorb outbound demand without breaking load, time, or detour limits.
 - each candidate trip should be screened against hard limits before duty chaining: seat capacity, trip-duration cap, stop count, timing feasibility, and whether opening the trip worsens peak fleet overlap.
 - if a candidate trip is locally feasible but would push active buses above 13, prefer a fuller compatible trip pattern or a slightly shifted start time during construction before letting scheduling absorb the conflict later
+- if two candidate trips are similar geographically, prefer the one that is more likely to fit a real bus slot without causing downstream buffer or duty-span blocks
 
 ### D) Rotation-Aware Scheduling
 Purpose: chain trips into daily bus duties with buffers while approximating fresh driver rotations.
@@ -133,15 +142,26 @@ Outcome:
 - overtime metrics should be calculated on these designed duties, not on raw historical route logs
 
 ### E) Lightweight Rescue Logic
-Purpose: recover some blocked trips without breaking the fleet or freshness rules.
+Purpose: recover some blocked pilot trips without breaking the fleet or freshness rules.
 
 Current logic:
 - when a trip cannot be assigned immediately, retry assignment with a small set of legal timing shifts
 - prefer simple recoveries first: better slot choice, allowed departure shift, then re-assignment
 - keep unscheduled trips explicit when no slot passes buffer, freshness, and physical bus overlap checks
+- emit a rejection-cause breakdown so blocked trips can be grouped into `buffer_violation`, `duty_span_block`, `slot_exhausted`, or `small_isolated_demand`
 
 Future extension:
-- add a full repair / LNS loop for bottleneck windows, unscheduled trips, and richer trip merging
+- add a targeted bottleneck-window repair loop for the 05:00 and 18:00 peaks before attempting full LNS
+- add slot-donor swaps and stronger `MIXED` recovery for blocked outbound trips in those windows
+
+### E.1) Best-Version Bottleneck Repair
+Purpose: fix the remaining independence between trip creation and scheduling by letting the repair stage modify both trip timing and trip placement inside the true bottleneck windows.
+
+Best-version logic:
+- work only on high-pressure windows such as 05:00 and 18:00
+- test donor swaps, slot reassignments, targeted `MIXED` conversions, and small legal time shifts together rather than one at a time in isolation
+- accept a repair only if it preserves the 13-bus cap and all hard duty limits
+- keep employee service timing valid when any donor or shifted trip is modified
 
 ### F) Service Validation
 Purpose: validate that routed trips cover required store-wave demand and remain policy-compliant.
@@ -178,12 +198,14 @@ Start with a deterministic prototype that can run with current data:
 4. Extract calibration signals from `Bus Routes curent.xlsx` such as typical trip durations, practical stop counts, and baseline overtime.
 5. Build short demand windows and estimate peak bus pressure against the 13-bus fleet limit.
 6. Perform capacity-aware clustering with both spatial and time-window compatibility.
-7. Generate new `IN`, `OUT`, and simple `MIXED` trips from cluster-level and wave-level demand using fleet-aware construction rules.
+7. Generate new `IN`, `OUT`, and simple `MIXED` trips from cluster-level and wave-level demand using schedule-aware construction rules.
 8. Use peak-pressure signals to prefer wider trips and less congested legal start times before final scheduling.
 9. Chain those trips into morning/evening bus slots with buffer rules, soft slot-boundary testing, and hard freshness checks.
 10. Use lightweight repair with small timing shifts and re-assignment attempts before classifying trips as uncovered demand.
-11. Validate against shift timing, surface infeasible or unserved demand explicitly, and compare the designed schedule KPIs against the current route operation and overtime logs.
-12. Treat full repair loops, larger trip merging after scheduling, and richer duty-splitting logic as the next prototype iteration.
+11. Inspect unscheduled-trip rejection causes and focus the next repair pass on the dominant pilot bottlenecks, especially 05:00 and 18:00.
+12. Evolve the prototype toward a rolling-horizon trip constructor so later trips are built with live knowledge of active duties, available buses, and likely bottleneck conflicts.
+13. Validate against shift timing, surface infeasible or unserved demand explicitly, and compare the designed schedule KPIs against the current route operation and overtime logs.
+14. Treat fuller bottleneck-window repair, slot-donor logic, and stronger `MIXED` recovery as the next prototype iteration aimed at moving overtime from about 16.5 hours toward the 10-hour pilot target.
 
 ## 6) Extensions (Phase 2+)
 - Light ML demand forecasting for better peak estimates.
@@ -195,7 +217,7 @@ Start with a deterministic prototype that can run with current data:
 Use a hybrid, constraint-first solution:
 
 Demand Estimation -> Peak Pressure Measurement -> Capacity-Aware Clustering
--> Fleet-Aware Trip Construction -> Rotation-Aware Scheduling
--> Service Validation -> KPI Evaluation
+-> Schedule-Aware Trip Construction -> Rotation-Aware Scheduling
+-> Bottleneck-Window Repair -> Service Validation -> KPI Evaluation
 
-This approach matches the data and constraints in `context.md`, directly targets fleet-feasible schedules before overtime reduction, protects coverage feasibility, and matches the current prototype implementation while leaving room for a future repair-based extension.
+This approach matches the data and constraints in `context.md`, directly targets fleet-feasible schedules before overtime reduction, protects coverage feasibility, and points the prototype toward a stronger schedule-aware architecture without requiring a full exact solver.

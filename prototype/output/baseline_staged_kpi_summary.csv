@@ -6,9 +6,9 @@ demand_rows,3501.0
 total_weekly_employee_demand_events,8650.0
 unique_routeable_demand_stores,77.0
 theoretical_peak_buses_from_demand,9.0
-designed_trip_count,458.0
+designed_trip_count,436.0
 scheduled_trip_count,420.0
-unscheduled_trip_count,36.0
+unscheduled_trip_count,16.0
 in_trip_count,184.0
 out_trip_count,190.0
 mixed_trip_count,46.0
