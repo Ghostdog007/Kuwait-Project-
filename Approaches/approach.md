@@ -15,7 +15,7 @@ This document aligns with `context.md` and translates the pilot problem definiti
 - The current prototype is already strong on the top constraints: no fleet breach, no duties over 10 hours, and materially improved overtime versus the pilot baseline.
 - The main remaining gap is concentrated unscheduled demand in the 05:00 and 18:00 windows.
 - Current evidence shows the dominant drop-off causes are `duty_span_block` and `buffer_violation`, so the next improvements should focus on temporal repair rather than broad route redesign.
-- The deeper structural issue is that trip synthesis and trip scheduling are still too independent; the best next architecture reduces that separation by using scheduling feedback during trip construction.
+- The deeper structural issue is that trip synthesis and trip scheduling are still too independent; the best next architecture reduces that separation by using scheduling feedback during trip construction while keeping OR-Tools as the baseline route engine.
 
 ## 2) Core Constraints (Hard or Near-Hard)
 - Simultaneous active buses: max 13 in the pilot.
@@ -36,14 +36,16 @@ This document aligns with `context.md` and translates the pilot problem definiti
 ## 3) Best-of-Approaches Architecture (Hybrid Pipeline)
 
 Demand Estimation -> Peak Pressure Measurement -> Capacity-Aware Clustering
--> Schedule-Aware Trip Construction -> Rotation-Aware Scheduling
--> Bottleneck-Window Repair -> Service Validation -> Simulation and KPIs
+-> OR-Tools Route Construction -> Rotation-Aware Scheduling
+-> OR-Tools-Assisted Mixed Insertion -> Bottleneck-Window Repair
+-> Service Validation -> Simulation and KPIs
 
 Why this hybrid works:
 - Clustering reduces combinatorial complexity while preserving geographic and temporal structure.
 - Peak-pressure measurement shows where overload is likely before the route constructor opens too many simultaneous trips.
-- Schedule-aware trip construction enforces time windows, capacity, trip-level feasibility, and early scheduling awareness.
+- OR-Tools route construction enforces depot-return routing, capacity, trip-level feasibility, and stronger stop grouping/order than the earlier greedy builder.
 - Rotation-aware scheduling ensures legal chaining, driver-hour limits, buffers, and fresh evening slot usage.
+- OR-Tools-assisted mixed insertion is the next missing bridge: it should test whether a scheduled inbound route can absorb nearby outbound demand on the return leg without breaking load, time, or duty feasibility.
 - Bottleneck-window repair focuses effort on the real problem windows instead of disturbing the whole pilot week.
 - Service validation guarantees that store-wave demand is covered at the required timing level.
 - Simulation validates robustness without needing full traffic modeling.
@@ -96,8 +98,8 @@ Actions:
 - use that pressure signal to prefer less congested candidate start times when a trip can legally move within tolerance
 - future extension: shift soft demand more aggressively across adjacent feasible windows before trip opening
 
-### C) Schedule-Aware Trip Construction (Core Optimization Engine)
-Purpose: generate new feasible trips for each cluster and time wave while estimating how well those trips will fit the live fleet schedule.
+### C) OR-Tools Route Construction (Core Optimization Engine)
+Purpose: generate strong base `IN` and `OUT` trips for each cluster and time wave before those trips are handed to the custom bus-duty scheduler.
 
 Model:
 - nodes: accommodation + stores
@@ -106,7 +108,7 @@ Model:
 
 Notes:
 - solve per cluster or per time wave for scalability, but score every accepted trip against the global concurrency profile and the current expected bus-duty landscape
-- use a deterministic greedy construction heuristic by default; OR-Tools or MILP can still be used on smaller subproblems if needed
+- use OR-Tools as the default route constructor for `IN` and `OUT` batches; keep MILP or deeper exact models only as future extensions for smaller subproblems if needed
 - emit duty-feasibility outputs for each trip: start/end times, duration, slack, stop-level load profile, and chaining compatibility
 - do not treat driver-duty feasibility as purely downstream; routing should already prefer trips that can be chained legally with required buffers and lower expected scheduling cost
 - generate trips from scratch from store-wave demand rather than inheriting current trip IDs from the bus route logs
@@ -116,7 +118,8 @@ Notes:
 Trip construction logic:
 - `IN`: group compatible pre-shift demand into accommodation-to-store trips.
 - `OUT`: group compatible post-shift demand into store-to-accommodation trips.
-- `MIXED`: actively test simple `IN` plus nearby `OUT` pairings during construction when the return leg can absorb outbound demand without breaking load, time, or detour limits.
+- `MIXED`: current prototype only tests simple `IN` plus nearby `OUT` pairings heuristically after base route construction.
+- Next target for `MIXED`: run a local OR-Tools-style return-leg insertion model that tries to insert outbound pickups into the tail of an already-constructed inbound trip, subject to employee readiness, detour, stop-level load, duration, and downstream duty feasibility.
 - each candidate trip should be screened against hard limits before duty chaining: seat capacity, trip-duration cap, stop count, timing feasibility, and whether opening the trip worsens peak fleet overlap.
 - if a candidate trip is locally feasible but would push active buses above 13, prefer a fuller compatible trip pattern or a slightly shifted start time during construction before letting scheduling absorb the conflict later
 - if two candidate trips are similar geographically, prefer the one that is more likely to fit a real bus slot without causing downstream buffer or duty-span blocks
@@ -153,6 +156,7 @@ Current logic:
 Future extension:
 - add a targeted bottleneck-window repair loop for the 05:00 and 18:00 peaks before attempting full LNS
 - add slot-donor swaps and stronger `MIXED` recovery for blocked outbound trips in those windows
+- let that stronger mixed recovery reuse the OR-Tools route engine locally, instead of relying only on post-hoc heuristics
 
 ### E.1) Best-Version Bottleneck Repair
 Purpose: fix the remaining independence between trip creation and scheduling by letting the repair stage modify both trip timing and trip placement inside the true bottleneck windows.
@@ -198,14 +202,14 @@ Start with a deterministic prototype that can run with current data:
 4. Extract calibration signals from `Bus Routes curent.xlsx` such as typical trip durations, practical stop counts, and baseline overtime.
 5. Build short demand windows and estimate peak bus pressure against the 13-bus fleet limit.
 6. Perform capacity-aware clustering with both spatial and time-window compatibility.
-7. Generate new `IN`, `OUT`, and simple `MIXED` trips from cluster-level and wave-level demand using schedule-aware construction rules.
+7. Generate new `IN` and `OUT` trips from cluster-level and wave-level demand using OR-Tools route construction rules, then add `MIXED` only through a validated return-leg compatibility step.
 8. Use peak-pressure signals to prefer wider trips and less congested legal start times before final scheduling.
 9. Chain those trips into morning/evening bus slots with buffer rules, soft slot-boundary testing, and hard freshness checks.
 10. Use lightweight repair with small timing shifts and re-assignment attempts before classifying trips as uncovered demand.
 11. Inspect unscheduled-trip rejection causes and focus the next repair pass on the dominant pilot bottlenecks, especially 05:00 and 18:00.
 12. Evolve the prototype toward a rolling-horizon trip constructor so later trips are built with live knowledge of active duties, available buses, and likely bottleneck conflicts.
 13. Validate against shift timing, surface infeasible or unserved demand explicitly, and compare the designed schedule KPIs against the current route operation and overtime logs.
-14. Treat fuller bottleneck-window repair, slot-donor logic, and stronger `MIXED` recovery as the next prototype iteration aimed at moving overtime from about 16.5 hours toward the 10-hour pilot target.
+14. Treat fuller bottleneck-window repair, slot-donor logic, and stronger OR-Tools-assisted `MIXED` recovery as the next prototype iteration aimed at moving overtime from about 16.5 hours toward the 10-hour pilot target.
 
 ## 6) Extensions (Phase 2+)
 - Light ML demand forecasting for better peak estimates.
@@ -217,7 +221,8 @@ Start with a deterministic prototype that can run with current data:
 Use a hybrid, constraint-first solution:
 
 Demand Estimation -> Peak Pressure Measurement -> Capacity-Aware Clustering
--> Schedule-Aware Trip Construction -> Rotation-Aware Scheduling
--> Bottleneck-Window Repair -> Service Validation -> KPI Evaluation
+-> OR-Tools Route Construction -> Rotation-Aware Scheduling
+-> OR-Tools-Assisted Mixed Insertion -> Bottleneck-Window Repair
+-> Service Validation -> KPI Evaluation
 
 This approach matches the data and constraints in `context.md`, directly targets fleet-feasible schedules before overtime reduction, protects coverage feasibility, and points the prototype toward a stronger schedule-aware architecture without requiring a full exact solver.

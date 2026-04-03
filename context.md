@@ -11,8 +11,8 @@ This document consolidates the current understanding of the Kuwait pilot employe
 - Pain point: high driver overtime and idle/deadhead time.
 - Goal: build a constraint-first pilot optimization pipeline covering demand estimation, routing, duty construction, and passenger assignment.
 - Current prototype priority: keep the schedule within the 13-bus fleet, then enforce driver freshness through morning/evening rotation slots, then reduce duty overtime, then preserve service coverage, then improve occupancy, then reduce deadhead and waiting where feasible.
-- Current improvement direction: make trip construction aware of downstream slot pressure so fewer trips are created in windows that the 13-bus schedule cannot realistically absorb.
-- Best-version direction: reduce the independence between trip synthesis and scheduling by moving toward schedule-aware trip construction, rolling-horizon assignment, and joint bottleneck-window repair.
+- Current improvement direction: keep OR-Tools as the baseline trip constructor, then reduce the remaining gap between trip synthesis and scheduling by making `MIXED` construction and bottleneck repair more schedule-aware.
+- Best-version direction: reduce the independence between trip synthesis and scheduling by moving toward schedule-aware trip construction, OR-Tools-based `MIXED` return-leg insertion, rolling-horizon assignment, and joint bottleneck-window repair.
 
 ## Current Pilot Status
 - The current prototype is pilot-only and should be interpreted against pilot demand, pilot fleet, and pilot overtime baselines only.
@@ -75,7 +75,8 @@ From requirements and metadata:
 - Opportunistic pickup rule: after completing required inbound drops, a bus may collect outbound employees only if the pickup store is near the return path, the employees' shifts have ended or are within a small compatibility tolerance, and capacity remains available after earlier drops.
 - Mixed trips must track onboard load after every stop; pickups cannot violate seat capacity at any point on the route.
 - Mixed routing should reduce deadhead and improve occupancy without creating excessive detours or pushing driver hours beyond daily limits.
-- In the current prototype, `MIXED` is now treated as a lightweight constructed option: an `IN` trip may absorb a nearby `OUT` trip on the return side when the timing gap, detour, and load profile remain feasible.
+- In the current prototype, `MIXED` is still treated as a lightweight constructed option: an `IN` trip may absorb a nearby `OUT` trip on the return side when the timing gap, detour, and load profile remain feasible.
+- The next target is to replace that lightweight compatibility screen with an OR-Tools-style local insertion model so return-leg pickups are optimized rather than only screened.
 - Trip chaining and trip consolidation should be evaluated first by their effect on peak fleet concurrency, then by duty spread and overtime impact; occupancy gains are secondary unless concurrency, duty spread, and overtime are unchanged or improved.
 - Borderline demand near overlapping duty windows should not be forced too early into a rigid time bucket if doing so removes a better chaining option.
 - Some demand may naturally fit more than one duty window; assignment should remain flexible long enough to preserve better route-chaining opportunities.
@@ -114,7 +115,7 @@ File: `Metadata/Kuwait_Route_optimization_Overview.md`
 - Peak hours are derived from shift overlaps in the weekly schedule plus observed route activity.
 - The system operates like a scheduled metro service, not ad hoc routes.
 - Pilot travel distance/time uses geocoordinates with Haversine distance plus fixed speed and dwell assumptions; no external road-time API is used.
-- Mixed routing is heuristic and compatibility-based, not a full exact optimization over all possible pickup/drop combinations.
+- Base `IN` and `OUT` routing is now OR-Tools-driven, but mixed routing is still heuristic and compatibility-based rather than a full pickup-delivery optimization over all possible pickup/drop combinations.
 - Pilot scope uses only stores that have valid coordinates in `Geocoordinates.xlsx`; unmatched stores are ignored for routing and KPI generation.
 
 ## Prototype Scope
@@ -127,7 +128,7 @@ File: `Metadata/Kuwait_Route_optimization_Overview.md`
 - Prototype scheduling must treat the fixed 13-bus concurrency limit as a hard feasibility rule, not just a KPI reported after schedule generation.
 - Prototype scheduling must treat driver freshness as part of feasibility during assignment, not as a post-processing label added after trips are already chained.
 - Prototype scheduling currently uses separate `morning` and `evening` duty slots per physical bus to approximate split shifts and handovers.
-- The current prototype remains a staged solver, but the next design target is a tighter loop where trip creation receives immediate scheduling feedback before a trip is accepted.
+- The current prototype now uses OR-Tools to build the strongest implemented `IN` and `OUT` trip set, but it still remains partly staged because `MIXED` recovery and duty-aware repair are not yet fully integrated into that route-construction loop.
 
 ## Trip Design Approach
 - Build demand from `Employee Shift data.xlsx` at the store-wave level: each shift start creates inbound demand and each shift end creates outbound demand.
@@ -135,10 +136,13 @@ File: `Metadata/Kuwait_Route_optimization_Overview.md`
 - Group routeable stores by geography; keep time compatibility visible through wave-level demand buckets rather than inherited route IDs.
 - Aggregate demand into short time windows so peak pressure is visible before trips are opened.
 - Current prototype uses peak pressure as a trip-opening signal, preferring start times and wider trip groupings that consume less scarce peak-slot budget.
-- Generate new candidate trips from scratch for each wave using a fleet-aware construction heuristic:
+- Current prototype uses OR-Tools as the main route-construction engine for `IN` and `OUT` batches, with Mahboula as both start and end depot.
+- Generate new candidate trips from scratch for each wave using fleet-aware construction logic:
   - `IN` trips carry employees from accommodation to stores before shift start.
   - `OUT` trips collect employees from stores after shift end and return to accommodation.
   - `MIXED` trips are built opportunistically by pairing a feasible `IN` trip with a nearby `OUT` return opportunity when the bus can absorb that return demand without breaking time or load limits.
+- For `IN` and `OUT`, OR-Tools decides which stores belong together and in what order, subject to capacity, duration, and depot-return requirements.
+- For `MIXED`, the current prototype only applies a heuristic compatibility pass after base route construction; the next step is an OR-Tools-based local insertion step on the return leg.
 - Size each trip using hard operating limits: vehicle capacity, trip duration cap, waiting tolerance, maximum practical stop count, and the requirement that opening the trip should not force active fleet concurrency above 13 unless no feasible alternative exists.
 - Before opening a new narrow trip in a crowded window, try to widen a compatible trip by adding nearby demand rather than consuming another peak-time slot.
 - During assignment, every candidate bus-trip match must also pass a freshness check: if attaching the trip would push that duty beyond its practical span, the trip must be assigned to another slot or remain unscheduled.
@@ -147,7 +151,7 @@ File: `Metadata/Kuwait_Route_optimization_Overview.md`
 - Current prototype scheduling uses soft morning/evening slot testing, hard span blocking, opportunistic `MIXED` candidates, and a lightweight greedy repair pass for blocked trips. Full destroy-and-repair and deeper duty-repair loops remain future work.
 
 ## Fleet-Constrained Heuristic
-- Current construction phase: use a deterministic greedy heuristic that seeds early demand first and inserts nearby compatible stores only when capacity, timing, duration, and downstream slot feasibility remain acceptable.
+- Current construction phase: use OR-Tools for base `IN` and `OUT` route construction inside time-compatible batches, then pass those routes into the custom scheduler.
 - Peak control phase: compute theoretical bus pressure in short time windows and use that pressure as a budget signal when choosing start times and whether to open another trip.
 - Rotation phase: treat the 13 physical buses as supporting separate morning and evening duty slots, with freshness checks controlling when a bus can be reused by a fresh evening duty.
 - Rescue phase: allow limited delay-based rescue and retry for blocked trips within waiting tolerance when that helps fit the trip into an available slot.
@@ -159,6 +163,7 @@ File: `Metadata/Kuwait_Route_optimization_Overview.md`
 - In that version, each candidate trip is scored not only by route quality but also by expected scheduling cost, including peak-window pressure, buffer fit, duty-span impact, and handover compatibility.
 - Trip generation and bus assignment should proceed in time order so earlier accepted trips update the live fleet state before later trips are constructed.
 - Bottleneck windows such as 05:00 and 18:00 should then receive a local repair pass that is allowed to shift, swap, merge, or convert trips to `MIXED` while preserving the fleet cap and duty legality.
+- The strongest near-term version should keep OR-Tools for base route consolidation and add OR-Tools-style local pickup insertion for `MIXED` return-leg recovery instead of treating mixed routing as a separate lightweight heuristic.
 - This best-version direction keeps the pilot implementable while reducing the current independence between trip synthesis and downstream scheduling.
 
 ## Duty-Feasibility Handoff

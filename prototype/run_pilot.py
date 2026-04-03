@@ -48,6 +48,8 @@ OUT_RESCUE_SHIFT_MIN = 40
 MIXED_MAX_WAIT_MIN = 20
 MIXED_MAX_ATTACH_MIN = 60
 MIXED_MAX_DETOUR_KM = 6.0
+MIXED_SKIP_PENALTY_PER_PASSENGER = 1000
+MIXED_MAX_EXTRA_STOPS = 5
 REPAIR_SHIFT_OPTIONS_OUT = [10, 20, 30, 40]
 REPAIR_SHIFT_OPTIONS_IN = [-15, 15, -30, 30]
 BOTTLENECK_HOURS = {5, 18}
@@ -678,6 +680,14 @@ def decode_stop_data(stop_data_json: str) -> list[dict[str, object]]:
     return json.loads(stop_data_json) if isinstance(stop_data_json, str) and stop_data_json else []
 
 
+def stop_signature(stop: dict[str, object]) -> tuple[int, str, int]:
+    return (
+        int(stop["store_id"]),
+        pd.Timestamp(stop["wave_dt"]).isoformat(),
+        int(stop["allocated_passengers"]),
+    )
+
+
 def point_from_stop(stop: dict[str, object]) -> GeoPoint:
     return GeoPoint(
         store_name=str(stop["store_name"]),
@@ -698,81 +708,244 @@ def nearest_from_current(current: GeoPoint, stops: list[GeoPoint]) -> list[GeoPo
     return ordered
 
 
+def solve_mixed_tail_ortools(
+    last_in: GeoPoint,
+    in_end: pd.Timestamp,
+    candidate_stops: list[dict[str, object]],
+    depot: GeoPoint,
+    remaining_capacity: int,
+    max_tail_minutes: float,
+) -> list[dict[str, object]]:
+    if not candidate_stops or not ORTOOLS_AVAILABLE or remaining_capacity <= 0 or max_tail_minutes <= 0:
+        return []
+    feasible_candidates: list[dict[str, object]] = []
+    for stop in candidate_stops:
+        ready_min = max(0, int((pd.Timestamp(stop["wave_dt"]) - in_end).total_seconds() / 60.0))
+        upper = min(int(max_tail_minutes), ready_min + OUT_WAIT_LIMIT_MIN)
+        if ready_min <= upper:
+            feasible_candidates.append(stop)
+    if not feasible_candidates:
+        return []
+    candidate_stops = feasible_candidates[:MIXED_MAX_EXTRA_STOPS]
+    end_index = len(candidate_stops) + 1
+    node_points = [last_in] + [point_from_stop(stop) for stop in candidate_stops] + [depot]
+    size = len(node_points)
+    manager = pywrapcp.RoutingIndexManager(size, 1, [0], [end_index])
+    routing = pywrapcp.RoutingModel(manager)
+
+    time_matrix: list[list[int]] = []
+    for i in range(size):
+        row_times: list[int] = []
+        for j in range(size):
+            if i == j:
+                row_times.append(0)
+            else:
+                travel = km_to_minutes(road_km(node_points[i], node_points[j]))
+                dwell = 0 if i in (0, end_index) else STOP_DWELL_MIN
+                row_times.append(int(round(travel + dwell)))
+        time_matrix.append(row_times)
+
+    def transit_callback(from_index: int, to_index: int) -> int:
+        return time_matrix[manager.IndexToNode(from_index)][manager.IndexToNode(to_index)]
+
+    transit_idx = routing.RegisterTransitCallback(transit_callback)
+    routing.SetArcCostEvaluatorOfAllVehicles(transit_idx)
+
+    demands = [0] + [int(stop["allocated_passengers"]) for stop in candidate_stops] + [0]
+
+    def demand_callback(from_index: int) -> int:
+        return demands[manager.IndexToNode(from_index)]
+
+    demand_idx = routing.RegisterUnaryTransitCallback(demand_callback)
+    routing.AddDimensionWithVehicleCapacity(
+        demand_idx,
+        0,
+        [remaining_capacity],
+        True,
+        "Capacity",
+    )
+
+    routing.AddDimension(
+        transit_idx,
+        OUT_WAIT_LIMIT_MIN,
+        int(max_tail_minutes),
+        True,
+        "Time",
+    )
+    time_dim = routing.GetDimensionOrDie("Time")
+    time_dim.CumulVar(routing.Start(0)).SetRange(0, 0)
+    time_dim.CumulVar(routing.End(0)).SetRange(0, int(max_tail_minutes))
+
+    for idx, stop in enumerate(candidate_stops, start=1):
+        ready_min = max(0, int((pd.Timestamp(stop["wave_dt"]) - in_end).total_seconds() / 60.0))
+        due_min = ready_min + OUT_WAIT_LIMIT_MIN
+        index = manager.NodeToIndex(idx)
+        time_dim.CumulVar(index).SetRange(ready_min, min(int(max_tail_minutes), due_min))
+        penalty = max(1, int(stop["allocated_passengers"])) * MIXED_SKIP_PENALTY_PER_PASSENGER
+        routing.AddDisjunction([index], penalty)
+
+    search_params = pywrapcp.DefaultRoutingSearchParameters()
+    search_params.first_solution_strategy = routing_enums_pb2.FirstSolutionStrategy.PARALLEL_CHEAPEST_INSERTION
+    search_params.local_search_metaheuristic = routing_enums_pb2.LocalSearchMetaheuristic.GUIDED_LOCAL_SEARCH
+    search_params.time_limit.seconds = 2
+    solution = routing.SolveWithParameters(search_params)
+    if solution is None:
+        return []
+
+    selected: list[dict[str, object]] = []
+    index = routing.Start(0)
+    while not routing.IsEnd(index):
+        node = manager.IndexToNode(index)
+        if 1 <= node <= len(candidate_stops):
+            selected.append(candidate_stops[node - 1])
+        index = solution.Value(routing.NextVar(index))
+    return selected
+
+
 def build_mixed_candidates(base_trips: pd.DataFrame, depot: GeoPoint) -> pd.DataFrame:
     if base_trips.empty:
         return base_trips
-    trips = base_trips.copy().sort_values(["planned_start_dt", "trip_type", "trip_id"]).reset_index(drop=True)
-    used_out: set[str] = set()
-    mixed_rows: list[dict[str, object]] = []
-    for _, trip in trips.iterrows():
-        if trip["trip_type"] != "IN":
+    trips_by_id: dict[str, dict[str, object]] = {
+        str(row["trip_id"]): row.to_dict()
+        for _, row in base_trips.sort_values(["planned_start_dt", "trip_type", "trip_id"]).iterrows()
+    }
+    removed_trip_ids: set[str] = set()
+    new_trips: list[dict[str, object]] = []
+    mixed_counter = 1
+
+    in_trip_ids = [
+        trip_id for trip_id, row in sorted(
+            trips_by_id.items(),
+            key=lambda item: (pd.Timestamp(item[1]["planned_start_dt"]), str(item[1]["trip_type"]), str(item[1]["trip_id"]))
+        )
+        if row["trip_type"] == "IN"
+    ]
+
+    for trip_id in in_trip_ids:
+        if trip_id in removed_trip_ids or trip_id not in trips_by_id:
             continue
+        trip = trips_by_id[trip_id]
         in_stops = decode_stop_data(trip.get("stop_data_json", ""))
         if not in_stops:
             continue
         in_points = [point_from_stop(stop) for stop in in_stops]
         in_end = pd.Timestamp(trip["planned_end_dt"])
-        last_in = in_points[-1]
-        candidates = trips[
-            (trips["trip_type"] == "OUT")
-            & (~trips["trip_id"].isin(used_out))
-            & (trips["service_date"] == trip["service_date"])
-        ].copy()
-        if candidates.empty:
+        in_duration = float(trip["trip_duration_min"])
+        remaining_duration = MAX_TRIP_DURATION_MIN - in_duration
+        if remaining_duration <= 0:
             continue
-        best_idx = None
-        best_score = None
-        for idx, out_trip in candidates.iterrows():
-            gap_min = (pd.Timestamp(out_trip["planned_start_dt"]) - in_end).total_seconds() / 60.0
-            if gap_min < 0 or gap_min > MIXED_MAX_ATTACH_MIN:
+        last_in = in_points[-1]
+
+        candidate_stops: list[dict[str, object]] = []
+        for out_trip_id, out_trip in trips_by_id.items():
+            if out_trip_id in removed_trip_ids or out_trip_id == trip_id or out_trip["trip_type"] != "OUT":
+                continue
+            if out_trip["service_date"] != trip["service_date"]:
                 continue
             out_stops = decode_stop_data(out_trip.get("stop_data_json", ""))
-            if not out_stops:
-                continue
-            out_points = [point_from_stop(stop) for stop in out_stops]
-            first_leg = min(road_km(last_in, point) for point in out_points)
-            if first_leg > MIXED_MAX_DETOUR_KM:
-                continue
-            out_order = nearest_from_current(last_in, out_points)
-            combined_points = in_points + out_order
-            distance, duration = route_metrics_ordered(depot, combined_points)
-            if duration > MAX_TRIP_DURATION_MIN:
-                continue
-            peak_load = max(int(trip["peak_load"]), int(out_trip["peak_load"]))
-            if peak_load > BUS_CAPACITY:
-                continue
-            score = (first_leg, gap_min, float(duration))
-            if best_score is None or score < best_score:
-                best_score = score
-                best_idx = idx
-        if best_idx is None:
+            for stop_idx, stop in enumerate(out_stops):
+                ready_dt = pd.Timestamp(stop["wave_dt"])
+                gap_min = (ready_dt - in_end).total_seconds() / 60.0
+                if gap_min < 0 or gap_min > MIXED_MAX_ATTACH_MIN:
+                    continue
+                detour = road_km(last_in, point_from_stop(stop))
+                if detour > MIXED_MAX_DETOUR_KM:
+                    continue
+                candidate_stops.append(
+                    {
+                        **stop,
+                        "__parent_trip_id": out_trip_id,
+                        "__stop_idx": stop_idx,
+                    }
+                )
+        if not candidate_stops:
             continue
-        out_trip = trips.loc[best_idx]
-        out_stops = decode_stop_data(out_trip.get("stop_data_json", ""))
-        out_points = nearest_from_current(last_in, [point_from_stop(stop) for stop in out_stops])
-        combined_points = in_points + out_points
+        candidate_stops = sorted(
+            candidate_stops,
+            key=lambda stop: (
+                max(0.0, (pd.Timestamp(stop["wave_dt"]) - in_end).total_seconds() / 60.0),
+                road_km(last_in, point_from_stop(stop)),
+                -int(stop["allocated_passengers"]),
+            ),
+        )
+        selected_out_stops = solve_mixed_tail_ortools(
+            last_in=last_in,
+            in_end=in_end,
+            candidate_stops=candidate_stops,
+            depot=depot,
+            remaining_capacity=BUS_CAPACITY,
+            max_tail_minutes=remaining_duration,
+        )
+        if not selected_out_stops:
+            continue
+
+        tail_points = [point_from_stop(stop) for stop in selected_out_stops]
+        combined_points = in_points + tail_points
         distance, duration = route_metrics_ordered(depot, combined_points)
-        ordered_names = [point.store_name for point in combined_points]
-        combined_trip = trip.to_dict()
-        combined_trip["trip_type"] = "MIXED"
-        combined_trip["direction"] = "MIXED"
-        combined_trip["planned_end_dt"] = pd.Timestamp(trip["planned_start_dt"]) + timedelta(minutes=float(duration))
-        combined_trip["trip_duration_min"] = round(float(duration), 2)
-        combined_trip["route_distance_km"] = round(float(distance), 3)
-        combined_trip["stop_count"] = len(combined_points)
-        combined_trip["assigned_passengers"] = int(trip["assigned_passengers"]) + int(out_trip["assigned_passengers"])
-        combined_trip["peak_load"] = max(int(trip["peak_load"]), int(out_trip["peak_load"]))
-        combined_trip["occupancy_pct"] = round((combined_trip["peak_load"] / BUS_CAPACITY) * 100, 2)
-        combined_trip["store_sequence"] = " -> ".join(ordered_names)
-        combined_trip["store_passenger_plan"] = f"{trip['store_passenger_plan']} || RETURN || {out_trip['store_passenger_plan']}"
-        combined_trip["stop_data_json"] = json.dumps(in_stops + out_stops, default=str)
-        mixed_rows.append(combined_trip)
-        used_out.add(str(out_trip["trip_id"]))
-        trips.loc[trips["trip_id"] == trip["trip_id"], "trip_type"] = "MIXED_USED"
-    keep = trips[(trips["trip_type"] != "MIXED_USED") & (~trips["trip_id"].isin(used_out))].copy()
-    if mixed_rows:
-        keep = pd.concat([keep, pd.DataFrame(mixed_rows)], ignore_index=True)
-    return keep.sort_values(["planned_start_dt", "trip_type", "trip_id"]).reset_index(drop=True)
+        if duration > MAX_TRIP_DURATION_MIN:
+            continue
+
+        total_out_passengers = int(sum(int(stop["allocated_passengers"]) for stop in selected_out_stops))
+        peak_load = max(int(trip["peak_load"]), total_out_passengers)
+        if peak_load > BUS_CAPACITY:
+            continue
+
+        selected_keys_by_parent: dict[str, set[tuple[int, str, int]]] = {}
+        for stop in selected_out_stops:
+            parent = str(stop["__parent_trip_id"])
+            selected_keys_by_parent.setdefault(parent, set()).add(stop_signature(stop))
+
+        for parent_trip_id, selected_keys in selected_keys_by_parent.items():
+            out_trip = trips_by_id.get(parent_trip_id)
+            if out_trip is None:
+                continue
+            original_out_stops = decode_stop_data(out_trip.get("stop_data_json", ""))
+            remaining_out_stops = [stop for stop in original_out_stops if stop_signature(stop) not in selected_keys]
+            if remaining_out_stops:
+                rebuilt = build_trip_record(
+                    remaining_out_stops,
+                    "OUT",
+                    depot,
+                    trip_id=str(out_trip["trip_id"]),
+                    activity_counts=None,
+                    use_pressure=False,
+                    preserve_order=False,
+                )
+                trips_by_id[parent_trip_id] = rebuilt
+            else:
+                removed_trip_ids.add(parent_trip_id)
+
+        mixed_trip = trip.copy()
+        mixed_trip["trip_id"] = f"MIX_{mixed_counter:04d}"
+        mixed_trip["trip_type"] = "MIXED"
+        mixed_trip["direction"] = "MIXED"
+        mixed_trip["planned_end_dt"] = pd.Timestamp(trip["planned_start_dt"]) + timedelta(minutes=float(duration))
+        mixed_trip["trip_duration_min"] = round(float(duration), 2)
+        mixed_trip["route_distance_km"] = round(float(distance), 3)
+        mixed_trip["stop_count"] = len(combined_points)
+        mixed_trip["assigned_passengers"] = int(trip["assigned_passengers"]) + total_out_passengers
+        mixed_trip["peak_load"] = peak_load
+        mixed_trip["occupancy_pct"] = round((peak_load / BUS_CAPACITY) * 100, 2)
+        mixed_trip["store_sequence"] = " -> ".join(point.store_name for point in combined_points)
+        mixed_trip["store_passenger_plan"] = (
+            f"{trip['store_passenger_plan']} || RETURN || "
+            + " | ".join(f"{stop['store_name']} ({int(stop['allocated_passengers'])})" for stop in selected_out_stops)
+        )
+        cleaned_out_stops = [
+            {key: value for key, value in stop.items() if not str(key).startswith("__")}
+            for stop in selected_out_stops
+        ]
+        mixed_trip["stop_data_json"] = json.dumps(in_stops + cleaned_out_stops, default=str)
+        new_trips.append(mixed_trip)
+        removed_trip_ids.add(trip_id)
+        mixed_counter += 1
+
+    final_rows: list[dict[str, object]] = []
+    for trip_id, row in trips_by_id.items():
+        if trip_id not in removed_trip_ids:
+            final_rows.append(row)
+    final_rows.extend(new_trips)
+    return pd.DataFrame(final_rows).sort_values(["planned_start_dt", "trip_type", "trip_id"]).reset_index(drop=True)
 
 
 def init_slots_for_demand(demand: pd.DataFrame, initial_assignments: pd.DataFrame | None = None) -> dict[tuple[str, int, str], DutySlot]:
