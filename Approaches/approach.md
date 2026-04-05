@@ -1,20 +1,20 @@
 # Integrated Approach: Kuwait Pilot Employee Transport Optimization
 
-This document aligns with `context.md` and translates the pilot problem definition into a practical, implementable optimization strategy. It treats the system as a scheduled shuttle network with accommodation as the fixed depot, strict pilot operational constraints, and a primary focus on fleet-feasible scheduling followed by rotation-aware duty assignment before overtime reduction.
+This document aligns with `context.md` and translates the pilot problem definition into a practical, implementable optimization strategy. It treats the system as a scheduled shuttle network with accommodation as the fixed depot, strict pilot operational constraints, and a primary focus on fleet-feasible coverage maximization under the hard 13-bus limit before overtime reduction.
 
 ## 1) Problem Framing (Aligned to Context)
 - Fixed start/end depot: accommodation (single start location).
 - Pilot scope only: this approach is for the current Kuwait pilot, not full-market deployment.
 - Trips are sequences of store stops and must return to depot.
 - Routes are schedule-driven; employees are assigned to trips (not ad hoc routing).
-- Goal: keep the designed schedule within the fixed 13-bus fleet, then enforce rotation-aware duty assignment, reduce driver overtime, preserve feasible service coverage, improve occupancy, and reduce deadhead and idle time.
+- Goal: keep the designed schedule within the fixed 13-bus fleet, maximize feasible service coverage within that limit, then enforce rotation-aware duty assignment, reduce driver overtime without sacrificing served demand, improve occupancy, and reduce deadhead and idle time.
 - No traffic or festival modeling; travel times are static with buffers.
 - Current route logs are a baseline reference, not the target trip design.
 
 ## 1.1) Current Pilot Focus
 - The current prototype is already strong on the top constraints: no fleet breach, no duties over 10 hours, and materially improved overtime versus the pilot baseline.
 - The main remaining gap is concentrated unscheduled demand in the 05:00 and 18:00 windows.
-- Current evidence shows the dominant drop-off causes are `duty_span_block` and `buffer_violation`, so the next improvements should focus on temporal repair rather than broad route redesign.
+- Current evidence shows the remaining drop-off is a mix of temporal conflicts and fragmented leftovers, so the next improvements should focus on temporal repair plus salvage rebuilding rather than broad route redesign.
 - The deeper structural issue is that trip synthesis and trip scheduling are still too independent; the best next architecture reduces that separation by using scheduling feedback during trip construction while keeping OR-Tools as the baseline route engine.
 
 ## 2) Core Constraints (Hard or Near-Hard)
@@ -29,14 +29,15 @@ This document aligns with `context.md` and translates the pilot problem definiti
 
 ## 2.1) Optimization Structure
 - Hard constraints: simultaneous fleet limit, seat capacity, depot start/end, trip-duration caps, time-window feasibility, stop-level load feasibility on `MIXED` trips, and legal 30-45 minute buffers between chained trips.
-- Objective hierarchy: satisfy the 13-bus fleet limit first, engineer practical morning/evening rotations second, minimize overtime third, maximize feasible service coverage fourth, improve occupancy fifth, and reduce deadhead/waiting sixth.
+- Objective hierarchy: satisfy the 13-bus fleet limit first, maximize feasible service coverage second, engineer practical morning/evening rotations third, minimize overtime on the covered solution fourth, improve occupancy fifth, and reduce deadhead/waiting sixth.
 - Implementation guidance: use a lexicographic or strongly tiered penalty structure so the solver does not trade fleet infeasibility, extreme duty spread, broken handovers, or overtime increases for fuller buses or slightly shorter routes. In the current prototype, a trip must not be assigned to a duty slot that fails the driver-freshness test.
 - Practical rule: reject route patterns that look efficient geographically if they create peak-time fleet overload or make downstream bus/driver duties infeasible or excessively stretched.
 
 ## 3) Best-of-Approaches Architecture (Hybrid Pipeline)
 
 Demand Estimation -> Peak Pressure Measurement -> Capacity-Aware Clustering
--> OR-Tools Route Construction -> Rotation-Aware Scheduling
+-> OR-Tools Route Construction -> Coverage-First Scheduling
+-> Coverage-Preserving Overtime Improvement
 -> OR-Tools-Assisted Mixed Insertion -> Bottleneck-Window Repair
 -> Service Validation -> Simulation and KPIs
 
@@ -44,7 +45,8 @@ Why this hybrid works:
 - Clustering reduces combinatorial complexity while preserving geographic and temporal structure.
 - Peak-pressure measurement shows where overload is likely before the route constructor opens too many simultaneous trips.
 - OR-Tools route construction enforces depot-return routing, capacity, trip-level feasibility, and stronger stop grouping/order than the earlier greedy builder.
-- Rotation-aware scheduling ensures legal chaining, driver-hour limits, buffers, and fresh evening slot usage.
+- Coverage-first scheduling ensures the fleet is used to serve as much demand as possible before overtime becomes the dominant optimization target.
+- Coverage-preserving overtime improvement then cleans the covered solution without allowing the solver to gain a nicer duty profile by dropping hard-to-serve trips.
 - OR-Tools-assisted mixed insertion is the next missing bridge: it should test whether a scheduled inbound route can absorb nearby outbound demand on the return leg without breaking load, time, or duty feasibility.
 - Bottleneck-window repair focuses effort on the real problem windows instead of disturbing the whole pilot week.
 - Service validation guarantees that store-wave demand is covered at the required timing level.
@@ -144,6 +146,23 @@ Outcome:
 - delayed-trip rescue flags for outbound trips shifted within tolerance
 - overtime metrics should be calculated on these designed duties, not on raw historical route logs
 
+### D.1) Coverage-First Scheduling Pass
+Purpose: maximize covered demand under the hard 13-bus limit before optimizing overtime.
+
+Rules:
+- keep the 13-bus cap and hard duty cap non-negotiable
+- when multiple legal slot choices exist, prefer the choice that preserves schedulability and demand coverage before preferring the lowest overtime placement
+- process the trip set in a coverage-oriented order so higher-value trips are not crowded out by locally cleaner but lower-coverage assignments
+- keep blocked trips in a repair queue rather than treating them as final failures on first rejection
+
+### D.2) Coverage-Preserving Overtime Improvement Pass
+Purpose: improve duty quality after the covered trip set is frozen.
+
+Rules:
+- do not drop already-served trips
+- try reassignment, slot changes, and small legal time shifts only if coverage stays unchanged
+- accept a move only if it reduces total overtime, long-duty count, or duty span without violating fleet or duty hard constraints
+
 ### E) Lightweight Rescue Logic
 Purpose: recover some blocked pilot trips without breaking the fleet or freshness rules.
 
@@ -157,6 +176,7 @@ Future extension:
 - add a targeted bottleneck-window repair loop for the 05:00 and 18:00 peaks before attempting full LNS
 - add slot-donor swaps and stronger `MIXED` recovery for blocked outbound trips in those windows
 - let that stronger mixed recovery reuse the OR-Tools route engine locally, instead of relying only on post-hoc heuristics
+- pool `small_isolated_demand` leftovers into a salvage-demand table and run one more integrated rebuild pass before final rejection
 
 ### E.1) Best-Version Bottleneck Repair
 Purpose: fix the remaining independence between trip creation and scheduling by letting the repair stage modify both trip timing and trip placement inside the true bottleneck windows.
@@ -204,12 +224,13 @@ Start with a deterministic prototype that can run with current data:
 6. Perform capacity-aware clustering with both spatial and time-window compatibility.
 7. Generate new `IN` and `OUT` trips from cluster-level and wave-level demand using OR-Tools route construction rules, then add `MIXED` only through a validated return-leg compatibility step.
 8. Use peak-pressure signals to prefer wider trips and less congested legal start times before final scheduling.
-9. Chain those trips into morning/evening bus slots with buffer rules, soft slot-boundary testing, and hard freshness checks.
+9. Run a coverage-first assignment pass into morning/evening bus slots with buffer rules, soft slot-boundary testing, and hard freshness checks.
 10. Use lightweight repair with small timing shifts and re-assignment attempts before classifying trips as uncovered demand.
-11. Inspect unscheduled-trip rejection causes and focus the next repair pass on the dominant pilot bottlenecks, especially 05:00 and 18:00.
-12. Evolve the prototype toward a rolling-horizon trip constructor so later trips are built with live knowledge of active duties, available buses, and likely bottleneck conflicts.
-13. Validate against shift timing, surface infeasible or unserved demand explicitly, and compare the designed schedule KPIs against the current route operation and overtime logs.
-14. Treat fuller bottleneck-window repair, slot-donor logic, and stronger OR-Tools-assisted `MIXED` recovery as the next prototype iteration aimed at moving overtime from about 16.5 hours toward the 10-hour pilot target.
+11. Pool `small_isolated_demand` leftovers into a salvage-demand table and run one more denser build-and-schedule pass before treating them as final uncovered demand.
+12. Freeze the covered trip set, then run a coverage-preserving overtime improvement pass over those assigned trips.
+13. Inspect unscheduled-trip rejection causes and focus the next repair pass on the dominant pilot bottlenecks, especially 05:00 and 18:00.
+14. Evolve the prototype toward a rolling-horizon trip constructor so later trips are built with live knowledge of active duties, available buses, and likely bottleneck conflicts.
+15. Validate against shift timing, surface infeasible or unserved demand explicitly, and compare the designed schedule KPIs against the current route operation and overtime logs.
 
 ## 6) Extensions (Phase 2+)
 - Light ML demand forecasting for better peak estimates.

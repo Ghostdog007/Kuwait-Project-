@@ -31,12 +31,17 @@ DEPOT_NAME = "Mahboula Complex - Mix"
 BUS_COUNT = 13
 BUS_CAPACITY = 22
 BUFFER_MIN = 30
+SHORT_TRIP_BUFFER_MIN = 15
+MEDIUM_TRIP_BUFFER_MIN = 20
+SHORT_TRIP_THRESHOLD_MIN = 40
+MEDIUM_TRIP_THRESHOLD_MIN = 90
 TARGET_DUTY_MIN = 9 * 60
 HARD_DUTY_SPAN_MIN = 10 * 60
 EVENING_SEED_HOUR = 14
 MAX_STOPS_PER_TRIP = 6
 MAX_TRIP_DURATION_MIN = 300
 WAVE_BUCKET_MIN = 30
+SALVAGE_WAVE_BUCKET_MIN = 60
 PEAK_BIN_MIN = 15
 AVG_SPEED_KMPH = 38.0
 ROAD_FACTOR = 1.18
@@ -54,6 +59,7 @@ REPAIR_SHIFT_OPTIONS_OUT = [10, 20, 30, 40]
 REPAIR_SHIFT_OPTIONS_IN = [-15, 15, -30, 30]
 BOTTLENECK_HOURS = {5, 18}
 DONOR_SHIFT_OPTIONS = [-30, -20, -15, -10, 10, 15, 20, 30]
+OVERTIME_IMPROVEMENT_PASSES = 2
 
 
 @dataclass(frozen=True)
@@ -1024,6 +1030,13 @@ def classify_rejection_reason(reason_counts: dict[str, int], trip: pd.Series) ->
 
 
 def required_buffer_min(slot: DutySlot) -> int:
+    last_duration = slot.last_trip_duration_min
+    if last_duration is None:
+        return BUFFER_MIN
+    if last_duration <= SHORT_TRIP_THRESHOLD_MIN:
+        return SHORT_TRIP_BUFFER_MIN
+    if last_duration <= MEDIUM_TRIP_THRESHOLD_MIN:
+        return MEDIUM_TRIP_BUFFER_MIN
     return BUFFER_MIN
 
 
@@ -1032,6 +1045,7 @@ def choose_slot_assignment(
     slots: dict[tuple[str, int, str], DutySlot],
     assignment_rows: list[dict[str, object]],
     repair_mode: bool = False,
+    objective: str = "coverage",
 ) -> tuple[tuple[str, int, str], pd.Timestamp, bool] | None:
     service_day = str(trip["service_date"])
     day_assignments = pd.DataFrame(assignment_rows)
@@ -1063,7 +1077,10 @@ def choose_slot_assignment(
                     continue
                 delay = abs((start_dt - pd.Timestamp(trip["planned_start_dt"])).total_seconds()) / 60.0
                 overtime_risk = max(0.0, projected_span - TARGET_DUTY_MIN)
-                score = (slot_penalty + overtime_risk, delay, projected_span, bus_id, slot_type)
+                if objective == "overtime":
+                    score = (slot_penalty + overtime_risk, delay, projected_span, bus_id, slot_type)
+                else:
+                    score = (slot_penalty, delay, projected_span, bus_id, slot_type)
                 if best_score is None or score < best_score:
                     best_score = score
                     best_choice = (slot_key, start_dt, delta != 0)
@@ -1204,7 +1221,7 @@ def try_donor_swap(
         for delta in DONOR_SHIFT_OPTIONS:
             shifted = donor_trip.copy()
             shifted["planned_start_dt"] = pd.Timestamp(row["planned_start_dt"]) + timedelta(minutes=delta)
-            if choose_slot_assignment(shifted, slots, assignment_rows, repair_mode=True) is not None:
+            if choose_slot_assignment(shifted, slots, assignment_rows, repair_mode=True, objective="coverage") is not None:
                 feasible_shift_count += 1
         enriched = dict(row)
         enriched["feasible_shift_count"] = feasible_shift_count
@@ -1237,7 +1254,7 @@ def try_donor_swap(
         for delta in DONOR_SHIFT_OPTIONS:
             donor_try = donor_series.copy()
             donor_try["planned_start_dt"] = pd.Timestamp(donor["planned_start_dt"]) + timedelta(minutes=delta)
-            donor_best = choose_slot_assignment(donor_try, slots, assignment_rows, repair_mode=True)
+            donor_best = choose_slot_assignment(donor_try, slots, assignment_rows, repair_mode=True, objective="coverage")
             if donor_best is not None:
                 break
         if donor_best is None:
@@ -1247,7 +1264,7 @@ def try_donor_swap(
             continue
         donor_slot_key, donor_start_dt, donor_rescued = donor_best
         apply_assignment(donor_series, donor_slot_key, donor_start_dt, donor_rescued, slots, scheduled_rows, assignment_rows)
-        blocked_best = choose_slot_assignment(trip, slots, assignment_rows, repair_mode=True)
+        blocked_best = choose_slot_assignment(trip, slots, assignment_rows, repair_mode=True, objective="coverage")
         if blocked_best is not None:
             blocked_slot_key, blocked_start_dt, blocked_rescued = blocked_best
             apply_assignment(trip, blocked_slot_key, blocked_start_dt, blocked_rescued, slots, scheduled_rows, assignment_rows)
@@ -1261,8 +1278,104 @@ def try_donor_swap(
     return False
 
 
+def total_overtime_from_rows(assignment_rows: list[dict[str, object]]) -> float:
+    if not assignment_rows:
+        return 0.0
+    duties = build_duties(pd.DataFrame(assignment_rows))
+    if duties.empty:
+        return 0.0
+    return float(duties["overtime_min"].sum())
+
+
+def overtime_duty_keys(assignment_rows: list[dict[str, object]]) -> set[tuple[str, int, str]]:
+    if not assignment_rows:
+        return set()
+    duties = build_duties(pd.DataFrame(assignment_rows))
+    if duties.empty:
+        return set()
+    overtime = duties[duties["overtime_min"] > 0]
+    return {
+        (str(row["service_date"]), int(row["bus_id"]), str(row["rotation_tag"]))
+        for _, row in overtime.iterrows()
+    }
+
+
+def improve_overtime_without_losing_coverage(
+    slots: dict[tuple[str, int, str], DutySlot],
+    scheduled_rows: list[dict[str, object]],
+    assignment_rows: list[dict[str, object]],
+) -> None:
+    current_total = total_overtime_from_rows(assignment_rows)
+    if current_total <= 0:
+        return
+    for _ in range(OVERTIME_IMPROVEMENT_PASSES):
+        improved = False
+        hot_keys = overtime_duty_keys(assignment_rows)
+        if not hot_keys:
+            break
+        candidate_assignments = sorted(
+            [
+                row for row in assignment_rows
+                if (str(row["service_date"]), int(row["bus_id"]), str(row["rotation_tag"])) in hot_keys
+            ],
+            key=lambda row: (
+                -float(row["trip_duration_min"]),
+                -int(row["assigned_passengers"]),
+                pd.Timestamp(row["planned_start_dt"]),
+            ),
+        )
+        for candidate in candidate_assignments:
+            assign_index = next((idx for idx, row in enumerate(assignment_rows) if str(row["trip_id"]) == str(candidate["trip_id"])), None)
+            sched_index = next((idx for idx, row in enumerate(scheduled_rows) if str(row["trip_id"]) == str(candidate["trip_id"])), None)
+            if assign_index is None or sched_index is None:
+                continue
+            original_assignment = assignment_rows.pop(assign_index)
+            original_schedule = scheduled_rows.pop(sched_index)
+            rebuild_slot_state(slots, assignment_rows)
+            trip_series = pd.Series(original_schedule)
+            best_choice = choose_slot_assignment(
+                trip_series,
+                slots,
+                assignment_rows,
+                repair_mode=True,
+                objective="overtime",
+            )
+            if best_choice is None:
+                assignment_rows.append(original_assignment)
+                scheduled_rows.append(original_schedule)
+                rebuild_slot_state(slots, assignment_rows)
+                continue
+            slot_key, start_dt, rescued = best_choice
+            same_slot = (
+                int(original_assignment["bus_id"]) == int(slot_key[1])
+                and str(original_assignment["rotation_tag"]) == str(slot_key[2])
+                and pd.Timestamp(original_assignment["planned_start_dt"]) == pd.Timestamp(start_dt)
+            )
+            if same_slot:
+                assignment_rows.append(original_assignment)
+                scheduled_rows.append(original_schedule)
+                rebuild_slot_state(slots, assignment_rows)
+                continue
+            apply_assignment(trip_series, slot_key, start_dt, rescued, slots, scheduled_rows, assignment_rows)
+            new_total = total_overtime_from_rows(assignment_rows)
+            if new_total + 1e-6 < current_total:
+                current_total = new_total
+                improved = True
+            else:
+                assignment_rows[:] = [row for row in assignment_rows if str(row["trip_id"]) != str(original_assignment["trip_id"])]
+                scheduled_rows[:] = [row for row in scheduled_rows if str(row["trip_id"]) != str(original_assignment["trip_id"])]
+                assignment_rows.append(original_assignment)
+                scheduled_rows.append(original_schedule)
+                rebuild_slot_state(slots, assignment_rows)
+        if not improved:
+            break
+
+
 def schedule_with_rotation_reset(base_trips: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
-    trips = base_trips.copy().sort_values(["planned_start_dt", "peak_load", "trip_id"], ascending=[True, False, True]).reset_index(drop=True)
+    trips = base_trips.copy().sort_values(
+        ["planned_start_dt", "assigned_passengers", "peak_load", "trip_id"],
+        ascending=[True, False, False, True],
+    ).reset_index(drop=True)
     service_dates = sorted(trips["service_date"].astype(str).unique())
     slots = init_slots(service_dates)
     scheduled_rows: list[dict[str, object]] = []
@@ -1271,7 +1384,7 @@ def schedule_with_rotation_reset(base_trips: pd.DataFrame) -> tuple[pd.DataFrame
     trip_lookup = {str(row["trip_id"]): row for _, row in trips.iterrows()}
 
     for _, trip in trips.iterrows():
-        best_choice = choose_slot_assignment(trip, slots, assignment_rows, repair_mode=False)
+        best_choice = choose_slot_assignment(trip, slots, assignment_rows, repair_mode=False, objective="coverage")
         if best_choice is None:
             unscheduled_trips.append(trip)
             continue
@@ -1281,12 +1394,12 @@ def schedule_with_rotation_reset(base_trips: pd.DataFrame) -> tuple[pd.DataFrame
 
     final_unscheduled_rows: list[dict[str, object]] = []
     for trip in unscheduled_trips:
-        best_choice = choose_slot_assignment(trip, slots, assignment_rows, repair_mode=True)
+        best_choice = choose_slot_assignment(trip, slots, assignment_rows, repair_mode=True, objective="coverage")
         if best_choice is None:
             swapped = try_donor_swap(trip, slots, assignment_rows, scheduled_rows, trip_lookup)
             if swapped:
                 continue
-            best_choice = choose_slot_assignment(trip, slots, assignment_rows, repair_mode=True)
+            best_choice = choose_slot_assignment(trip, slots, assignment_rows, repair_mode=True, objective="coverage")
         if best_choice is None:
             reason_counts = collect_rejection_reasons(trip, slots, assignment_rows, repair_mode=True)
             primary_reason = classify_rejection_reason(reason_counts, trip)
@@ -1306,6 +1419,8 @@ def schedule_with_rotation_reset(base_trips: pd.DataFrame) -> tuple[pd.DataFrame
             continue
         slot_key, start_dt, rescued = best_choice
         apply_assignment(trip, slot_key, start_dt, rescued, slots, scheduled_rows, assignment_rows)
+
+    improve_overtime_without_losing_coverage(slots, scheduled_rows, assignment_rows)
 
     scheduled = pd.DataFrame(scheduled_rows).sort_values(["planned_start_dt", "trip_id"]).reset_index(drop=True)
     assignments = pd.DataFrame(assignment_rows).sort_values(["planned_start_dt", "bus_id"]).reset_index(drop=True)
@@ -1629,6 +1744,59 @@ def build_bottleneck_repair_demand(base_trips: pd.DataFrame, unscheduled: pd.Dat
     return repair.sort_values(["wave_dt", "direction", "store_name"]).reset_index(drop=True)
 
 
+def build_small_fragment_repair_demand(base_trips: pd.DataFrame, unscheduled: pd.DataFrame) -> pd.DataFrame:
+    if base_trips.empty or unscheduled.empty or "rejection_reason" not in unscheduled.columns:
+        return pd.DataFrame()
+    fragment_unscheduled = unscheduled[
+        (unscheduled["rejection_reason"] == "small_isolated_demand")
+        | (
+            unscheduled["rejection_reason"].isin(["buffer_violation", "slot_exhausted"])
+            & (pd.to_numeric(unscheduled["assigned_passengers"], errors="coerce").fillna(0) <= 4)
+            & (pd.to_numeric(unscheduled["stop_count"], errors="coerce").fillna(99) <= 2)
+        )
+    ].copy()
+    if fragment_unscheduled.empty:
+        return pd.DataFrame()
+    merged = fragment_unscheduled.merge(
+        base_trips[["trip_id", "trip_type", "requested_wave_dt", "stop_data_json"]],
+        on="trip_id",
+        how="left",
+    )
+    rows: list[dict[str, object]] = []
+    for _, row in merged.iterrows():
+        trip_type = row["trip_type_x"] if "trip_type_x" in row.index else row["trip_type"]
+        if trip_type not in {"IN", "OUT"} and "trip_type_y" in row.index:
+            trip_type = row["trip_type_y"]
+        for stop in decode_stop_data(row.get("stop_data_json", "")):
+            wave_dt = pd.Timestamp(stop["wave_dt"]).floor(f"{SALVAGE_WAVE_BUCKET_MIN}min")
+            rows.append(
+                {
+                    "event_date": wave_dt.date().isoformat(),
+                    "direction": trip_type if trip_type in {"IN", "OUT"} else row.get("direction", "OUT"),
+                    "wave_dt": wave_dt,
+                    "store_id": int(stop["store_id"]),
+                    "store_name": str(stop["store_name"]),
+                    "latitude": float(stop["latitude"]),
+                    "longitude": float(stop["longitude"]),
+                    "cluster_id": stop.get("cluster_id"),
+                    "employees": int(stop["allocated_passengers"]),
+                    "wave_label": wave_dt.strftime("%Y-%m-%d %H:%M"),
+                }
+            )
+    if not rows:
+        return pd.DataFrame()
+    repair = pd.DataFrame(rows)
+    repair = (
+        repair.groupby(
+            ["event_date", "direction", "wave_dt", "store_id", "store_name", "latitude", "longitude", "cluster_id", "wave_label"],
+            dropna=False,
+        )["employees"]
+        .sum()
+        .reset_index()
+    )
+    return repair.sort_values(["wave_dt", "direction", "store_name"]).reset_index(drop=True)
+
+
 def build_kpis(
     overview: dict[str, object],
     strict_matches: pd.DataFrame,
@@ -1731,17 +1899,59 @@ def main() -> None:
     baseline_scheduled = add_mixed_labels(baseline_scheduled, baseline_assignments)
     baseline_duties = build_duties(baseline_assignments)
 
-    repair_demand = build_bottleneck_repair_demand(baseline_trips, baseline_unscheduled)
+    fragment_repair_demand = build_small_fragment_repair_demand(baseline_trips, baseline_unscheduled)
+    fragment_repair_trips = pd.DataFrame()
+    fragment_repair_scheduled = baseline_scheduled.copy()
+    fragment_repair_assignments = baseline_assignments.copy()
+    fragment_repair_unscheduled = pd.DataFrame()
+    remaining_after_fragment = baseline_unscheduled.copy()
+    base_for_repair = baseline_trips.copy()
+    if not fragment_repair_demand.empty:
+        fragment_repair_trips, fragment_repair_scheduled, fragment_repair_assignments, fragment_repair_unscheduled = build_and_schedule_integrated(
+            fragment_repair_demand,
+            depot,
+            initial_scheduled=baseline_scheduled,
+            initial_assignments=baseline_assignments,
+            trip_prefix="SLV",
+        )
+        if not fragment_repair_trips.empty:
+            repaired_keys = {
+                (pd.Timestamp(stop["wave_dt"]).floor(f"{SALVAGE_WAVE_BUCKET_MIN}min"), int(stop["store_id"]), stop["store_name"], trip["trip_type"])
+                for _, trip in fragment_repair_trips.iterrows()
+                for stop in decode_stop_data(trip.get("stop_data_json", ""))
+            }
+            keep_rows = []
+            for _, row in baseline_unscheduled.iterrows():
+                if str(row.get("rejection_reason", "")) != "small_isolated_demand":
+                    keep_rows.append(row.to_dict())
+                    continue
+                trip_match = baseline_trips[baseline_trips["trip_id"] == row["trip_id"]]
+                remove = False
+                if not trip_match.empty:
+                    trip_type = str(trip_match.iloc[0]["trip_type"])
+                    for stop in decode_stop_data(trip_match.iloc[0].get("stop_data_json", "")):
+                        key = (pd.Timestamp(stop["wave_dt"]).floor(f"{SALVAGE_WAVE_BUCKET_MIN}min"), int(stop["store_id"]), stop["store_name"], trip_type)
+                        if key in repaired_keys:
+                            remove = True
+                            break
+                if not remove:
+                    keep_rows.append(row.to_dict())
+            remaining_after_fragment = pd.DataFrame(keep_rows)
+            base_for_repair = pd.concat([baseline_trips, fragment_repair_trips], ignore_index=True)
+        if not fragment_repair_unscheduled.empty:
+            remaining_after_fragment = pd.concat([remaining_after_fragment, fragment_repair_unscheduled], ignore_index=True)
+
+    repair_demand = build_bottleneck_repair_demand(base_for_repair, remaining_after_fragment)
     repair_trips = pd.DataFrame()
-    repair_scheduled = baseline_scheduled.copy()
-    repair_assignments = baseline_assignments.copy()
+    repair_scheduled = fragment_repair_scheduled.copy()
+    repair_assignments = fragment_repair_assignments.copy()
     repair_unscheduled = pd.DataFrame()
     if not repair_demand.empty:
         repair_trips, repair_scheduled, repair_assignments, repair_unscheduled = build_and_schedule_integrated(
             repair_demand,
             depot,
-            initial_scheduled=baseline_scheduled,
-            initial_assignments=baseline_assignments,
+            initial_scheduled=fragment_repair_scheduled,
+            initial_assignments=fragment_repair_assignments,
             trip_prefix="REP",
         )
 
@@ -1750,8 +1960,7 @@ def main() -> None:
     assignments = repair_assignments.copy()
     scheduled = add_mixed_labels(scheduled, assignments)
     duties = build_duties(assignments)
-    repaired_original_ids = set(repair_demand["store_id"].astype(str)) if not repair_demand.empty else set()
-    remaining_unscheduled = baseline_unscheduled.copy()
+    remaining_unscheduled = remaining_after_fragment.copy()
     if not repair_demand.empty and not repair_trips.empty:
         repaired_keys = {
             (pd.Timestamp(stop["wave_dt"]), int(stop["store_id"]), stop["store_name"], trip["trip_type"])
@@ -1759,8 +1968,8 @@ def main() -> None:
             for stop in decode_stop_data(trip.get("stop_data_json", ""))
         }
         keep_rows = []
-        for _, row in baseline_unscheduled.iterrows():
-            trip_match = baseline_trips[baseline_trips["trip_id"] == row["trip_id"]]
+        for _, row in remaining_after_fragment.iterrows():
+            trip_match = base_for_repair[base_for_repair["trip_id"] == row["trip_id"]]
             remove = False
             if not trip_match.empty:
                 trip_type = str(trip_match.iloc[0]["trip_type"])
@@ -1791,7 +2000,12 @@ def main() -> None:
         baseline_unscheduled,
         baseline_metrics,
     )
-    hybrid_trips = pd.concat([baseline_trips, repair_trips], ignore_index=True) if not repair_trips.empty else baseline_trips.copy()
+    hybrid_trip_parts = [baseline_trips]
+    if not fragment_repair_trips.empty:
+        hybrid_trip_parts.append(fragment_repair_trips)
+    if not repair_trips.empty:
+        hybrid_trip_parts.append(repair_trips)
+    hybrid_trips = pd.concat(hybrid_trip_parts, ignore_index=True) if len(hybrid_trip_parts) > 1 else baseline_trips.copy()
     kpis = build_kpis(overview, strict_matches, demand, peak_pressure, hybrid_trips, scheduled, assignments, duties, unmatched, unscheduled, baseline_metrics)
     kpi_comparison = build_kpi_comparison(baseline_kpis, kpis)
     strict_matches.to_csv(OUTPUT_DIR / "strict_store_matches.csv", index=False)
@@ -1809,6 +2023,8 @@ def main() -> None:
     baseline_issues.to_csv(OUTPUT_DIR / "baseline_overtime_reference.csv", index=False)
     baseline_kpis.to_csv(OUTPUT_DIR / "baseline_staged_kpi_summary.csv", index=False)
     kpi_comparison.to_csv(OUTPUT_DIR / "kpi_comparison.csv", index=False)
+    fragment_repair_demand.to_csv(OUTPUT_DIR / "small_fragment_repair_demand.csv", index=False)
+    fragment_repair_trips.to_csv(OUTPUT_DIR / "small_fragment_repair_trips.csv", index=False)
     repair_demand.to_csv(OUTPUT_DIR / "bottleneck_repair_demand.csv", index=False)
     repair_trips.to_csv(OUTPUT_DIR / "bottleneck_repair_trips.csv", index=False)
     kpis.to_csv(OUTPUT_DIR / "kpi_summary.csv", index=False)
