@@ -2,7 +2,32 @@
 
 This document aligns with `context.md` and translates the pilot problem definition into a practical, implementable optimization strategy. It treats the system as a scheduled shuttle network with accommodation as the fixed depot, strict pilot operational constraints, and a primary focus on fleet-feasible coverage maximization under the hard 13-bus limit before overtime reduction.
 
+<!-- SEARCH HOOK: APPROACH INDEX -->
+<!-- Fast jump labels in this file:
+APPROACH INDEX
+PROBLEM FRAMING
+CURRENT PILOT FOCUS
+CORE CONSTRAINTS
+OPTIMIZATION STRUCTURE
+HYBRID PIPELINE
+DEMAND ESTIMATION
+CAPACITY AWARE CLUSTERING
+PEAK PRESSURE
+ORTOOLS ROUTE CONSTRUCTION
+ROTATION AWARE SCHEDULING
+COVERAGE FIRST PASS
+OVERTIME IMPROVEMENT PASS
+LIGHTWEIGHT RESCUE
+BOTTLENECK REPAIR
+SERVICE VALIDATION
+SIMULATION KPIS
+RECOMMENDED STARTING POINT
+EXTENSIONS
+FINAL RECOMMENDATION
+-->
+
 ## 1) Problem Framing (Aligned to Context)
+<!-- SEARCH HOOK: PROBLEM FRAMING -->
 - Fixed start/end depot: accommodation (single start location).
 - Pilot scope only: this approach is for the current Kuwait pilot, not full-market deployment.
 - Trips are sequences of store stops and must return to depot.
@@ -12,12 +37,14 @@ This document aligns with `context.md` and translates the pilot problem definiti
 - Current route logs are a baseline reference, not the target trip design.
 
 ## 1.1) Current Pilot Focus
+<!-- SEARCH HOOK: CURRENT PILOT FOCUS -->
 - The current prototype is already strong on the top constraints: no fleet breach, no duties over 10 hours, and materially improved overtime versus the pilot baseline.
 - The main remaining gap is concentrated unscheduled demand in the 05:00 and 18:00 windows.
 - Current evidence shows the remaining drop-off is a mix of temporal conflicts and fragmented leftovers, so the next improvements should focus on explicit split-duty resets for long midday breaks plus stronger reinsertion-based and cooperative salvage rebuilding rather than broad route redesign.
 - The deeper structural issue is that trip synthesis and trip scheduling are still too independent; the best next architecture reduces that separation by using scheduling feedback during trip construction while keeping OR-Tools as the baseline route engine.
 
 ## 2) Core Constraints (Hard or Near-Hard)
+<!-- SEARCH HOOK: CORE CONSTRAINTS -->
 - Simultaneous active buses: max 13 in the pilot.
 - Bus capacity: 22 seats, up to 25 max.
 - Buffer between successive trips: 30-45 minutes.
@@ -28,12 +55,14 @@ This document aligns with `context.md` and translates the pilot problem definiti
 - Shifts: mostly 9-hour blocks, some 12-hour and broken shifts allowed.
 
 ## 2.1) Optimization Structure
+<!-- SEARCH HOOK: OPTIMIZATION STRUCTURE -->
 - Hard constraints: simultaneous fleet limit, seat capacity, depot start/end, trip-duration caps, time-window feasibility, stop-level load feasibility on `MIXED` trips, and legal 30-45 minute buffers between chained trips.
 - Objective hierarchy: satisfy the 13-bus fleet limit first, maximize feasible service coverage second, engineer practical morning/evening rotations third, minimize overtime on the covered solution fourth, improve occupancy fifth, and reduce deadhead/waiting sixth.
 - Implementation guidance: use a lexicographic or strongly tiered penalty structure so the solver does not trade fleet infeasibility, extreme duty spread, broken handovers, or overtime increases for fuller buses or slightly shorter routes. In the current prototype, a trip must not be assigned to a duty slot that fails the driver-freshness test.
 - Practical rule: reject route patterns that look efficient geographically if they create peak-time fleet overload or make downstream bus/driver duties infeasible or excessively stretched.
 
 ## 3) Best-of-Approaches Architecture (Hybrid Pipeline)
+<!-- SEARCH HOOK: HYBRID PIPELINE -->
 
 Demand Estimation -> Peak Pressure Measurement -> Capacity-Aware Clustering
 -> OR-Tools Route Construction -> Coverage-First Scheduling
@@ -57,6 +86,7 @@ Why this hybrid works:
 ## 4) Detailed Approach
 
 ### A) Demand Estimation (Lightweight ML or Deterministic)
+<!-- SEARCH HOOK: DEMAND ESTIMATION -->
 Purpose: quantify how many employees need pickup/drop service for each store and shift window.
 
 Inputs:
@@ -75,6 +105,7 @@ Practical default:
 - exclude stores without geocoordinates from route generation and log them as unmatched inputs for review
 
 ### B) Capacity-Aware Clustering (Geospatial + Time Window)
+<!-- SEARCH HOOK: CAPACITY AWARE CLUSTERING -->
 Purpose: group stores into service zones that are both close and time-compatible.
 
 Method:
@@ -88,6 +119,7 @@ Rules:
 - preserve some flexibility for demand near overlapping shift boundaries instead of forcing it too early into one rigid time bucket
 
 ### B.1) Peak Pressure Measurement (Before Final Trip Opening)
+<!-- SEARCH HOOK: PEAK PRESSURE -->
 Purpose: expose overloaded windows before trips are finalized.
 
 Method:
@@ -102,6 +134,7 @@ Actions:
 - future extension: shift soft demand more aggressively across adjacent feasible windows before trip opening
 
 ### C) OR-Tools Route Construction (Core Optimization Engine)
+<!-- SEARCH HOOK: ORTOOLS ROUTE CONSTRUCTION -->
 Purpose: generate strong base `IN` and `OUT` trips for each cluster and time wave before those trips are handed to the custom bus-duty scheduler.
 
 Model:
@@ -129,6 +162,7 @@ Trip construction logic:
 - if two candidate trips are similar geographically, prefer the one that is more likely to fit a real bus slot without causing downstream buffer or duty-span blocks
 
 ### D) Rotation-Aware Scheduling
+<!-- SEARCH HOOK: ROTATION AWARE SCHEDULING -->
 Purpose: chain trips into daily bus duties with buffers while approximating fresh driver rotations.
 
 Rules:
@@ -149,6 +183,7 @@ Outcome:
 - overtime metrics should be calculated on these designed duties, not on raw historical route logs
 
 ### D.1) Coverage-First Scheduling Pass
+<!-- SEARCH HOOK: COVERAGE FIRST PASS -->
 Purpose: maximize covered demand under the hard 13-bus limit before optimizing overtime.
 
 Rules:
@@ -159,6 +194,7 @@ Rules:
 - if a bus has a long enough legal midday gap, allow the next trip to start a fresh split-duty block instead of forcing one continuous duty span
 
 ### D.2) Coverage-Preserving Overtime Improvement Pass
+<!-- SEARCH HOOK: OVERTIME IMPROVEMENT PASS -->
 Purpose: improve duty quality after the covered trip set is frozen.
 
 Rules:
@@ -167,6 +203,7 @@ Rules:
 - accept a move only if it reduces total overtime, long-duty count, or duty span without violating fleet or duty hard constraints
 
 ### E) Lightweight Rescue Logic
+<!-- SEARCH HOOK: LIGHTWEIGHT RESCUE -->
 Purpose: recover some blocked pilot trips without breaking the fleet or freshness rules.
 
 Current logic:
@@ -183,6 +220,7 @@ Future extension:
 - extend that salvage pass into a true reinsertion loop: regroup fragments, try insertion into existing trips, cooperatively merge nearby leftovers into denser retry trips, then build salvage trips only for what still cannot be absorbed
 
 ### E.1) Best-Version Bottleneck Repair
+<!-- SEARCH HOOK: BOTTLENECK REPAIR -->
 Purpose: fix the remaining independence between trip creation and scheduling by letting the repair stage modify both trip timing and trip placement inside the true bottleneck windows.
 
 Best-version logic:
@@ -192,6 +230,7 @@ Best-version logic:
 - keep employee service timing valid when any donor or shifted trip is modified
 
 ### F) Service Validation
+<!-- SEARCH HOOK: SERVICE VALIDATION -->
 Purpose: validate that routed trips cover required store-wave demand and remain policy-compliant.
 
 Checks:
@@ -203,6 +242,7 @@ Checks:
 - unmatched stores without geocoordinates are excluded from routing and reported separately so coverage gaps are visible
 
 ### G) Simulation and KPI Evaluation
+<!-- SEARCH HOOK: SIMULATION KPIS -->
 Purpose: stress-test the schedule and quantify improvement.
 
 KPIs:
@@ -219,6 +259,7 @@ KPIs:
 - duty-chaining rejection count or reason breakdown
 
 ## 5) Recommended Starting Point (Phase 1)
+<!-- SEARCH HOOK: RECOMMENDED STARTING POINT -->
 Start with a deterministic prototype that can run with current data:
 1. Clean and unify the four active inputs: `Employee Shift data.xlsx`, `Bus Routes curent.xlsx`, `Geocoordinates.xlsx`, and `Kuwait Route Optimization - Overview.xlsx`.
 2. Build demand tables by store and shift window from `Employee Shift data.xlsx`, then calibrate wave intensity against `Bus Routes curent.xlsx`.
@@ -240,12 +281,14 @@ Implementation note:
 - This should be integrated into the current prototype rather than rebuilt from scratch, because the existing OR-Tools route builder, custom scheduler, fragment salvage outputs, and repair passes already provide the right extension points for split-duty resets, stronger reinsertion logic, and cooperative leftover merging.
 
 ## 6) Extensions (Phase 2+)
+<!-- SEARCH HOOK: EXTENSIONS -->
 - Light ML demand forecasting for better peak estimates.
 - Heuristic accelerators (GA, tabu search) for large-scale days.
 - GNN or attention models for route proposal only (not core optimization).
 - RL for disruption handling in real-time operations.
 
 ## Final Recommendation
+<!-- SEARCH HOOK: FINAL RECOMMENDATION -->
 Use a hybrid, constraint-first solution:
 
 Demand Estimation -> Peak Pressure Measurement -> Capacity-Aware Clustering

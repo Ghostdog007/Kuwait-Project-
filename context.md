@@ -2,7 +2,33 @@
 
 This document consolidates the current understanding of the Kuwait pilot employee transport problem, its data assets, and its operating constraints. It serves as the problem-definition companion to `Approaches/approach.md`.
 
+<!-- SEARCH HOOK: CONTEXT INDEX -->
+<!-- Fast jump labels in this file:
+CONTEXT INDEX
+PROBLEM SUMMARY
+CURRENT PILOT STATUS
+INPUTS MODEL
+OUTPUTS MODEL
+OPTIMIZATION PRIORITIES
+OBJECTIVE STRUCTURE
+KNOWN CONSTRAINTS
+DATA ASSETS
+ASSUMPTIONS
+PROTOTYPE SCOPE
+TRIP DESIGN
+FLEET HEURISTIC
+BEST VERSION ARCHITECTURE
+DUTY HANDOFF
+OVERTIME FOCUS
+SERVICEABILITY POLICY
+OPEN QUESTIONS
+NEXT STEP
+WORKING NOTES
+UPDATE CHECKLIST
+-->
+
 ## Problem Summary
+<!-- SEARCH HOOK: PROBLEM SUMMARY -->
 - Pilot scope only: employees live in accommodation and must be transported to and from pilot stores on fixed shift windows.
 - The system is schedule-driven (metro-like): buses run trips and employees are assigned to trips.
 - Trips may be `IN`, `OUT`, or `MIXED` when a bus drops inbound passengers and then opportunistically picks up shift-ended employees on the return path.
@@ -15,6 +41,7 @@ This document consolidates the current understanding of the Kuwait pilot employe
 - Best-version direction: reduce the independence between trip synthesis and scheduling by moving toward schedule-aware trip construction, jsprit-style ruin-and-recreate fragment repair, OR-Tools-based `MIXED` return-leg insertion, rolling-horizon assignment, and joint bottleneck-window repair.
 
 ## Current Pilot Status
+<!-- SEARCH HOOK: CURRENT PILOT STATUS -->
 - The current prototype is pilot-only and should be interpreted against pilot demand, pilot fleet, and pilot overtime baselines only.
 - The working fleet in the current prototype is 13 active buses unless the pilot scope is explicitly revised.
 - Current modeled overtime is about 16.5 total hours across the pilot week, against a target of 10 total hours.
@@ -22,6 +49,7 @@ This document consolidates the current understanding of the Kuwait pilot employe
 - Current unscheduled demand is no longer a broad week-long routing failure. The remaining gaps are mainly temporal conflicts (`duty_span_block`, `buffer_violation`) plus fragmented low-demand leftovers (`small_isolated_demand`) that need one more salvage-rebuild pass before being declared unserved.
 
 ## Inputs (Model)
+<!-- SEARCH HOOK: INPUTS MODEL -->
 From requirements and metadata:
 - Fixed depot: accommodation (single start/end point per trip).
 - Pilot store locations (geocoordinates) and store IDs.
@@ -32,6 +60,7 @@ From requirements and metadata:
 - Operational variables: driver availability; no traffic/festival modeling.
 
 ## Outputs (Model)
+<!-- SEARCH HOOK: OUTPUTS MODEL -->
 - Optimized pilot trip templates by time window and service direction.
 - Bus and driver schedules, including legal buffers and morning/evening rotation tagging.
 - Store- and wave-level service plans derived from employee shift demand.
@@ -39,6 +68,7 @@ From requirements and metadata:
 - KPI comparison covering overtime, service coverage, occupancy, deadhead, waiting time, and on-time compliance.
 
 ## Optimization Priorities
+<!-- SEARCH HOOK: OPTIMIZATION PRIORITIES -->
 - Primary objective: keep simultaneous active trips within the fixed 13-bus fleet limit.
 - Secondary objective: maximize feasible service coverage within that fleet and route every employee demand that can be served legally.
 - Tertiary objective: engineer legal driver rotations through morning/evening slot assignment and handovers so one bus can be reused without forcing one continuous all-day duty.
@@ -48,6 +78,7 @@ From requirements and metadata:
 - Practical interpretation: a fuller trip is only preferred if it does not materially worsen concurrency, duty spread, handover feasibility, overtime, coverage, or chaining feasibility.
 
 ## Objective Structure
+<!-- SEARCH HOOK: OBJECTIVE STRUCTURE -->
 - Hard constraints first: simultaneous fleet limit of 13 buses, seat capacity, trip start/end at accommodation, stop-level load feasibility, shift-time compatibility, trip-duration caps, and mandatory 30-45 minute buffer feasibility between chained trips.
 - Soft objective hierarchy in the current prototype should be coverage-first after the hard fleet cap: maximize feasible coverage/serviceability first, regularize duty spans and slot freshness second, minimize overtime third, improve occupancy fourth, and reduce deadhead and waiting fifth.
 - Modeling note: treat this as a lexicographic or strongly tiered penalty structure, not a loose weighted average that could trade fleet infeasibility, excessive duty spread, broken handovers, or overtime for fuller buses.
@@ -55,6 +86,7 @@ From requirements and metadata:
 - Best-practice interpretation: the strongest version of the pilot should not build trips first and schedule later in isolation; it should favor trips that are both route-feasible and likely to fit a real duty slot at the moment they are created.
 
 ## Known Constraints and Notes
+<!-- SEARCH HOOK: KNOWN CONSTRAINTS -->
 - Accommodation is the start/end anchor for the system.
 - Trips are sequences of store stops; routes are grouped by trip ID.
 - Overtime reported around 13 hours per driver in current system.
@@ -84,6 +116,7 @@ From requirements and metadata:
 - Current route logs should inspire feasible trip duration ranges, stop counts, and duty patterns, but they should not be treated as the trips the model must reproduce.
 
 ## Data Assets (Metadata Summaries)
+<!-- SEARCH HOOK: DATA ASSETS -->
 
 ### 1) Bus Routes (current)
 File: `Metadata/Bus_Routes_current_description.md`
@@ -111,6 +144,7 @@ File: `Metadata/Kuwait_Route_optimization_Overview.md`
 - Provides scale and context across datasets.
 
 ## Assumptions (Current)
+<!-- SEARCH HOOK: ASSUMPTIONS -->
 - Each row in trip datasets is a stop; trips are reconstructed by grouping on trip ID.
 - Employees belong to accommodation locations and stores; transportation demand is aggregated from those relationships rather than assigned from a prebuilt itinerary file.
 - Peak hours are derived from shift overlaps in the weekly schedule plus observed route activity.
@@ -121,6 +155,7 @@ File: `Metadata/Kuwait_Route_optimization_Overview.md`
 - Pilot scope uses only stores that have valid coordinates in `Geocoordinates.xlsx`; unmatched stores are ignored for routing and KPI generation.
 
 ## Prototype Scope
+<!-- SEARCH HOOK: PROTOTYPE SCOPE -->
 - Prototype inputs should be limited to `Employee Shift data.xlsx`, `Bus Routes curent.xlsx`, `Geocoordinates.xlsx`, and `Kuwait Route Optimization - Overview.xlsx`.
 - Weekly shift data is the source of store demand and time-window construction.
 - Current bus route logs are the source of baseline references, observed duty patterns, and overtime calibration.
@@ -135,6 +170,7 @@ File: `Metadata/Kuwait_Route_optimization_Overview.md`
 - This can still be implemented inside the current prototype structure because the route builder, scheduler, and repair passes are already separate enough to support stronger reinsertion logic without a full rewrite.
 
 ## Trip Design Approach
+<!-- SEARCH HOOK: TRIP DESIGN -->
 - Build demand from `Employee Shift data.xlsx` at the store-wave level: each shift start creates inbound demand and each shift end creates outbound demand.
 - Restrict routing to stores that pass the strict `Store Name` plus `Store ID` match between `Employee Shift data.xlsx` and `Geocoordinates.xlsx`.
 - Group routeable stores by geography; keep time compatibility visible through wave-level demand buckets rather than inherited route IDs.
@@ -157,6 +193,7 @@ File: `Metadata/Kuwait_Route_optimization_Overview.md`
 - Before a trip is finally marked unserved, the strongest near-term version should also pool tiny leftover stop fragments back into salvage demand and try one more denser rebuild pass.
 
 ## Fleet-Constrained Heuristic
+<!-- SEARCH HOOK: FLEET HEURISTIC -->
 - Current construction phase: use OR-Tools for base `IN` and `OUT` route construction inside time-compatible batches, then pass those routes into the custom scheduler.
 - Peak control phase: compute theoretical bus pressure in short time windows and use that pressure as a budget signal when choosing start times and whether to open another trip.
 - Rotation phase: treat the 13 physical buses as supporting separate morning and evening duty slots, with freshness checks controlling when a bus can be reused by a fresh evening duty.
@@ -167,6 +204,7 @@ File: `Metadata/Kuwait_Route_optimization_Overview.md`
 - Future extension: add a full destroy-and-repair / LNS stage for overloaded windows and unscheduled trips after the current greedy repair baseline is stable.
 
 ## Best-Version Architecture
+<!-- SEARCH HOOK: BEST VERSION ARCHITECTURE -->
 - The best practical version for this pilot is a schedule-aware rolling-horizon optimizer rather than a fully independent route-first pipeline.
 - In that version, each candidate trip is scored not only by route quality but also by expected scheduling cost, including peak-window pressure, buffer fit, duty-span impact, and handover compatibility.
 - Trip generation and bus assignment should proceed in time order so earlier accepted trips update the live fleet state before later trips are constructed.
@@ -177,6 +215,7 @@ File: `Metadata/Kuwait_Route_optimization_Overview.md`
 - This best-version direction keeps the pilot implementable while reducing the current independence between trip synthesis and downstream scheduling.
 
 ## Duty-Feasibility Handoff
+<!-- SEARCH HOOK: DUTY HANDOFF -->
 - Routing should output more than store sequences. Each generated trip should carry start time, end time, duration, slack, stop-level load profile, and compatibility markers for chaining into a legal bus/driver duty.
 - Trip generation should expose whether a trip can be followed by another trip while preserving the required 30-45 minute buffer.
 - `MIXED` trips should retain enough stop-level timing detail to verify that opportunistic pickups do not create infeasible downstream duties.
@@ -186,6 +225,7 @@ File: `Metadata/Kuwait_Route_optimization_Overview.md`
 - Scheduling should emit enough timing detail to explain why a trip was accepted, delayed, or blocked by buffer or freshness limits.
 
 ## Overtime Reduction Focus
+<!-- SEARCH HOOK: OVERTIME FOCUS -->
 - To move from roughly 16.5 total overtime hours toward the 10-hour pilot target, the next gains should come from first maximizing coverage under the hard 13-bus cap and then reducing `duty_span_block` and `buffer_violation` without dropping already-served demand, especially in the concentrated 05:00 and 18:00 bottleneck windows.
 - The highest-value pilot repairs are:
   - targeted start-time shifting within allowed tolerance for 05:00 and 18:00 trips,
@@ -196,6 +236,7 @@ File: `Metadata/Kuwait_Route_optimization_Overview.md`
 - Lower-priority pilot work includes general low-occupancy consolidation, because the current main overtime driver is temporal duty fit rather than average trip duration alone.
 
 ## Serviceability Policy
+<!-- SEARCH HOOK: SERVICEABILITY POLICY -->
 - Full employee coverage is the target, but the model should explicitly handle infeasible demand rather than assuming every request can always be served.
 - If demand cannot be assigned within hard timing, capacity, or duty constraints, the system should surface the exception clearly rather than hiding it inside an invalid route.
 - Allowed fallback actions should be explicit in implementation: create an extra trip if feasible, flag for manual review, or record the demand as unserved with a very large penalty for KPI reporting.
@@ -203,6 +244,7 @@ File: `Metadata/Kuwait_Route_optimization_Overview.md`
 - If full legal coverage is not achievable within 13 buses and the hard duty cap, the model should prove that by exhausting repair and reassignment options before reporting residual unserved demand.
 
 ## Open Questions / Gaps
+<!-- SEARCH HOOK: OPEN QUESTIONS -->
 - Confirm which week/brand tabs are in scope for modeling (pilot vs. full market).
 - Resolve data quality issues in itinerary timing and route logs.
 - Set the final compatibility tolerance for mixed pickups (for example, how many minutes after shift end a bus may wait or how much detour is acceptable).
@@ -211,6 +253,7 @@ File: `Metadata/Kuwait_Route_optimization_Overview.md`
 - Decide how much flexibility to preserve for demand near overlapping shift boundaries before assigning it to a fixed time wave.
 
 ## Next Step (Approach-Ready)
+<!-- SEARCH HOOK: NEXT STEP -->
 This section is aligned with `Approaches/approach.md` (Section 5: Recommended Starting Point).
 1. Normalize datasets into a unified schema (employees, stores, shifts, trips, overtime summaries).
 2. Build store- and wave-level demand from the weekly shift schedule, including split-shift handling where present.
@@ -228,6 +271,7 @@ This section is aligned with `Approaches/approach.md` (Section 5: Recommended St
 14. Evolve the prototype toward a rolling-horizon schedule-aware constructor so future trips are created with live knowledge of available buses, active duties, and bottleneck-window pressure.
 
 ## Working Notes
+<!-- SEARCH HOOK: WORKING NOTES -->
 - Visualize geocoordinates on a map to identify spatial clusters (e.g., south/central/north).
 - Use inter-cluster travel time as a key driver for route structuring.
 - Smart-routing target: allow opportunistic pickups on the return to accommodation if a shift-ended employee is near the bus path after inbound drops are completed.
@@ -239,6 +283,7 @@ This section is aligned with `Approaches/approach.md` (Section 5: Recommended St
 - Note: clustering alone is insufficient due to fixed bus capacity and scheduling constraints; geographic closeness without time compatibility can produce poor route groups.
 
 ## Update Checklist (with Smoke Tests)
+<!-- SEARCH HOOK: UPDATE CHECKLIST -->
 
 Use this when updating any metadata file or summary in this document. Run the smoke test before moving to the next checklist item.
 
