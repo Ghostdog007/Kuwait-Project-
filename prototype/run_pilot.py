@@ -35,6 +35,8 @@ SHORT_TRIP_BUFFER_MIN = 15
 MEDIUM_TRIP_BUFFER_MIN = 20
 SHORT_TRIP_THRESHOLD_MIN = 40
 MEDIUM_TRIP_THRESHOLD_MIN = 90
+SPLIT_DUTY_RESET_MIN = 180
+SPLIT_DUTY_RESET_START_HOUR = 12
 TARGET_DUTY_MIN = 9 * 60
 HARD_DUTY_SPAN_MIN = 10 * 60
 EVENING_SEED_HOUR = 14
@@ -42,6 +44,7 @@ MAX_STOPS_PER_TRIP = 6
 MAX_TRIP_DURATION_MIN = 300
 WAVE_BUCKET_MIN = 30
 SALVAGE_WAVE_BUCKET_MIN = 60
+COOP_MERGE_WAVE_BUCKET_MIN = 90
 PEAK_BIN_MIN = 15
 AVG_SPEED_KMPH = 38.0
 ROAD_FACTOR = 1.18
@@ -55,11 +58,19 @@ MIXED_MAX_ATTACH_MIN = 60
 MIXED_MAX_DETOUR_KM = 6.0
 MIXED_SKIP_PENALTY_PER_PASSENGER = 1000
 MIXED_MAX_EXTRA_STOPS = 5
+MIXED_HOST_CANDIDATES = 8
+FRAGMENT_HOST_CANDIDATES = 8
+COOP_MERGE_MAX_PASSENGERS = 6
+COOP_MERGE_MAX_STOPS = 3
 REPAIR_SHIFT_OPTIONS_OUT = [10, 20, 30, 40]
 REPAIR_SHIFT_OPTIONS_IN = [-15, 15, -30, 30]
 BOTTLENECK_HOURS = {5, 18}
 DONOR_SHIFT_OPTIONS = [-30, -20, -15, -10, 10, 15, 20, 30]
 OVERTIME_IMPROVEMENT_PASSES = 2
+
+# === SEARCH HOOK: CONSTANTS / TUNING KNOBS ===
+# Fast place to inspect or tune the fleet cap, buffer policy, split-duty reset rule,
+# mixed-trip tolerances, and repair limits.
 
 
 @dataclass(frozen=True)
@@ -78,6 +89,7 @@ class DutySlot:
     first_start: pd.Timestamp | None = None
     last_end: pd.Timestamp | None = None
     last_trip_duration_min: float | None = None
+    segment_id: int = 1
     trip_ids: list[str] | None = None
 
     def __post_init__(self) -> None:
@@ -501,6 +513,15 @@ def build_base_trips(demand: pd.DataFrame, depot: GeoPoint) -> pd.DataFrame:
 
 
 def solve_wave_routes_ortools(batch: pd.DataFrame, depot: GeoPoint) -> list[list[dict[str, object]]]:
+    # === SEARCH HOOK: ORTOOLS / BASE ROUTE SOLVER ===
+    # Purpose:
+    # Build route groupings inside one time-compatible demand batch.
+    # How:
+    # Treat each store-wave row as a customer node and let OR-Tools decide which
+    # stops belong together and in what order under capacity + duration limits.
+    # Example:
+    # Three 09:00 IN stores may come back as one route [B, A, C] instead of
+    # three separate single-stop trips.
     if batch.empty or not ORTOOLS_AVAILABLE:
         return []
     rows = batch.to_dict(orient="records")
@@ -551,7 +572,7 @@ def solve_wave_routes_ortools(batch: pd.DataFrame, depot: GeoPoint) -> list[list
     search_params = pywrapcp.DefaultRoutingSearchParameters()
     search_params.first_solution_strategy = routing_enums_pb2.FirstSolutionStrategy.PATH_CHEAPEST_ARC
     search_params.local_search_metaheuristic = routing_enums_pb2.LocalSearchMetaheuristic.GUIDED_LOCAL_SEARCH
-    search_params.time_limit.seconds = 2
+    search_params.time_limit.seconds = 1
     solution = routing.SolveWithParameters(search_params)
     if solution is None:
         return []
@@ -571,6 +592,12 @@ def solve_wave_routes_ortools(batch: pd.DataFrame, depot: GeoPoint) -> list[list
 
 
 def build_base_trips_ortools(demand: pd.DataFrame, depot: GeoPoint) -> pd.DataFrame:
+    # === SEARCH HOOK: BASE TRIP BUILD ===
+    # Purpose:
+    # Convert store-wave demand into the first pass of IN / OUT trips.
+    # How:
+    # Batch nearby wave demand, solve with OR-Tools, then convert each route into
+    # a trip record with route, timing, and load fields.
     if not ORTOOLS_AVAILABLE:
         return build_base_trips(demand, depot)
     trip_rows: list[dict[str, object]] = []
@@ -635,6 +662,13 @@ def build_trip_record(
     use_pressure: bool = True,
     preserve_order: bool = False,
 ) -> dict[str, object]:
+    # === SEARCH HOOK: TRIP RECORD / TIMING DERIVATION ===
+    # Purpose:
+    # Turn an ordered stop list into a schedulable trip object.
+    # How:
+    # Compute route distance + duration, then derive earliest/latest/planned start.
+    # Example:
+    # A 110-minute IN route for a 09:00 wave may get a planned start near 07:10.
     selected_points = [point_from_stop(row) for row in selected_rows]
     ordered_points = selected_points if preserve_order else nearest_neighbor_sequence(depot, selected_points)
     ordered_names = [point.store_name for point in ordered_points]
@@ -722,6 +756,15 @@ def solve_mixed_tail_ortools(
     remaining_capacity: int,
     max_tail_minutes: float,
 ) -> list[dict[str, object]]:
+    # === SEARCH HOOK: MIXED TAIL INSERTION ===
+    # Purpose:
+    # Decide which OUT pickups can be attached to the return leg of an IN trip.
+    # How:
+    # Start at the last inbound stop, add optional outbound nodes, and let OR-Tools
+    # choose a feasible subset under readiness, capacity, and tail-time constraints.
+    # Example:
+    # After dropping IN riders, the bus may pick up one or two nearby OUT stores
+    # on the way back instead of opening a new dedicated OUT trip.
     if not candidate_stops or not ORTOOLS_AVAILABLE or remaining_capacity <= 0 or max_tail_minutes <= 0:
         return []
     feasible_candidates: list[dict[str, object]] = []
@@ -809,6 +852,12 @@ def solve_mixed_tail_ortools(
 
 
 def build_mixed_candidates(base_trips: pd.DataFrame, depot: GeoPoint) -> pd.DataFrame:
+    # === SEARCH HOOK: MIXED CONVERSION PASS ===
+    # Purpose:
+    # Upgrade strong base IN trips into MIXED trips when return-leg pickups fit.
+    # How:
+    # Scan candidate OUT stops near each IN return path, run local tail insertion,
+    # then shrink or remove the original OUT trip if its demand was absorbed.
     if base_trips.empty:
         return base_trips
     trips_by_id: dict[str, dict[str, object]] = {
@@ -983,13 +1032,35 @@ def slot_preference(trip_type: str, start_dt: pd.Timestamp) -> list[str]:
     return ["morning", "evening"]
 
 
+def can_split_reset(slot: DutySlot, candidate_start: pd.Timestamp) -> bool:
+    # === SEARCH HOOK: SPLIT DUTY RESET RULE ===
+    # Purpose:
+    # Decide whether a long midday gap is large enough to start a fresh duty segment.
+    # Example:
+    # If morning work ends at 09:00 and the next trip starts at 13:30, this can
+    # prevent the scheduler from counting one long continuous duty span.
+    if slot.available_after is None:
+        return False
+    gap_min = (candidate_start - slot.available_after).total_seconds() / 60.0
+    return gap_min >= SPLIT_DUTY_RESET_MIN and candidate_start.hour >= SPLIT_DUTY_RESET_START_HOUR
+
+
 def slot_is_feasible(
     slot: DutySlot,
     trip: pd.Series,
     day_assignments: pd.DataFrame,
     desired_start: pd.Timestamp,
     latest_extension_min: int = 0,
-) -> tuple[bool, pd.Timestamp | None, float, str | None]:
+) -> tuple[bool, pd.Timestamp | None, float, str | None, bool]:
+    # === SEARCH HOOK: SLOT FEASIBILITY CHECK ===
+    # Purpose:
+    # Check whether one trip can fit on one bus slot.
+    # How:
+    # Enforce earliest/latest timing, dynamic buffer, physical overlap, and duty span.
+    # It also reports whether the trip qualifies for a split-duty reset.
+    # Example:
+    # A trip may fail on "buffer_violation" or pass because a long midday break
+    # resets the effective duty segment.
     earliest = pd.Timestamp(trip["earliest_start_dt"])
     latest = pd.Timestamp(trip["latest_start_dt"]) + timedelta(minutes=latest_extension_min)
     if slot.slot_type == "evening":
@@ -1001,19 +1072,23 @@ def slot_is_feasible(
         candidate_start = max(candidate_start, slot.available_after + timedelta(minutes=buffer_needed))
     if candidate_start > latest:
         if slot.available_after is not None and slot.available_after + timedelta(minutes=buffer_needed) > latest:
-            return False, None, 0.0, "buffer_violation"
-        return False, None, 0.0, "slot_exhausted"
+            return False, None, 0.0, "buffer_violation", False
+        return False, None, 0.0, "slot_exhausted", False
     candidate_end = candidate_start + timedelta(minutes=float(trip["trip_duration_min"]))
     projected_span = float(trip["trip_duration_min"])
+    split_reset = False
     if slot.first_start is not None:
-        projected_span = (candidate_end - slot.first_start).total_seconds() / 60.0
-        if projected_span > HARD_DUTY_SPAN_MIN:
-            return False, None, projected_span, "duty_span_block"
+        if can_split_reset(slot, candidate_start):
+            split_reset = True
+        else:
+            projected_span = (candidate_end - slot.first_start).total_seconds() / 60.0
+            if projected_span > HARD_DUTY_SPAN_MIN:
+                return False, None, projected_span, "duty_span_block", False
     if not day_assignments.empty and "bus_id" in day_assignments.columns:
         for row in day_assignments[day_assignments["bus_id"] == slot.bus_id].itertuples(index=False):
             if not (candidate_end <= pd.Timestamp(row.planned_start_dt) or candidate_start >= pd.Timestamp(row.planned_end_dt)):
-                return False, None, projected_span, "slot_exhausted"
-    return True, candidate_start, projected_span, None
+                return False, None, projected_span, "slot_exhausted", False
+    return True, candidate_start, projected_span, None, split_reset
 
 
 def is_small_isolated_trip(trip: pd.Series) -> bool:
@@ -1046,7 +1121,13 @@ def choose_slot_assignment(
     assignment_rows: list[dict[str, object]],
     repair_mode: bool = False,
     objective: str = "coverage",
-) -> tuple[tuple[str, int, str], pd.Timestamp, bool] | None:
+) -> tuple[tuple[str, int, str], pd.Timestamp, bool, bool] | None:
+    # === SEARCH HOOK: SLOT CHOICE / ASSIGNMENT SCORING ===
+    # Purpose:
+    # Pick the best legal bus slot for a trip.
+    # How:
+    # Test both rotation slots, all buses, and optional repair shifts, then score
+    # the feasible choices for coverage or overtime.
     service_day = str(trip["service_date"])
     day_assignments = pd.DataFrame(assignment_rows)
     if not day_assignments.empty:
@@ -1055,8 +1136,8 @@ def choose_slot_assignment(
     if repair_mode:
         deltas = REPAIR_SHIFT_OPTIONS_OUT if trip["trip_type"] == "OUT" else REPAIR_SHIFT_OPTIONS_IN
         deltas = [0] + deltas
-    best_choice: tuple[tuple[str, int, str], pd.Timestamp, bool] | None = None
-    best_score: tuple[float, float, float, int, str] | None = None
+    best_choice: tuple[tuple[str, int, str], pd.Timestamp, bool, bool] | None = None
+    best_score: tuple[float, float, float, float, int, str] | None = None
     preferred_slots = slot_preference(str(trip["trip_type"]), pd.Timestamp(trip["planned_start_dt"]))
     for slot_type in ("morning", "evening"):
         slot_penalty = 0 if slot_type == preferred_slots[0] else 5
@@ -1066,24 +1147,25 @@ def choose_slot_assignment(
             for delta in deltas:
                 desired_start = pd.Timestamp(trip["planned_start_dt"]) + timedelta(minutes=delta)
                 latest_extension = max(0, delta)
-                ok, start_dt, projected_span = slot_is_feasible(
+                ok, start_dt, projected_span, _, split_reset = slot_is_feasible(
                     slot,
                     trip,
                     day_assignments,
                     desired_start=desired_start,
                     latest_extension_min=latest_extension,
-                )[:3]
+                )
                 if not ok or start_dt is None:
                     continue
                 delay = abs((start_dt - pd.Timestamp(trip["planned_start_dt"])).total_seconds()) / 60.0
                 overtime_risk = max(0.0, projected_span - TARGET_DUTY_MIN)
+                split_penalty = 0.0 if split_reset else 1.0
                 if objective == "overtime":
-                    score = (slot_penalty + overtime_risk, delay, projected_span, bus_id, slot_type)
+                    score = (slot_penalty + overtime_risk, split_penalty, delay, projected_span, bus_id, slot_type)
                 else:
-                    score = (slot_penalty, delay, projected_span, bus_id, slot_type)
+                    score = (slot_penalty, split_penalty, delay, projected_span, bus_id, slot_type)
                 if best_score is None or score < best_score:
                     best_score = score
-                    best_choice = (slot_key, start_dt, delta != 0)
+                    best_choice = (slot_key, start_dt, delta != 0, split_reset)
     return best_choice
 
 
@@ -1109,7 +1191,7 @@ def collect_rejection_reasons(
             for delta in deltas:
                 desired_start = pd.Timestamp(trip["planned_start_dt"]) + timedelta(minutes=delta)
                 latest_extension = max(0, delta)
-                ok, start_dt, projected_span, reason = slot_is_feasible(
+                ok, start_dt, projected_span, reason, _ = slot_is_feasible(
                     slot,
                     trip,
                     day_assignments,
@@ -1133,14 +1215,24 @@ def apply_assignment(
     slot_key: tuple[str, int, str],
     start_dt: pd.Timestamp,
     rescued: bool,
+    split_reset: bool,
     slots: dict[tuple[str, int, str], DutySlot],
     scheduled_rows: list[dict[str, object]],
     assignment_rows: list[dict[str, object]],
 ) -> None:
+    # === SEARCH HOOK: APPLY ASSIGNMENT / MUTATE SLOT STATE ===
+    # Purpose:
+    # Commit one chosen assignment into both live slot state and output rows.
+    # How:
+    # Update bus availability, remember last trip duration for future buffers,
+    # and open a new duty segment when split_reset=True.
     service_day, bus_id, slot_type = slot_key
     end_dt = pd.Timestamp(start_dt) + timedelta(minutes=float(trip["trip_duration_min"]))
     slot = slots[slot_key]
     if slot.first_start is None:
+        slot.first_start = pd.Timestamp(start_dt)
+    elif split_reset:
+        slot.segment_id += 1
         slot.first_start = pd.Timestamp(start_dt)
     slot.available_after = end_dt
     slot.last_end = end_dt
@@ -1152,6 +1244,8 @@ def apply_assignment(
     trip_dict["planned_end_dt"] = end_dt
     trip_dict["rescued_by_delay"] = rescued
     trip_dict["rotation_tag"] = slot_type
+    trip_dict["duty_segment"] = int(slot.segment_id)
+    trip_dict["split_reset_flag"] = bool(split_reset)
     scheduled_rows.append(trip_dict)
     assignment_rows.append(
         {
@@ -1166,6 +1260,8 @@ def apply_assignment(
             "occupancy_pct": float(trip["occupancy_pct"]),
             "assigned_passengers": int(trip["assigned_passengers"]),
             "rescued_by_delay": rescued,
+            "duty_segment": int(slot.segment_id),
+            "split_reset_flag": bool(split_reset),
             "handover_flag": slot_type == "evening",
         }
     )
@@ -1175,18 +1271,24 @@ def rebuild_slot_state(
     slots: dict[tuple[str, int, str], DutySlot],
     assignment_rows: list[dict[str, object]],
 ) -> None:
+    # === SEARCH HOOK: REBUILD SLOT STATE ===
+    # Purpose:
+    # Reconstruct all slot timing after removals, swaps, or repair attempts.
     for slot in slots.values():
         slot.available_after = None
         slot.first_start = None
         slot.last_end = None
         slot.last_trip_duration_min = None
+        slot.segment_id = 1
         slot.trip_ids = []
     for row in sorted(assignment_rows, key=lambda item: (item["service_date"], item["bus_id"], item["rotation_tag"], item["planned_start_dt"])):
         slot_key = (row["service_date"], row["bus_id"], row["rotation_tag"])
         slot = slots[slot_key]
         start_dt = pd.Timestamp(row["planned_start_dt"])
         end_dt = pd.Timestamp(row["planned_end_dt"])
-        if slot.first_start is None:
+        row_segment = int(row.get("duty_segment", slot.segment_id))
+        if slot.first_start is None or row_segment != slot.segment_id:
+            slot.segment_id = row_segment
             slot.first_start = start_dt
         slot.available_after = end_dt
         slot.last_end = end_dt
@@ -1201,6 +1303,9 @@ def try_donor_swap(
     scheduled_rows: list[dict[str, object]],
     trip_lookup: dict[str, pd.Series],
 ) -> bool:
+    # === SEARCH HOOK: DONOR SWAP REPAIR ===
+    # Purpose:
+    # Rescue a blocked bottleneck trip by moving a nearby scheduled donor trip.
     if not is_bottleneck_trip(trip):
         return False
     service_day = str(trip["service_date"])
@@ -1262,12 +1367,12 @@ def try_donor_swap(
             scheduled_rows.append(removed_schedule)
             rebuild_slot_state(slots, assignment_rows)
             continue
-        donor_slot_key, donor_start_dt, donor_rescued = donor_best
-        apply_assignment(donor_series, donor_slot_key, donor_start_dt, donor_rescued, slots, scheduled_rows, assignment_rows)
+        donor_slot_key, donor_start_dt, donor_rescued, donor_split_reset = donor_best
+        apply_assignment(donor_series, donor_slot_key, donor_start_dt, donor_rescued, donor_split_reset, slots, scheduled_rows, assignment_rows)
         blocked_best = choose_slot_assignment(trip, slots, assignment_rows, repair_mode=True, objective="coverage")
         if blocked_best is not None:
-            blocked_slot_key, blocked_start_dt, blocked_rescued = blocked_best
-            apply_assignment(trip, blocked_slot_key, blocked_start_dt, blocked_rescued, slots, scheduled_rows, assignment_rows)
+            blocked_slot_key, blocked_start_dt, blocked_rescued, blocked_split_reset = blocked_best
+            apply_assignment(trip, blocked_slot_key, blocked_start_dt, blocked_rescued, blocked_split_reset, slots, scheduled_rows, assignment_rows)
             return True
         # revert donor move and restore original assignment
         assignment_rows[:] = [row for row in assignment_rows if str(row["trip_id"]) != str(donor["trip_id"])]
@@ -1275,6 +1380,172 @@ def try_donor_swap(
         assignment_rows.append(removed_assignment)
         scheduled_rows.append(removed_schedule)
         rebuild_slot_state(slots, assignment_rows)
+    return False
+
+
+def remove_trip_from_schedule(
+    trip_id: str,
+    scheduled_rows: list[dict[str, object]],
+    assignment_rows: list[dict[str, object]],
+) -> tuple[dict[str, object] | None, dict[str, object] | None]:
+    removed_schedule = None
+    removed_assignment = None
+    for idx, row in enumerate(scheduled_rows):
+        if str(row["trip_id"]) == str(trip_id):
+            removed_schedule = scheduled_rows.pop(idx)
+            break
+    for idx, row in enumerate(assignment_rows):
+        if str(row["trip_id"]) == str(trip_id):
+            removed_assignment = assignment_rows.pop(idx)
+            break
+    return removed_schedule, removed_assignment
+
+
+def restore_trip_to_schedule(
+    removed_schedule: dict[str, object] | None,
+    removed_assignment: dict[str, object] | None,
+    scheduled_rows: list[dict[str, object]],
+    assignment_rows: list[dict[str, object]],
+    slots: dict[tuple[str, int, str], DutySlot],
+) -> None:
+    if removed_schedule is not None:
+        scheduled_rows.append(removed_schedule)
+    if removed_assignment is not None:
+        assignment_rows.append(removed_assignment)
+    rebuild_slot_state(slots, assignment_rows)
+
+
+def try_fragment_reinsertion(
+    trip: pd.Series,
+    slots: dict[tuple[str, int, str], DutySlot],
+    scheduled_rows: list[dict[str, object]],
+    assignment_rows: list[dict[str, object]],
+    depot: GeoPoint,
+) -> bool:
+    # === SEARCH HOOK: FRAGMENT REINSERTION ===
+    # Purpose:
+    # Absorb a very small failed trip into an already scheduled trip of the same type.
+    # Example:
+    # A 2-stop OUT fragment with 3 passengers can be folded into a larger OUT trip.
+    if int(trip["assigned_passengers"]) > 4 or int(trip["stop_count"]) > 2:
+        return False
+    trip_start = pd.Timestamp(trip["planned_start_dt"])
+    candidates = sorted(
+        [
+            row for row in scheduled_rows
+            if str(row["service_date"]) == str(trip["service_date"])
+            and str(row["trip_type"]) == str(trip["trip_type"])
+            and str(row["trip_id"]) != str(trip["trip_id"])
+            and abs((pd.Timestamp(row["planned_start_dt"]) - trip_start).total_seconds()) / 60.0 <= 90
+        ],
+        key=lambda row: (
+            abs((pd.Timestamp(row["planned_start_dt"]) - trip_start).total_seconds()) / 60.0,
+            -int(row["assigned_passengers"]),
+            int(row["stop_count"]),
+        ),
+    )
+    trip_stops = decode_stop_data(trip.get("stop_data_json", ""))
+    if not trip_stops:
+        return False
+    for host in candidates[:FRAGMENT_HOST_CANDIDATES]:
+        host_stops = decode_stop_data(host.get("stop_data_json", ""))
+        if not host_stops:
+            continue
+        combined_stops = host_stops + trip_stops
+        merged_trip = build_trip_record(
+            combined_stops,
+            str(host["trip_type"]),
+            depot,
+            trip_id=str(host["trip_id"]),
+            activity_counts=None,
+            use_pressure=False,
+            preserve_order=False,
+        )
+        if int(merged_trip["peak_load"]) > BUS_CAPACITY:
+            continue
+        removed_schedule, removed_assignment = remove_trip_from_schedule(str(host["trip_id"]), scheduled_rows, assignment_rows)
+        rebuild_slot_state(slots, assignment_rows)
+        best_choice = choose_slot_assignment(pd.Series(merged_trip), slots, assignment_rows, repair_mode=True, objective="coverage")
+        if best_choice is None:
+            restore_trip_to_schedule(removed_schedule, removed_assignment, scheduled_rows, assignment_rows, slots)
+            continue
+        slot_key, start_dt, rescued, split_reset = best_choice
+        apply_assignment(pd.Series(merged_trip), slot_key, start_dt, rescued, split_reset, slots, scheduled_rows, assignment_rows)
+        return True
+    return False
+
+
+def try_stronger_mixed_recovery(
+    trip: pd.Series,
+    slots: dict[tuple[str, int, str], DutySlot],
+    scheduled_rows: list[dict[str, object]],
+    assignment_rows: list[dict[str, object]],
+    depot: GeoPoint,
+) -> bool:
+    # === SEARCH HOOK: STRONGER MIXED RECOVERY ===
+    # Purpose:
+    # Recover a blocked OUT trip by attaching it to a scheduled IN return leg.
+    if str(trip["trip_type"]) != "OUT":
+        return False
+    out_stops = decode_stop_data(trip.get("stop_data_json", ""))
+    if not out_stops:
+        return False
+    trip_start = pd.Timestamp(trip["planned_start_dt"])
+    host_candidates = sorted(
+        [
+            row for row in scheduled_rows
+            if str(row["service_date"]) == str(trip["service_date"])
+            and str(row["trip_type"]) == "IN"
+        ],
+        key=lambda row: (
+            abs((pd.Timestamp(row["planned_end_dt"]) - trip_start).total_seconds()) / 60.0,
+            -int(row["assigned_passengers"]),
+        ),
+    )
+    for host in host_candidates[:MIXED_HOST_CANDIDATES]:
+        in_stops = decode_stop_data(host.get("stop_data_json", ""))
+        if not in_stops:
+            continue
+        in_points = [point_from_stop(stop) for stop in in_stops]
+        host_end = pd.Timestamp(host["planned_end_dt"])
+        selected_out_stops = solve_mixed_tail_ortools(
+            last_in=in_points[-1],
+            in_end=host_end,
+            candidate_stops=out_stops,
+            depot=depot,
+            remaining_capacity=BUS_CAPACITY,
+            max_tail_minutes=MAX_TRIP_DURATION_MIN - float(host["trip_duration_min"]),
+        )
+        if len(selected_out_stops) != len(out_stops):
+            continue
+        combined_points = in_points + [point_from_stop(stop) for stop in selected_out_stops]
+        distance, duration = route_metrics_ordered(depot, combined_points)
+        if duration > MAX_TRIP_DURATION_MIN:
+            continue
+        mixed_trip = dict(host)
+        mixed_trip["trip_type"] = "MIXED"
+        mixed_trip["direction"] = "MIXED"
+        mixed_trip["trip_duration_min"] = round(float(duration), 2)
+        mixed_trip["route_distance_km"] = round(float(distance), 3)
+        mixed_trip["stop_count"] = len(combined_points)
+        mixed_trip["assigned_passengers"] = int(host["assigned_passengers"]) + int(trip["assigned_passengers"])
+        mixed_trip["peak_load"] = max(int(host["peak_load"]), int(trip["assigned_passengers"]))
+        mixed_trip["occupancy_pct"] = round((float(mixed_trip["peak_load"]) / BUS_CAPACITY) * 100, 2)
+        mixed_trip["store_sequence"] = " -> ".join(point.store_name for point in combined_points)
+        mixed_trip["store_passenger_plan"] = (
+            f"{host['store_passenger_plan']} || RETURN || "
+            + " | ".join(f"{stop['store_name']} ({int(stop['allocated_passengers'])})" for stop in out_stops)
+        )
+        mixed_trip["stop_data_json"] = json.dumps(in_stops + out_stops, default=str)
+        removed_schedule, removed_assignment = remove_trip_from_schedule(str(host["trip_id"]), scheduled_rows, assignment_rows)
+        rebuild_slot_state(slots, assignment_rows)
+        best_choice = choose_slot_assignment(pd.Series(mixed_trip), slots, assignment_rows, repair_mode=True, objective="coverage")
+        if best_choice is None:
+            restore_trip_to_schedule(removed_schedule, removed_assignment, scheduled_rows, assignment_rows, slots)
+            continue
+        slot_key, start_dt, rescued, split_reset = best_choice
+        apply_assignment(pd.Series(mixed_trip), slot_key, start_dt, rescued, split_reset, slots, scheduled_rows, assignment_rows)
+        return True
     return False
 
 
@@ -1287,7 +1558,7 @@ def total_overtime_from_rows(assignment_rows: list[dict[str, object]]) -> float:
     return float(duties["overtime_min"].sum())
 
 
-def overtime_duty_keys(assignment_rows: list[dict[str, object]]) -> set[tuple[str, int, str]]:
+def overtime_duty_keys(assignment_rows: list[dict[str, object]]) -> set[tuple[str, int, str, int]]:
     if not assignment_rows:
         return set()
     duties = build_duties(pd.DataFrame(assignment_rows))
@@ -1295,7 +1566,7 @@ def overtime_duty_keys(assignment_rows: list[dict[str, object]]) -> set[tuple[st
         return set()
     overtime = duties[duties["overtime_min"] > 0]
     return {
-        (str(row["service_date"]), int(row["bus_id"]), str(row["rotation_tag"]))
+        (str(row["service_date"]), int(row["bus_id"]), str(row["rotation_tag"]), int(row.get("duty_segment", 1)))
         for _, row in overtime.iterrows()
     }
 
@@ -1305,6 +1576,12 @@ def improve_overtime_without_losing_coverage(
     scheduled_rows: list[dict[str, object]],
     assignment_rows: list[dict[str, object]],
 ) -> None:
+    # === SEARCH HOOK: OVERTIME CLEANUP PASS ===
+    # Purpose:
+    # Reduce overtime after coverage has already been secured.
+    # How:
+    # Remove a trip from an overtime-heavy duty, try to re-place it elsewhere,
+    # and keep the move only if total overtime drops without losing service.
     current_total = total_overtime_from_rows(assignment_rows)
     if current_total <= 0:
         return
@@ -1316,7 +1593,7 @@ def improve_overtime_without_losing_coverage(
         candidate_assignments = sorted(
             [
                 row for row in assignment_rows
-                if (str(row["service_date"]), int(row["bus_id"]), str(row["rotation_tag"])) in hot_keys
+                if (str(row["service_date"]), int(row["bus_id"]), str(row["rotation_tag"]), int(row.get("duty_segment", 1))) in hot_keys
             ],
             key=lambda row: (
                 -float(row["trip_duration_min"]),
@@ -1345,7 +1622,7 @@ def improve_overtime_without_losing_coverage(
                 scheduled_rows.append(original_schedule)
                 rebuild_slot_state(slots, assignment_rows)
                 continue
-            slot_key, start_dt, rescued = best_choice
+            slot_key, start_dt, rescued, split_reset = best_choice
             same_slot = (
                 int(original_assignment["bus_id"]) == int(slot_key[1])
                 and str(original_assignment["rotation_tag"]) == str(slot_key[2])
@@ -1356,7 +1633,7 @@ def improve_overtime_without_losing_coverage(
                 scheduled_rows.append(original_schedule)
                 rebuild_slot_state(slots, assignment_rows)
                 continue
-            apply_assignment(trip_series, slot_key, start_dt, rescued, slots, scheduled_rows, assignment_rows)
+            apply_assignment(trip_series, slot_key, start_dt, rescued, split_reset, slots, scheduled_rows, assignment_rows)
             new_total = total_overtime_from_rows(assignment_rows)
             if new_total + 1e-6 < current_total:
                 current_total = new_total
@@ -1371,7 +1648,13 @@ def improve_overtime_without_losing_coverage(
             break
 
 
-def schedule_with_rotation_reset(base_trips: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+def schedule_with_rotation_reset(base_trips: pd.DataFrame, depot: GeoPoint) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    # === SEARCH HOOK: MAIN SCHEDULER / COVERAGE FIRST ===
+    # Flow:
+    # 1. First-pass assignment of the base trip set.
+    # 2. Retry blocked trips with repair shifts.
+    # 3. Donor swap / fragment reinsertion / stronger mixed recovery.
+    # 4. Overtime cleanup without dropping covered demand.
     trips = base_trips.copy().sort_values(
         ["planned_start_dt", "assigned_passengers", "peak_load", "trip_id"],
         ascending=[True, False, False, True],
@@ -1389,8 +1672,8 @@ def schedule_with_rotation_reset(base_trips: pd.DataFrame) -> tuple[pd.DataFrame
             unscheduled_trips.append(trip)
             continue
 
-        slot_key, start_dt, rescued = best_choice
-        apply_assignment(trip, slot_key, start_dt, rescued, slots, scheduled_rows, assignment_rows)
+        slot_key, start_dt, rescued, split_reset = best_choice
+        apply_assignment(trip, slot_key, start_dt, rescued, split_reset, slots, scheduled_rows, assignment_rows)
 
     final_unscheduled_rows: list[dict[str, object]] = []
     for trip in unscheduled_trips:
@@ -1398,6 +1681,12 @@ def schedule_with_rotation_reset(base_trips: pd.DataFrame) -> tuple[pd.DataFrame
         if best_choice is None:
             swapped = try_donor_swap(trip, slots, assignment_rows, scheduled_rows, trip_lookup)
             if swapped:
+                continue
+            reinserted = try_fragment_reinsertion(trip, slots, scheduled_rows, assignment_rows, depot)
+            if reinserted:
+                continue
+            mixed_recovered = try_stronger_mixed_recovery(trip, slots, scheduled_rows, assignment_rows, depot)
+            if mixed_recovered:
                 continue
             best_choice = choose_slot_assignment(trip, slots, assignment_rows, repair_mode=True, objective="coverage")
         if best_choice is None:
@@ -1417,8 +1706,8 @@ def schedule_with_rotation_reset(base_trips: pd.DataFrame) -> tuple[pd.DataFrame
                 }
             )
             continue
-        slot_key, start_dt, rescued = best_choice
-        apply_assignment(trip, slot_key, start_dt, rescued, slots, scheduled_rows, assignment_rows)
+        slot_key, start_dt, rescued, split_reset = best_choice
+        apply_assignment(trip, slot_key, start_dt, rescued, split_reset, slots, scheduled_rows, assignment_rows)
 
     improve_overtime_without_losing_coverage(slots, scheduled_rows, assignment_rows)
 
@@ -1435,6 +1724,11 @@ def build_and_schedule_integrated(
     initial_assignments: pd.DataFrame | None = None,
     trip_prefix: str = "INT",
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    # === SEARCH HOOK: REPAIR BUILD-AND-SCHEDULE LOOP ===
+    # Purpose:
+    # Build a new trip set only for leftover repair demand, then schedule it immediately.
+    # Example:
+    # Salvage, cooperative-merge, or bottleneck demand becomes SLV_ / MRG_ / REP_ trips here.
     demand = demand.sort_values(["wave_dt", "direction", "store_name"]).reset_index(drop=True).copy()
     demand["remaining"] = demand["employees"]
     initial_assignments_df = None if initial_assignments is None else initial_assignments
@@ -1581,8 +1875,8 @@ def build_and_schedule_integrated(
                     & (demand["store_id"] == int(stop["store_id"]))
                 )
                 demand.loc[stop_mask, "remaining"] = demand.loc[stop_mask, "remaining"] - int(stop["allocated_passengers"])
-            slot_key, start_dt, rescued = best_assignment
-            apply_assignment(pd.Series(best_trip), slot_key, start_dt, rescued, slots, scheduled_rows, assignment_rows)
+            slot_key, start_dt, rescued, split_reset = best_assignment
+            apply_assignment(pd.Series(best_trip), slot_key, start_dt, rescued, split_reset, slots, scheduled_rows, assignment_rows)
             add_trip_to_activity(pd.Timestamp(start_dt), pd.Timestamp(start_dt) + timedelta(minutes=float(best_trip["trip_duration_min"])), activity_counts)
             trip_counter += 1
 
@@ -1594,6 +1888,10 @@ def build_and_schedule_integrated(
 
 
 def add_mixed_labels(scheduled: pd.DataFrame, assignments: pd.DataFrame) -> pd.DataFrame:
+    # === SEARCH HOOK: MIXED LABEL CLEANUP ===
+    # Purpose:
+    # Add a lighter MIXED label when an IN trip is immediately followed by a short-gap OUT trip
+    # on the same bus, even if no full mixed reconstruction happened earlier.
     if scheduled.empty or assignments.empty:
         return scheduled
     updated = scheduled.copy()
@@ -1609,11 +1907,22 @@ def add_mixed_labels(scheduled: pd.DataFrame, assignments: pd.DataFrame) -> pd.D
 
 
 def build_duties(assignments: pd.DataFrame) -> pd.DataFrame:
+    # === SEARCH HOOK: DUTY METRICS / OVERTIME BASIS ===
+    # Purpose:
+    # Convert trip assignments into duty blocks used for overtime and legality KPIs.
+    # Important:
+    # After split-duty reset, one physical bus can contribute multiple duty segments in one day.
     if assignments.empty:
         return pd.DataFrame()
     duty_rows: list[dict[str, object]] = []
     duty_counter = 1
-    for (service_day, bus_id, rotation_tag), group in assignments.groupby(["service_date", "bus_id", "rotation_tag"], dropna=False):
+    group_cols = ["service_date", "bus_id", "rotation_tag", "duty_segment"] if "duty_segment" in assignments.columns else ["service_date", "bus_id", "rotation_tag"]
+    for group_key, group in assignments.groupby(group_cols, dropna=False):
+        if len(group_cols) == 4:
+            service_day, bus_id, rotation_tag, duty_segment = group_key
+        else:
+            service_day, bus_id, rotation_tag = group_key
+            duty_segment = 1
         group = group.sort_values("planned_start_dt")
         first_start = pd.Timestamp(group["planned_start_dt"].min())
         last_end = pd.Timestamp(group["planned_end_dt"].max())
@@ -1623,6 +1932,7 @@ def build_duties(assignments: pd.DataFrame) -> pd.DataFrame:
                 "bus_id": bus_id,
                 "service_date": service_day,
                 "rotation_tag": rotation_tag,
+                "duty_segment": int(duty_segment),
                 "first_trip_start_dt": first_start,
                 "last_trip_end_dt": last_end,
                 "trip_count": int(len(group)),
@@ -1630,6 +1940,7 @@ def build_duties(assignments: pd.DataFrame) -> pd.DataFrame:
                 "avg_occupancy_pct": float(group["occupancy_pct"].mean()),
                 "rescued_trip_count": int(group["rescued_by_delay"].sum()),
                 "handover_trip_count": int(group["handover_flag"].sum()),
+                "split_reset_trip_count": int(group["split_reset_flag"].sum()) if "split_reset_flag" in group.columns else 0,
             }
         )
         duty_counter += 1
@@ -1700,6 +2011,9 @@ def summarize_unscheduled_reasons(unscheduled: pd.DataFrame) -> pd.DataFrame:
 
 
 def build_bottleneck_repair_demand(base_trips: pd.DataFrame, unscheduled: pd.DataFrame) -> pd.DataFrame:
+    # === SEARCH HOOK: BOTTLENECK REPAIR DEMAND ===
+    # Purpose:
+    # Extract leftover stops from the known hard windows (05:00 and 18:00) for a focused retry pass.
     if base_trips.empty or unscheduled.empty:
         return pd.DataFrame()
     merged = unscheduled.merge(
@@ -1745,6 +2059,9 @@ def build_bottleneck_repair_demand(base_trips: pd.DataFrame, unscheduled: pd.Dat
 
 
 def build_small_fragment_repair_demand(base_trips: pd.DataFrame, unscheduled: pd.DataFrame) -> pd.DataFrame:
+    # === SEARCH HOOK: SMALL FRAGMENT SALVAGE DEMAND ===
+    # Purpose:
+    # Pool tiny failed trips into broader salvage buckets before final rejection.
     if base_trips.empty or unscheduled.empty or "rejection_reason" not in unscheduled.columns:
         return pd.DataFrame()
     fragment_unscheduled = unscheduled[
@@ -1779,6 +2096,61 @@ def build_small_fragment_repair_demand(base_trips: pd.DataFrame, unscheduled: pd
                     "latitude": float(stop["latitude"]),
                     "longitude": float(stop["longitude"]),
                     "cluster_id": stop.get("cluster_id"),
+                    "employees": int(stop["allocated_passengers"]),
+                    "wave_label": wave_dt.strftime("%Y-%m-%d %H:%M"),
+                }
+            )
+    if not rows:
+        return pd.DataFrame()
+    repair = pd.DataFrame(rows)
+    repair = (
+        repair.groupby(
+            ["event_date", "direction", "wave_dt", "store_id", "store_name", "latitude", "longitude", "cluster_id", "wave_label"],
+            dropna=False,
+        )["employees"]
+        .sum()
+        .reset_index()
+    )
+    return repair.sort_values(["wave_dt", "direction", "store_name"]).reset_index(drop=True)
+
+
+def build_cooperative_merge_repair_demand(base_trips: pd.DataFrame, unscheduled: pd.DataFrame) -> pd.DataFrame:
+    # === SEARCH HOOK: COOPERATIVE MERGE DEMAND ===
+    # Purpose:
+    # Build a second, wider leftover pool aimed at merging multiple failed fragments together.
+    # Example:
+    # Three small failures across adjacent windows can become one merged retry opportunity.
+    if base_trips.empty or unscheduled.empty or "rejection_reason" not in unscheduled.columns:
+        return pd.DataFrame()
+    merge_unscheduled = unscheduled[
+        unscheduled["rejection_reason"].isin(["small_isolated_demand", "buffer_violation", "slot_exhausted"])
+        & (pd.to_numeric(unscheduled["assigned_passengers"], errors="coerce").fillna(0) <= COOP_MERGE_MAX_PASSENGERS)
+        & (pd.to_numeric(unscheduled["stop_count"], errors="coerce").fillna(99) <= COOP_MERGE_MAX_STOPS)
+    ].copy()
+    if merge_unscheduled.empty:
+        return pd.DataFrame()
+    merged = merge_unscheduled.merge(
+        base_trips[["trip_id", "trip_type", "stop_data_json"]],
+        on="trip_id",
+        how="left",
+    )
+    rows: list[dict[str, object]] = []
+    for _, row in merged.iterrows():
+        trip_type = row["trip_type_x"] if "trip_type_x" in row.index else row["trip_type"]
+        if trip_type not in {"IN", "OUT"} and "trip_type_y" in row.index:
+            trip_type = row["trip_type_y"]
+        for stop in decode_stop_data(row.get("stop_data_json", "")):
+            wave_dt = pd.Timestamp(stop["wave_dt"]).floor(f"{COOP_MERGE_WAVE_BUCKET_MIN}min")
+            rows.append(
+                {
+                    "event_date": wave_dt.date().isoformat(),
+                    "direction": trip_type if trip_type in {"IN", "OUT"} else row.get("direction", "OUT"),
+                    "wave_dt": wave_dt,
+                    "store_id": int(stop["store_id"]),
+                    "store_name": str(stop["store_name"]),
+                    "latitude": float(stop["latitude"]),
+                    "longitude": float(stop["longitude"]),
+                    "cluster_id": None,
                     "employees": int(stop["allocated_passengers"]),
                     "wave_label": wave_dt.strftime("%Y-%m-%d %H:%M"),
                 }
@@ -1841,6 +2213,7 @@ def build_kpis(
         ("max_concurrent_trips", max_concurrent),
         ("fleet_limit_breach_vs_13_buses", max(0, max_concurrent - BUS_COUNT)),
         ("duty_count", int(len(duties))),
+        ("split_duty_count", int((duties["duty_segment"] > 1).sum()) if not duties.empty and "duty_segment" in duties.columns else 0),
         ("duty_count_over_9h", int((duties["overtime_min"] > 0).sum()) if not duties.empty else 0),
         ("duty_count_over_10h", int(duties["over_10h_flag"].sum()) if not duties.empty else 0),
         ("avg_duty_span_min", round(float(duties["duty_span_min"].mean()), 2) if not duties.empty else 0.0),
@@ -1882,6 +2255,10 @@ def build_kpi_comparison(baseline_kpis: pd.DataFrame, integrated_kpis: pd.DataFr
 
 
 def main() -> None:
+    # === SEARCH HOOK: PIPELINE ENTRYPOINT ===
+    # End-to-end order:
+    # demand -> base OR-Tools trips -> mixed conversion -> main scheduling ->
+    # fragment salvage -> cooperative merge -> bottleneck repair -> KPI export.
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     overview = load_overview_metrics()
     geo_lookup = load_geocoordinates()
@@ -1895,7 +2272,7 @@ def main() -> None:
         raise RuntimeError(f"Depot '{DEPOT_NAME}' not found in geocoordinates.")
     baseline_trips = build_base_trips_ortools(demand, depot)
     baseline_trips = build_mixed_candidates(baseline_trips, depot)
-    baseline_scheduled, baseline_assignments, baseline_unscheduled = schedule_with_rotation_reset(baseline_trips)
+    baseline_scheduled, baseline_assignments, baseline_unscheduled = schedule_with_rotation_reset(baseline_trips, depot)
     baseline_scheduled = add_mixed_labels(baseline_scheduled, baseline_assignments)
     baseline_duties = build_duties(baseline_assignments)
 
@@ -1941,17 +2318,55 @@ def main() -> None:
         if not fragment_repair_unscheduled.empty:
             remaining_after_fragment = pd.concat([remaining_after_fragment, fragment_repair_unscheduled], ignore_index=True)
 
-    repair_demand = build_bottleneck_repair_demand(base_for_repair, remaining_after_fragment)
+    cooperative_merge_demand = build_cooperative_merge_repair_demand(base_for_repair, remaining_after_fragment)
+    cooperative_merge_trips = pd.DataFrame()
+    cooperative_merge_scheduled = fragment_repair_scheduled.copy()
+    cooperative_merge_assignments = fragment_repair_assignments.copy()
+    cooperative_merge_unscheduled = pd.DataFrame()
+    remaining_after_merge = remaining_after_fragment.copy()
+    if not cooperative_merge_demand.empty:
+        cooperative_merge_trips, cooperative_merge_scheduled, cooperative_merge_assignments, cooperative_merge_unscheduled = build_and_schedule_integrated(
+            cooperative_merge_demand,
+            depot,
+            initial_scheduled=fragment_repair_scheduled,
+            initial_assignments=fragment_repair_assignments,
+            trip_prefix="MRG",
+        )
+        if not cooperative_merge_trips.empty:
+            repaired_keys = {
+                (pd.Timestamp(stop["wave_dt"]).floor(f"{COOP_MERGE_WAVE_BUCKET_MIN}min"), int(stop["store_id"]), stop["store_name"], trip["trip_type"])
+                for _, trip in cooperative_merge_trips.iterrows()
+                for stop in decode_stop_data(trip.get("stop_data_json", ""))
+            }
+            keep_rows = []
+            for _, row in remaining_after_fragment.iterrows():
+                trip_match = base_for_repair[base_for_repair["trip_id"] == row["trip_id"]]
+                remove = False
+                if not trip_match.empty:
+                    trip_type = str(trip_match.iloc[0]["trip_type"])
+                    for stop in decode_stop_data(trip_match.iloc[0].get("stop_data_json", "")):
+                        key = (pd.Timestamp(stop["wave_dt"]).floor(f"{COOP_MERGE_WAVE_BUCKET_MIN}min"), int(stop["store_id"]), stop["store_name"], trip_type)
+                        if key in repaired_keys:
+                            remove = True
+                            break
+                if not remove:
+                    keep_rows.append(row.to_dict())
+            remaining_after_merge = pd.DataFrame(keep_rows)
+            base_for_repair = pd.concat([base_for_repair, cooperative_merge_trips], ignore_index=True)
+        if not cooperative_merge_unscheduled.empty:
+            remaining_after_merge = pd.concat([remaining_after_merge, cooperative_merge_unscheduled], ignore_index=True)
+
+    repair_demand = build_bottleneck_repair_demand(base_for_repair, remaining_after_merge)
     repair_trips = pd.DataFrame()
-    repair_scheduled = fragment_repair_scheduled.copy()
-    repair_assignments = fragment_repair_assignments.copy()
+    repair_scheduled = cooperative_merge_scheduled.copy()
+    repair_assignments = cooperative_merge_assignments.copy()
     repair_unscheduled = pd.DataFrame()
     if not repair_demand.empty:
         repair_trips, repair_scheduled, repair_assignments, repair_unscheduled = build_and_schedule_integrated(
             repair_demand,
             depot,
-            initial_scheduled=fragment_repair_scheduled,
-            initial_assignments=fragment_repair_assignments,
+            initial_scheduled=cooperative_merge_scheduled,
+            initial_assignments=cooperative_merge_assignments,
             trip_prefix="REP",
         )
 
@@ -1960,7 +2375,7 @@ def main() -> None:
     assignments = repair_assignments.copy()
     scheduled = add_mixed_labels(scheduled, assignments)
     duties = build_duties(assignments)
-    remaining_unscheduled = remaining_after_fragment.copy()
+    remaining_unscheduled = remaining_after_merge.copy()
     if not repair_demand.empty and not repair_trips.empty:
         repaired_keys = {
             (pd.Timestamp(stop["wave_dt"]), int(stop["store_id"]), stop["store_name"], trip["trip_type"])
@@ -1968,7 +2383,7 @@ def main() -> None:
             for stop in decode_stop_data(trip.get("stop_data_json", ""))
         }
         keep_rows = []
-        for _, row in remaining_after_fragment.iterrows():
+        for _, row in remaining_after_merge.iterrows():
             trip_match = base_for_repair[base_for_repair["trip_id"] == row["trip_id"]]
             remove = False
             if not trip_match.empty:
@@ -2003,6 +2418,8 @@ def main() -> None:
     hybrid_trip_parts = [baseline_trips]
     if not fragment_repair_trips.empty:
         hybrid_trip_parts.append(fragment_repair_trips)
+    if not cooperative_merge_trips.empty:
+        hybrid_trip_parts.append(cooperative_merge_trips)
     if not repair_trips.empty:
         hybrid_trip_parts.append(repair_trips)
     hybrid_trips = pd.concat(hybrid_trip_parts, ignore_index=True) if len(hybrid_trip_parts) > 1 else baseline_trips.copy()
@@ -2025,6 +2442,8 @@ def main() -> None:
     kpi_comparison.to_csv(OUTPUT_DIR / "kpi_comparison.csv", index=False)
     fragment_repair_demand.to_csv(OUTPUT_DIR / "small_fragment_repair_demand.csv", index=False)
     fragment_repair_trips.to_csv(OUTPUT_DIR / "small_fragment_repair_trips.csv", index=False)
+    cooperative_merge_demand.to_csv(OUTPUT_DIR / "cooperative_merge_repair_demand.csv", index=False)
+    cooperative_merge_trips.to_csv(OUTPUT_DIR / "cooperative_merge_repair_trips.csv", index=False)
     repair_demand.to_csv(OUTPUT_DIR / "bottleneck_repair_demand.csv", index=False)
     repair_trips.to_csv(OUTPUT_DIR / "bottleneck_repair_trips.csv", index=False)
     kpis.to_csv(OUTPUT_DIR / "kpi_summary.csv", index=False)

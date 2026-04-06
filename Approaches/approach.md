@@ -14,7 +14,7 @@ This document aligns with `context.md` and translates the pilot problem definiti
 ## 1.1) Current Pilot Focus
 - The current prototype is already strong on the top constraints: no fleet breach, no duties over 10 hours, and materially improved overtime versus the pilot baseline.
 - The main remaining gap is concentrated unscheduled demand in the 05:00 and 18:00 windows.
-- Current evidence shows the remaining drop-off is a mix of temporal conflicts and fragmented leftovers, so the next improvements should focus on temporal repair plus salvage rebuilding rather than broad route redesign.
+- Current evidence shows the remaining drop-off is a mix of temporal conflicts and fragmented leftovers, so the next improvements should focus on explicit split-duty resets for long midday breaks plus stronger reinsertion-based and cooperative salvage rebuilding rather than broad route redesign.
 - The deeper structural issue is that trip synthesis and trip scheduling are still too independent; the best next architecture reduces that separation by using scheduling feedback during trip construction while keeping OR-Tools as the baseline route engine.
 
 ## 2) Core Constraints (Hard or Near-Hard)
@@ -48,6 +48,7 @@ Why this hybrid works:
 - Coverage-first scheduling ensures the fleet is used to serve as much demand as possible before overtime becomes the dominant optimization target.
 - Coverage-preserving overtime improvement then cleans the covered solution without allowing the solver to gain a nicer duty profile by dropping hard-to-serve trips.
 - OR-Tools-assisted mixed insertion is the next missing bridge: it should test whether a scheduled inbound route can absorb nearby outbound demand on the return leg without breaking load, time, or duty feasibility.
+- Fragment pooling should become a proper coverage-recovery layer: leftover tiny stops should be regrouped and reinserted instead of only being retried once in narrow salvage form.
 - Bottleneck-window repair focuses effort on the real problem windows instead of disturbing the whole pilot week.
 - Service validation guarantees that store-wave demand is covered at the required timing level.
 - Simulation validates robustness without needing full traffic modeling.
@@ -122,6 +123,7 @@ Trip construction logic:
 - `OUT`: group compatible post-shift demand into store-to-accommodation trips.
 - `MIXED`: current prototype only tests simple `IN` plus nearby `OUT` pairings heuristically after base route construction.
 - Next target for `MIXED`: run a local OR-Tools-style return-leg insertion model that tries to insert outbound pickups into the tail of an already-constructed inbound trip, subject to employee readiness, detour, stop-level load, duration, and downstream duty feasibility.
+- Fragment repair target: move toward a jsprit-style ruin-and-recreate idea where failed small fragments are pooled, then reinserted into existing routes or denser salvage trips before final rejection.
 - each candidate trip should be screened against hard limits before duty chaining: seat capacity, trip-duration cap, stop count, timing feasibility, and whether opening the trip worsens peak fleet overlap.
 - if a candidate trip is locally feasible but would push active buses above 13, prefer a fuller compatible trip pattern or a slightly shifted start time during construction before letting scheduling absorb the conflict later
 - if two candidate trips are similar geographically, prefer the one that is more likely to fit a real bus slot without causing downstream buffer or duty-span blocks
@@ -132,7 +134,7 @@ Purpose: chain trips into daily bus duties with buffers while approximating fres
 Rules:
 - 30-45 minute buffer between trips
 - target 9 hours, penalize overtime beyond 9
-- approximate split shifts through separate `morning` and `evening` duty slots on each physical bus
+- approximate split shifts through separate `morning` and `evening` duty slots on each physical bus, then upgrade that approximation by allowing a long legal midday gap to reset a duty block inside the scheduler
 - prefer evening slots for late `OUT` work and trips starting after the evening seed hour
 - test both slot types around the boundary and choose the legal slot that gives the cleaner duty profile rather than relying on a rigid cutoff alone
 - before attaching a trip to a slot, test whether the resulting duty span would exceed the practical threshold; if so, reject that slot
@@ -154,6 +156,7 @@ Rules:
 - when multiple legal slot choices exist, prefer the choice that preserves schedulability and demand coverage before preferring the lowest overtime placement
 - process the trip set in a coverage-oriented order so higher-value trips are not crowded out by locally cleaner but lower-coverage assignments
 - keep blocked trips in a repair queue rather than treating them as final failures on first rejection
+- if a bus has a long enough legal midday gap, allow the next trip to start a fresh split-duty block instead of forcing one continuous duty span
 
 ### D.2) Coverage-Preserving Overtime Improvement Pass
 Purpose: improve duty quality after the covered trip set is frozen.
@@ -177,6 +180,7 @@ Future extension:
 - add slot-donor swaps and stronger `MIXED` recovery for blocked outbound trips in those windows
 - let that stronger mixed recovery reuse the OR-Tools route engine locally, instead of relying only on post-hoc heuristics
 - pool `small_isolated_demand` leftovers into a salvage-demand table and run one more integrated rebuild pass before final rejection
+- extend that salvage pass into a true reinsertion loop: regroup fragments, try insertion into existing trips, cooperatively merge nearby leftovers into denser retry trips, then build salvage trips only for what still cannot be absorbed
 
 ### E.1) Best-Version Bottleneck Repair
 Purpose: fix the remaining independence between trip creation and scheduling by letting the repair stage modify both trip timing and trip placement inside the true bottleneck windows.
@@ -226,11 +230,14 @@ Start with a deterministic prototype that can run with current data:
 8. Use peak-pressure signals to prefer wider trips and less congested legal start times before final scheduling.
 9. Run a coverage-first assignment pass into morning/evening bus slots with buffer rules, soft slot-boundary testing, and hard freshness checks.
 10. Use lightweight repair with small timing shifts and re-assignment attempts before classifying trips as uncovered demand.
-11. Pool `small_isolated_demand` leftovers into a salvage-demand table and run one more denser build-and-schedule pass before treating them as final uncovered demand.
+11. Pool `small_isolated_demand` leftovers into a salvage-demand table, cooperatively merge nearby leftovers into denser retry demand, and run one more build-and-schedule pass before treating them as final uncovered demand.
 12. Freeze the covered trip set, then run a coverage-preserving overtime improvement pass over those assigned trips.
 13. Inspect unscheduled-trip rejection causes and focus the next repair pass on the dominant pilot bottlenecks, especially 05:00 and 18:00.
 14. Evolve the prototype toward a rolling-horizon trip constructor so later trips are built with live knowledge of active duties, available buses, and likely bottleneck conflicts.
 15. Validate against shift timing, surface infeasible or unserved demand explicitly, and compare the designed schedule KPIs against the current route operation and overtime logs.
+
+Implementation note:
+- This should be integrated into the current prototype rather than rebuilt from scratch, because the existing OR-Tools route builder, custom scheduler, fragment salvage outputs, and repair passes already provide the right extension points for split-duty resets, stronger reinsertion logic, and cooperative leftover merging.
 
 ## 6) Extensions (Phase 2+)
 - Light ML demand forecasting for better peak estimates.

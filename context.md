@@ -11,8 +11,8 @@ This document consolidates the current understanding of the Kuwait pilot employe
 - Pain point: high driver overtime and idle/deadhead time.
 - Goal: build a constraint-first pilot optimization pipeline covering demand estimation, routing, duty construction, and passenger assignment.
 - Current prototype priority: keep the schedule within the 13-bus fleet, then maximize feasible service coverage within that hard fleet cap, then enforce driver freshness through morning/evening rotation slots, then reduce duty overtime without sacrificing served demand, then improve occupancy, then reduce deadhead and waiting where feasible.
-- Current improvement direction: keep OR-Tools as the baseline trip constructor, then reduce the remaining gap between trip synthesis and scheduling by making `MIXED` construction and bottleneck repair more schedule-aware.
-- Best-version direction: reduce the independence between trip synthesis and scheduling by moving toward schedule-aware trip construction, OR-Tools-based `MIXED` return-leg insertion, rolling-horizon assignment, and joint bottleneck-window repair.
+- Current improvement direction: keep OR-Tools as the baseline trip constructor, then reduce the remaining gap between trip synthesis and scheduling by making `MIXED` construction, fragment pooling, and bottleneck repair more schedule-aware.
+- Best-version direction: reduce the independence between trip synthesis and scheduling by moving toward schedule-aware trip construction, jsprit-style ruin-and-recreate fragment repair, OR-Tools-based `MIXED` return-leg insertion, rolling-horizon assignment, and joint bottleneck-window repair.
 
 ## Current Pilot Status
 - The current prototype is pilot-only and should be interpreted against pilot demand, pilot fleet, and pilot overtime baselines only.
@@ -67,8 +67,8 @@ From requirements and metadata:
 - Vehicle type: single type only, 22-seat capacity (can go up to 25 if crowded, never above 25).
 - Trip duration target: average 2.5 hours per trip.
 - Driver total driving hours: ideally 9 hours per day, with acceptable range 8-10 hours.
-- Broken shifts are allowed operationally, but the current prototype approximates this through separate morning/evening duty slots rather than a full duty bifurcation optimizer.
-- Long idle gaps should not automatically stretch one duty across the whole day; in the current prototype this is handled mainly by assigning late work to fresh evening slots when feasible.
+- Broken shifts are allowed operationally, and the next stronger prototype step is to treat long legal midday gaps as explicit split-duty resets rather than always letting one duty span stretch across the whole day.
+- Long idle gaps should not automatically stretch one duty across the whole day; the stronger version should let a driver or duty block sign off after the morning segment and restart later as a fresh legal block when the break is long enough.
 - Late-night `OUT` waves should preferentially be served through evening rotations or handovers instead of being tacked onto already-long day duties.
 - Max waiting time: 30-40 minutes (upper bound), to reduce overtime risk.
 - Employees should arrive at pickup no earlier than 30 minutes before the scheduled bus trip (to avoid excessive waiting).
@@ -77,6 +77,7 @@ From requirements and metadata:
 - Mixed routing should reduce deadhead and improve occupancy without creating excessive detours or pushing driver hours beyond daily limits.
 - In the current prototype, `MIXED` is still treated as a lightweight constructed option: an `IN` trip may absorb a nearby `OUT` trip on the return side when the timing gap, detour, and load profile remain feasible.
 - The next target is to replace that lightweight compatibility screen with an OR-Tools-style local insertion model so return-leg pickups are optimized rather than only screened.
+- Fragment pooling should be treated as a proper repair layer: leftover tiny stops should be removed from their failed fragment form, regrouped into denser salvage demand, cooperatively merged with nearby leftover fragments, and reinserted before they are treated as final uncovered demand.
 - Trip chaining and trip consolidation should be evaluated first by their effect on peak fleet concurrency, then by duty spread and overtime impact; occupancy gains are secondary unless concurrency, duty spread, and overtime are unchanged or improved.
 - Borderline demand near overlapping duty windows should not be forced too early into a rigid time bucket if doing so removes a better chaining option.
 - Some demand may naturally fit more than one duty window; assignment should remain flexible long enough to preserve better route-chaining opportunities.
@@ -116,6 +117,7 @@ File: `Metadata/Kuwait_Route_optimization_Overview.md`
 - The system operates like a scheduled metro service, not ad hoc routes.
 - Pilot travel distance/time uses geocoordinates with Haversine distance plus fixed speed and dwell assumptions; no external road-time API is used.
 - Base `IN` and `OUT` routing is now OR-Tools-driven, but mixed routing is still heuristic and compatibility-based rather than a full pickup-delivery optimization over all possible pickup/drop combinations.
+- Fragment repair is still lightweight. The next stronger version should behave more like a ruin-and-recreate reinsertion loop rather than a single narrow salvage retry.
 - Pilot scope uses only stores that have valid coordinates in `Geocoordinates.xlsx`; unmatched stores are ignored for routing and KPI generation.
 
 ## Prototype Scope
@@ -127,9 +129,10 @@ File: `Metadata/Kuwait_Route_optimization_Overview.md`
 - Prototype trips must be newly generated from demand waves, store compatibility, and operating constraints rather than copied from current route logs.
 - Prototype scheduling must treat the fixed 13-bus concurrency limit as a hard feasibility rule, not just a KPI reported after schedule generation.
 - Prototype scheduling must treat driver freshness as part of feasibility during assignment, not as a post-processing label added after trips are already chained.
-- Prototype scheduling currently uses separate `morning` and `evening` duty slots per physical bus to approximate split shifts and handovers.
+- Prototype scheduling currently uses separate `morning` and `evening` duty slots per physical bus, and the next stronger step is to allow explicit split-duty resets inside a slot when a long midday break makes that legal and operationally realistic.
 - The current prototype now uses OR-Tools to build the strongest implemented `IN` and `OUT` trip set, but it still remains partly staged because `MIXED` recovery and duty-aware repair are not yet fully integrated into that route-construction loop.
 - The next implementation step is a two-phase scheduler: first maximize covered demand within the hard 13-bus limit, then run a coverage-preserving overtime improvement pass on the trips that were successfully assigned.
+- This can still be implemented inside the current prototype structure because the route builder, scheduler, and repair passes are already separate enough to support stronger reinsertion logic without a full rewrite.
 
 ## Trip Design Approach
 - Build demand from `Employee Shift data.xlsx` at the store-wave level: each shift start creates inbound demand and each shift end creates outbound demand.
@@ -144,6 +147,7 @@ File: `Metadata/Kuwait_Route_optimization_Overview.md`
   - `MIXED` trips are built opportunistically by pairing a feasible `IN` trip with a nearby `OUT` return opportunity when the bus can absorb that return demand without breaking time or load limits.
 - For `IN` and `OUT`, OR-Tools decides which stores belong together and in what order, subject to capacity, duration, and depot-return requirements.
 - For `MIXED`, the current prototype only applies a heuristic compatibility pass after base route construction; the next step is an OR-Tools-based local insertion step on the return leg.
+- For fragment recovery, the next step is to pool failed micro-fragments across nearby time windows, cooperatively merge them into denser leftover trips, and reinsert them into existing or newly rebuilt salvage trips before final rejection.
 - Size each trip using hard operating limits: vehicle capacity, trip duration cap, waiting tolerance, maximum practical stop count, and the requirement that opening the trip should not force active fleet concurrency above 13 unless no feasible alternative exists.
 - Before opening a new narrow trip in a crowded window, try to widen a compatible trip by adding nearby demand rather than consuming another peak-time slot.
 - During assignment, every candidate bus-trip match must also pass a freshness check: if attaching the trip would push that duty beyond its practical span, the trip must be assigned to another slot or remain unscheduled.
@@ -157,7 +161,8 @@ File: `Metadata/Kuwait_Route_optimization_Overview.md`
 - Peak control phase: compute theoretical bus pressure in short time windows and use that pressure as a budget signal when choosing start times and whether to open another trip.
 - Rotation phase: treat the 13 physical buses as supporting separate morning and evening duty slots, with freshness checks controlling when a bus can be reused by a fresh evening duty.
 - Rescue phase: allow limited delay-based rescue and retry for blocked trips within waiting tolerance when that helps fit the trip into an available slot.
-- Salvage phase: pool `small_isolated_demand` leftovers back into denser same-wave or nearby-wave demand before declaring them permanently uncovered.
+- Salvage phase: pool `small_isolated_demand` leftovers back into denser same-wave or nearby-wave demand, then run a cooperative merge pass on those leftovers before declaring them permanently uncovered.
+- Reinsertion phase: after pooling fragments, try to reinsert them using a ruin-and-recreate style repair sequence rather than only one narrow salvage attempt.
 - Acceptance rule: prefer solutions that keep concurrency within 13 first, then maximize covered demand, then keep duty spans under control, then reduce overtime without losing coverage, then improve occupancy.
 - Future extension: add a full destroy-and-repair / LNS stage for overloaded windows and unscheduled trips after the current greedy repair baseline is stable.
 
@@ -168,6 +173,7 @@ File: `Metadata/Kuwait_Route_optimization_Overview.md`
 - Bottleneck windows such as 05:00 and 18:00 should then receive a local repair pass that is allowed to shift, swap, merge, or convert trips to `MIXED` while preserving the fleet cap and duty legality.
 - The strongest near-term version should keep OR-Tools for base route consolidation and add OR-Tools-style local pickup insertion for `MIXED` return-leg recovery instead of treating mixed routing as a separate lightweight heuristic.
 - The strongest near-term version should also separate solving into two phases: coverage maximization under the hard 13-bus cap first, then overtime improvement on the fixed covered-trip set.
+- A practical near-term design is therefore: OR-Tools for base routes, explicit split-duty resets for long midday gaps, stronger reinsertion-based fragment pooling, cooperative merge rebuilding for leftover demand, stronger return-leg `MIXED` insertion, then coverage-preserving overtime cleanup.
 - This best-version direction keeps the pilot implementable while reducing the current independence between trip synthesis and downstream scheduling.
 
 ## Duty-Feasibility Handoff
@@ -216,7 +222,7 @@ This section is aligned with `Approaches/approach.md` (Section 5: Recommended St
 8. Run a coverage-first assignment pass that tries to place as many trips as possible into the 13-bus schedule using legal buffers, soft slot testing, hard freshness checks, and physical bus reuse rules.
 9. Convert feasible `IN` plus nearby `OUT` pairs into `MIXED` candidates when that removes a separate return trip without breaking trip limits and improves covered demand.
 10. Run a greedy repair pass on blocked trips using small timing shifts, slot donor logic, and simple re-assignment before classifying the demand as unscheduled.
-11. Pool `small_isolated_demand` leftovers back into a salvage-demand table and run one more denser build-and-schedule pass before declaring those fragments unserved.
+11. Pool `small_isolated_demand` leftovers back into a salvage-demand table, cooperatively merge nearby leftover fragments, and run one more denser build-and-schedule pass before declaring those fragments unserved.
 12. Freeze the covered trip set and run an overtime-improvement pass that is only allowed to reduce duty stress without reducing covered demand.
 13. Validate waiting, capacity, and timing constraints against the weekly shift schedule, surface any infeasible or unserved demand explicitly, then compute KPIs with fleet-feasibility and coverage reported before overtime.
 14. Evolve the prototype toward a rolling-horizon schedule-aware constructor so future trips are created with live knowledge of available buses, active duties, and bottleneck-window pressure.
