@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import math
 import re
+from collections import defaultdict, deque
 from dataclasses import dataclass
 from datetime import datetime, time, timedelta
 from pathlib import Path
@@ -21,6 +22,7 @@ except Exception:
 BASE_DIR = Path(__file__).resolve().parents[1]
 DATASETS_DIR = BASE_DIR / "datasets"
 OUTPUT_DIR = Path(__file__).resolve().parent / "output"
+EMPLOYER_OUTPUT_DIR = OUTPUT_DIR / "employer_format"
 
 SHIFT_DATA_FILE = DATASETS_DIR / "Employee Shift data.xlsx"
 BUS_ROUTES_FILE = DATASETS_DIR / "Bus Routes curent.xlsx"
@@ -225,6 +227,24 @@ def build_strict_lookup(geo_lookup: dict[str, GeoPoint]) -> tuple[dict[str, GeoP
         if strict_match:
             strict_lookup[norm_name] = point
     return strict_lookup, pd.DataFrame(out_rows)
+
+
+def load_shift_service_dates() -> list[str]:
+    workbook = pd.ExcelFile(SHIFT_DATA_FILE)
+    dates: set[str] = set()
+    for sheet in workbook.sheet_names:
+        raw = workbook.parse(sheet, header=None)
+        if raw.shape[0] < 2:
+            continue
+        date_row = raw.iloc[1].tolist()
+        for start_col in range(8, len(date_row), 4):
+            if start_col >= len(date_row):
+                break
+            base_date = date_row[start_col]
+            if pd.isna(base_date):
+                continue
+            dates.add(pd.Timestamp(base_date).normalize().date().isoformat())
+    return sorted(dates)
 
 
 def extract_shift_events(strict_lookup: dict[str, GeoPoint]) -> tuple[pd.DataFrame, pd.DataFrame]:
@@ -1906,6 +1926,351 @@ def add_mixed_labels(scheduled: pd.DataFrame, assignments: pd.DataFrame) -> pd.D
     return updated
 
 
+def build_employee_bus_schedule(events: pd.DataFrame, scheduled: pd.DataFrame, assignments: pd.DataFrame) -> pd.DataFrame:
+    # Build a schedule-style employee mapping by pairing each trip stop's allocated seats
+    # with the employee event pool at the same direction/store/wave whenever possible.
+    columns = [
+        "employee_code",
+        "employee_event_dt",
+        "employee_direction",
+        "service_date",
+        "trip_id",
+        "trip_type",
+        "bus_id",
+        "rotation_tag",
+        "duty_segment",
+        "store_id",
+        "store_name",
+        "trip_wave_dt",
+        "planned_start_dt",
+        "planned_end_dt",
+        "mapping_status",
+    ]
+    if events.empty or scheduled.empty or assignments.empty:
+        return pd.DataFrame(columns=columns)
+
+    pool = events.copy()
+    pool["event_dt"] = pd.to_datetime(pool["event_dt"])
+    pool["event_wave_dt"] = pool["event_dt"].dt.floor(f"{WAVE_BUCKET_MIN}min")
+    pool = pool.sort_values(["event_dt", "employee_code", "store_id", "direction"]).reset_index(drop=True)
+
+    event_pool: dict[tuple[str, int, pd.Timestamp], deque[dict[str, object]]] = defaultdict(deque)
+    for row in pool.itertuples(index=False):
+        key = (str(row.direction), int(row.store_id), pd.Timestamp(row.event_wave_dt))
+        event_pool[key].append(
+            {
+                "employee_code": str(row.employee_code),
+                "employee_event_dt": pd.Timestamp(row.event_dt),
+                "employee_direction": str(row.direction),
+            }
+        )
+
+    assignment_lookup = assignments.set_index("trip_id")[["bus_id", "rotation_tag", "duty_segment"]].to_dict(orient="index")
+    rows: list[dict[str, object]] = []
+
+    def pop_candidates(
+        direction: str,
+        store_id: int,
+        wave_dt: pd.Timestamp,
+        count: int,
+    ) -> tuple[list[dict[str, object]], str]:
+        exact_key = (direction, store_id, wave_dt)
+        exact_bucket = event_pool.get(exact_key)
+        exact_take: list[dict[str, object]] = []
+        while exact_bucket and len(exact_take) < count:
+            exact_take.append(exact_bucket.popleft())
+        if len(exact_take) == count:
+            return exact_take, "exact_wave"
+
+        remaining = count - len(exact_take)
+        fallback_keys = sorted(
+            [k for k in event_pool if k[0] == direction and k[1] == store_id and event_pool[k]],
+            key=lambda k: (abs((pd.Timestamp(k[2]) - wave_dt).total_seconds()), pd.Timestamp(k[2])),
+        )
+        fallback_take = exact_take
+        for key in fallback_keys:
+            if key == exact_key:
+                continue
+            bucket = event_pool[key]
+            while bucket and len(fallback_take) < count:
+                fallback_take.append(bucket.popleft())
+            if len(fallback_take) == count:
+                return fallback_take, "nearest_wave"
+        if fallback_take:
+            return fallback_take, "partial"
+        return [], "unmapped"
+
+    for trip in scheduled.sort_values(["planned_start_dt", "trip_id"]).itertuples(index=False):
+        trip_id = str(trip.trip_id)
+        trip_type = str(trip.trip_type)
+        service_date = str(trip.service_date)
+        assignment_info = assignment_lookup.get(trip_id, {})
+        bus_id = assignment_info.get("bus_id")
+        rotation_tag = assignment_info.get("rotation_tag")
+        duty_segment = assignment_info.get("duty_segment")
+        stops = decode_stop_data(getattr(trip, "stop_data_json", ""))
+        for stop in stops:
+            store_id = int(stop["store_id"])
+            store_name = str(stop["store_name"])
+            wave_dt = pd.Timestamp(stop["wave_dt"]).floor(f"{WAVE_BUCKET_MIN}min")
+            required = max(0, int(stop.get("allocated_passengers", 0)))
+
+            if required == 0:
+                continue
+            if trip_type in {"IN", "OUT"}:
+                directions = [trip_type]
+            else:
+                in_size = len(event_pool.get(("IN", store_id, wave_dt), []))
+                out_size = len(event_pool.get(("OUT", store_id, wave_dt), []))
+                directions = ["IN", "OUT"] if in_size >= out_size else ["OUT", "IN"]
+
+            mapped_people: list[dict[str, object]] = []
+            mapping_status = "unmapped"
+            for direction in directions:
+                if len(mapped_people) >= required:
+                    break
+                pulled, status = pop_candidates(direction, store_id, wave_dt, required - len(mapped_people))
+                if pulled:
+                    mapped_people.extend(pulled)
+                    if mapping_status == "unmapped":
+                        mapping_status = status
+
+            for person in mapped_people:
+                rows.append(
+                    {
+                        "employee_code": person["employee_code"],
+                        "employee_event_dt": person["employee_event_dt"],
+                        "employee_direction": person["employee_direction"],
+                        "service_date": service_date,
+                        "trip_id": trip_id,
+                        "trip_type": trip_type,
+                        "bus_id": bus_id,
+                        "rotation_tag": rotation_tag,
+                        "duty_segment": duty_segment,
+                        "store_id": store_id,
+                        "store_name": store_name,
+                        "trip_wave_dt": wave_dt,
+                        "planned_start_dt": trip.planned_start_dt,
+                        "planned_end_dt": trip.planned_end_dt,
+                        "mapping_status": mapping_status,
+                    }
+                )
+
+            if len(mapped_people) < required:
+                shortfall = required - len(mapped_people)
+                for idx in range(1, shortfall + 1):
+                    rows.append(
+                        {
+                            "employee_code": f"UNMAPPED_{trip_id}_{store_id}_{idx}",
+                            "employee_event_dt": pd.NaT,
+                            "employee_direction": trip_type if trip_type in {"IN", "OUT"} else "",
+                            "service_date": service_date,
+                            "trip_id": trip_id,
+                            "trip_type": trip_type,
+                            "bus_id": bus_id,
+                            "rotation_tag": rotation_tag,
+                            "duty_segment": duty_segment,
+                            "store_id": store_id,
+                            "store_name": store_name,
+                            "trip_wave_dt": wave_dt,
+                            "planned_start_dt": trip.planned_start_dt,
+                            "planned_end_dt": trip.planned_end_dt,
+                            "mapping_status": "unmapped",
+                        }
+                    )
+
+    if not rows:
+        return pd.DataFrame(columns=columns)
+    schedule = pd.DataFrame(rows)
+    return schedule.sort_values(["service_date", "bus_id", "planned_start_dt", "trip_id", "store_id", "employee_code"]).reset_index(drop=True)
+
+
+def build_daily_driver_schedule(
+    scheduled: pd.DataFrame,
+    assignments: pd.DataFrame,
+    service_dates: list[str],
+) -> dict[str, pd.DataFrame]:
+    columns = ["Trip No"] + [f"D{i}" for i in range(1, BUS_COUNT + 1)]
+    if scheduled.empty or assignments.empty:
+        return {service_date: pd.DataFrame(columns=columns) for service_date in service_dates}
+
+    merged = assignments.merge(
+        scheduled[["trip_id", "store_sequence", "trip_type", "planned_start_dt", "planned_end_dt", "service_date"]],
+        on="trip_id",
+        how="left",
+        suffixes=("_assign", ""),
+    )
+    merged["trip_type"] = merged["trip_type"].fillna(merged.get("trip_type_assign"))
+    merged["service_date"] = merged["service_date"].fillna(merged.get("service_date_assign"))
+    merged["planned_start_dt"] = pd.to_datetime(merged["planned_start_dt"].fillna(merged.get("planned_start_dt_assign")))
+    merged["planned_end_dt"] = pd.to_datetime(merged["planned_end_dt"].fillna(merged.get("planned_end_dt_assign")))
+    merged["service_date"] = pd.to_datetime(merged["service_date"]).dt.date.astype(str)
+    merged["bus_id"] = pd.to_numeric(merged["bus_id"], errors="coerce")
+    merged = merged.dropna(subset=["bus_id", "service_date", "planned_start_dt"]).copy()
+    merged["bus_id"] = merged["bus_id"].astype(int)
+    merged = merged[merged["service_date"].isin(set(service_dates))].copy()
+    merged = merged.sort_values(["service_date", "bus_id", "planned_start_dt", "trip_id"]).reset_index(drop=True)
+    merged["driver_trip_no"] = merged.groupby(["service_date", "bus_id"]).cumcount() + 1
+
+    sheet_map: dict[str, pd.DataFrame] = {}
+    for service_date in service_dates:
+        day_df = merged[merged["service_date"] == service_date].copy()
+        max_trip_no = int(day_df["driver_trip_no"].max()) if not day_df.empty else 0
+        rows: list[dict[str, object]] = []
+        for trip_no in range(1, max_trip_no + 1):
+            row: dict[str, object] = {"Trip No": f"Trip {trip_no}"}
+            for bus_id in range(1, BUS_COUNT + 1):
+                driver_key = f"D{bus_id}"
+                match = day_df[(day_df["bus_id"] == bus_id) & (day_df["driver_trip_no"] == trip_no)]
+                if match.empty:
+                    row[driver_key] = ""
+                    continue
+                rec = match.iloc[0]
+                start_text = pd.Timestamp(rec["planned_start_dt"]).strftime("%H:%M")
+                end_text = pd.Timestamp(rec["planned_end_dt"]).strftime("%H:%M")
+                sequence = str(rec.get("store_sequence", "") or "").strip()
+                row[driver_key] = f"{rec['trip_id']} ({rec['trip_type']}) | {start_text}-{end_text} | {sequence}"
+            rows.append(row)
+        if rows:
+            sheet_map[service_date] = pd.DataFrame(rows, columns=columns)
+        else:
+            sheet_map[service_date] = pd.DataFrame(columns=columns)
+    return sheet_map
+
+
+def load_driver_reference() -> dict[int, tuple[str, str]]:
+    ref = pd.read_excel(BUS_ROUTES_FILE, sheet_name="Bus Route Details")
+    mapping: dict[int, tuple[str, str]] = {}
+    if "Drive #" not in ref.columns:
+        return mapping
+    for _, row in ref.iterrows():
+        drive_raw = "" if pd.isna(row.get("Drive #")) else str(row.get("Drive #")).strip()
+        if not drive_raw:
+            continue
+        match = re.match(r"^D(\d+)$", drive_raw, flags=re.IGNORECASE)
+        if not match:
+            continue
+        bus_id = int(match.group(1))
+        driver_no = "" if pd.isna(row.get("Driver Number")) else str(row.get("Driver Number")).strip().rstrip(".0")
+        driver_name = "" if pd.isna(row.get("Driver Name")) else str(row.get("Driver Name")).strip()
+        if bus_id not in mapping and (driver_no or driver_name):
+            mapping[bus_id] = (driver_no, driver_name)
+    return mapping
+
+
+def build_daily_bus_route_details(
+    scheduled: pd.DataFrame,
+    assignments: pd.DataFrame,
+    service_dates: list[str],
+    driver_reference: dict[int, tuple[str, str]],
+) -> dict[str, pd.DataFrame]:
+    columns = [
+        "Drive #",
+        "Driver Number",
+        "Driver Name",
+        "Trip Start/ End",
+        "Bus Seating Capacity",
+        "Trip No",
+        "Trip ID",
+        "No of Stores",
+        "Time",
+        "AM/PM",
+        "Store/ Location",
+        "Store ID",
+        "Store Name",
+        "Issues",
+        "Remarks by Barakat",
+    ]
+    if scheduled.empty or assignments.empty:
+        return {service_date: pd.DataFrame(columns=columns) for service_date in service_dates}
+
+    merged = assignments.merge(
+        scheduled[["trip_id", "trip_type", "service_date", "planned_start_dt", "planned_end_dt", "stop_data_json"]],
+        on="trip_id",
+        how="left",
+        suffixes=("_assign", ""),
+    )
+    merged["trip_type"] = merged["trip_type"].fillna(merged.get("trip_type_assign"))
+    merged["service_date"] = merged["service_date"].fillna(merged.get("service_date_assign"))
+    merged["planned_start_dt"] = pd.to_datetime(merged["planned_start_dt"].fillna(merged.get("planned_start_dt_assign")))
+    merged["planned_end_dt"] = pd.to_datetime(merged["planned_end_dt"].fillna(merged.get("planned_end_dt_assign")))
+    merged["service_date"] = pd.to_datetime(merged["service_date"]).dt.date.astype(str)
+    merged["bus_id"] = pd.to_numeric(merged["bus_id"], errors="coerce")
+    merged = merged.dropna(subset=["bus_id", "service_date", "planned_start_dt", "planned_end_dt"]).copy()
+    merged["bus_id"] = merged["bus_id"].astype(int)
+    merged = merged[merged["service_date"].isin(set(service_dates))].copy()
+    merged = merged.sort_values(["service_date", "bus_id", "planned_start_dt", "trip_id"]).reset_index(drop=True)
+    merged["driver_trip_no"] = merged.groupby(["service_date", "bus_id"]).cumcount() + 1
+
+    def time_fields(ts: pd.Timestamp) -> tuple[time, str]:
+        ts = pd.Timestamp(ts)
+        return ts.time().replace(microsecond=0), ts.strftime("%p")
+
+    sheet_map: dict[str, pd.DataFrame] = {}
+    for service_date in service_dates:
+        rows: list[dict[str, object]] = []
+        day_df = merged[merged["service_date"] == service_date].copy()
+        for rec in day_df.itertuples(index=False):
+            bus_id = int(rec.bus_id)
+            drive = f"D{bus_id}"
+            driver_no, driver_name = driver_reference.get(bus_id, ("", ""))
+            trip_no = int(rec.driver_trip_no)
+            trip_code = f"T{trip_no}"
+            start_time, start_ampm = time_fields(rec.planned_start_dt)
+            end_time, end_ampm = time_fields(rec.planned_end_dt)
+            common = {
+                "Drive #": drive,
+                "Driver Number": driver_no,
+                "Driver Name": driver_name,
+                "Bus Seating Capacity": BUS_CAPACITY,
+                "Trip No": trip_no,
+                "Trip ID": trip_code,
+                "Issues": "",
+                "Remarks by Barakat": "",
+            }
+            rows.append(
+                {
+                    **common,
+                    "Trip Start/ End": "Trip Start",
+                    "No of Stores": "",
+                    "Time": start_time,
+                    "AM/PM": start_ampm,
+                    "Store/ Location": "B1 Mahboula Acc",
+                    "Store ID": "",
+                    "Store Name": "",
+                }
+            )
+            for stop in decode_stop_data(getattr(rec, "stop_data_json", "")):
+                stop_dt = pd.Timestamp(stop.get("wave_dt", rec.planned_start_dt))
+                stop_time, stop_ampm = time_fields(stop_dt)
+                rows.append(
+                    {
+                        **common,
+                        "Trip Start/ End": "",
+                        "No of Stores": int(stop.get("allocated_passengers", 0)) if pd.notna(stop.get("allocated_passengers", 0)) else "",
+                        "Time": stop_time,
+                        "AM/PM": stop_ampm,
+                        "Store/ Location": "",
+                        "Store ID": int(stop["store_id"]) if pd.notna(stop.get("store_id")) else "",
+                        "Store Name": str(stop.get("store_name", "")),
+                    }
+                )
+            rows.append(
+                {
+                    **common,
+                    "Trip Start/ End": "Trip End",
+                    "No of Stores": "",
+                    "Time": end_time,
+                    "AM/PM": end_ampm,
+                    "Store/ Location": "B2 Mahboula Acc",
+                    "Store ID": "",
+                    "Store Name": "",
+                }
+            )
+        sheet_map[service_date] = pd.DataFrame(rows, columns=columns)
+    return sheet_map
+
+
 def build_duties(assignments: pd.DataFrame) -> pd.DataFrame:
     # === SEARCH HOOK: DUTY METRICS / OVERTIME BASIS ===
     # Purpose:
@@ -2254,13 +2619,46 @@ def build_kpi_comparison(baseline_kpis: pd.DataFrame, integrated_kpis: pd.DataFr
     return pd.DataFrame(rows)
 
 
+def safe_csv_export(df: pd.DataFrame, path: Path) -> Path:
+    try:
+        df.to_csv(path, index=False)
+        return path
+    except PermissionError:
+        fallback = path.with_name(f"{path.stem}_latest{path.suffix}")
+        df.to_csv(fallback, index=False)
+        print(f"Warning: '{path.name}' was locked. Wrote '{fallback.name}' instead.")
+        return fallback
+
+
+def safe_daily_schedule_export(sheet_map: dict[str, pd.DataFrame], service_dates: list[str], path: Path) -> Path:
+    cols = ["Trip No"] + [f"D{i}" for i in range(1, BUS_COUNT + 1)]
+
+    def write_to(target: Path) -> None:
+        with pd.ExcelWriter(target, engine="openpyxl") as writer:
+            for service_date in service_dates:
+                sheet_df = sheet_map.get(service_date, pd.DataFrame(columns=cols))
+                sheet_df.to_excel(writer, sheet_name=service_date[:31], index=False)
+
+    try:
+        write_to(path)
+        return path
+    except PermissionError:
+        fallback = path.with_name(f"{path.stem}_latest{path.suffix}")
+        write_to(fallback)
+        print(f"Warning: '{path.name}' was locked. Wrote '{fallback.name}' instead.")
+        return fallback
+
+
 def main() -> None:
     # === SEARCH HOOK: PIPELINE ENTRYPOINT ===
     # End-to-end order:
     # demand -> base OR-Tools trips -> mixed conversion -> main scheduling ->
     # fragment salvage -> cooperative merge -> bottleneck repair -> KPI export.
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    EMPLOYER_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     overview = load_overview_metrics()
+    shift_service_dates = load_shift_service_dates()
+    driver_reference = load_driver_reference()
     geo_lookup = load_geocoordinates()
     strict_lookup, strict_matches = build_strict_lookup(geo_lookup)
     events, unmatched = extract_shift_events(strict_lookup)
@@ -2374,6 +2772,9 @@ def main() -> None:
     scheduled = repair_scheduled.copy()
     assignments = repair_assignments.copy()
     scheduled = add_mixed_labels(scheduled, assignments)
+    employee_bus_schedule = build_employee_bus_schedule(events, scheduled, assignments)
+    daily_driver_schedule = build_daily_driver_schedule(scheduled, assignments, shift_service_dates)
+    daily_bus_route_details = build_daily_bus_route_details(scheduled, assignments, shift_service_dates, driver_reference)
     duties = build_duties(assignments)
     remaining_unscheduled = remaining_after_merge.copy()
     if not repair_demand.empty and not repair_trips.empty:
@@ -2433,6 +2834,9 @@ def main() -> None:
     hybrid_trips.to_csv(OUTPUT_DIR / "designed_trips_raw.csv", index=False)
     scheduled.to_csv(OUTPUT_DIR / "trip_routes.csv", index=False)
     assignments.to_csv(OUTPUT_DIR / "trip_assignments.csv", index=False)
+    safe_csv_export(employee_bus_schedule, EMPLOYER_OUTPUT_DIR / "employee_bus_schedule.csv")
+    safe_daily_schedule_export(daily_driver_schedule, shift_service_dates, EMPLOYER_OUTPUT_DIR / "daily_driver_schedule.xlsx")
+    safe_daily_schedule_export(daily_bus_route_details, shift_service_dates, EMPLOYER_OUTPUT_DIR / "daily_bus_route_details.xlsx")
     duties.to_csv(OUTPUT_DIR / "driver_metrics.csv", index=False)
     unscheduled.to_csv(OUTPUT_DIR / "unscheduled_trips.csv", index=False)
     unscheduled_reason_summary.to_csv(OUTPUT_DIR / "unscheduled_trip_reason_summary.csv", index=False)
@@ -2451,6 +2855,7 @@ def main() -> None:
     print(f"Designed trips: {len(hybrid_trips)}")
     print(f"Scheduled trips: {len(scheduled)}")
     print(f"Outputs written to: {OUTPUT_DIR}")
+    print(f"Employer-format outputs written to: {EMPLOYER_OUTPUT_DIR}")
 
 
 if __name__ == "__main__":

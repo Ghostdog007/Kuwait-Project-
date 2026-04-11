@@ -1,2 +1,3 @@
 rejection_reason,trip_count,passenger_count
-buffer_violation,3,53
+small_isolated_demand,12,22
+buffer_violation,8,152
