@@ -1,7 +1,10 @@
 trip_id,trip_type,requested_wave_label,rejection_reason,rejection_reason_counts,assigned_passengers,peak_load,stop_count,occupancy_pct
+ORT_0036,IN,2026-04-06 00:00,buffer_violation,"{""buffer_violation"": 74, ""duty_span_block"": 10, ""slot_exhausted"": 46}",9,9,4,40.91
 ORT_0049,IN,2026-04-06 12:00,buffer_violation,"{""buffer_violation"": 130}",13,13,7,59.09
+ORT_0067,IN,2026-04-06 20:00,buffer_violation,"{""buffer_violation"": 75, ""slot_exhausted"": 55}",20,20,6,90.91
+ORT_0061,IN,2026-04-06 20:00,buffer_violation,"{""buffer_violation"": 75, ""slot_exhausted"": 55}",19,19,6,86.36
 ORT_0082,IN,2026-04-07 12:00,buffer_violation,"{""buffer_violation"": 125, ""duty_span_block"": 5}",13,13,8,59.09
-ORT_0162,IN,2026-04-09 20:00,buffer_violation,"{""buffer_violation"": 75, ""slot_exhausted"": 55}",21,21,5,95.45
-MIX_0054,MIXED,2026-04-09 20:00,buffer_violation,"{""buffer_violation"": 75, ""slot_exhausted"": 55}",23,22,9,100.0
+ORT_0166,IN,2026-04-09 20:00,buffer_violation,"{""buffer_violation"": 77, ""slot_exhausted"": 53}",22,22,6,100.0
+ORT_0170,IN,2026-04-09 20:00,buffer_violation,"{""buffer_violation"": 73, ""slot_exhausted"": 57}",22,22,6,100.0
 ORT_0198,IN,2026-04-10 20:00,buffer_violation,"{""buffer_violation"": 79, ""slot_exhausted"": 51}",22,22,6,100.0
 ORT_0205,IN,2026-04-10 20:00,buffer_violation,"{""buffer_violation"": 74, ""slot_exhausted"": 56}",21,21,6,95.45

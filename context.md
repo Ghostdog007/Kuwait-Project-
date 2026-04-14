@@ -67,6 +67,29 @@ From requirements and metadata:
 - Stop-level load and timing plans for validating `MIXED` trip feasibility.
 - KPI comparison covering overtime, service coverage, occupancy, deadhead, waiting time, and on-time compliance.
 
+## Employer Trip Representation
+<!-- SEARCH HOOK: EMPLOYER TRIP REPRESENTATION -->
+- Employer-facing trip identity is `Drive # + Trip ID`.
+- `Drive #` is shown as `D1`, `D2`, ... (driver/day bucket).
+- `Trip ID` is shown as `T1`, `T2`, ... and resets per drive/day.
+- Trips are represented as lifecycle rows: `Trip Start` -> stop rows -> `Trip End`.
+- Employer outputs should avoid raw internal optimizer IDs as primary identifiers.
+
+## Output Contract (Lean)
+<!-- SEARCH HOOK: OUTPUT CONTRACT -->
+Default delivery is intentionally lean and should keep only:
+
+In `prototype/output/`:
+- `kpi_summary.csv`
+- `baseline_staged_kpi_summary.csv`
+- `unscheduled_trips.csv`
+
+In `prototype/output/employer_format/`:
+- `trips_per_day.xlsx`
+- `employee_to_bus_mapping_per_day.xlsx`
+
+Any extra intermediate/debug output should be treated as non-default and removed from the final delivery view.
+
 ## Optimization Priorities
 <!-- SEARCH HOOK: OPTIMIZATION PRIORITIES -->
 - Primary objective: keep simultaneous active trips within the fixed 13-bus fleet limit.
