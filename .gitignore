@@ -1,8 +1,12 @@
 /dataset/
 /datasets/
 
-*.xlsx
 .pkl
 prototype/.env
 prototype/output/map_config.js
 prototype/output/map_data.json
+<<<<<<< HEAD
+=======
+prototype/output/__pycache__/
+prototype/__pycache__/
+>>>>>>> Kanishk

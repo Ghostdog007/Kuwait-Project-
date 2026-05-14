@@ -110,3 +110,18 @@ Optional:
 2. `docs/context.md` for constraints and policy.
 3. `docs/approach.md` for optimization strategy.
 4. `docs/data_dictionary/` for dataset column meanings.
+
+## 9) Prototype Hosting Mode (Single Service)
+
+If you want one deployable service for both frontend and backend:
+
+```powershell
+pip install -r requirements.txt
+uvicorn prototype.app:app --host 0.0.0.0 --port 8000
+```
+
+Available endpoints:
+1. `GET /` -> map UI (`trip_map.html`)
+2. `POST /run` -> regenerate core scheduling outputs
+3. `POST /export` -> regenerate map wrapper outputs
+4. `GET /health` -> health check

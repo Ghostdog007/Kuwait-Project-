@@ -93,6 +93,31 @@ python -m http.server 8090 --directory prototype/output
 
 Then open `http://localhost:8090/trip_map.html`.
 
+<<<<<<< HEAD
+=======
+## Easy Deploy (Frontend + Backend Together)
+
+This repo now includes a lightweight web entrypoint:
+- `prototype/app.py`
+
+It serves:
+1. Static map frontend from `prototype/output/`
+2. Backend endpoints:
+   - `POST /run` to execute `run_pilot.py`
+   - `POST /export` to execute `export_map_data.py`
+   - `GET /health` for health checks
+
+Local run:
+
+```powershell
+pip install -r requirements.txt
+uvicorn prototype.app:app --host 0.0.0.0 --port 8000
+```
+
+Then open:
+- `http://localhost:8000/`
+
+>>>>>>> Kanishk
 API key behavior:
 1. If `prototype/.env` has `GMAPS_API_KEY`, the wrapper injects it into `map_config.js`.
 2. If missing, viewer still works for basic inspection, but road-accurate routing may be limited.
