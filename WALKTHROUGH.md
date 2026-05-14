@@ -57,6 +57,12 @@ Quick checks:
 
 The wrapper builds analysis assets for interactive route validation.
 
+Before running wrapper (recommended):
+1. Create `prototype/.env`
+2. Add:
+   - `GMAPS_API_KEY=YOUR_REAL_GOOGLE_MAPS_KEY`
+3. You can copy the template from `prototype/.env.example`
+
 Run:
 
 ```powershell
@@ -66,6 +72,7 @@ python prototype/export_map_data.py
 Generates:
 1. `prototype/output/map_data.json`
 2. `prototype/output/map_config.js`
+3. Console note confirming key load when configured.
 
 ## 6) Open the Interactive Viewer
 
@@ -79,8 +86,8 @@ Open:
 `http://localhost:8090/trip_map.html`
 
 Optional:
-1. Add Google Maps key in `prototype/.env` (template: `prototype/.env.example`).
-2. With key present, road routes are rendered more accurately.
+1. With key present in `prototype/.env`, road routes are rendered more accurately.
+2. Without key, the tool still supports structural trip inspection, but route quality in map rendering can be reduced.
 
 ## 7) What the Wrapper Offers for Analysis
 
