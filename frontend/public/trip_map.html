@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kuwait Pilot — Trip Route Visualizer</title>
+  <meta name="description" content="Interactive Google Maps visualization of optimized employee transport trip schedules for the Kuwait pilot operation.">
+  <link rel="stylesheet" href="map_styles.css">
+  <script src="map_config.js"></script>
+</head>
+<body>
+
+  <!-- API Key Missing Warning -->
+  <div class="api-key-prompt hidden" id="apiKeyPrompt">
+    <div class="api-key-box">
+      <h2>⚠️ API Key Not Configured</h2>
+      <p>No valid Google Maps API key found.<br>
+         Set your key in <code>prototype/.env</code> and re-run:<br>
+         <code style="color:#60a5fa">python prototype/export_map_data.py</code></p>
+      <p style="margin-top:12px;font-size:11px;color:#64748b">
+        Or enter it here for this session only:
+      </p>
+      <input type="text" id="apiKeyInput" placeholder="AIzaSy..." autocomplete="off">
+      <button id="apiKeySubmit">Launch Map</button>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h1>Trip Route Visualizer</h1>
+      <p>Kuwait Pilot Employee Transport</p>
+    </div>
+
+    <div class="controls">
+      <!-- Day Selector -->
+      <div class="control-group">
+        <label for="daySelect">Service Day</label>
+        <select class="day-select" id="daySelect">
+          <option value="" disabled selected>Select a day…</option>
+        </select>
+      </div>
+
+      <!-- Drive Selector -->
+      <div class="control-group">
+        <label for="driveSelect">Drive (Bus)</label>
+        <select class="day-select" id="driveSelect" disabled>
+          <option value="" disabled selected>Select a drive…</option>
+        </select>
+      </div>
+
+      <!-- Trip Selector -->
+      <div class="control-group">
+        <label for="tripSelect">Trip</label>
+        <select class="day-select" id="tripSelect" disabled>
+          <option value="" disabled selected>Select a trip…</option>
+        </select>
+      </div>
+
+      <!-- Show All Trips for Day -->
+      <div class="control-group" style="display:flex; gap:8px;">
+        <button class="show-trip-btn" id="showTripBtn" disabled>Show Selected Trip</button>
+        <button class="show-all-btn" id="showAllBtn" disabled>Show All (Day)</button>
+      </div>
+    </div>
+
+    <!-- Trip Detail Panel (shown when a single trip is selected) -->
+    <div class="trip-detail" id="tripDetail">
+      <div class="trip-detail-header" id="tripDetailHeader"></div>
+      <div class="trip-detail-body" id="tripDetailBody"></div>
+    </div>
+
+    <!-- Trip List (shown when All view) -->
+    <div class="trip-list-header" id="tripListHeader" style="display:none">Trips</div>
+    <div class="trip-list" id="tripList" style="display:none"></div>
+  </aside>
+
+  <!-- Map Area -->
+  <main class="map-container">
+    <div id="map"></div>
+
+    <!-- Route Mode Toggle -->
+    <div class="route-mode-toggle">
+      <input type="checkbox" id="routeToggle" checked>
+      <label for="routeToggle">Road Routes (Directions API)</label>
+    </div>
+
+    <!-- Legend -->
+    <div class="map-legend">
+      <div class="legend-item"><div class="legend-dot depot"></div> Depot</div>
+      <div class="legend-item"><div class="legend-dot in"></div> IN</div>
+      <div class="legend-item"><div class="legend-dot out"></div> OUT</div>
+      <div class="legend-item"><div class="legend-dot mixed"></div> MIXED</div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+      <div class="spinner"></div>
+    </div>
+  </main>
+
+  <script src="map_app.js"></script>
+</body>
+</html>
