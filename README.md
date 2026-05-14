@@ -68,7 +68,11 @@ Pipeline source files:
 
 ## How to Run
 
-1. (Optional for map view) create `prototype/.env` from [`.env.example`](/d:/Sem%206/Kuwait%20Project/prototype/.env.example).
+1. Configure API key for map routing (optional but recommended):
+   - Create `prototype/.env`
+   - Add this line:
+     - `GMAPS_API_KEY=YOUR_REAL_GOOGLE_MAPS_KEY`
+   - You can copy from [`.env.example`](/d:/Sem%206/Kuwait%20Project/prototype/.env.example).
 2. Run pipeline:
 
 ```powershell
@@ -88,6 +92,10 @@ python -m http.server 8090 --directory prototype/output
 ```
 
 Then open `http://localhost:8090/trip_map.html`.
+
+API key behavior:
+1. If `prototype/.env` has `GMAPS_API_KEY`, the wrapper injects it into `map_config.js`.
+2. If missing, viewer still works for basic inspection, but road-accurate routing may be limited.
 
 ## Wrapper Analysis (What It Offers)
 
