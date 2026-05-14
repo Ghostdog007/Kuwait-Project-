@@ -2272,7 +2272,6 @@ def build_daily_employee_trip_mapping(
         "Drive #",
         "Trip No",
         "Trip ID",
-        "Route Trip Ref",
         "Trip Start",
         "Trip End",
         "Employee Count",
@@ -2329,12 +2328,116 @@ def build_daily_employee_trip_mapping(
                     "Drive #": f"D{int(rec.bus_id)}",
                     "Trip No": f"Trip {trip_no}",
                     "Trip ID": f"T{trip_no}",
-                    "Route Trip Ref": str(rec.trip_id),
                     "Trip Start": pd.Timestamp(rec.planned_start_dt).strftime("%H:%M"),
                     "Trip End": pd.Timestamp(rec.planned_end_dt).strftime("%H:%M"),
                     "Employee Count": int(rec.employee_count),
                     "Employees": str(rec.employees),
                     "Unmapped Seats": int(rec.unmapped_seats),
+                }
+            )
+        sheet_map[service_date] = pd.DataFrame(rows, columns=columns)
+    return sheet_map
+
+
+def build_daily_driver_schedule_with_stops(
+    scheduled: pd.DataFrame,
+    assignments: pd.DataFrame,
+    service_dates: list[str],
+) -> dict[str, pd.DataFrame]:
+    columns = [
+        "Drive #",
+        "Trip ID",
+        "Time",
+        "Event",
+        "Location",
+        "Store ID",
+        "Store Name",
+        "Passenger Count",
+        "Trip Start",
+        "Trip End",
+    ]
+    if scheduled.empty or assignments.empty:
+        return {service_date: pd.DataFrame(columns=columns) for service_date in service_dates}
+
+    merged = assignments.merge(
+        scheduled[["trip_id", "trip_type", "service_date", "planned_start_dt", "planned_end_dt", "stop_data_json"]],
+        on="trip_id",
+        how="left",
+        suffixes=("_assign", ""),
+    )
+    merged["trip_type"] = merged["trip_type"].fillna(merged.get("trip_type_assign"))
+    merged["service_date"] = merged["service_date"].fillna(merged.get("service_date_assign"))
+    merged["planned_start_dt"] = pd.to_datetime(merged["planned_start_dt"].fillna(merged.get("planned_start_dt_assign")))
+    merged["planned_end_dt"] = pd.to_datetime(merged["planned_end_dt"].fillna(merged.get("planned_end_dt_assign")))
+    merged["service_date"] = pd.to_datetime(merged["service_date"]).dt.date.astype(str)
+    merged["bus_id"] = pd.to_numeric(merged["bus_id"], errors="coerce")
+    merged = merged.dropna(subset=["bus_id", "service_date", "planned_start_dt", "planned_end_dt"]).copy()
+    merged["bus_id"] = merged["bus_id"].astype(int)
+    merged = merged[merged["service_date"].isin(set(service_dates))].copy()
+    merged = merged.sort_values(["service_date", "bus_id", "planned_start_dt", "trip_id"]).reset_index(drop=True)
+    merged["driver_trip_no"] = merged.groupby(["service_date", "bus_id"]).cumcount() + 1
+
+    def time_str(value: pd.Timestamp | object) -> str:
+        return pd.Timestamp(value).strftime("%I:%M %p")
+
+    sheet_map: dict[str, pd.DataFrame] = {}
+    for service_date in service_dates:
+        day = merged[merged["service_date"] == service_date].copy()
+        rows: list[dict[str, object]] = []
+        for rec in day.itertuples(index=False):
+            drive = f"D{int(rec.bus_id)}"
+            trip_no = int(rec.driver_trip_no)
+            trip_id = f"T{trip_no}"
+            trip_start = pd.Timestamp(rec.planned_start_dt)
+            trip_end = pd.Timestamp(rec.planned_end_dt)
+            start_text = time_str(trip_start)
+            end_text = time_str(trip_end)
+
+            rows.append(
+                {
+                    "Drive #": drive,
+                    "Trip ID": trip_id,
+                    "Time": start_text,
+                    "Event": "Trip Start",
+                    "Location": "B1 Mahboula Acc",
+                    "Store ID": "",
+                    "Store Name": "",
+                    "Passenger Count": "",
+                    "Trip Start": start_text,
+                    "Trip End": end_text,
+                }
+            )
+
+            stops = decode_stop_data(getattr(rec, "stop_data_json", ""))
+            for stop in stops:
+                stop_dt = pd.Timestamp(stop.get("wave_dt", trip_start))
+                rows.append(
+                    {
+                        "Drive #": drive,
+                        "Trip ID": trip_id,
+                        "Time": time_str(stop_dt),
+                        "Event": "Stop",
+                        "Location": str(stop.get("store_name", "")),
+                        "Store ID": int(stop["store_id"]) if pd.notna(stop.get("store_id")) else "",
+                        "Store Name": str(stop.get("store_name", "")),
+                        "Passenger Count": int(stop.get("allocated_passengers", 0)) if pd.notna(stop.get("allocated_passengers")) else "",
+                        "Trip Start": start_text,
+                        "Trip End": end_text,
+                    }
+                )
+
+            rows.append(
+                {
+                    "Drive #": drive,
+                    "Trip ID": trip_id,
+                    "Time": end_text,
+                    "Event": "Trip End",
+                    "Location": "B2 Mahboula Acc",
+                    "Store ID": "",
+                    "Store Name": "",
+                    "Passenger Count": "",
+                    "Trip Start": start_text,
+                    "Trip End": end_text,
                 }
             )
         sheet_map[service_date] = pd.DataFrame(rows, columns=columns)
@@ -2876,6 +2979,20 @@ def safe_daily_schedule_export(sheet_map: dict[str, pd.DataFrame], service_dates
         return fallback
 
 
+def prune_directory_to_whitelist(directory: Path, keep_filenames: set[str]) -> None:
+    if not directory.exists():
+        return
+    for item in directory.iterdir():
+        if not item.is_file():
+            continue
+        if item.name in keep_filenames:
+            continue
+        try:
+            item.unlink()
+        except PermissionError:
+            print(f"Warning: could not delete locked file '{item.name}'")
+
+
 def export_all_outputs(
     strict_matches: pd.DataFrame,
     stores_with_clusters: pd.DataFrame,
@@ -2889,6 +3006,7 @@ def export_all_outputs(
     daily_driver_schedule: dict[str, pd.DataFrame],
     daily_bus_route_details: dict[str, pd.DataFrame],
     daily_employee_trip_mapping: dict[str, pd.DataFrame],
+    daily_driver_schedule_with_stops: dict[str, pd.DataFrame],
     daily_final_schedule_schema: dict[str, pd.DataFrame],
     daily_passenger_itinerary: dict[str, pd.DataFrame],
     duties: pd.DataFrame,
@@ -2907,34 +3025,32 @@ def export_all_outputs(
     kpis: pd.DataFrame,
     shift_service_dates: list[str],
 ) -> None:
-    strict_matches.to_csv(OUTPUT_DIR / "strict_store_matches.csv", index=False)
-    stores_with_clusters.to_csv(OUTPUT_DIR / "stores_with_clusters.csv", index=False)
-    clusters_summary.to_csv(OUTPUT_DIR / "clusters_summary.csv", index=False)
-    demand.to_csv(OUTPUT_DIR / "demand_by_store_shift_window.csv", index=False)
-    peak_pressure.to_csv(OUTPUT_DIR / "peak_pressure_summary.csv", index=False)
-    hybrid_trips.to_csv(OUTPUT_DIR / "designed_trips_raw.csv", index=False)
-    scheduled.to_csv(OUTPUT_DIR / "trip_routes.csv", index=False)
-    assignments.to_csv(OUTPUT_DIR / "trip_assignments.csv", index=False)
-    safe_csv_export(employee_bus_schedule, EMPLOYER_OUTPUT_DIR / "employee_to_bus_mapping_detailed.csv")
-    safe_daily_schedule_export(daily_driver_schedule, shift_service_dates, EMPLOYER_OUTPUT_DIR / "driver_trip_tally_per_day.xlsx")
-    safe_daily_schedule_export(daily_bus_route_details, shift_service_dates, EMPLOYER_OUTPUT_DIR / "bus_route_details_per_day.xlsx")
-    safe_daily_schedule_export(daily_employee_trip_mapping, shift_service_dates, EMPLOYER_OUTPUT_DIR / "employees_by_driver_trip_per_day.xlsx")
-    safe_daily_schedule_export(daily_final_schedule_schema, shift_service_dates, EMPLOYER_OUTPUT_DIR / "original_routes_per_day.xlsx")
-    safe_daily_schedule_export(daily_passenger_itinerary, shift_service_dates, EMPLOYER_OUTPUT_DIR / "passenger_itinerary_per_day.xlsx")
-    duties.to_csv(OUTPUT_DIR / "driver_metrics.csv", index=False)
     unscheduled.to_csv(OUTPUT_DIR / "unscheduled_trips.csv", index=False)
-    unscheduled_reason_summary.to_csv(OUTPUT_DIR / "unscheduled_trip_reason_summary.csv", index=False)
-    unmatched.to_csv(OUTPUT_DIR / "unmatched_stores.csv", index=False)
-    baseline_issues.to_csv(OUTPUT_DIR / "baseline_overtime_reference.csv", index=False)
     baseline_kpis.to_csv(OUTPUT_DIR / "baseline_staged_kpi_summary.csv", index=False)
-    kpi_comparison.to_csv(OUTPUT_DIR / "kpi_comparison.csv", index=False)
-    fragment_repair_demand.to_csv(OUTPUT_DIR / "small_fragment_repair_demand.csv", index=False)
-    fragment_repair_trips.to_csv(OUTPUT_DIR / "small_fragment_repair_trips.csv", index=False)
-    cooperative_merge_demand.to_csv(OUTPUT_DIR / "cooperative_merge_repair_demand.csv", index=False)
-    cooperative_merge_trips.to_csv(OUTPUT_DIR / "cooperative_merge_repair_trips.csv", index=False)
-    repair_demand.to_csv(OUTPUT_DIR / "bottleneck_repair_demand.csv", index=False)
-    repair_trips.to_csv(OUTPUT_DIR / "bottleneck_repair_trips.csv", index=False)
     kpis.to_csv(OUTPUT_DIR / "kpi_summary.csv", index=False)
+    safe_daily_schedule_export(daily_driver_schedule_with_stops, shift_service_dates, EMPLOYER_OUTPUT_DIR / "trips_per_day.xlsx")
+    safe_daily_schedule_export(daily_employee_trip_mapping, shift_service_dates, EMPLOYER_OUTPUT_DIR / "employee_to_bus_mapping_per_day.xlsx")
+
+    prune_directory_to_whitelist(
+        OUTPUT_DIR,
+        {
+            "kpi_summary.csv",
+            "baseline_staged_kpi_summary.csv",
+            "unscheduled_trips.csv",
+            "map_data.json",
+            "trip_map.html",
+            "map_styles.css",
+            "map_app.js",
+            "map_config.js",
+        },
+    )
+    prune_directory_to_whitelist(
+        EMPLOYER_OUTPUT_DIR,
+        {
+            "trips_per_day.xlsx",
+            "employee_to_bus_mapping_per_day.xlsx",
+        },
+    )
 
 
 def main() -> None:
@@ -3064,6 +3180,7 @@ def main() -> None:
     daily_driver_schedule = build_daily_driver_schedule(scheduled, assignments, shift_service_dates)
     daily_bus_route_details = build_daily_bus_route_details(scheduled, assignments, shift_service_dates, driver_reference)
     daily_employee_trip_mapping = build_daily_employee_trip_mapping(employee_bus_schedule, assignments, shift_service_dates)
+    daily_driver_schedule_with_stops = build_daily_driver_schedule_with_stops(scheduled, assignments, shift_service_dates)
     daily_final_schedule_schema = build_daily_final_schedule_schema(scheduled, assignments, shift_service_dates)
     daily_passenger_itinerary = build_daily_passenger_itinerary(events, employee_bus_schedule, shift_service_dates)
     duties = build_duties(assignments)
@@ -3130,6 +3247,7 @@ def main() -> None:
         daily_driver_schedule,
         daily_bus_route_details,
         daily_employee_trip_mapping,
+        daily_driver_schedule_with_stops,
         daily_final_schedule_schema,
         daily_passenger_itinerary,
         duties,

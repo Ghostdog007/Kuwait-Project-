@@ -297,3 +297,27 @@ Demand Estimation -> Peak Pressure Measurement -> Capacity-Aware Clustering
 -> Service Validation -> KPI Evaluation
 
 This approach matches the data and constraints in `context.md`, directly targets fleet-feasible schedules before overtime reduction, protects coverage feasibility, and points the prototype toward a stronger schedule-aware architecture without requiring a full exact solver.
+
+## Delivery Schema (Employer-Facing)
+<!-- SEARCH HOOK: DELIVERY SCHEMA -->
+Final delivery should prioritize employer readability over raw optimizer internals.
+
+Trip and schedule representation:
+
+1. Use `Drive #` (`D1`, `D2`, ...) and `Trip ID` (`T1`, `T2`, ...) as the primary trip key.
+2. Reset trip sequence per drive/day.
+3. Represent each trip as lifecycle events: `Trip Start`, stop rows, `Trip End`.
+
+Lean default output set:
+
+1. `prototype/output/kpi_summary.csv`
+2. `prototype/output/baseline_staged_kpi_summary.csv`
+3. `prototype/output/unscheduled_trips.csv`
+4. `prototype/output/employer_format/trips_per_day.xlsx`
+5. `prototype/output/employer_format/employee_to_bus_mapping_per_day.xlsx`
+
+Implementation policy:
+
+1. Keep the optimization core intact.
+2. Evolve exports incrementally to match stakeholder format.
+3. Avoid full rewrites when the requirement is mainly schema/presentation alignment.
