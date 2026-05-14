@@ -1,59 +1,105 @@
-# Tester & Examiner Walkthrough
+# Tester and Examiner Walkthrough
 
-This guide provides a step-by-step path to examine the **Kuwait Employee Transport Optimization** project.
+This guide is for a new reviewer (human or model) to run the project, verify outputs, and use the wrapper for analysis.
 
----
+## 1) What This Project Does
 
-## 1. Project Context
-The goal is to optimize the transportation of hundreds of employees across 80+ stores in Kuwait using a limited fleet of **13 buses**. The system must handle:
-- **Shift Timing**: Picking up employees for work (IN) and taking them home (OUT).
-- **Hard Constraints**: 10-hour duty limits, 13-bus concurrency, and 14-seat bus capacity.
-- **Employer Format**: Outputting schedules in the standard operational format (`D1/T1` naming).
+The pipeline optimizes employee transport schedules for a pilot operation in Kuwait.
 
----
+Key operating constraints:
+1. Hard fleet cap: `13` concurrent buses.
+2. Bus capacity: standard `22` seats (up to `25` max operational tolerance).
+3. Duty legality and buffer constraints.
+4. Employer-facing trip naming: `Drive #` + `Trip ID` (`D1/T1`, `D1/T2`, ...).
 
-## 2. Examination Path
+Primary objective order:
+1. Feasible schedule under hard constraints.
+2. Maximize legal coverage.
+3. Reduce overtime without losing covered demand.
 
-### Step A: Understand the Constraints
-Read **[docs/context.md](docs/context.md)**.
-Focus on:
-- The "Hard Operational Constraints" section.
-- The "Priority Order" (Coverage first, then Overtime).
+## 2) Inputs You Need
 
-### Step B: Run the Pipeline
-Execute the core solver:
+Source files in `datasets/`:
+1. `Employee Shift data.xlsx`
+2. `Bus Routes curent.xlsx`
+3. `Geocoordinates.xlsx`
+4. `Kuwait Route Optimization - Overview.xlsx`
+
+## 3) Run the Core Pipeline
+
+From repo root:
+
 ```powershell
 python prototype/run_pilot.py
 ```
-**What to look for**:
-- The console will show "Wave" processing (batching trips by time).
-- It will summarize how many trips were successfully scheduled vs. rejected.
-- Final outputs will appear in `prototype/output/`.
 
-### Step C: Examine the Outputs
-1. **KPI Summary**: Open `prototype/output/kpi_summary.csv`. Look at the `Utilization` and `Coverage` columns.
-2. **Operational Schedule**: Open `prototype/output/employer_format/trips_per_day.xlsx`. This is what the bus drivers and dispatchers actually use.
+Expected result:
+1. Trip design + scheduling complete.
+2. Lean outputs refreshed in `prototype/output` and `prototype/output/employer_format`.
 
-### Step D: Interactive Map Visualization
-This is the most powerful way to see the results.
-1. **Ensure you have a Google Maps API Key** (optional, but recommended for road routes).
-2. **Export data**: `python prototype/export_map_data.py`.
-3. **Start a local server**: `python -m http.server 8090 --directory prototype/output`.
-4. **Open in Browser**: `http://localhost:8090/trip_map.html`.
-5. **Use the Selector**: Pick a Day -> Pick a Drive (D1-D13) -> Pick a Trip (T1-T4).
-6. **Verify**: Click on stops to see employee names and scheduled vs. predicted times.
+## 4) Verify Final Outputs
 
----
+Core outputs:
+1. `prototype/output/kpi_summary.csv`
+2. `prototype/output/baseline_staged_kpi_summary.csv`
+3. `prototype/output/unscheduled_trips.csv`
 
-## 3. Core Logic Deep-Dive
-If you want to review the code logic, open **[prototype/run_pilot.py](prototype/run_pilot.py)** and search for these key functions:
-- `solve_wave_routes_ortools`: How routes are optimized using Google OR-Tools.
-- `slot_is_feasible`: How duty timing and legality are checked.
-- `apply_assignment`: How the system handles split duties and duty breaks.
+Employer outputs:
+1. `prototype/output/employer_format/trips_per_day.xlsx`
+2. `prototype/output/employer_format/employee_to_bus_mapping_per_day.xlsx`
 
----
+Quick checks:
+1. `trips_per_day.xlsx` should be day-wise sheets.
+2. Trip identifiers should be in `D#/T#` style.
+3. `employee_to_bus_mapping_per_day.xlsx` should map employees to the same `D#/T#` trip structure.
 
-## 4. Data Reference
-- Raw input data is in **[datasets/](datasets/)**.
-- Detailed explanations of each dataset's columns are in **[docs/data_dictionary/](docs/data_dictionary/)**.
-- Supporting research and meeting minutes are in **[docs/references/](docs/references/)**.
+## 5) Run the Wrapper for Analysis
+
+The wrapper builds analysis assets for interactive route validation.
+
+Run:
+
+```powershell
+python prototype/export_map_data.py
+```
+
+Generates:
+1. `prototype/output/map_data.json`
+2. `prototype/output/map_config.js`
+
+## 6) Open the Interactive Viewer
+
+Serve the output folder:
+
+```powershell
+python -m http.server 8090 --directory prototype/output
+```
+
+Open:
+`http://localhost:8090/trip_map.html`
+
+Optional:
+1. Add Google Maps key in `prototype/.env` (template: `prototype/.env.example`).
+2. With key present, road routes are rendered more accurately.
+
+## 7) What the Wrapper Offers for Analysis
+
+1. Cascading selection flow:
+   - Day -> Drive -> Trip
+2. Trip timeline visibility:
+   - `Trip Start`, stop sequence, `Trip End`
+3. Stop-level metadata:
+   - location, store ID/name, passenger counts
+4. Employee mapping overlay by trip:
+   - quick validation of assignment completeness
+5. QA use cases:
+   - detect odd stop ordering
+   - inspect timing tightness
+   - spot unscheduled/under-covered patterns for specific drives or days
+
+## 8) Where to Read More
+
+1. `README.md` for architecture and output contract.
+2. `docs/context.md` for constraints and policy.
+3. `docs/approach.md` for optimization strategy.
+4. `docs/data_dictionary/` for dataset column meanings.

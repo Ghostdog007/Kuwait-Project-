@@ -75,14 +75,39 @@ Pipeline source files:
 python prototype/run_pilot.py
 ```
 
-3. (Optional) Generate map data and serve:
+3. Generate wrapper/map analysis assets:
 
 ```powershell
 python prototype/export_map_data.py
+```
+
+4. Serve map outputs:
+
+```powershell
 python -m http.server 8090 --directory prototype/output
 ```
 
 Then open `http://localhost:8090/trip_map.html`.
+
+## Wrapper Analysis (What It Offers)
+
+`prototype/export_map_data.py` is the analysis wrapper for map-based QA and stakeholder review.
+
+It reads:
+1. `prototype/output/employer_format/trips_per_day.xlsx`
+2. `prototype/output/employer_format/employee_to_bus_mapping_per_day.xlsx`
+3. geocoordinates and employee-name references from source datasets
+
+It generates:
+1. `prototype/output/map_data.json` (trip/stop payload)
+2. `prototype/output/map_config.js` (runtime config for viewer)
+
+Map viewer capabilities:
+1. Day -> Drive -> Trip drill-down (`D#/T#` navigation).
+2. Stop-level timeline for each trip (`Trip Start`, stops, `Trip End`).
+3. Employee roster by trip for operational validation.
+4. Road-accurate path rendering when Google Maps API key is present.
+5. Fast manual checks for route ordering, timing windows, and trip coverage gaps.
 
 ## Output Contract (Lean)
 
