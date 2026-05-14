@@ -4,3 +4,5 @@
 *.xlsx
 .pkl
 prototype/.env
+prototype/output/map_config.js
+prototype/output/map_data.json
