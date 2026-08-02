@@ -18,6 +18,26 @@ except Exception:
     routing_enums_pb2 = None
     ORTOOLS_AVAILABLE = False
 
+import os
+
+
+def require_ortools() -> None:
+    # Without OR-Tools, build_base_trips_ortools/solve_mixed_tail_ortools silently fall
+    # back to a much weaker heuristic (build_base_trips), which produces materially worse
+    # KPIs (e.g. ~80% -> ~60% occupancy, ~98% -> ~90% demand coverage) with no error or
+    # warning of any kind. That happened once already because ortools was missing from a
+    # venv despite being pinned in requirements.txt. Fail loudly instead of repeating it.
+    if ORTOOLS_AVAILABLE or os.environ.get("ALLOW_NO_ORTOOLS") == "1":
+        return
+    raise RuntimeError(
+        "OR-Tools is not installed/importable in this environment. The pipeline would "
+        "silently fall back to a much weaker non-OR-Tools heuristic and produce degraded "
+        "KPIs (lower occupancy/coverage, more overtime) with no visible warning. Run "
+        "`pip install -r requirements.txt` (or `pip install ortools`) and retry. To run the "
+        "degraded fallback path intentionally (e.g. for a quick smoke test), set "
+        "ALLOW_NO_ORTOOLS=1."
+    )
+
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 DATASETS_DIR = BASE_DIR / "datasets"
@@ -68,10 +88,35 @@ REPAIR_SHIFT_OPTIONS_IN = [-15, 15, -30, 30]
 BOTTLENECK_HOURS = {5, 18}
 DONOR_SHIFT_OPTIONS = [-30, -20, -15, -10, 10, 15, 20, 30]
 OVERTIME_IMPROVEMENT_PASSES = 2
+WAVE_SOLVER_TIME_LIMIT_SEC = 3
+WAVE_SOLVER_SOLUTION_LIMIT = 200
+WAVE_SOLVER_STRATEGIES = (
+    routing_enums_pb2.FirstSolutionStrategy.PATH_CHEAPEST_ARC,
+    routing_enums_pb2.FirstSolutionStrategy.PARALLEL_CHEAPEST_INSERTION,
+) if ORTOOLS_AVAILABLE else ()
+MIXED_TAIL_SOLVER_TIME_LIMIT_SEC = 3
+MIXED_TAIL_SOLVER_SOLUTION_LIMIT = 100
 
 # === SEARCH HOOK: CONSTANTS / TUNING KNOBS ===
 # Fast place to inspect or tune the fleet cap, buffer policy, split-duty reset rule,
 # mixed-trip tolerances, and repair limits.
+
+# Solver call counters/objective totals, surfaced in the KPI summary so a solver-quality
+# regression (e.g. a machine-load-driven bad local optimum) shows up as a visible number
+# instead of only being noticeable via secondary metrics like occupancy or coverage.
+SOLVER_STATS: dict[str, float] = {
+    "wave_solver_calls": 0,
+    "wave_solver_infeasible": 0,
+    "wave_solver_cost_sum": 0.0,
+    "mixed_tail_solver_calls": 0,
+    "mixed_tail_solver_infeasible": 0,
+    "mixed_tail_solver_cost_sum": 0.0,
+}
+
+
+def reset_solver_stats() -> None:
+    for key in SOLVER_STATS:
+        SOLVER_STATS[key] = 0
 
 
 @dataclass(frozen=True)
@@ -592,14 +637,29 @@ def solve_wave_routes_ortools(batch: pd.DataFrame, depot: GeoPoint) -> list[list
         True,
         "Time",
     )
-    search_params = pywrapcp.DefaultRoutingSearchParameters()
-    search_params.first_solution_strategy = routing_enums_pb2.FirstSolutionStrategy.PATH_CHEAPEST_ARC
-    search_params.local_search_metaheuristic = routing_enums_pb2.LocalSearchMetaheuristic.GUIDED_LOCAL_SEARCH
-    search_params.time_limit.seconds = 1
-    solution = routing.SolveWithParameters(search_params)
-    if solution is None:
-        return []
+    best_solution = None
+    best_cost = None
+    for strategy in WAVE_SOLVER_STRATEGIES:
+        search_params = pywrapcp.DefaultRoutingSearchParameters()
+        search_params.first_solution_strategy = strategy
+        search_params.local_search_metaheuristic = routing_enums_pb2.LocalSearchMetaheuristic.GUIDED_LOCAL_SEARCH
+        search_params.time_limit.seconds = WAVE_SOLVER_TIME_LIMIT_SEC
+        search_params.solution_limit = WAVE_SOLVER_SOLUTION_LIMIT
+        candidate = routing.SolveWithParameters(search_params)
+        if candidate is None:
+            continue
+        cost = candidate.ObjectiveValue()
+        if best_cost is None or cost < best_cost:
+            best_solution = candidate
+            best_cost = cost
 
+    SOLVER_STATS["wave_solver_calls"] += 1
+    if best_solution is None:
+        SOLVER_STATS["wave_solver_infeasible"] += 1
+        return []
+    SOLVER_STATS["wave_solver_cost_sum"] += float(best_cost)
+
+    solution = best_solution
     routes: list[list[dict[str, object]]] = []
     for vehicle_id in range(num_vehicles):
         index = routing.Start(vehicle_id)
@@ -848,10 +908,14 @@ def solve_mixed_tail_ortools(
     search_params = pywrapcp.DefaultRoutingSearchParameters()
     search_params.first_solution_strategy = routing_enums_pb2.FirstSolutionStrategy.PARALLEL_CHEAPEST_INSERTION
     search_params.local_search_metaheuristic = routing_enums_pb2.LocalSearchMetaheuristic.GUIDED_LOCAL_SEARCH
-    search_params.time_limit.seconds = 2
+    search_params.time_limit.seconds = MIXED_TAIL_SOLVER_TIME_LIMIT_SEC
+    search_params.solution_limit = MIXED_TAIL_SOLVER_SOLUTION_LIMIT
     solution = routing.SolveWithParameters(search_params)
+    SOLVER_STATS["mixed_tail_solver_calls"] += 1
     if solution is None:
+        SOLVER_STATS["mixed_tail_solver_infeasible"] += 1
         return []
+    SOLVER_STATS["mixed_tail_solver_cost_sum"] += float(solution.ObjectiveValue())
 
     selected: list[dict[str, object]] = []
     index = routing.Start(0)
@@ -2916,6 +2980,20 @@ def build_kpis(
         ("max_duty_overtime_minutes", round(float(duties["overtime_min"].max()), 2) if not duties.empty else 0.0),
         ("rescued_trip_count", int(assignments["rescued_by_delay"].sum()) if not assignments.empty else 0),
         ("handover_trip_count", int(assignments["handover_flag"].sum()) if not assignments.empty else 0),
+        ("wave_solver_calls", int(SOLVER_STATS["wave_solver_calls"])),
+        ("wave_solver_infeasible_count", int(SOLVER_STATS["wave_solver_infeasible"])),
+        (
+            "wave_solver_avg_objective_cost",
+            round(SOLVER_STATS["wave_solver_cost_sum"] / SOLVER_STATS["wave_solver_calls"], 2)
+            if SOLVER_STATS["wave_solver_calls"] else 0.0,
+        ),
+        ("mixed_tail_solver_calls", int(SOLVER_STATS["mixed_tail_solver_calls"])),
+        ("mixed_tail_solver_infeasible_count", int(SOLVER_STATS["mixed_tail_solver_infeasible"])),
+        (
+            "mixed_tail_solver_avg_objective_cost",
+            round(SOLVER_STATS["mixed_tail_solver_cost_sum"] / SOLVER_STATS["mixed_tail_solver_calls"], 2)
+            if SOLVER_STATS["mixed_tail_solver_calls"] else 0.0,
+        ),
         ("baseline_reported_overtime_minutes", round(float(baseline_metrics["reported_overtime_minutes"]), 2)),
         ("baseline_reported_avg_trip_minutes", round(float(baseline_metrics["baseline_avg_trip_minutes"]), 2)),
         ("unique_unmatched_places", int(unmatched["store_name"].nunique()) if not unmatched.empty else 0),
@@ -3058,6 +3136,8 @@ def main() -> None:
     # End-to-end order:
     # demand -> base OR-Tools trips -> mixed conversion -> main scheduling ->
     # fragment salvage -> cooperative merge -> bottleneck repair -> KPI export.
+    require_ortools()
+    reset_solver_stats()
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     EMPLOYER_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     overview = load_overview_metrics()
