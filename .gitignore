@@ -10,3 +10,7 @@ prototype/output/map_config.js
 prototype/output/map_data.json
 prototype/output/__pycache__/
 prototype/__pycache__/
+frontend/public/map_config.js
+frontend/public/map_data.json
+backend/app/__pycache__/
+backend/scripts/__pycache__/
