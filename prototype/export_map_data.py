@@ -12,6 +12,7 @@ Writes:
 from __future__ import annotations
 
 import json
+import os
 import re
 from pathlib import Path
 
@@ -205,7 +206,11 @@ def attach_employees(trips: list[dict], mapping_sheets: dict[str, pd.DataFrame],
 
 
 def load_api_key() -> str:
-    """Read GMAPS_API_KEY from prototype/.env file."""
+    """Read GMAPS_API_KEY from the environment, falling back to prototype/.env."""
+    env_value = os.environ.get("GMAPS_API_KEY")
+    if env_value:
+        return env_value.strip()
+
     env_path = Path(__file__).resolve().parent / ".env"
     if not env_path.exists():
         print(f"Warning: {env_path} not found. Create it with GMAPS_API_KEY=your_key")
