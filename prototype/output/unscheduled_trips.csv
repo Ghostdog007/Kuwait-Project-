@@ -3,8 +3,6 @@ ORT_0029,IN,2026-04-05 20:00,buffer_violation,"{""buffer_violation"": 79, ""slot
 ORT_0031,IN,2026-04-05 20:00,buffer_violation,"{""buffer_violation"": 79, ""slot_exhausted"": 51}",21,21,6,95.45
 ORT_0049,IN,2026-04-06 12:00,buffer_violation,"{""buffer_violation"": 130}",13,13,7,59.09
 MIX_0028,MIXED,2026-04-07 20:00,buffer_violation,"{""buffer_violation"": 70, ""slot_exhausted"": 60}",23,22,10,100.0
-ORT_0117,IN,2026-04-08 12:00,buffer_violation,"{""buffer_violation"": 128, ""duty_span_block"": 2}",13,13,8,59.09
-ORT_0391,OUT,2026-04-09 19:00,buffer_violation,"{""buffer_violation"": 70, ""slot_exhausted"": 60}",22,22,11,100.0
-ORT_0390,OUT,2026-04-09 19:00,buffer_violation,"{""buffer_violation"": 70, ""duty_span_block"": 8, ""slot_exhausted"": 52}",18,18,9,81.82
-ORT_0180,IN,2026-04-10 10:00,buffer_violation,"{""buffer_violation"": 129, ""duty_span_block"": 1}",20,20,11,90.91
+ORT_0205,IN,2026-04-10 20:00,buffer_violation,"{""buffer_violation"": 78, ""slot_exhausted"": 52}",21,21,6,95.45
 ORT_0216,IN,2026-04-11 10:00,buffer_violation,"{""buffer_violation"": 130}",19,19,9,86.36
+REP_0001,IN,2026-04-11 21:00,small_isolated_demand,"{""buffer_violation"": 85, ""slot_exhausted"": 45}",1,1,1,4.55
